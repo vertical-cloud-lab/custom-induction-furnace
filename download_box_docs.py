@@ -198,6 +198,7 @@ def download_all(output_dir: str = "docs", max_bytes: int = DEFAULT_MAX_BYTES) -
     """
     out_root = Path(output_dir)
     out_root.mkdir(parents=True, exist_ok=True)
+    out_root_resolved = out_root.resolve()
 
     session = _new_session()
 
@@ -222,6 +223,14 @@ def download_all(output_dir: str = "docs", max_bytes: int = DEFAULT_MAX_BYTES) -
     for f in files:
         output_path = out_root / f["path"]
         size = f["size"] or 0
+
+        # Guard against path traversal: file/folder names come from a remote
+        # source, so ensure the resolved destination stays within out_root.
+        try:
+            output_path.resolve().relative_to(out_root_resolved)
+        except ValueError:
+            print(f"  ✗ unsafe path rejected: {f['path']}")
+            continue
 
         if max_bytes and size > max_bytes:
             print(
