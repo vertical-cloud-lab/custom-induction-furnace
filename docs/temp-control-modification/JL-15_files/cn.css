@@ -1,0 +1,227 @@
+﻿
+/* -------------------------------------------------------------------------------------------------- */
+/* |                                                                                                  */
+/* |                                      main_top                                                    */
+/* |                                                                                                  */
+/* -------------------------------------------------------------------------------------------------- */
+/* |                                                                                                  */
+/* |                                      main_home                                                   */
+/* |                                                                                                  */
+/* -------------------------------------------------------------------------------------------------- */
+/* |                         |                                                                        */
+/* |                         |                                                                        */
+/* |                         |                                                                        */
+/* |        main_left        |            main_right                                                  */
+/* |                         |                                                                        */
+/* |                         |                                                                        */
+/* |                         |                                                                        */
+/* |                         |                                                                        */
+/* -------------------------------------------------------------------------------------------------- */
+/* |                                                                                                  */
+/* |                                      main_bottom                                                 */
+/* |                                                                                                  */
+/* -------------------------------------------------------------------------------------------------- */
+/* boby */
+*{margin:0; padding:0; }
+
+html { padding:0px; margin:0px;}
+body{margin:0px; padding:0px; background-attachment:fixed; font-family:Arial, Helvetica, sans-serif; background: url(../images/jl/top_bj.gif) center top repeat-x #f0f0f0; color: #4f3d2c; font-size:12px; line-height:180%; }
+.title { font-family: "Times New Roman", Times, serif;}
+TD {color: #715543; font-size:12px; line-height:200%; }
+div {color: #715543; font-size:12px; line-height:200%;}
+td , li ,div {color: #4f3d2c; font-size:12px;}
+input {color: #4f3d2c; }
+.right_text, .right_text td, .right_text div, .right_text li, .right_text A,.right_text3, .right_text3 td, .right_text3 div, .right_text3 li, .right_text3 A,.right_text2, .right_text2 td, .right_text2 div, .right_text2 li, .right_text2 A{}
+
+form{margin:0px;padding:0px;}
+img{border:0;}
+.clear{clear:both; width:0px; height:0px; font-size:1px; visibility:hidden;}
+.clear2{clear:both; width:0px; height:10px; font-size:1px; visibility:hidden;}
+#container{width:1000px; padding:5px; margin:0 auto; overflow:hidden;}
+
+a{ COLOR: #715543; text-decoration:none;}
+a:hover { Color:#e77817; text-decoration:none;}
+
+/*A img{filter:gray;}
+A:hover img{filter:;}/*图片灰色*/
+/*圆角+投影+外发光*/
+.con_xl03 img { width:190px; height:130px;-moz-border-radius:0 0 7px 7px;-webkit-
+border-radius:7px 7px 7px 7px;border-radius:7px 7px 7px 7px; border:5px #fff solid;
+box-shadow: 0px 0px 15px #ccc; -webkit-box-shadow: 10px 10px 15px #ccc;-moz-box-
+shadow: 10px 10px 15px #ccc}
+/* top */
+/* main */
+.title_lj { border-bottom:1px #CCC solid; font-size:12px; margin-bottom:10px;}
+
+.page_left{width:220px; float:left;}
+.page_left *{ list-style:none;}
+
+.page_center{}
+.page_right{width:762px; float:right; overflow:hidden; border:1px #f1f1f1 solid;}
+.page_right .kuang2 { padding:13px 8px; background:#fff; border:1px #ddd solid;}
+
+.newsup { clear:both; line-height:30px; padding-top:8px;  background:url(../images/hk/bottom_xian.jpg) center -2px no-repeat; margin-top:15px; font-size:12px;}
+.newsup A {  font-size:12px;}
+
+.border_5 { border:1px #cfcfcf solid; padding:5px; margin:3px 10px 6px 3px; background:#f2f2f2;}
+
+.page_td{ border:1px solid #ccc; padding:0px 5px; line-height:20px; background:#f2f2f2; height:23px; }
+.page_tdbg{border:1px solid #ccc; background:#f2f2f2; padding:0px 5px; height:23px;}
+.inputpage{BORDER:1px #ccc solid; background:#f2f2f2; width:22px; padding:0 2px; height:23px; line-height:23px;}
+
+.page_right .titlexian { margin:3px; border-bottom:1px #fff solid; display:block; position:relative; text-align:right; margin-bottom:10px;}
+.page_right .titlexian .title { border-bottom:1px #ccc solid; line-height:42px; height:42px;}
+.page_right .titlexian .title span { display:block; height:38px; padding:0 8px; background:url(../images/ld/right_title_bg.gif) left bottom repeat-x; float:left; font-size:16px; color:#666; font-weight:bold;}
+.page_right .titlexian .title span A { background:none; color:#666; padding:0px;}
+.page_right .titlexian .title A { padding-left:20px; background:url(../images/img/Arrow_03.gif) 8px center no-repeat;}
+.page_right .titlexian .title .more { position:absolute; right:3px; top:10px;}
+
+/* 头部与底部   ---------------------------------------------------------------------------------------------------------------------------------------*/
+.main_top { display:block; height:110px; width:100%;}
+.main_top #container2 { position:relative; z-index:91; height:140px; width:1000px; margin:auto;}
+.main_top #container2 .logo { position:absolute; left:0px; top:15px}
+.main_top #container2 .tel { position:absolute; right:0px; top:54px; z-index:30; font-size:12px; color:#d8c493; text-align:right; line-height:20px;}
+.main_top #container2 #time { position:absolute; right:0px; top:0px; z-index:30; font-size:12px; color:#333; padding:0 15px 0 30px; border:1px #CCC solid; border-top:0px; background: url(../images/img/img_01.jpg) 10px center no-repeat #FFF;}
+.main_top #container2 .head_top { position:absolute; right:0px; top:0px; background:#FFF; border:1px #ddd solid; border-top:0px; padding:0 15px;}
+
+
+.top_news { display:block; background:url(../images/ld/asdf.gif) 10px center no-repeat #fff; width:998px; height:30px; border:1px #CCC solid; margin:10px auto;}
+.top_news ul li{ display:block; padding-left:26px; line-height:32px; height:30px; color:#aaa; overflow:hidden;}
+.top_news ul li A { margin:0 10px;}
+
+.bottom_links { background:#FFF;}
+.bottom_links table { border:1px #ccc solid;}
+.bottom_links td { padding:10px;}.bottom_links td A { margin-right:10px; float:left; white-space:nowrap;}
+.bottom_links td.title { line-height:14px; width:35px; text-align:center; background:#ccc;}
+
+.bottom_menu { border-top:1px #ccc solid; background:#fff; margin:10px auto; line-height:35px; text-align:center;}
+.bottom_menu A { padding:0 10px; color:#999;}
+.main_bottom { padding:20px 0 30px 0; background: url(../images/jl/bottom_bj.gif) center top repeat-x; border-top:5px #5bc2ff solid;}
+.main_bottom * { color:#d1eeff;}
+.main_bottom * A:hover { color:#f60;} 
+/* 菜单   ---------------------------------------------------------------------------------------------------------------------------------------*/
+.top_logo{ display:block; position:absolute; z-index:99999; left:18px; top:0px;}
+
+.banner {  margin:auto; width:1000px; padding-bottom:4px; background:url(../images/ft/xian2.gif) bottom repeat-x;}
+#gallery { float:left;}
+.page_right .kuang, .page_right .right_text, .page_right .right_text2, .page_right .right_text3 { padding:20px;}
+.kuang3 { border:1px #cdd6f7 solid; background:#e9f3fd;}
+
+
+.feedback_K { margin:10px; padding:10px; border:1px #edece9 solid;}
+/* 首页   ---------------------------------------------------------------------------------------------------------------------------------------*/
+.left_about { margin-bottom:15px;}
+.left_about .title {border-bottom:1px dotted #ccc; font-size:18px; height:44px; padding-left:15px; line-height:44px;}
+.left_about .title , .left_about .title A{ font-size:18px; font-weight:bold;}
+.left_about .title samp{ display:none; font-family:Arial, Helvetica, sans-serif; font-weight:normal; padding-left:5px;}
+.left_about .left_prod {}
+
+.home_xian { border-bottom:1px #ddd solid; height:20px; position:relative;}
+.home_xian2 { border-top:1px #fff solid; height:440PX; position:relative;}
+.home_xian2 .title_t { width:205PX; background:#F2F2F2; text-align:center; font-size:24px; position:absolute; left:50%; margin-left:-110px; margin-top:-12px; border-left:1px #CCC solid; border-right:1px #CCC solid;}
+
+.home_xian2 .title{ display:block; margin:5px 15px; font-size:18px; position:relative;}
+.home_xian2 .title A { position:absolute; top:2px; right:0px; font-size:12px; font-family:Arial, Helvetica, sans-serif; color:#C60;}
+
+.home_xian2 .img { width:90%; overflow:hidden; margin:auto; padding:3px; border:1px #ddd solid;}
+.home_xian2 ul.text { padding:5px 10px 10px 10px;}
+.home_xian2 ul.text2 { padding:5px 10px 10px 10px;}
+.home_xian2 ul.text li {  background:url(../images/img/Arrow_04.gif) 5px 10px no-repeat; line-height:16px; overflow:hidden; border-bottom:1px #CCC dotted; padding:8px 0 8px 18px;}
+
+.home_news { position:absolute; left:0px; top:30px; border:1px #ddd solid; height:370px; width:260px; overflow:hidden;}
+.home_xian_K { border:1px #fff solid; width:100%; height:100%;}
+.home_FAQ { position:absolute; left:280px; top:30px; border:1px #ddd solid; height:370px; width:260px;}
+.home_about{ position:absolute; right:0px; top:30px; border:1px #ddd solid; height:370px; width:440px; overflow:hidden;}
+.home_xian2 .home_about .title { border-bottom:1px #CCC solid; padding-bottom:5px;}
+.home_xian2 .home_about .text { text-align: justify;}
+#h_02 td { text-align:center; padding-top:15px;}
+#h_02 td img{ width:190px;}
+#h_02 td span { display:block; text-align:center; width:180px; height:25px; overflow:hidden;}
+.home_about .title span { height:40px; position:absolute; top:1px; padding:0 15px; cursor:pointer;}
+.home_about .title span#oo2 { left:160px;}
+.home_about .title .bbbbd { background:#666; color:#FFF}
+.home_about #h_01{text-align:justify;}
+
+/* 产品   ---------------------------------------------------------------------------------------------------------------------------------------*/
+.products { width:750px; overflow:hidden;}
+.products ul { clear:both; width:780px; margin-bottom:15px;}
+.products li { display:block; float:left; width:170px; overflow:hidden; text-align:center; background:#f5f5f5; margin-right:10px; margin-bottom:15px; border:1px #ddd solid; float:left;}
+.products li td img { width:162px; height:162px; border:2px #09C solid; }
+.products li th { font-weight:normal; line-height:150%; padding:10px 5px;} 
+.products li th span { display:block; height:33px; overflow:hidden;}
+
+.products2 { width:750px; overflow:hidden;}
+.products2 ul { clear:both; width:780px; margin-bottom:15px;}
+.products2 li { display:block; float:left; width:170px; overflow:hidden; text-align:center; background:#f5f5f5; margin-right:10px; margin-bottom:15px; border:1px #ddd solid; float:left;}
+.products2 li td img { width:162px; height:186px; border:2px #09C solid; }
+.products2 li th { font-weight:normal; line-height:150%; padding:10px 5px;} 
+.products2 li th span { display:block; height:33px; overflow:hidden;}
+/*.right_text2 .products li{ -moz-border-radius:0 0 2px 2px;-webkit-
+border-radius:2px;border-radius:2px; border:2px #fff solid;
+box-shadow: 0px 0px 10px #ccc; -webkit-box-shadow: 2px 2px 2px #ccc;-moz-box-
+shadow: 2px 2px 2px #ccc; }*/
+/* 最新产品 */
+
+/* 连接定义 left ------------------------------------------------------------------------------------------------------------------------------------*/
+
+/* 连接定义 right */
+.right_title span{ font-size:14px; font-weight:bold; display:block; text-align:center;}
+.right_title li { float:right;}
+
+.right_bottom { padding-top:5px;}
+
+.biao_table{ background:#ccc;}
+.biao_table td{ padding:2px 10px; background:#fff url(../images/cd/bg_2.gif); color:#555;}
+.biao_table th{ padding:2px 10px; background:#f5f5f5 url(../images/cd/bg_2.gif); text-align:left;}
+
+/* 连接定义 */
+.news { border-bottom:1px dotted #e3dbdb; line-height:28px; display:block; padding:5px;}
+.news A{ line-height:28px; display:block; font-weight:bold; position: relative; font-size:14px;}
+.news A:hover { text-decoration:underline;}
+.news A img { position:absolute; top:0px;}
+.news span{ float: right; display:block; line-height:28px;}
+
+.News1 { height:28px; line-height:28px; display:block;}
+.News1 A{ line-height:28px;}
+
+.news2 { height:30px; line-height:30px; display:block; padding-left:15px; background:url(../images/img/Arrow_05.gif) left center no-repeat; border-bottom:1px #CCC dotted;}
+.news2 A{ line-height:25px;}
+.news2 span{ float: right; display:block; line-height:25px;}
+
+.news3 { line-height:150%; color:#888; border-bottom:1px #ddd dotted; padding:8px 0;}
+.news3 a { display:block; line-height:140%; background:url(../images/img/Arrow_05.gif) left 8px no-repeat; padding:5px 0 5px 15px; color:#5398cd;}
+.news3 a:hover { color:#e77817;}
+
+
+
+/*--------WORKS效果----------*/
+.clearfix:after{content:"."; display:block; height:0; clear:both;visibility:hidden;}
+.clearfix{width:570px;}
+.fresh{width:370px; margin-top:30px;}
+.fresh h2,.works h2{font-size:14px; font-weight:normal; padding:10px 0 10px 25px; background:url(../images/ico2.jpg) left center no-repeat;}
+.boxgrid span{display:block;color:#CFCFCF;}
+.boxgrid li span.title{font-size:16px; margin-top:12px;}
+.boxgrid span.title{font-size:16px; margin-top:265px;}
+.boxgrid span.title a{color:#464646;}
+.boxgrid span.title a:hover{color:#000; text-decoration:none;}
+.works span.type{color:#CFCFCF;}
+.works{width:570px; margin-top:30px;}
+.works-bg{background:url(../images/fresh-bg.jpg) left top repeat;}
+.last{margin-right:0;}
+.boxgrid {/*width: 380px;*/	height: 325px;overflow: hidden;	position: relative;}
+.box2{width:240px;	float:left;	margin-right:13px;}
+.box2last{width:240px;	float:left;}
+.boxgrid img {	position: absolute;	top: 0;	left: 0;border: 0;margin-top:20px; width:240px; height:240px;}
+/*.boxgrid img.prod_img1 {  opacity:0.5;-moz-opacity:0.5;-khtml-opacity:0.5;filter:alpha(Opacity=50); background:#000;}*/
+.box2last img,box2 img{ }
+.boxgrid p {padding: 0 10px;color:#000;	font-weight:bold;font:10pt "Lucida Grande", Arial, sans-serif;}
+.boxcaption {float: left;position: absolute;background: #000;height: 100%;width: 100%;opacity: 1;
+/* For IE 5-7 */
+filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+	/* For IE 8 */
+-MS-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+.captionfull { border-bottom:1px #CCC solid;}
+.captionfull .boxcaption {top: 260;	left: 0;display:none;background-color:#c9c9ca;height:240px;margin-top:20px;}
+.captionfull .boxcaption img{margin-top:0px;}
+.caption .boxcaption {top: 220;	left: 0;}

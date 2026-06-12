@@ -216,3 +216,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Box doc download: oversized file exceeding GitHub's 100 MB per-file limit
+docs/data_log/IFrun041-060/IFrun043_extra/IFrun043_Ni4N5_028_endOfTest.mp4

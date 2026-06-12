@@ -1,0 +1,16 @@
+Crucible only. See picture (if I remember to take it). Roughing backfill. Then hold at high vac. Considering defocusing the pyrometer.
+
+For next one, planning to use a small piece of Pd from Pd_001 (this is Pd_001a), and Ni4N5_053. I might also consider capping some things off to get to a lower ultimate pressure (this would also help me to troubleshoot where potential leaks are coming from, though not necessarily completely applicable to the atmospheric pressure runs). I should also keep in mind that it might actually be at a lower pressure than what is shown, since argon is likely what's being ionized. Not exactly sure though. Hopefully the graphite doesn't evaporate too much..
+
+Ultimate pressure before starting run: ~4.6E-5 torr.
+
+The flowrate was set to 20 sccm, but I changed it to 0 sccm. I may want to stay to observe the color of the crucible (possibly take a picture at a set brightness on my camera before and after).
+
+The pressure is rising.. Possily from the flowrate that I set. Possibly from the induction furnace being on and ramping up. It's shot up all the way to 1E-3 torr now. Could it be a vapor pressure from the graphite?
+
+During the run, I set the focus to the minimum. I should look for signs of evaporation of the graphite.
+
+If I only have it at 900 C, I may want to shorten the time step or change the PID values. It seems to oscillate quite a bit when it's at around 900 C. Perhaps the fact that it's only using ~0.5 mA of current has something to do with it as well.
+
+Based on a plot I found online (see image): https://vacaero.com/information-resources/the-heat-treat-doctor/1455-evaporation.html - "16 – Vapor Pressure as a Function of Pressure", I might expect some noticable evaporation beginning around 1000 C for gold. So maybe 900 C is a good starting point for the Pd.
+

@@ -1,0 +1,10 @@
+Ni4N5_051 on bottom I think. Let argon flow with the ball valve open for a minute or two and did a small roughing pump (turbo pump got to ~4%) followed by a backfill to purge the gas line/system a bit, and now pumping fully to high-vac. That way I still get a little extra by way of purging the chamber without putting undue stress on the turbo pump (e.g. doing 3 backfills from high-vac).
+crucible->Al2O3 plate->Ni4N5_051->Al2O3 plate->Ni4N5_052->Al2O3 plate->crucible plug & window.
+
+I need to make sure if I go with the ideal vac quick change tube that there is still a way to support the teflon from the bottom (i.e. it doesn't just drop down the bellows tube).
+
+High-vac pump: 9:50 pm
+Backfill: 10:10 pm
+MFC engaged: 10:15 pm
+
+Accidentally broke one of the Al2O3 plates because I was using metal tweezers to secure it while trying to clean it off. Considering doing an ultrasonic cleaning of the samples prior to the anneal, and seeing if that lessens the oxidation. In the meantime, going to make another plate.

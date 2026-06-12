@@ -1,0 +1,17 @@
+Moved the crucible so that the top surface of the crucible is pretty much level with the top of the coils.
+
+Next time, considering going up to 1350 C.
+
+Roughing backfill then high vac. Ultimate pressure of ~1E-4 (left it running for several hours).
+
+It's a more narrow sample this time too, and it was ultrasonically cleaned.
+
+With this positioning, the outer part is noticeably hotter than the inner plug. We'll see what happens. Again, this is where having a second pyrometer measuring the temperature from below would be really nice.
+
+At 1300 C, still quite unmistakably hotter on the crucible than the plug. I wonder if having it defocused is a good idea, since technically I could still get the temperature readout from within via the sapphire disk.
+
+cut out after ~15 h ...
+
+The sample melted. Perhaps I could refocus the pyrometer.. what it wouldn't solve to have a second pyrometer reading.. The time I'd have saved over the last several months by having a second pyrometer..
+
+Some signs on the coils of wear/thermal treatment that I don't think I've noticed before. Some white flakes. Perhaps it actually got too hot. This is also pretty much the largest crucible I've used so far.

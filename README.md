@@ -4,30 +4,41 @@ Custom Induction Furnace project — documentation and resources for building an
 
 ## Documentation
 
-Relevant documentation has been downloaded from the Box shared folder into the [`docs/`](docs/) directory.
+All documentation has been downloaded from the Box shared folder — including
+every subfolder — into the [`docs/`](docs/) directory (218 files), preserving
+the original folder structure. See [`docs/README.md`](docs/README.md) for a
+per-folder breakdown.
 
 **Box Shared Link:** https://byu.box.com/s/lh04mmpkhvhy4vtokpm4sol711xycrph
 
-### Files
+### Folders
 
-| File | Description |
-|------|-------------|
-| [`induction-furnace-schematic.pptx`](docs/induction-furnace-schematic.pptx) | Induction furnace schematic |
-| [`induction_parts_list.xlsx`](docs/induction_parts_list.xlsx) | Parts list and components |
-| [`coils-drawing.pdf`](docs/coils-drawing.pdf) | Coil design drawings |
-| [`induction_order_corrections.pptx`](docs/induction_order_corrections.pptx) | Order corrections and updates |
-| [`Picture1.png`](docs/Picture1.png) | Image reference |
-| [`schematic.pptx`](docs/schematic.pptx) | Schematic presentation |
-| [`induction_SOP_200901.docx`](docs/induction_SOP_200901.docx) | Standard Operating Procedure (Sept 2020) |
-| [`coils.oxps`](docs/coils.oxps) | Coil design document |
+| Folder | Files |
+|--------|------:|
+| [`docs/quotes/`](docs/quotes/) | 14 |
+| [`docs/east-coast-induction/`](docs/east-coast-induction/) | 6 |
+| [`docs/data_log/`](docs/data_log/) | 103 |
+| [`docs/temp-control-modification/`](docs/temp-control-modification/) | 24 |
+| [`docs/CYSI/`](docs/CYSI/) | 9 |
+| [`docs/lepel furnace pictures/`](docs/lepel%20furnace%20pictures/) | 10 |
+| [`docs/manual/`](docs/manual/) | 20 |
+| [`docs/ThermalEvaporation/`](docs/ThermalEvaporation/) | 4 |
+| [`docs/LabVIEW/`](docs/LabVIEW/) | 11 |
+| [`docs/KF Supplies/`](docs/KF%20Supplies/) | 1 |
+| [`docs/Vent Valve/`](docs/Vent%20Valve/) | 2 |
+| [`docs/MFC/`](docs/MFC/) | 6 |
+
+One file in the shared folder is intentionally omitted because it exceeds
+GitHub's 100 MB per-file limit (`IFrun043_Ni4N5_028_endOfTest.mp4`, ≈122 MB).
 
 ### Re-downloading
 
-To re-download files from Box:
+To re-download every file from Box (subfolders included):
 
 ```bash
 pip install requests
 python download_box_docs.py
 ```
 
-Downloaded files will be saved to the `docs/` directory.
+Downloaded files are saved to the `docs/` directory. To also fetch files
+larger than 100 MB, pass `--max-bytes 0`.

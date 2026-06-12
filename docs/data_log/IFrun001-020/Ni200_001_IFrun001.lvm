@@ -1,0 +1,25 @@
+LabVIEW Measurement,
+Writer_Version,2
+Reader_Version,2
+Separator,Comma
+Decimal_Separator,.
+Multi_Headings,Yes
+X_Columns,One
+Time_Pref,Relative
+Operator,DAQ9
+Date,2019/11/11
+Time,08:53:24.1135182380676269531
+***End_of_Header***,
+,
+Notes,X values guaranteed valid only for Signal,,
+Channels,2,,
+Samples,1,1,
+Date,2019/11/11,2019/11/11,
+Time,08:53:24.1135182380676269531,08:53:25.2602801322937011719,
+X_Dimension,Time,Time,
+X0,0.0000000000000000E+0,0.0000000000000000E+0,
+Delta_X,1.000000,1.000000,
+***End_of_Header***,,,
+X_Value,Signal,Untitled,Comment
+0.000000,0.000000,799.000000
+

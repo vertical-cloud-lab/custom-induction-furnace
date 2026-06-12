@@ -1,0 +1,13 @@
+Ni4N5_047 on bottom. Going to try to keep the lower number at the bottom of the crucible, and work up in numbers to the top of the crucible.
+
+Doing only 1 backfill this time.
+
+Pump-down: 5:56 pm 20-02-27.
+Backfill: 8:17 pm
+
+I think I'll do one more, since should probably have in the procedure that I've been flowing argon with a sealed system for at least a little bit to purge the line.
+
+Pump-down: 8:19 pm
+Backfill: 9:14 pm
+
+Oxidation seems fine. The bottom sample was a little bit harder to remove, which may be an indication of some more oxidation or just that I need to clean the Al2O3. The crucible seems fine, as well as the sapphire window.

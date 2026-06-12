@@ -1,0 +1,1 @@
+I'm planning to run a diffusivity test on this sample after annealing it, and the sample is much larger than normal. Hopefully this will be large enough to fit the flange of the other Devanathan cell.

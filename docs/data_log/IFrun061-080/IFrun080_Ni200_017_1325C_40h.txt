@@ -1,0 +1,11 @@
+hi vac to 50%, backfill, hi vac to 1E-4 torr
+
+Going for a sample that I can polish down and test lattice diffusivity across a large grain (or at least across only a few grains, i.e. minimize the amount of GB). Will want to do EBSD on the sample later. Can compare the measured diffusivity of the first transient with that of the literature, and then measure the diffusivity of later transients. I'll want to be very careful with how I do the first transient (i.e. perhaps pre-charge for about a day, and add the solution to the test just before charging rather than leaving it in).
+
+For the polishing, I will probably want to do the contra-rotation setup with a somewhat coarse grit. I'm aiming for around 50-100 um for the final thickness, which introduces some issues with mounting. Crystalbond 590 probably wouldn't lend itself well to polishing it so thin, and crystalbond 555 would probably dissolve in water. Doing a dry polish doesn't seem like a good idea either. If I do bakelite, I can still probably get thickness measurements by getting the initial thickness and backing out the starting thickness of the sample. There's also the possibility of testing the same sample at multiple thicknesses (e.g. 500 um, 250 um, 100 um, 50 um), in which case it might not be so bad to just use a ton of crystalbond 555 and just a trickle of water (maybe even just mist it with a spray bottle filled with cold water).
+
+Some surface/edge melting observed on the sample. Max grain size ~2.5 mm
+
+Fair amount of dither at setpoint of 1325 C. Min ~1310 C, Max ~1340 C. Probably due to the large timestep (10 s).
+
+Might need to print a different Devanathan cell in order to do diffusivity tests on this sample because of the size.
