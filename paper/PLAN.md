@@ -38,6 +38,12 @@ hardware/firmware contributions are:
 5. **Operational tooling** — LabVIEW VIs for ramping, manual control, PID tuning, and
    automated email alerts; a MATLAB heat-curve plotter. (Source: [`../code/`](../code/).)
 
+> **Current status note:** the control/vacuum/pyrometer retrofit described above is
+> furnace-agnostic. It was developed on the legacy LEPEL unit and is now being applied to
+> a **new USA-sourced induction unit (East Coast Induction / CEIA)**; an earlier CYSI
+> GP-15A (China) unit was evaluated but did not meet the lab's control requirements and is
+> no longer used (see §3.1).
+
 **Working title (draft):** *"Retrofitting a vintage high-frequency induction furnace
 for computer-controlled, vacuum-integrated annealing of reactive metals."*
 
@@ -70,13 +76,20 @@ To be finalized once measured values are confirmed from the data logs.
 ### 3.1 Hardware in context (Introduction)
 - Motivation: only ME-department machine able to reach Ni/Fe melting temperatures;
   need controlled grain growth and oxidation-free annealing.
-- Prior/alternative approaches: commercial modern induction systems quoted but costly
-  (East Coast Induction / CEIA 6 kW; CYSI GP-15A purchased with control-spec issues).
-  - Sources: `docs/east-coast-induction/` (`heater-notes.txt`, manuals, quotes),
-    `docs/quotes/`, `docs/CYSI/` (`order_issues.txt`,
-    [`extracted-context/...`] QIN ERIC chat log showing the missing 0–5 V control spec).
-- **Angle:** modernizing legacy equipment is far cheaper and is broadly reusable by
-  other labs with similar vintage induction hardware.
+- Procurement history / alternative approaches: the lab evaluated commercial modern
+  induction systems. A CYSI GP-15A (China) was purchased first but **did not meet the
+  lab's needs** — the required analog (0–5 V / 4–20 mA) remote-control spec was lost
+  across model substitutions (SP-AB-25 → SPZ-25 → SPZ-15) — so it was **abandoned and
+  is no longer in use**. The lab has since moved to a **new USA-sourced unit (East Coast
+  Induction / CEIA 6 kW)**, whose controller does provide the analog (4–20 mA) input.
+  - Sources: `docs/east-coast-induction/` (`heater-notes.txt`, Master Controller v3+ /
+    Power Cube manuals, pyrometer notes), `docs/quotes/`, and `docs/CYSI/`
+    (order-issue chat log documenting the missing 0–5 V control spec on the GP-15A).
+- **Angle:** the reproducible contribution remains the LabVIEW/DAQ + vacuum + pyrometer
+  control retrofit, which is intentionally **furnace-agnostic** — it has been applied to
+  the legacy LEPEL unit and ports to the new East Coast Induction generator (and could be
+  reused by other labs with similar vintage or commercial induction hardware), rather than
+  being locked to any single furnace vendor.
 
 ### 3.2 Hardware description
 - System block diagram: pump (Edwards T-Station 85) → bellows → quartz-tube chamber →
