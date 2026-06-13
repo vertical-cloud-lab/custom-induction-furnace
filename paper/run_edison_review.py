@@ -6,22 +6,32 @@ Bundles the manuscript draft (``paper.md``/``paper.pdf``), the plan, and the ext
 context, uploads them as a single collection, runs a ``JobNames.ANALYSIS`` review job,
 and writes the feedback to ``paper/edison-feedback/``.
 
+The script supports an iterative review loop: each invocation writes a numbered
+``feedback-<N>.md`` (and updates ``feedback.md`` to the latest), so successive
+review → implement → re-review cycles are preserved as version-controlled history.
+Pass ``--continued-job-id`` with the previous task's UUID to chain the follow-up query
+so the reviewer is aware of the prior round's context.
+
 Usage::
 
     pip install edison-client
-    python paper/run_edison_review.py
+    python paper/run_edison_review.py                       # one review round
+    python paper/run_edison_review.py --continued-job-id <uuid>  # follow-up round
 
 The API key is read from ``EDISON_PLATFORM_API_KEY`` (falling back to ``EDISON_API_KEY``).
 """
 from __future__ import annotations
 
+import argparse
 import json
 import os
 import shutil
 import time
 from pathlib import Path
+from uuid import UUID
 
 from edison_client import EdisonClient, JobNames, TaskRequest
+from edison_client.models.app import RuntimeConfig
 
 HERE = Path(__file__).resolve().parent
 OUT = HERE / "edison-feedback"
@@ -86,10 +96,27 @@ def extract_answer(dump: dict) -> str | None:
     return dump.get("answer") or dump.get("formatted_answer")
 
 
+def next_iteration(out: Path) -> int:
+    existing = sorted(int(p.stem.split("-")[1]) for p in out.glob("feedback-*.md")
+                      if p.stem.split("-")[1].isdigit())
+    return (existing[-1] + 1) if existing else 1
+
+
 def main() -> None:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--continued-job-id", default=None,
+                    help="UUID of the previous Edison task to chain this review onto.")
+    ap.add_argument("--iteration", type=int, default=None,
+                    help="Override the iteration number (defaults to auto-increment).")
+    args = ap.parse_args()
+
     api_key = os.environ.get("EDISON_PLATFORM_API_KEY") or os.environ.get("EDISON_API_KEY")
     if not api_key:
         raise SystemExit("Set EDISON_PLATFORM_API_KEY (or EDISON_API_KEY).")
+
+    OUT.mkdir(parents=True, exist_ok=True)
+    iteration = args.iteration if args.iteration is not None else next_iteration(OUT)
+    print("iteration:", iteration, flush=True)
 
     client = EdisonClient(api_key=api_key)
     bundle = build_bundle(Path("/tmp/edison_bundle"))
@@ -103,7 +130,22 @@ def main() -> None:
     uri = f"data_entry:{resp.data_storage.id}"
     print("uploaded:", uri, flush=True)
 
-    task_id = str(client.create_task(TaskRequest(name=JobNames.ANALYSIS, query=QUERY), files=[uri]))
+    runtime_config = None
+    query = QUERY
+    if args.continued_job_id:
+        runtime_config = RuntimeConfig(continued_job_id=UUID(args.continued_job_id))
+        query = (QUERY + "\n\nThis is a FOLLOW-UP review round. The draft has been revised "
+                 "to address your previous feedback (single 7-column BOM, ethics section, "
+                 "graphite susceptor framing, analog-input requirement, references, etc.). "
+                 "Focus on (a) verifying the previous issues are resolved, (b) any NEW "
+                 "weaknesses introduced, and (c) the next most important changes to reach "
+                 "submission quality. Be concise and prioritized; avoid repeating advice "
+                 "already implemented.")
+
+    task_id = str(client.create_task(
+        TaskRequest(name=JobNames.ANALYSIS, query=query, runtime_config=runtime_config),
+        files=[uri],
+    ))
     print("task:", task_id, flush=True)
 
     deadline = time.time() + 60 * 60
@@ -115,15 +157,18 @@ def main() -> None:
         time.sleep(60)
 
     dump = client.get_task(task_id).model_dump()
-    OUT.mkdir(parents=True, exist_ok=True)
     answer = extract_answer(dump)
     if answer:
-        (OUT / "feedback.md").write_text(answer)
-        print("wrote feedback.md", len(answer), "chars", flush=True)
+        header = f"<!-- Edison ANALYSIS task {task_id} (iteration {iteration}) -->\n\n"
+        (OUT / f"feedback-{iteration}.md").write_text(header + answer)
+        (OUT / "feedback.md").write_text(header + answer)
+        print("wrote feedback-%d.md" % iteration, len(answer), "chars", flush=True)
     nb = dump.get("notebook")
     if nb:
         json.dump(nb, (OUT / "analysis.ipynb").open("w"), indent=1)
         print("wrote analysis.ipynb", flush=True)
+    # Record the task id so follow-up rounds can chain via --continued-job-id.
+    (OUT / "last_task_id.txt").write_text(task_id + "\n")
 
 
 if __name__ == "__main__":

@@ -35,7 +35,7 @@ keywords:
 | Subject area | Materials science; mechanical engineering (thermal processing / grain growth) |
 | Hardware type | Heat-treatment / annealing furnace; vacuum system; instrument control |
 | Closest commercial analog | Vacuum induction annealing furnace (turn-key systems cost $50k–$200k+) |
-| Open-source license | `[TODO: declare an OSHW-compatible license — e.g. CERN-OHL-S / MIT for code]` |
+| Open-source license | `[TODO: proposed — CERN-OHL-S v2 for hardware/design files + MIT for code; add a LICENSE file at the repo root before submission]` |
 | Cost of hardware | `[TODO: total; retrofit + consumables ≈ $1–2k on top of the generator]` |
 | Source file repository | `[TODO: mint a permanent DOI — e.g. Zenodo — for the repository; HardwareX does not accept a bare GitHub URL]` |
 | Induction generator (reproducible build) | CEIA "Power Cube" 6 kW solid-state RF generator + Master Controller v3+ (East Coast Induction, USA) |
@@ -141,14 +141,14 @@ photos to paper/figures/.]`
 
 | Design file | File type | Open source license | Location of the file |
 |-------------|-----------|---------------------|----------------------|
-| LabVIEW control VIs (furnace control, manual control, PID tuning v1/v2, email alert) | LabVIEW `.vi` | `[TODO]` | [`../code/induction-furnace-control-code/`](../code/induction-furnace-control-code/) |
-| Manual ramping v5 VIs | LabVIEW `.vi` | `[TODO]` | [`../code/manual-ramping-v5/`](../code/manual-ramping-v5/) |
-| `plotheatcurve.m` (heat-curve plotter) | MATLAB | `[TODO]` | [`../code/plotheatcurve.m`](../code/plotheatcurve.m) |
-| Work-coil drawing | PDF / OXPS | `[TODO]` | `docs/coils-drawing.pdf`, `docs/coils.oxps` |
-| System schematics | PPTX (+ extracted text/figures) | `[TODO]` | `docs/*.pptx`, [`extracted-context/`](extracted-context/) |
-| Temperature-control wiring | PNG | `[TODO]` | `docs/temp-control-modification/0-5V PLC wire design.png` |
-| KF40 overpressure centering ring | STEP | `[TODO]` | `docs/KF Supplies/KF40_overpressureCenteringRing.step` |
-| Graphite crucible/susceptor machining drawing | `[TODO: add]` | `[TODO]` | `[TODO]` |
+| LabVIEW control VIs (furnace control, manual control, PID tuning v1/v2, email alert) | LabVIEW `.vi` | MIT (proposed) | [`../code/induction-furnace-control-code/`](../code/induction-furnace-control-code/) |
+| Manual ramping v5 VIs | LabVIEW `.vi` | MIT (proposed) | [`../code/manual-ramping-v5/`](../code/manual-ramping-v5/) |
+| `plotheatcurve.m` (heat-curve plotter) | MATLAB | MIT (proposed) | [`../code/plotheatcurve.m`](../code/plotheatcurve.m) |
+| Work-coil drawing | PDF / OXPS | CERN-OHL-S (proposed) | `docs/coils-drawing.pdf`, `docs/coils.oxps` |
+| System schematics | PPTX (+ extracted text/figures) | CERN-OHL-S (proposed) | `docs/*.pptx`, [`extracted-context/`](extracted-context/) |
+| Temperature-control wiring | PNG | CERN-OHL-S (proposed) | `docs/temp-control-modification/0-5V PLC wire design.png` |
+| KF40 overpressure centering ring | STEP | CERN-OHL-S (proposed) | `docs/KF Supplies/KF40_overpressureCenteringRing.step` |
+| Graphite crucible/susceptor machining drawing | `[TODO: add]` | CERN-OHL-S (proposed) | `[TODO]` |
 
 `[TODO: export the LabVIEW .vi block diagrams to PDF/PNG so non-LabVIEW readers can
 inspect the control logic.]`
@@ -278,3 +278,14 @@ no associated ethical considerations.
 - **Declaration of competing interests:** `[TODO]`
 - **Data availability:** design files, logs, and extracted context are in this repository
   (`vertical-cloud-lab/custom-induction-furnace`).
+
+# References
+
+`[TODO: add the formatted reference list before submission. Anticipated citations:
+(1) a general induction-heating / eddy-current reference (e.g. Davies, *Conduction and
+Induction Heating*) for the physics of RF coupling and susceptor heating; (2) a grain-growth
+/ recrystallization reference (e.g. Humphreys & Hatherly, *Recrystallization and Related
+Annealing Phenomena*) motivating the annealing study; (3) a ratio/dual-wavelength pyrometry
+reference for the non-contact temperature measurement; (4) the HardwareX author guidelines;
+and (5) any prior open-source furnace-control hardware papers used for comparison. Confirm
+exact citations and DOIs.]`
