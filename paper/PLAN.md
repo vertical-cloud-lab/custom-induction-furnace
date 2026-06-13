@@ -225,6 +225,8 @@ Populate the HardwareX *Design Files Summary* table from version-controlled arti
 ## 4. Gap checklist before submission
 
 - [ ] Confirm/declare an OSHW-compatible license at repo root and in the Design Files table.
+- [ ] Mint a permanent DOI (e.g. Zenodo) and add it to the specifications table ("Source file repository") — HardwareX does not accept a bare GitHub URL.
+- [ ] Add an "Ethics statements" section and the CRediT authorship statement.
 - [ ] Export LabVIEW `.vi` logic to PDF/PNG for non-LabVIEW readers.
 - [ ] Reformat `induction_parts_list.xlsx` into the HardwareX BOM schema (with date/currency).
 - [ ] Curate a clean, photographed build sequence (coil, vacuum, control wiring).

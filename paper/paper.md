@@ -21,6 +21,11 @@ keywords:
 > reproducible build and bill of materials are anchored on the lab's **current,
 > USA-sourced induction generator** (CEIA "Power Cube" 6 kW, procured through East Coast
 > Induction); the ~1970 LEPEL furnace is documented only as the originating prototype.
+>
+> An independent review of this draft against the HardwareX section requirements, and the
+> resulting action checklist, are recorded in [`edison-feedback/`](edison-feedback/); its
+> highest-priority items have been folded into the BOM, specifications table, and the
+> plan's gap checklist.
 
 # Specifications table
 
@@ -32,6 +37,7 @@ keywords:
 | Closest commercial analog | Vacuum induction annealing furnace (turn-key systems cost $50k–$200k+) |
 | Open-source license | `[TODO: declare an OSHW-compatible license — e.g. CERN-OHL-S / MIT for code]` |
 | Cost of hardware | `[TODO: total; retrofit + consumables ≈ $1–2k on top of the generator]` |
+| Source file repository | `[TODO: mint a permanent DOI — e.g. Zenodo — for the repository; HardwareX does not accept a bare GitHub URL]` |
 | Induction generator (reproducible build) | CEIA "Power Cube" 6 kW solid-state RF generator + Master Controller v3+ (East Coast Induction, USA) |
 | Induction generator (prototype) | LEPEL high-frequency tube furnace (~1970), up to ~35 kW |
 | Power-control input | Analog setpoint via LabVIEW/DAQ (4–20 mA on current controller; 0–5 mA on LEPEL) |
@@ -57,9 +63,17 @@ by adding (1) computer power control, (2) closed-loop optical temperature contro
 high-vacuum quartz-tube chamber, and (4) a machined graphite crucible/susceptor. The
 emphasis of the contribution is the **modernization stack itself**, which is deliberately
 **generator-agnostic**: the same control software, vacuum chamber, pyrometer feedback,
-crucible, and work-coil geometry transfer from one induction generator to another. That
+crucible, and work-coil geometry transfer from one induction generator to another. The
+only requirement a reader's generator must satisfy is an **analog power-control input that
+maps roughly linearly to output power** (e.g. 4–20 mA or 0–5 V / 0–5 mA). That
 portability is the reproducible result and is what makes the design reusable by other labs
-that already own, or can buy, an induction generator exposing an analog power input.
+that already own, or can buy, such an induction generator.
+
+A second feature that broadens the system's applicability is the **machined graphite
+crucible/susceptor**: because graphite couples strongly to the RF field and heats the
+charge indirectly by conduction and radiation, the furnace is not limited to electrically
+conductive samples — it can also process poorly- or non-coupling materials such as YSZ
+ceramic. This makes the same build useful well beyond reactive-metal annealing.
 
 The modernization was first prototyped on a ~1970 LEPEL high-frequency induction furnace
 owned by the BYU Mechanical Engineering department — at the time the only departmental
@@ -141,40 +155,31 @@ inspect the control logic.]`
 
 # Bill of materials summary
 
-The BOM is split into three blocks so the reproducible portion is unambiguous. Full
-vendor/price detail for the retrofit and consumable parts is in
+HardwareX requires a single 7-column BOM table; groupings are denoted by the designator
+prefix: **GEN** = induction generator + controller (the current USA reproducible build;
+the legacy LEPEL is the prototype alternative, not a line item), **RETRO** = the
+reproducible retrofit (control / vacuum / sensing) parts, and **CONS** = consumables.
+Full vendor/price detail for the RETRO and CONS parts is in
 [`extracted-context/parts_list.md`](extracted-context/parts_list.md) (extracted from
 `docs/induction_parts_list.xlsx`).
 
-**A. Induction generator + controller (reproducible build, current USA unit)**
+| Designator | Component | Number | Cost per unit | Total cost | Source of materials | Material type |
+|------------|-----------|-------:|---------------|-----------:|---------------------|---------------|
+| GEN-1 | CEIA "Power Cube" 6 kW solid-state RF generator | 1 | `[TODO]` | `[TODO]` | East Coast Induction (USA) | — |
+| GEN-2 | Master Controller v3+ | 1 | `[TODO]` | `[TODO]` | East Coast Induction (USA) | — |
+| GEN-3 | Recirculating water chiller | 1 | `[TODO]` | `[TODO]` | `[TODO]` | — |
+| RETRO-1 | LabVIEW-compatible DAQ (analog out + in), e.g. NI USB-6009 `[confirm model]` | 1 | `[TODO]` | `[TODO]` | National Instruments | — |
+| RETRO-2 | Dual-wavelength pyrometer (IMPAC ISR6 / LumaSens) | 1 | ~$241 (used) | ~$241 | eBay / OEM | — |
+| RETRO-3 | Edwards T-Station 85 turbo-molecular pump | 1 | `[TODO]` | `[TODO]` | Edwards | — |
+| RETRO-4 | Edwards TAV5 vent valve | 1 | ~$59 | ~$59 | eBay | — |
+| RETRO-5 | Inert-gas regulator (Fisher FS-50) | 1 | ~$38 | ~$38 | Fisher Scientific | — |
+| RETRO-6 | KF40 flanges, clamps, centering rings, optical window | 1 set | see parts list | `[TODO]` | IdealVac / McMaster | aluminum / quartz |
+| CONS-1 | Quartz tube (35 mm ID), cut to length | 1–2 | ~$67 | ~$134 | QSI Quartz | fused quartz |
+| CONS-2 | Graphite stock for machined crucible/susceptor (56L-3, 3000 °C) | 1 | ~$99 | ~$99 | Cotronics | graphite |
+| CONS-3 | Graphite repair cement (Resbond 931) | 1 | ~$108 | ~$108 | Cotronics | graphite |
+| CONS-4 | Torr-Seal epoxy / O-rings | 1 set | see parts list | `[TODO]` | — | epoxy / elastomer |
 
-| Designator | Component | Number | Cost/unit | Source | Material |
-|------------|-----------|-------:|-----------|--------|----------|
-| GEN | CEIA "Power Cube" 6 kW solid-state RF generator | 1 | `[TODO]` | East Coast Induction (USA) | — |
-| CTRL | Master Controller v3+ | 1 | `[TODO]` | East Coast Induction (USA) | — |
-| CHILL | Recirculating water chiller | 1 | `[TODO]` | `[TODO]` | — |
-
-**B. Retrofit: control, vacuum, and sensing**
-
-| Designator | Component | Number | Cost/unit | Source | Material |
-|------------|-----------|-------:|-----------|--------|----------|
-| DAQ | LabVIEW-compatible DAQ (analog out + in) | 1 | `[TODO]` | National Instruments | — |
-| PYRO | Dual-wavelength pyrometer (IMPAC ISR6 / LumaSens) | 1 | ~$241 (used) | eBay / OEM | — |
-| PUMP | Edwards T-Station 85 turbo-molecular pump | 1 | `[TODO]` | Edwards | — |
-| VENT | Edwards TAV5 vent valve | 1 | ~$59 | eBay | — |
-| GAS | Inert-gas regulator (Fisher FS-50) | 1 | ~$38 | Fisher Scientific | — |
-| KF | KF40 flanges, clamps, centering rings, optical window | set | see parts list | IdealVac / McMaster | aluminum / quartz |
-
-**C. Consumables (chamber, crucible, sample handling)**
-
-| Designator | Component | Number | Cost/unit | Source | Material |
-|------------|-----------|-------:|-----------|--------|----------|
-| TUBE | Quartz tube (35 mm ID), cut to length | 1–2 | ~$67 | QSI Quartz | fused quartz |
-| CRUC | Graphite stock for machined crucible/susceptor (56L-3, 3000 °C) | 1 | ~$99 | Cotronics | graphite |
-| REPAIR | Graphite repair cement (Resbond 931) | 1 | ~$108 | Cotronics | graphite |
-| SEAL | Torr-Seal epoxy / O-rings | — | see parts list | — | — |
-
-`[TODO: confirm generator/controller/chiller pricing and add currency + quote date.]`
+`[TODO: confirm GEN-1/2/3 and RETRO-1/3 pricing; add currency (USD) and quote year.]`
 
 # Build instructions
 
@@ -259,6 +264,11 @@ paper/figures/.]`
   and costly).
 - **Thermal.** Samples reach ~1400–1500 °C; melt/drip and quartz-tube failure are risks.
   Wear clean nitrile gloves when loading/unloading to avoid contaminating the vacuum.
+
+# Ethics statements
+
+This work did not involve human participants, human data, or animal subjects. There are
+no associated ethical considerations.
 
 # Declarations
 
