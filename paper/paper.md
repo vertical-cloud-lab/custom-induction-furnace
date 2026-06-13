@@ -40,15 +40,15 @@ keywords:
 | Source file repository | `[TODO: mint a permanent DOI — e.g. Zenodo — for the repository; HardwareX does not accept a bare GitHub URL]` |
 | Induction generator (reproducible build) | CEIA "Power Cube" 6 kW solid-state RF generator + Master Controller v3+ (East Coast Induction, USA) |
 | Induction generator (prototype) | LEPEL high-frequency tube furnace (~1970), up to ~35 kW |
-| Power-control input | Analog setpoint via LabVIEW/DAQ (4–20 mA on current controller; 0–5 mA on LEPEL) |
-| Generator-input standard required | External analog power-control input with monotonic command→power response over the usable range |
-| Control resolution / range | DAQ analog out spans the generator's full 0→max command; analog input reads the pyrometer over its detection band |
+| Power-control input | Analog setpoint via LabVIEW/DAQ → current-loop conditioner (4–20 mA on current controller; 0–5 mA on LEPEL) |
+| Generator-input standard required | External analog power-control input with **monotonic** command→power response over the usable range |
+| Control signal chain | DAQ analog output (0–5 V) → voltage-to-current (4–20 mA) loop conditioner → generator power-setpoint input; pyrometer analog output → DAQ analog input (scaled to °C) |
 | Max sample temperature | ~1400–1500 °C+ (Ni/Fe melting range) |
 | Pyrometer detection range | ~800–2500 °C (dual-wavelength ratio); does not report below ~700 °C |
 | Demonstrated soak duration | minutes up to ~40 h (per `docs/data_log/` run logs) |
 | Sample / crucible envelope | charge fits inside a 35 mm-ID quartz tube and a machined graphite crucible |
 | Vacuum level | ~1×10⁻⁶ to 1×10⁻⁸ Torr (Edwards T-Station 85 turbo-molecular pump) |
-| Temperature measurement | IMPAC ISR6 dual-wavelength ratio pyrometer (range ~800–2500 °C) |
+| Temperature measurement | LumaSense IMPAC ISR 6 dual-wavelength ratio pyrometer (~800–2500 °C) |
 | Chamber | Quartz tube, KF40 optical-window flange, inert-gas vent |
 | Crucible / susceptor | In-house machined graphite (3000 °C grade) crucible-susceptor |
 | Work coil | Water-cooled copper, ~3″ tall, 2.5″ ID, ~6.5 turns |
@@ -69,10 +69,12 @@ high-vacuum quartz-tube chamber, and (4) a machined graphite crucible/susceptor.
 emphasis of the contribution is the **modernization stack itself**, which is deliberately
 **generator-agnostic**: the same control software, vacuum chamber, pyrometer feedback,
 crucible, and work-coil geometry transfer from one induction generator to another. The
-only requirement a reader's generator must satisfy is an **analog power-control input that
-maps roughly linearly to output power** (e.g. 4–20 mA or 0–5 V / 0–5 mA). That
-portability is the reproducible result and is what makes the design reusable by other labs
-that already own, or can buy, such an induction generator.
+only requirement a reader's generator must satisfy is an **analog power-control input with
+a monotonic command→power response** over the usable range (e.g. 4–20 mA or 0–5 V / 0–5 mA);
+near-linearity is convenient but not required, because the pyrometer feedback and PID
+calibration absorb any nonlinearity. That portability is the reproducible result and is what
+makes the design reusable by other labs that already own, or can buy, such an induction
+generator.
 
 A second feature that broadens the system's applicability is the **machined graphite
 crucible/susceptor**: because graphite couples strongly to the RF field and heats the
@@ -92,9 +94,11 @@ requirements — the required analog remote-control input was lost across vendor
 substitutions — and was retired. The reproducible build documented here therefore targets
 the current USA generator, with the LEPEL retrofit retained as historical context.
 
-Compared with commercial vacuum annealing furnaces, this approach is roughly an
-order of magnitude cheaper, is repairable and modifiable by the user, and is broadly
-reusable: any lab with an induction generator and an analog power input can reproduce the
+Compared with commercial vacuum annealing furnaces, this approach has **substantially
+lower capital cost** (the retrofit and consumables add roughly $1–2k on top of a generator
+a lab already owns, versus $50k–$200k+ for turn-key systems), is repairable and modifiable
+by the user, and is broadly reusable: any lab with an induction generator and an analog
+power input can reproduce the
 control, vacuum, and temperature-sensing additions described below.
 
 ## Reproducibility boundary
@@ -163,21 +167,24 @@ and [`extracted-context/schematic_support_stand.md`](extracted-context/schematic
    stack, in order, is: **quartz tube → KF40 flange + optical window → flexible bellows →
    vacuum gauge → Edwards T-Station 85 → vent / inert-gas backfill branch.**
 
-3. **Optical temperature sensing.** A dual-wavelength (ratio) pyrometer (IMPAC ISR6; also
-   a LumaSens 800–2500 °C unit) views the sample through a KF40 optical window, providing
-   a non-contact temperature signal that is robust to emissivity changes and to the RF
-   field that would corrupt thermocouples.
+3. **Optical temperature sensing.** A dual-wavelength (ratio) pyrometer (the canonical unit
+   is a LumaSense IMPAC ISR 6, 800–2500 °C; the IMPAC brand is LumaSense's) views the
+   sample through a KF40 optical window, providing a non-contact temperature signal that is
+   robust to emissivity changes and to the RF field that would corrupt thermocouples.
 
 4. **Control / DAQ + LabVIEW.** A LabVIEW DAQ analog output sets generator power; the
    pyrometer signal is read back for closed-loop ramp/soak control. The VIs implement
    manual control, automated ramping, PID tuning, and email alerts
-   (see [`../code/`](../code/)). The closed-loop **signal flow** is:
-   **LabVIEW setpoint → DAQ analog output (scaled to the generator's 4–20 mA / 0–5 mA
-   command) → generator power → sample/crucible heating → pyrometer optical reading →
-   DAQ analog input (scaled to °C) → PID controller → updated analog command.** The same
-   path runs open-loop (direct command ramp) when the temperature is below the pyrometer's
-   ~700 °C detection floor, then hands over to closed-loop control once the pyrometer
-   acquires the target.
+   (see [`../code/`](../code/)). In the CEIA build the DAQ outputs **0–5 V** to a
+   **voltage-to-current loop conditioner** that converts the command to the controller's
+   **4–20 mA** power-setpoint input (the LEPEL prototype instead took a 0–5 mA command
+   directly). The closed-loop **signal flow** is therefore: **LabVIEW setpoint → DAQ
+   analog output (0–5 V) → V→I conditioner (4–20 mA) → generator power → sample/crucible
+   heating → pyrometer optical reading → DAQ analog input (scaled to °C) → PID controller →
+   updated analog command.** The same path runs **open-loop** (direct command ramp) while
+   the temperature is below the pyrometer's ~700 °C detection floor; once the pyrometer
+   reports a **sustained valid reading above that floor**, control hands over to
+   **closed-loop** PID on the optical temperature.
 
 5. **Mechanical support stand + crucible.** A bolted support stand (8 short + 4 long
    sections, 12 corner braces, 4 floor mounts) positions the chamber, coil, pyrometer
@@ -244,17 +251,18 @@ legacy LEPEL and the rejected CYSI import path are documented in the text, not t
 | GEN-1 | CEIA "Power Cube" 6 kW solid-state RF generator | 1 | `[TODO]` | `[TODO]` | East Coast Induction (USA) | — |
 | GEN-2 | Master Controller v3+ | 1 | `[TODO]` | `[TODO]` | East Coast Induction (USA) | — |
 | GEN-3 | Recirculating water chiller | 1 | `[TODO]` | `[TODO]` | `[TODO]` | — |
-| RETRO-1 | LabVIEW-compatible DAQ (analog out + in), e.g. NI USB-6009 `[confirm model]` | 1 | `[TODO]` | `[TODO]` | National Instruments | — |
-| RETRO-2 | Dual-wavelength pyrometer (LumaSens / IMPAC ISR6, 800–2500 °C) | 1 | $241 (used) | $241 | eBay / OEM | — |
+| RETRO-1 | LabVIEW-compatible DAQ with analog out + in (e.g. NI USB-6001/6009-class, 0–5 V AO) `[confirm exact model]` | 1 | `[TODO]` | `[TODO]` | National Instruments | — |
+| RETRO-2 | Dual-wavelength ratio pyrometer (LumaSense IMPAC ISR 6, 800–2500 °C) | 1 | $241 (used) | $241 | eBay / OEM | — |
 | RETRO-3 | 24 V linear power supply for pyrometer (International Power) | 1 | $51 | $51 | Mouser | — |
-| RETRO-4 | Edwards T-Station 85 turbo-molecular pump + gauge | 1 | `[TODO]` | `[TODO]` | Edwards | — |
-| RETRO-5 | Edwards TAV5 vent valve | 1 | $59 | $59 | eBay | — |
-| RETRO-6 | Inert-gas regulator (Fisher FS-50) | 1 | $38 | $38 | Fisher Scientific | — |
-| RETRO-7 | KF40 overpressure centering ring | 1 | $19 | $19 | IdealVac | aluminum |
-| RETRO-8 | KF40 plastic quick vacuum clamp | 1 | $23 | $23 | IdealVac | polymer |
-| RETRO-9 | Optical window, quartz disc 55 mm × 1.5 mm | 1 (3 incl. spares) | $18 | $54 | McMaster-Carr (custom) | fused quartz |
-| RETRO-10 | Ultra-high-temperature quartz disc 2″ × 1/16″ | 1 | $19 | $19 | McMaster-Carr (4772K-series) | fused quartz |
-| RETRO-11 | Inert-gas plumbing (BSPT/KF adapters, barbs, tee, 10 psi relief valve 4772K4) | 1 set | see parts list | ~$66 | McMaster-Carr / BMotionTech | brass / steel |
+| RETRO-4 | Voltage-to-current (0–5 V → 4–20 mA) loop conditioner for the generator power-setpoint input | 1 | `[TODO]` | `[TODO]` | `[TODO: signal-conditioning vendor]` | — |
+| RETRO-5 | Edwards T-Station 85 turbo-molecular pump + gauge | 1 | `[TODO]` | `[TODO]` | Edwards | — |
+| RETRO-6 | Edwards TAV5 vent valve | 1 | $59 | $59 | eBay | — |
+| RETRO-7 | Inert-gas regulator (Fisher FS-50) | 1 | $38 | $38 | Fisher Scientific | — |
+| RETRO-8 | KF40 overpressure centering ring | 1 | $19 | $19 | IdealVac | aluminum |
+| RETRO-9 | KF40 plastic quick vacuum clamp | 1 | $23 | $23 | IdealVac | polymer |
+| RETRO-10 | Optical window, quartz disc 55 mm × 1.5 mm (1 used; buy 3 for spares) | 3 | $18 | $54 | McMaster-Carr (custom) | fused quartz |
+| RETRO-11 | Ultra-high-temperature quartz disc 2″ × 1/16″ | 1 | $19 | $19 | McMaster-Carr | fused quartz |
+| RETRO-12 | Inert-gas plumbing (BSPT/KF adapters, barbs, tee, 10 psi relief valve McMaster 4772K4) | 1 set | see parts list | ~$66 | McMaster-Carr / BMotionTech | brass / steel |
 | CONS-1 | Quartz tube, 4′ × 35 mm ID, cut to length | 2 | $67 | $134 | QSI Quartz | fused quartz |
 | CONS-2 | Graphite stock for machined crucible/susceptor (56L-3, 3000 °C, 1″×6″×6″) | 1 | $99 | $99 | Cotronics | graphite |
 | CONS-3 | Graphite repair cement (Resbond 931-1, 3000 °C) | 1 | $108 | $108 | Cotronics | graphite |
@@ -262,8 +270,9 @@ legacy LEPEL and the rejected CYSI import path are documented in the text, not t
 | CONS-5 | Zirconia crucible stock (760-1, 2204 °C, 10 lb) | 1 | $124 | $124 | Cotronics | zirconia |
 | CONS-6 | Torr-Seal high-vacuum epoxy / O-rings | 1 set | $57 | $57 | Varian / McMaster | epoxy / elastomer |
 
-`[TODO: confirm GEN-1/2/3 and RETRO-1/4 pricing and exact NI DAQ model; the GEN line items
-dominate total cost and must be filled from the East Coast Induction quote before submission.]`
+`[TODO: confirm GEN-1/2/3, RETRO-1/4/5 pricing, the exact NI DAQ model, and the V→I
+loop-conditioner model; the GEN line items dominate total cost and must be filled from the
+East Coast Induction quote before submission.]`
 
 # Build instructions
 
@@ -272,6 +281,8 @@ dominate total cost and must be filled from the East Coast Induction quote befor
 2. **Work coil.** Form/water-cool the copper coil to the corrected geometry (~3″ tall,
    2.5″ ID, ~6.5 turns); connect to the generator head and the cooling-water circuit. Use
    the before/after figures from `induction_order_corrections.pptx` as the reference.
+   `[TODO: state the exact copper-tube OD/wall, bend radius/spacing method, and
+   cooling-connection fittings from the coil drawing (docs/coils-drawing.pdf).]`
 3. **Graphite crucible/susceptor.** Machine the crucible from 3000 °C graphite stock to
    fit inside the quartz tube and accept the sample. Seat it on the ceramic-cylinder /
    Teflon spacer stack. Repair any cracks with graphite cement.
@@ -280,10 +291,12 @@ dominate total cost and must be filled from the East Coast Induction quote befor
    and secures it with the plastic quick-clamp (reusable, no adhesive); a Torr-Seal'd blank
    flange is documented as an alternative for a permanent seal. Connect the flexible bellows
    to the Edwards T-Station 85 turbo pump; install the manual vent valve and inert-gas line.
-5. **Control wiring.** Wire the DAQ analog output to the generator's analog power-control
-   input (4–20 mA on the current controller; 0–5 mA on the LEPEL prototype). Wire the
-   pyrometer output into the DAQ analog input and, for closed-loop ramping, the
-   pyrometer/PLC temperature-control path (`docs/temp-control-modification/`).
+5. **Control wiring.** Wire the DAQ analog output (0–5 V) through the voltage-to-current
+   loop conditioner to the generator's analog power-control input (4–20 mA on the current
+   CEIA controller; the LEPEL prototype took 0–5 mA directly). Wire the pyrometer output
+   into the DAQ analog input and, for closed-loop ramping, the pyrometer/PLC
+   temperature-control path (`docs/temp-control-modification/`). Maintain electrical
+   isolation between the DAQ/control path and the generator interface.
 6. **Software.** Deploy the LabVIEW VIs from [`../code/`](../code/) and configure the DAQ
    channels; verify manual control before enabling automated ramp/soak.
 
@@ -319,8 +332,9 @@ Condensed from the lab SOP
 
 4. **Power on.** Bring up the generator per its sequence, then run the LabVIEW ramp/soak
    profile. Below the pyrometer's ~700 °C detection floor the VI ramps **open-loop** on the
-   analog command; once the pyrometer acquires the target it hands over to **closed-loop**
-   PID control on the optical temperature.
+   analog command; once the pyrometer returns a **sustained valid reading above the ~700 °C
+   floor** (the handoff criterion), control switches to **closed-loop** PID on the optical
+   temperature.
 5. **Anneal.** Hold the temperature/time profile (e.g. ~1200 °C for several hours for Ni
    grain growth); the VI can email status alerts.
 
@@ -408,6 +422,11 @@ principal hazards and mitigations are summarized below.
 | Thermal | Sample melt-through; hot graphite oxidizing on vent | Pump-line contamination, burns | Cool under vacuum; let cool before venting; nitrile gloves when loading/unloading |
 | Inert gas | Backfill/venting in an enclosed space | Asphyxiation | Adequate ventilation; do not backfill in confined areas |
 | EMI | RF coupling into nearby instruments | Data corruption, instrument damage | Shield/separate sensitive electronics; keep them clear of the coil |
+
+**PPE / shielding.** Operators should wear safety glasses (quartz-fracture/implosion risk),
+clean nitrile gloves when handling vacuum components, and remove all conductive personal
+items before approaching the energized coil; keep sensitive instrumentation outside the RF
+near-field.
 
 # Ethics statements
 
