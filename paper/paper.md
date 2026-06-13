@@ -40,7 +40,7 @@ keywords:
 | Source file repository | `[TODO: mint a permanent DOI — e.g. Zenodo — for the repository; HardwareX does not accept a bare GitHub URL]` |
 | Induction generator (reproducible build) | CEIA "Power Cube" 6 kW solid-state RF generator + Master Controller v3+ (East Coast Induction, USA) |
 | Induction generator (prototype) | LEPEL high-frequency tube furnace (~1970), up to ~35 kW |
-| Power-control input | Analog setpoint via LabVIEW/DAQ → current-loop conditioner (4–20 mA on current controller; 0–5 mA on LEPEL) |
+| Power-control input | 4–20 mA analog setpoint via LabVIEW/DAQ → V→I conditioner (CEIA canonical build; the LEPEL prototype used 0–5 mA — see migration table) |
 | Generator-input standard required | External analog power-control input with **monotonic** command→power response over the usable range |
 | Control signal chain | DAQ analog output (0–5 V) → voltage-to-current (4–20 mA) loop conditioner → generator power-setpoint input; pyrometer analog output → DAQ analog input (scaled to °C) |
 | Max sample temperature | ~1400–1500 °C+ (Ni/Fe melting range) |
@@ -70,10 +70,10 @@ emphasis of the contribution is the **modernization stack itself**, which is del
 **generator-agnostic**: the same control software, vacuum chamber, pyrometer feedback,
 crucible, and work-coil geometry transfer from one induction generator to another. The
 only requirement a reader's generator must satisfy is an **analog power-control input with
-a monotonic command→power response** over the usable range (e.g. 4–20 mA or 0–5 V / 0–5 mA);
-near-linearity is convenient but not required, because the pyrometer feedback and PID
-calibration absorb any nonlinearity. That portability is the reproducible result and is what
-makes the design reusable by other labs that already own, or can buy, such an induction
+a monotonic command→power response** over the usable range (e.g. 4–20 mA, 0–5 V, or
+0–5 mA); near-linearity is convenient but not required, because the pyrometer feedback and
+PID calibration absorb any nonlinearity. That portability is the reproducible result and is
+what makes the design reusable by other labs that already own, or can buy, such an induction
 generator.
 
 A second feature that broadens the system's applicability is the **machined graphite
@@ -243,8 +243,9 @@ Full vendor/price detail for the RETRO and CONS parts is in
 
 **Costing conventions:** all costs are in **USD**; prices are the lab's purchase records
 (quote year ~2019–2021), several from used/surplus/eBay sources as noted; shipping and tax
-are excluded unless stated. The table below is the **canonical reproducible build only** —
-legacy LEPEL and the rejected CYSI import path are documented in the text, not the BOM.
+are excluded unless stated. **The build instructions and the BOM below are canonical for the
+CEIA system only**; the legacy LEPEL prototype and the rejected CYSI import path are
+documented in the text and the transferability table, not in the BOM.
 
 | Designator | Component | Number | Cost per unit | Total cost | Source of materials | Material type |
 |------------|-----------|-------:|---------------|-----------:|---------------------|---------------|
@@ -260,7 +261,7 @@ legacy LEPEL and the rejected CYSI import path are documented in the text, not t
 | RETRO-7 | Inert-gas regulator (Fisher FS-50) | 1 | $38 | $38 | Fisher Scientific | — |
 | RETRO-8 | KF40 overpressure centering ring | 1 | $19 | $19 | IdealVac | aluminum |
 | RETRO-9 | KF40 plastic quick vacuum clamp | 1 | $23 | $23 | IdealVac | polymer |
-| RETRO-10 | Optical window, quartz disc 55 mm × 1.5 mm (1 used; buy 3 for spares) | 3 | $18 | $54 | McMaster-Carr (custom) | fused quartz |
+| RETRO-10 | Optical window, quartz disc 55 mm × 1.5 mm (1 used; buy 3 for spares) | 3 | $18 | $54 | `[TODO: verify vendor — custom quartz disc, source uncertain in parts list]` | fused quartz |
 | RETRO-11 | Ultra-high-temperature quartz disc 2″ × 1/16″ | 1 | $19 | $19 | McMaster-Carr | fused quartz |
 | RETRO-12 | Inert-gas plumbing (BSPT/KF adapters, barbs, tee, 10 psi relief valve McMaster 4772K4) | 1 set | see parts list | ~$66 | McMaster-Carr / BMotionTech | brass / steel |
 | CONS-1 | Quartz tube, 4′ × 35 mm ID, cut to length | 2 | $67 | $134 | QSI Quartz | fused quartz |
