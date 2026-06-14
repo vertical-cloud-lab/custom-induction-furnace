@@ -1,8 +1,8 @@
 {
-  "generated_at_utc": "2026-06-14T01:55:38.507555+00:00",
+  "generated_at_utc": "2026-06-14T02:02:46+00:00",
   "job_name": "LITERATURE_HIGH",
-  "session_status": "complete (4 of 4 queries completed)",
-  "total_unique_references": 80,
+  "session_status": "complete (4 of 4 queries completed, with full BibTeX extraction)",
+  "total_unique_references": 169,
   "queries": [
     {
       "query_id": "q01",
@@ -37,9 +37,11 @@
       "status": "success",
       "task_id": "33bacf46-d0b1-4d93-b8d8-dc9efa113c5c",
       "trajectory_id": "33bacf46-d0b1-4d93-b8d8-dc9efa113c5c",
-      "bib_entries": 0,
-      "contexts": 14,
-      "artifacts": []
+      "bib_entries": 47,
+      "contexts": 74,
+      "artifacts": [
+        "74 context artifacts"
+      ]
     },
     {
       "query_id": "q04",
@@ -47,9 +49,11 @@
       "status": "success",
       "task_id": "139a12dc-346b-405b-bcf8-92f8ac284988",
       "trajectory_id": "139a12dc-346b-405b-bcf8-92f8ac284988",
-      "bib_entries": 0,
-      "contexts": 17,
-      "artifacts": []
+      "bib_entries": 45,
+      "contexts": 69,
+      "artifacts": [
+        "69 context artifacts"
+      ]
     }
   ],
   "combined_bibliography": "literature-search/issue-4/2026-06-13/combined_references.bib"

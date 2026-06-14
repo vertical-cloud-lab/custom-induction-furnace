@@ -4,9 +4,9 @@ High-effort literature research on vacuum induction furnace annealing and relate
 
 ## Summary
 
-- **Generated**: 2026-06-14T01:54:00.000000+00:00
-- **Session status**: Complete (4 of 4 queries completed)
-- **Total BibTeX entries**: 80 (from q01 and q02; q03/q04 returned formatted answers without BibTeX in new API format)
+- **Generated**: 2026-06-14T02:02:46+00:00
+- **Session status**: Complete (4 of 4 queries completed with full BibTeX extraction)
+- **Total BibTeX entries**: 169 unique references across all 4 queries
 - **Output directory**: `literature-search/issue-4/2026-06-13/`
 
 ## Completed Queries
@@ -28,26 +28,28 @@ High-effort literature research on vacuum induction furnace annealing and relate
 - **Output**: `literature-search/issue-4/2026-06-13/q02/`
 
 ### q03: Contamination/oxidation control
-- **Status**: Successfully completed
+- **References collected**: 47 BibTeX entries
+- **Contexts analyzed**: 74
 - **Task ID**: `33bacf46-d0b1-4d93-b8d8-dc9efa113c5c`
 - **Trajectory ID**: `33bacf46-d0b1-4d93-b8d8-dc9efa113c5c`
-- **Citations found**: 14 (citation keys extracted from formatted answer)
+- **Artifacts**: 74 context artifacts
 - **Output**: `literature-search/issue-4/2026-06-13/q03/`
-- **Note**: New Edison API format returns formatted answer text with inline citations but no structured BibTeX database
+- **Note**: BibTeX references extracted from full trajectory data using Edison API
 
 ### q04: Induction process parameters
-- **Status**: Successfully completed
+- **References collected**: 45 BibTeX entries
+- **Contexts analyzed**: 69
 - **Task ID**: `139a12dc-346b-405b-bcf8-92f8ac284988`
 - **Trajectory ID**: `139a12dc-346b-405b-bcf8-92f8ac284988`
-- **Citations found**: 17 (citation keys extracted from formatted answer)
+- **Artifacts**: 69 context artifacts
 - **Output**: `literature-search/issue-4/2026-06-13/q04/`
-- **Note**: New Edison API format returns formatted answer text with inline citations but no structured BibTeX database
+- **Note**: BibTeX references extracted from full trajectory data using Edison API
 
 ## Combined Bibliography
 
 - **File**: `literature-search/issue-4/2026-06-13/combined_references.bib`
-- **Entries**: 80 (from q01 and q02 only)
-- **Note**: q03 and q04 were completed using newer Edison API that returns formatted answers with inline citations but no structured BibTeX export
+- **Entries**: 169 unique BibTeX references across all 4 queries
+- **Note**: Full BibTeX database extracted from trajectory data for all queries using Edison API `get_task(..., verbose=True)` method
 
 ## File Structure
 
@@ -74,15 +76,19 @@ literature-search/issue-4/2026-06-13/
 │   └── artifact-01.md
 ├── q03/
 │   ├── query.txt
-│   ├── response.json          # Full Edison task payload (new API format)
+│   ├── response.json          # Full Edison task payload
 │   ├── answer.md              # Comprehensive formatted answer with inline citations
-│   └── references.txt         # 14 citation keys extracted from answer text
+│   ├── references.txt         # 14 citation keys extracted from answer text
+│   ├── references.bib         # 47 BibTeX entries extracted from trajectory data
+│   └── artifacts.json         # Extracted artifacts metadata (74 contexts)
 ├── q04/
 │   ├── query.txt
-│   ├── response.json          # Full Edison task payload (new API format)
+│   ├── response.json          # Full Edison task payload
 │   ├── answer.md              # Comprehensive formatted answer with inline citations
-│   └── references.txt         # 17 citation keys extracted from answer text
-├── combined_references.bib     # Merged and deduplicated BibTeX (q01+q02, 80 entries)
+│   ├── references.txt         # 17 citation keys extracted from answer text
+│   ├── references.bib         # 45 BibTeX entries extracted from trajectory data
+│   └── artifacts.json         # Extracted artifacts metadata (69 contexts)
+├── combined_references.bib     # Merged and deduplicated BibTeX (all 4 queries, 169 entries)
 ├── manifest.json              # Metadata and summary
 └── README.md                  # This file
 ```
@@ -96,5 +102,13 @@ All four literature queries have been successfully completed:
 3. **q03 (Contamination/Oxidation)**: In-depth analysis of contamination sources, oxide formation mechanisms, decarburization pathways, and mitigation strategies for vacuum/inert-atmosphere furnaces
 4. **q04 (Process Parameters)**: Synthesis of literature on induction heating parameters (frequency, power, coupling, dwell) and their effects on temperature uniformity and microstructure
 
-The complete formatted answers are available in each query's `answer.md` file. The q01 and q02 results include structured BibTeX databases suitable for direct citation in publications.
+The complete formatted answers are available in each query's `answer.md` file. All queries now include structured BibTeX databases extracted from full trajectory data, suitable for direct citation in publications.
+
+## BibTeX Extraction Method
+
+For q03 and q04, BibTeX references were extracted from the full trajectory data using the Edison API:
+- Used `client.get_task(task_id, verbose=True)` to retrieve full trajectory data including `environment_frame`
+- Extracted BibTeX from both `contexts` (via `text.doc.bibtex`) and `candidates` fields
+- Applied same deduplication pattern as q01/q02 (by citation key)
+- Result: 47 entries for q03, 45 entries for q04 (vs. only 14 and 17 citation keys in formatted answers)
 
