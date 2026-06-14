@@ -1,7 +1,7 @@
 {
-  "generated_at_utc": "2026-06-14T01:18:00.508062+00:00",
+  "generated_at_utc": "2026-06-14T01:55:38.507555+00:00",
   "job_name": "LITERATURE_HIGH",
-  "session_status": "partial (2 of 4 queries completed)",
+  "session_status": "complete (4 of 4 queries completed)",
   "total_unique_references": 80,
   "queries": [
     {
@@ -34,21 +34,21 @@
     {
       "query_id": "q03",
       "query": "Review literature on contamination/oxidation/decarburization control in vacuum or inert-atmosphere annealing furnaces relevant to induction systems. Include mechanisms, mitigation strategies, and cited references with bibtex.",
-      "status": "not_executed",
-      "task_id": null,
-      "trajectory_id": null,
+      "status": "success",
+      "task_id": "33bacf46-d0b1-4d93-b8d8-dc9efa113c5c",
+      "trajectory_id": "33bacf46-d0b1-4d93-b8d8-dc9efa113c5c",
       "bib_entries": 0,
-      "contexts": 0,
+      "contexts": 14,
       "artifacts": []
     },
     {
       "query_id": "q04",
       "query": "Summarize literature on induction-heating process parameters (frequency, power ramp rate, coil coupling, dwell profile) and their effects on temperature uniformity and resulting microstructure/grain growth during annealing. Provide references with bibtex.",
-      "status": "not_started",
-      "task_id": null,
-      "trajectory_id": null,
+      "status": "success",
+      "task_id": "139a12dc-346b-405b-bcf8-92f8ac284988",
+      "trajectory_id": "139a12dc-346b-405b-bcf8-92f8ac284988",
       "bib_entries": 0,
-      "contexts": 0,
+      "contexts": 17,
       "artifacts": []
     }
   ],
