@@ -1,8 +1,8 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """Submit the HardwareX draft + supporting context to an Edison Scientific Analysis job
 and save the returned feedback.
 
-Bundles the manuscript draft (``paper.md``/``paper.pdf``), the plan, and the extracted
+Bundles the manuscript draft (``paper.tex``/``paper.pdf``), the plan, and the extracted
 context, uploads them as a single collection, runs a ``JobNames.ANALYSIS`` review job,
 and writes the feedback to ``paper/edison-feedback/``.
 
@@ -37,7 +37,7 @@ HERE = Path(__file__).resolve().parent
 OUT = HERE / "edison-feedback"
 
 QUERY = """You are reviewing a draft manuscript for the journal HardwareX (open-source
-scientific hardware). The attached collection contains the draft manuscript (paper.md and
+scientific hardware). The attached collection contains the draft manuscript (paper.tex and
 the compiled paper.pdf), a detailed plan (PLAN.md), and supporting extracted context (SOP,
 parts list, schematics, coil geometry corrections, candidate figures, and hardware notes).
 
@@ -69,7 +69,7 @@ def build_bundle(dest: Path) -> Path:
     if dest.exists():
         shutil.rmtree(dest)
     (dest / "extracted-context" / "figures").mkdir(parents=True)
-    for name in ("paper.md", "paper.pdf", "PLAN.md"):
+    for name in ("paper.tex", "paper.pdf", "paper.md", "PLAN.md"):
         src = HERE / name
         if src.exists():
             shutil.copy(src, dest / name)
@@ -165,7 +165,8 @@ def main() -> None:
         print("wrote feedback-%d.md" % iteration, len(answer), "chars", flush=True)
     nb = dump.get("notebook")
     if nb:
-        json.dump(nb, (OUT / "analysis.ipynb").open("w"), indent=1)
+        with (OUT / "analysis.ipynb").open("w") as fh:
+            json.dump(nb, fh, indent=1)
         print("wrote analysis.ipynb", flush=True)
     # Record the task id so follow-up rounds can chain via --continued-job-id.
     (OUT / "last_task_id.txt").write_text(task_id + "\n")

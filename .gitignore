@@ -219,3 +219,14 @@ __marimo__/
 
 # Box doc download: oversized file exceeding GitHub's 100 MB per-file limit
 docs/data_log/IFrun041-060/IFrun043_extra/IFrun043_Ni4N5_028_endOfTest.mp4
+
+# LaTeX build artifacts (paper/) — paper.pdf is committed, intermediates are not
+paper/*.aux
+paper/*.out
+paper/*.spl
+paper/*.toc
+paper/*.bbl
+paper/*.blg
+paper/*.fls
+paper/*.fdb_latexmk
+paper/*.synctex.gz

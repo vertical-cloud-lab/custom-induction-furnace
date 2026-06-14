@@ -9,8 +9,10 @@ annealing system.
 
 | Path | Purpose |
 |------|---------|
-| [`paper.md`](paper.md) / [`paper.pdf`](paper.pdf) | The HardwareX manuscript draft (filled-in template) and its compiled PDF. Build with `make pdf` (pandoc + WeasyPrint). |
-| [`Makefile`](Makefile) | Builds `paper.pdf` / `paper.html` from `paper.md`. |
+| [`paper.tex`](paper.tex) / [`paper.pdf`](paper.pdf) | The HardwareX manuscript draft (LaTeX, Elsevier `elsarticle` class) and its compiled PDF. Build with `make pdf` (pdflatex / MiKTeX). |
+| [`template/`](template/) | Mirrored Elsevier `elsarticle` class/template files and a summary of the [HardwareX Guide for Authors](template/HARDWAREX_GUIDE_FOR_AUTHORS.md). |
+| [`paper.md`](paper.md) | Migration note — the manuscript moved from Markdown to LaTeX; kept as a pointer. |
+| [`Makefile`](Makefile) | Builds `paper.pdf` from `paper.tex`. |
 | [`PLAN.md`](PLAN.md) | The manuscript plan: contribution framing, draft specifications table, every required HardwareX section mapped to the repository files that feed it, and a pre-submission gap checklist. |
 | [`run_edison_review.py`](run_edison_review.py) | Submits the draft + context to an Edison Scientific Analysis review job and saves the feedback. |
 | [`edison-feedback/`](edison-feedback/) | Reviewer feedback on the draft (and the analysis notebook) returned by the Edison Analysis job. |
