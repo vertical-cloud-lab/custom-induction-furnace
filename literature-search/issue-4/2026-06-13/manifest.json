@@ -1,0 +1,56 @@
+{
+  "generated_at_utc": "2026-06-14T01:18:00.508062+00:00",
+  "job_name": "LITERATURE_HIGH",
+  "session_status": "partial (2 of 4 queries completed)",
+  "total_unique_references": 80,
+  "queries": [
+    {
+      "query_id": "q01",
+      "query": "For vacuum induction furnace annealing of steels and alloys, summarize best practices for controlling grain growth while achieving stress relief/homogenization. Include practical soak temperature-time guidance ranges and cite high-quality sources with bibtex.",
+      "status": "success",
+      "task_id": "a9b0b72f-ad1f-4dc8-94c7-b544af5ab467",
+      "trajectory_id": "a9b0b72f-ad1f-4dc8-94c7-b544af5ab467",
+      "bib_entries": 48,
+      "contexts": 67,
+      "artifacts": [
+        "artifact-00",
+        "artifact-01",
+        "artifact-02"
+      ]
+    },
+    {
+      "query_id": "q02",
+      "query": "Review literature on emissivity and pyrometry uncertainty during induction heating/annealing of metallic samples (especially steel and nickel alloys). Summarize calibration/correction methods and provide references with bibtex.",
+      "status": "success",
+      "task_id": "7d3c857e-b27e-4b88-94f3-8275d35479fa",
+      "trajectory_id": "7d3c857e-b27e-4b88-94f3-8275d35479fa",
+      "bib_entries": 32,
+      "contexts": 67,
+      "artifacts": [
+        "artifact-00",
+        "artifact-01"
+      ]
+    },
+    {
+      "query_id": "q03",
+      "query": "Review literature on contamination/oxidation/decarburization control in vacuum or inert-atmosphere annealing furnaces relevant to induction systems. Include mechanisms, mitigation strategies, and cited references with bibtex.",
+      "status": "not_executed",
+      "task_id": null,
+      "trajectory_id": null,
+      "bib_entries": 0,
+      "contexts": 0,
+      "artifacts": []
+    },
+    {
+      "query_id": "q04",
+      "query": "Summarize literature on induction-heating process parameters (frequency, power ramp rate, coil coupling, dwell profile) and their effects on temperature uniformity and resulting microstructure/grain growth during annealing. Provide references with bibtex.",
+      "status": "not_started",
+      "task_id": null,
+      "trajectory_id": null,
+      "bib_entries": 0,
+      "contexts": 0,
+      "artifacts": []
+    }
+  ],
+  "combined_bibliography": "literature-search/issue-4/2026-06-13/combined_references.bib"
+}
