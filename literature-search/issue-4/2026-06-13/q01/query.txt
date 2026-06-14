@@ -1,0 +1,1 @@
+For vacuum induction furnace annealing of steels and alloys, summarize best practices for controlling grain growth while achieving stress relief/homogenization. Include practical soak temperature-time guidance ranges and cite high-quality sources with bibtex.

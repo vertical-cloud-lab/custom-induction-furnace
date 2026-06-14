@@ -1,0 +1,47 @@
+1. (meng2023designofvacuum pages 4-7): Jintao Meng, Haitao Gao, Mixue Ruan, Hai Guo, Xiaojie Zhou, and Di Zhang. Design of vacuum annealing furnace temperature control system based on ga-fuzzy-pid algorithm. PLOS ONE, 18:e0293823, Nov 2023. URL: https://doi.org/10.1371/journal.pone.0293823, doi:10.1371/journal.pone.0293823. This article has 14 citations and is from a peer-reviewed journal.
+
+2. (meng2023designofvacuum pages 2-4): Jintao Meng, Haitao Gao, Mixue Ruan, Hai Guo, Xiaojie Zhou, and Di Zhang. Design of vacuum annealing furnace temperature control system based on ga-fuzzy-pid algorithm. PLOS ONE, 18:e0293823, Nov 2023. URL: https://doi.org/10.1371/journal.pone.0293823, doi:10.1371/journal.pone.0293823. This article has 14 citations and is from a peer-reviewed journal.
+
+3. (liu2021studyofgrain pages 2-5): Yan-Xing Liu, Zhi-Jiang Ke, Run-Hua Li, Ju-Qing Song, and Jing-Jing Ruan. Study of grain growth in a ni-based superalloy by experiments and cellular automaton model. Materials, 14:6922, Nov 2021. URL: https://doi.org/10.3390/ma14226922, doi:10.3390/ma14226922. This article has 16 citations.
+
+4. (liu2021studyofgrain pages 1-2): Yan-Xing Liu, Zhi-Jiang Ke, Run-Hua Li, Ju-Qing Song, and Jing-Jing Ruan. Study of grain growth in a ni-based superalloy by experiments and cellular automaton model. Materials, 14:6922, Nov 2021. URL: https://doi.org/10.3390/ma14226922, doi:10.3390/ma14226922. This article has 16 citations.
+
+5. (ringer1990oninteractionsand pages 167-174): On interactions and reactions between migrating grain and phase boundaries, and precipitate particles This article has 0 citations.
+
+6. (kisko2015effectofnb pages 6-7): Anna Kisko, Juho Talonen, David Arthur Porter, and Leo Pentti Karjalainen. Effect of nb microalloying on reversion and grain growth in a high-mn 204cu austenitic stainless steel. Isij International, 55:2217-2224, Oct 2015. URL: https://doi.org/10.2355/isijinternational.isijint-2015-156, doi:10.2355/isijinternational.isijint-2015-156. This article has 29 citations and is from a peer-reviewed journal.
+
+7. (mohrbacher2026applicationofmicroalloying pages 2-4): Hardy Mohrbacher. Application of microalloying for controlling recrystallization and grain growth during downstream steel processing. Metallurgical and Materials Transactions A, 57:2548-2571, Mar 2026. URL: https://doi.org/10.1007/s11661-026-08172-5, doi:10.1007/s11661-026-08172-5. This article has 1 citations.
+
+8. (ringer1989ontheinteraction pages 5-7): S.P. Ringer, W.B. Li, and K.E. Easterling. On the interaction and pinning of grain boundaries by cubic shaped precipitate particles. Acta Metallurgica, 37:831-841, Mar 1989. URL: https://doi.org/10.1016/0001-6160(89)90010-2, doi:10.1016/0001-6160(89)90010-2. This article has 142 citations.
+
+9. (ringer1990oninteractionsand pages 77-83): On interactions and reactions between migrating grain and phase boundaries, and precipitate particles This article has 0 citations.
+
+10. (ringer1990oninteractionsand pages 90-95): On interactions and reactions between migrating grain and phase boundaries, and precipitate particles This article has 0 citations.
+
+11. (mohrbacher2026applicationofmicroalloying pages 1-2): Hardy Mohrbacher. Application of microalloying for controlling recrystallization and grain growth during downstream steel processing. Metallurgical and Materials Transactions A, 57:2548-2571, Mar 2026. URL: https://doi.org/10.1007/s11661-026-08172-5, doi:10.1007/s11661-026-08172-5. This article has 1 citations.
+
+12. (seo2020effectofmo pages 1-2): Eun Jung Seo, John G. Speer, David K. Matlock, and Robert L. Cryderman. Effect of mo in combination with nb on austenite grain size control in vacuum carburizing steels. Apr 2020. URL: https://doi.org/10.1007/s11665-020-04751-8, doi:10.1007/s11665-020-04751-8. This article has 24 citations and is from a peer-reviewed journal.
+
+13. (digges1966heattreatmentand pages 13-15): Thomas G Digges and Samuel J Rosenberg. Heat treatment and properties of iron and steel. ArXiv, Oct 1966. URL: https://doi.org/10.6028/nbs.mono.18, doi:10.6028/nbs.mono.18. This article has 94 citations.
+
+14. (digges1966heattreatmentand pages 36-37): Thomas G Digges and Samuel J Rosenberg. Heat treatment and properties of iron and steel. ArXiv, Oct 1966. URL: https://doi.org/10.6028/nbs.mono.18, doi:10.6028/nbs.mono.18. This article has 94 citations.
+
+15. (hirota2008recrystallizationandgrain pages 6-7): Noriaki Hirota, Fuxing Yin, Tadanobu Inoue, and Tsukasa Azuma. Recrystallization and grain growth behavior in severe cold-rolling deformed sus316l steel under anisothermal annealing condition. Isij International, 48:475-482, Apr 2008. URL: https://doi.org/10.2355/isijinternational.48.475, doi:10.2355/isijinternational.48.475. This article has 19 citations and is from a peer-reviewed journal.
+
+16. (hirota2008recrystallizationandgrain pages 1-2): Noriaki Hirota, Fuxing Yin, Tadanobu Inoue, and Tsukasa Azuma. Recrystallization and grain growth behavior in severe cold-rolling deformed sus316l steel under anisothermal annealing condition. Isij International, 48:475-482, Apr 2008. URL: https://doi.org/10.2355/isijinternational.48.475, doi:10.2355/isijinternational.48.475. This article has 19 citations and is from a peer-reviewed journal.
+
+17. (cheruvathur2016additivemanufacturingof pages 7-11): Sudha Cheruvathur, Eric A. Lass, and Carelyn E. Campbell. Additive manufacturing of 17-4 ph stainless steel: post-processing heat treatment to achieve uniform reproducible microstructure. JOM, 68:930-942, Dec 2016. URL: https://doi.org/10.1007/s11837-015-1754-4, doi:10.1007/s11837-015-1754-4. This article has 378 citations and is from a peer-reviewed journal.
+
+18. (andersson2011weldabilityofprecipitation pages 41-44): J Andersson. Weldability of precipitation hardening superalloys: influence of microstructure. Unknown journal, 2011.
+
+19. (tian2009experimentalandsimulation pages 1-2): Gaofeng Tian, Chengchang Jia, Jiantao Liu, and Benfu Hu. Experimental and simulation on the grain growth of p/m nickel-base superalloy during the heat treatment process. Materials & Design, 30:433-439, Mar 2009. URL: https://doi.org/10.1016/j.matdes.2008.06.007, doi:10.1016/j.matdes.2008.06.007. This article has 71 citations and is from a highest quality peer-reviewed journal.
+
+20. (tian2009experimentalandsimulation pages 6-7): Gaofeng Tian, Chengchang Jia, Jiantao Liu, and Benfu Hu. Experimental and simulation on the grain growth of p/m nickel-base superalloy during the heat treatment process. Materials & Design, 30:433-439, Mar 2009. URL: https://doi.org/10.1016/j.matdes.2008.06.007, doi:10.1016/j.matdes.2008.06.007. This article has 71 citations and is from a highest quality peer-reviewed journal.
+
+21. (chavilian2025acceleratedhomogenizationof pages 2-4): H Chavilian and SH Razavi. Accelerated homogenization of a cast nickel-based superalloy vdm780 via thermomechanical processing. Unknown journal, 2025.
+
+22. (strady2026grainstructurebehavior pages 1-2): C. Strady, A. Nicolay, M. Bignon, A. Agnoli, J. de Jaeger, N. Bozzolo, and M. Bernacki. Grain structure behavior of powder metallurgy nickel base γ–γ′ superalloys under γ′-supersolvus solution heat-treatment. Metallurgical and Materials Transactions A, 57:1872-1883, Jan 2026. URL: https://doi.org/10.1007/s11661-025-08107-6, doi:10.1007/s11661-025-08107-6. This article has 1 citations.
+
+23. (sha2009graingrowthbehavior pages 3-6): Qingyun Sha and Zuqing Sun. Grain growth behavior of coarse-grained austenite in a nb-v-ti microalloyed steel. Materials Science and Engineering A-structural Materials Properties Microstructure and Processing, 523:77-84, Oct 2009. URL: https://doi.org/10.1016/j.msea.2009.05.037, doi:10.1016/j.msea.2009.05.037. This article has 107 citations.
+
+24. (mohrbacher2026applicationofmicroalloying pages 4-6): Hardy Mohrbacher. Application of microalloying for controlling recrystallization and grain growth during downstream steel processing. Metallurgical and Materials Transactions A, 57:2548-2571, Mar 2026. URL: https://doi.org/10.1007/s11661-026-08172-5, doi:10.1007/s11661-026-08172-5. This article has 1 citations.

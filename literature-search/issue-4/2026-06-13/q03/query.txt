@@ -1,0 +1,1 @@
+Review literature on contamination/oxidation/decarburization control in vacuum or inert-atmosphere annealing furnaces relevant to induction systems. Include mechanisms, mitigation strategies, and cited references with bibtex.
