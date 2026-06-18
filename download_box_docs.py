@@ -37,6 +37,12 @@ ROOT_FOLDER_ID = "87111449214"
 DEFAULT_MAX_BYTES = 100 * 1024 * 1024
 
 
+def _extract_token(shared_link: str) -> str:
+    """Accept a full Box shared link or a bare token and return the token."""
+    m = re.search(r"/s/([A-Za-z0-9]+)", shared_link)
+    return m.group(1) if m else shared_link.strip()
+
+
 def _new_session() -> "requests.Session":
     session = requests.Session()
     session.headers.update(
@@ -50,9 +56,19 @@ def _new_session() -> "requests.Session":
     return session
 
 
-def _folder_page(session: "requests.Session", folder_id: str) -> str:
+def _discover_root_folder_id(session: "requests.Session", token: str) -> str:
+    """Read the shared link landing page and extract its root folder id."""
+    r = session.get(f"https://byu.box.com/s/{token}", timeout=60)
+    r.raise_for_status()
+    m = re.search(r'"currentFolderID":"?(\d+)', r.text)
+    if not m:
+        raise RuntimeError(f"Could not discover root folder id for token {token}")
+    return m.group(1)
+
+
+def _folder_page(session: "requests.Session", folder_id: str, token: str) -> str:
     """Fetch the server-rendered HTML page for a folder in the shared link."""
-    url = f"{SHARED_LINK}/folder/{folder_id}"
+    url = f"https://byu.box.com/s/{token}/folder/{folder_id}"
     r = session.get(url, timeout=60)
     r.raise_for_status()
     return r.text
@@ -87,7 +103,9 @@ def _parse_items(content: str) -> list[dict]:
     return items
 
 
-def discover_files(session: "requests.Session") -> list[dict]:
+def discover_files(
+    session: "requests.Session", token: str, root_folder_id: str
+) -> list[dict]:
     """
     Recursively crawl the shared folder and all subfolders.
 
@@ -103,7 +121,7 @@ def discover_files(session: "requests.Session") -> list[dict]:
         visited.add(folder_id)
 
         try:
-            content = _folder_page(session, folder_id)
+            content = _folder_page(session, folder_id, token)
         except Exception as e:  # noqa: BLE001 - report and continue crawling
             print(f"  ✗ Failed to list folder {rel_path or '/'}: {e}")
             return
@@ -122,7 +140,7 @@ def discover_files(session: "requests.Session") -> list[dict]:
                     }
                 )
 
-    walk(ROOT_FOLDER_ID, "")
+    walk(root_folder_id, "")
     return files
 
 
@@ -130,6 +148,7 @@ def download_file(
     session: "requests.Session",
     file_id: str,
     output_path: Path,
+    token: str,
 ) -> bool:
     """
     Download a single file from the Box shared folder.
@@ -139,7 +158,7 @@ def download_file(
     download_url = (
         f"https://byu.app.box.com/index.php"
         f"?rm=box_download_shared_file"
-        f"&shared_name={SHARED_TOKEN}"
+        f"&shared_name={token}"
         f"&file_id=f_{file_id}"
     )
 
@@ -185,13 +204,20 @@ def download_file(
         return False
 
 
-def download_all(output_dir: str = "docs", max_bytes: int = DEFAULT_MAX_BYTES) -> int:
+def download_all(
+    output_dir: str = "docs",
+    max_bytes: int = DEFAULT_MAX_BYTES,
+    shared_link: str = SHARED_LINK,
+    root_folder_id: str | None = None,
+) -> int:
     """
     Download all files from the Box shared folder (including subfolders).
 
     Args:
         output_dir: Directory to save downloaded files.
         max_bytes: Skip files larger than this size (0 = no limit).
+        shared_link: Box shared link or bare token to crawl.
+        root_folder_id: Root folder id; auto-discovered from the page if None.
 
     Returns:
         Number of successfully downloaded files.
@@ -201,13 +227,18 @@ def download_all(output_dir: str = "docs", max_bytes: int = DEFAULT_MAX_BYTES) -
     out_root_resolved = out_root.resolve()
 
     session = _new_session()
+    token = _extract_token(shared_link)
 
-    print(f"Shared folder: {SHARED_LINK}")
+    if root_folder_id is None:
+        root_folder_id = _discover_root_folder_id(session, token)
+
+    print(f"Shared folder: https://byu.box.com/s/{token}")
+    print(f"Root folder id: {root_folder_id}")
     print(f"Output directory: {output_dir}")
     print()
 
     print("Discovering files (crawling subfolders)...")
-    files = discover_files(session)
+    files = discover_files(session, token, root_folder_id)
 
     if not files:
         print("✗ No files found in shared folder.")
@@ -246,7 +277,7 @@ def download_all(output_dir: str = "docs", max_bytes: int = DEFAULT_MAX_BYTES) -
             successes += 1
             continue
 
-        if download_file(session, f["id"], output_path):
+        if download_file(session, f["id"], output_path, token):
             successes += 1
 
     print()
@@ -276,9 +307,31 @@ def main():
         ),
     )
 
+    parser.add_argument(
+        "--shared-link",
+        default=SHARED_LINK,
+        help=(
+            "Box shared link or bare token to crawl "
+            "(default: the induction-furnace documentation folder)."
+        ),
+    )
+    parser.add_argument(
+        "--root-folder-id",
+        default=None,
+        help=(
+            "Root folder id of the shared link. Auto-discovered from the "
+            "shared link landing page if not provided."
+        ),
+    )
+
     args = parser.parse_args()
 
-    count = download_all(args.output_dir, args.max_bytes)
+    count = download_all(
+        args.output_dir,
+        args.max_bytes,
+        shared_link=args.shared_link,
+        root_folder_id=args.root_folder_id,
+    )
     return 0 if count > 0 else 1
 
 

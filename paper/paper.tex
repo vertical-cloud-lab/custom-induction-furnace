@@ -121,9 +121,9 @@ Work coil & Water-cooled copper, $\sim$3\,in tall, 2.5\,in ID, $\sim$6.5 turns \
 
 High-temperature annealing near a metal's melting point drives controlled
 \textbf{grain growth}, which is central to studying microstructure--property
-relationships in metals such as nickel and iron. Doing this without oxidizing the
+relationships in metals such as nickel and iron~\cite{liu2021studyofgrain,mohrbacher2026applicationofmicroalloying,alogab2007theinfluenceof}. Doing this without oxidizing the
 sample requires both high temperature ($\sim$1400--1500\,\celsius) and high vacuum
-(or inert atmosphere). Commercial vacuum induction annealing furnaces that meet
+(or inert atmosphere)~\cite{zhornyak1982reductionanddecarburization,muramatsu2005gascontaminationdue}. Commercial vacuum induction annealing furnaces that meet
 these requirements are expensive turn-key systems, which puts them out of reach for
 many academic labs.
 
@@ -245,7 +245,7 @@ The system comprises five subsystems (see the schematics in
 \item \textbf{RF generator + work coil.} A solid-state induction generator (current
 build: CEIA Power Cube 6\,kW) drives a water-cooled copper work coil. The coil
 carries both the oscillating current and cooling water. Coil geometry ($\sim$3\,in
-tall, 2.5\,in ID, $\sim$6.5 turns) was tuned to the sample/crucible stack (see
+tall, 2.5\,in ID, $\sim$6.5 turns) was tuned to the sample/crucible stack~\cite{vankan2024electromagneticinductionheating} (see
 \texttt{extracted-context/order\_corrections\_coils.md}).
 
 \item \textbf{Vacuum + gas.} A quartz tube forms the chamber and is connected through
@@ -261,7 +261,7 @@ branch.}
 canonical unit is a LumaSense IMPAC ISR 6, 800--2500\,\celsius; the IMPAC brand is
 LumaSense's) views the sample through a KF40 optical window, providing a non-contact
 temperature signal that is robust to emissivity changes and to the RF field that
-would corrupt thermocouples.
+would corrupt thermocouples~\cite{ham2016insituspectralemissivity,suleiman2025improvingpyrometryof,usamentiaga2014infraredthermographyfor}.
 
 \item \textbf{Control / DAQ + LabVIEW.} A LabVIEW DAQ analog output sets generator
 power; the pyrometer signal is read back for closed-loop ramp/soak control. The VIs
@@ -277,7 +277,7 @@ analog input (scaled to \celsius) $\rightarrow$ PID controller $\rightarrow$ upd
 analog command.} The same path runs \textbf{open-loop} (direct command ramp) while
 the temperature is below the pyrometer's $\sim$700\,\celsius{} detection floor; once
 the pyrometer reports a \textbf{sustained valid reading above that floor}, control
-hands over to \textbf{closed-loop} PID on the optical temperature.
+hands over to \textbf{closed-loop} PID on the optical temperature~\cite{meng2023designofvacuum}.
 
 \item \textbf{Mechanical support stand + crucible.} A bolted support stand (8 short +
 4 long sections, 12 corner braces, 4 floor mounts) positions the chamber, coil,
@@ -523,7 +523,7 @@ explicitly.
 \paragraph{Figure 5 --- Microstructural validation (SEM + EBSD).} The furnace exists
 to change microstructure, so the key validation is \textbf{real microstructural data}:
 SEM micrographs of as-received vs. annealed samples (e.g. Ni200 / Ni4N5) and EBSD
-inverse-pole-figure and grain-boundary maps for at least one annealed condition.
+inverse-pole-figure and grain-boundary maps for at least one annealed condition~\cite{liu2021studyofgrain,alogab2007theinfluenceof}.
 Quantify grain size properly: number of grains analyzed, equivalent-circle-diameter or
 intercept metric, median + IQR (or mean $\pm$ SD), segmentation/cleanup criteria,
 minimum-grain-area threshold, and whether twins are merged or separated. Compare
@@ -611,19 +611,11 @@ will be minted (Zenodo) before submission and listed in the specifications table
 %==============================================================
 % References
 %==============================================================
-% Anticipated citations are listed below as a placeholder bibliography; replace with
-% a real .bib file (bibliographystyle elsarticle-num) before submission.
-\begin{thebibliography}{9}
-\bibitem{davies} J. Davies, \emph{Conduction and Induction Heating}, IET, for the
-physics of RF coupling and susceptor heating. \todo{confirm citation/DOI}
-\bibitem{humphreys} F. J. Humphreys, M. Hatherly, \emph{Recrystallization and Related
-Annealing Phenomena}, Elsevier, motivating the annealing/grain-growth study.
-\todo{confirm citation/DOI}
-\bibitem{pyrometry} A dual-wavelength (ratio) pyrometry reference for non-contact
-temperature measurement. \todo{add citation/DOI}
-\bibitem{hardwarex} HardwareX Guide for Authors, Elsevier.
-\bibitem{priorart} Prior open-source furnace-control hardware paper(s) used for
-comparison. \todo{add citation/DOI}
-\end{thebibliography}
+% The bibliography is the validated master reference list compiled from every
+% Edison Scientific literature query in this repository (literature-search/),
+% de-duplicated and URL/DOI-checked by paper/build_master_bibliography.py.
+% Build with: pdflatex -> bibtex -> pdflatex -> pdflatex (see Makefile / `make pdf`).
+\bibliographystyle{elsarticle-num}
+\bibliography{references}
 
 \end{document}

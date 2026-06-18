@@ -20,7 +20,9 @@ SRC := paper.tex
 all: pdf
 
 pdf: paper.pdf
-paper.pdf: $(SRC) template/elsarticle.cls
+paper.pdf: $(SRC) template/elsarticle.cls references.bib
+	$(PDFLATEX) -interaction=nonstopmode $(SRC)
+	-bibtex paper
 	$(PDFLATEX) -interaction=nonstopmode $(SRC)
 	$(PDFLATEX) -interaction=nonstopmode $(SRC)
 
