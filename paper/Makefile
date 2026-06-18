@@ -16,8 +16,13 @@
 PDFLATEX ?= pdflatex
 SRC := paper.tex
 
-.PHONY: all pdf clean
+.PHONY: all pdf clean figures
 all: pdf
+
+# Regenerate the validation + characterization figures from the archived data.
+figures:
+	python3 build_validation_figures.py
+	python3 build_characterization_crossref.py
 
 pdf: paper.pdf
 paper.pdf: $(SRC) template/elsarticle.cls references.bib

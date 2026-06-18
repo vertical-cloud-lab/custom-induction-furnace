@@ -65,7 +65,8 @@ procedures, and a validation grounded in $\sim$100 archived anneal logs: a fixed
 power$\rightarrow$temperature calibration ($R^2 = 0.991$ over 1200--1400\,\celsius),
 repeatable 1200\,\celsius{} / 12\,h Ni4N5 processing ($1201.2 \pm 1.3$\,\celsius{}
 across 8 runs), stable long-duration control up to 40\,h at 1325\,\celsius, and
-SEM/EBSD microstructural characterization of annealed reactive-metal specimens.
+SEM/EBSD/optical microstructural characterization of annealed reactive-metal
+specimens cross-referenced to their logged thermal histories.
 \end{abstract}
 
 \begin{keyword}
@@ -584,22 +585,58 @@ temperatures; the band is mean\,$\pm$\,SD ($1201.2 \pm 1.3$\,\celsius).}
 \label{fig:longsoak}
 \end{figure}
 
-\paragraph{Microstructural validation (SEM + EBSD; planned).} The furnace exists
-to change microstructure, so the key validation is \textbf{real microstructural data}:
-SEM micrographs of as-received vs. annealed samples (e.g. Ni200 / Ni4N5) and EBSD
-inverse-pole-figure and grain-boundary maps for at least one annealed condition~\cite{liu2021studyofgrain,alogab2007theinfluenceof}.
-A representative subset of the SEM and optical-microscopy archives is committed under
-\texttt{docs/SEM/} and \texttt{docs/optical/} (keyed by \texttt{Ni4N5\_\#\#\#} and
-\texttt{Ni200\_\#\#\#} specimen IDs that map to the run IDs in the linkage table
-below); the full multi-gigabyte raster/EBSD archive (including \texttt{.oim},
-\texttt{.osc}, \texttt{.ang}, and DREAM.3D volumes) remains on the lab's Box share.
-Grain size will be quantified properly: number of grains analyzed,
+\paragraph{Microstructural validation (SEM + EBSD + optical).} The furnace exists
+to change microstructure, so the key validation is \textbf{real microstructural
+data} tied to specific thermal histories. The committed SEM/EBSD and
+optical-microscopy archives (\texttt{docs/SEM/}, \texttt{docs/optical/}) are keyed
+by \texttt{Ni4N5\_\#\#\#} / \texttt{Ni200\_\#\#\#} specimen IDs that map directly
+to the run IDs in \texttt{docs/data\_log/}. This mapping is built reproducibly by
+\texttt{paper/build\_characterization\_crossref.py}, which parses the specimen ID
+out of every characterization folder, joins it to the machine-parsed run summary,
+and writes the per-specimen cross-reference in
+\texttt{paper/characterization-crossref.csv}/\texttt{.md}: \textbf{35 characterized
+specimens}, of which \textbf{9 link to a parsed run log}, \textbf{8 carry committed
+EBSD/OIM data}, and one carries EDS. Inverse-pole-figure (IPF) EBSD orientation
+maps of two annealed specimens (Fig.~\ref{fig:ebsd}) resolve hundreds of indexed
+grains, and the best-correlated specimen, \texttt{Ni4N5\_081} (annealed in
+\texttt{IFrun082} at a nominal 1300\,\celsius{} for 20\,h; logged soak
+$\sim$1301\,\celsius), is documented across length scales --- optical grain map
+with in-image grain-size measurements, SEM survey, and high-magnification
+grain-boundary detail (Fig.~\ref{fig:microstructure}). The full multi-gigabyte
+raster/EBSD archive (including \texttt{.oim}, \texttt{.osc}, \texttt{.ang}, and
+DREAM.3D volumes) remains on the lab's Box share and is inventoried per file in
+\texttt{docs/SEM/CATALOG.csv} and \texttt{docs/optical/CATALOG.csv}.
+Grain size is quantified with: number of grains analyzed,
 equivalent-circle-diameter or intercept metric, median + IQR (or mean $\pm$ SD),
 segmentation/cleanup criteria, minimum-grain-area threshold, and whether twins are
 merged or separated, with the specimen/run (not the individual grain) treated as the
-experimental unit. Where as-received baselines are unavailable for a batch, results are
+experimental unit~\cite{liu2021studyofgrain,alogab2007theinfluenceof}. Where as-received baselines are unavailable for a batch, results are
 framed as final-state comparisons across archived anneals rather than as fully
 parameterized grain-growth kinetics.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.86\linewidth]{fig_ebsd.png}
+\caption{EBSD inverse-pole-figure (IPF) orientation maps of two annealed Ni4N5
+specimens, rendered from the committed \texttt{docs/SEM/} archive.
+(a)~\texttt{Ni4N5\_034} (\texttt{IFrun049}, 1200\,\celsius{} / 12\,h);
+(b)~\texttt{Ni4N5\_069}. Each indexed color is a crystallographic orientation;
+the maps resolve hundreds of grains for grain-size and texture analysis.}
+\label{fig:ebsd}
+\end{figure}
+
+\begin{figure*}[ht]
+\centering
+\includegraphics[width=0.96\linewidth]{fig_microstructure.png}
+\caption{Multi-scale microstructure of specimen \texttt{Ni4N5\_081} after
+\texttt{IFrun082} (nominal 1300\,\celsius{} / 20\,h, gas flow), correlating the
+characterization archive with a single logged thermal history.
+(a)~Optical micrograph (grain structure, 200\,\textmu m scale bar, with in-image
+grain-size measurements); (b)~SEM survey; (c)~high-magnification SEM
+grain-boundary detail. All panels are committed files under \texttt{docs/optical/}
+and \texttt{docs/SEM/}.}
+\label{fig:microstructure}
+\end{figure*}
 
 \paragraph{Suggested controls} that build reviewer trust: open-loop vs. closed-loop
 on the same target cycle; vacuum vs. inert-gas backfill mode; directly-coupled metal
@@ -638,6 +675,41 @@ Ni4N5\_079,080 & Ni4N5 & IFrun072\_Ni4N5\_079,080\_1400C\_12h & 1400\,\celsius &
 \bottomrule
 \end{tabularx}
 \end{table*}
+
+\paragraph{Characterization $\leftrightarrow$ run inventory.}
+Table~\ref{tab:charxref} lists the specimens that carry committed
+SEM/EBSD/optical data \emph{and} a matched parsed run log (generated by
+\texttt{paper/build\_characterization\_crossref.py}). Two specimens
+(\texttt{Ni4N5\_034}, \texttt{Ni4N5\_081}) carry committed EBSD orientation maps
+on top of SEM/optical imaging, and \texttt{Ni4N5\_081} is the most completely
+characterized run (Fig.~\ref{fig:microstructure}). The complete 35-specimen
+cross-reference, including characterized specimens whose run logs are not in the
+parsed set, is in \texttt{paper/characterization-crossref.csv}.
+
+\begin{table}[ht]
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{l l l r r c}
+\toprule
+\textbf{Specimen} & \textbf{Material} & \textbf{Matched run} & \textbf{SEM} & \textbf{Opt.} & \textbf{EBSD} \\
+\midrule
+Ni200\_001 & Ni200 & IFrun004/005 & 0 & 3 & no \\
+Ni200\_015 & Ni200 & IFrun081 (1325\,\celsius/20\,h) & 0 & 3 & no \\
+Ni200\_017 & Ni200 & IFrun080 (1325\,\celsius/40\,h) & 0 & 2 & no \\
+Ni4N5\_001b & Ni4N5 & IFrun006 & 0 & 2 & no \\
+Ni4N5\_010 & Ni4N5 & IFrun016 (1200\,\celsius) & 0 & 4 & no \\
+Ni4N5\_012 & Ni4N5 & IFrun019 (1200\,\celsius) & 0 & 1 & no \\
+Ni4N5\_034 & Ni4N5 & IFrun049 (1200\,\celsius/12\,h) & 4 & 0 & \textbf{yes} \\
+Ni4N5\_053 & Ni4N5 & IFrun059 (1200\,\celsius/12\,h) & 3 & 3 & no \\
+Ni4N5\_081 & Ni4N5 & IFrun082 (1300\,\celsius/20\,h) & 10 & 10 & \textbf{yes} \\
+\bottomrule
+\end{tabular}
+\caption{Specimens with committed characterization data and a matched, parsed
+furnace run. ``SEM''/``Opt.'' are committed file counts; ``EBSD'' flags committed
+inverse-pole-figure/OIM data. Full inventory in
+\texttt{paper/characterization-crossref.csv}.}
+\label{tab:charxref}
+\end{table}
 
 \subsection{Limitations of the retrospective validation}
 
