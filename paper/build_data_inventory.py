@@ -16,6 +16,8 @@ Usage::
 """
 from __future__ import annotations
 
+import csv
+import json
 import re
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -79,6 +81,93 @@ def characterization_assets() -> list[str]:
     return out
 
 
+def thermal_traces_section() -> list[str]:
+    """Summarize the parsed raw-data thermal traces and validation cohorts."""
+    summ = DOCS / "data_log" / "processed" / "run_summary.csv"
+    if not summ.exists():
+        return []
+    rows = list(csv.DictReader(summ.open()))
+    n = len(rows)
+    peaks = [float(r["peak_temp_C"]) for r in rows if r["peak_temp_C"]]
+    soaks = [float(r["soak_temp_C"]) for r in rows if r["soak_temp_C"]]
+    durs = [float(r["duration_min"]) for r in rows if r["duration_min"]]
+    flow = Counter(r["has_flow"] for r in rows)
+    bullets = [f"- **Runs with a parsed trace:** {n}"]
+    if peaks:
+        bullets.append(f"- **Peak temperature range (°C):** "
+                       f"{min(peaks):.0f}–{max(peaks):.0f}")
+    if soaks:
+        bullets.append(f"- **Soak-mean temperature range (°C):** "
+                       f"{min(soaks):.0f}–{max(soaks):.0f}")
+    if durs:
+        bullets.append(f"- **Soak duration range (min):** "
+                       f"{min(durs):.0f}–{max(durs):.0f} (≈{max(durs)/60:.0f} h)")
+    bullets.append("- **Gas-flow flag:** "
+                   + ", ".join(f"{k}={v}" for k, v in flow.most_common()))
+    out = [
+        "## Parsed raw-data thermal traces",
+        "",
+        "The raw `.xlsx`/`.lvm` run logs were parsed into uniform per-run CSV/PNG",
+        "traces under `docs/data_log/processed/` by `paper/build_run_traces.py`",
+        "(time, analog power command, pyrometer temperature, optional flow).",
+        "",
+        *bullets,
+        "",
+    ]
+    metrics = HERE / "validation-metrics.json"
+    if metrics.exists():
+        m = json.loads(metrics.read_text())
+        cal = m["calibration"]["fit"]
+        rep = m["repeatability"]["stats"]
+        out += [
+            "### Validation cohorts (computed by `build_validation_figures.py`)",
+            "",
+            f"- **Power→temperature calibration** (fixed Ni4N5 geometry, "
+            f"n={cal['n']}): T = {cal['intercept']:.0f} + {cal['slope']:.0f}·I (mA), "
+            f"R² = {cal['r2']:.3f}.",
+            f"- **Repeatability** (Ni4N5 1200 °C / 12 h, n={rep['n']}): "
+            f"{rep['soak_mean_C']:.1f} ± {rep['soak_sd_C']:.1f} °C "
+            f"(CV {rep['cv_pct']:.2f}%).",
+            "- **Long-soak stability** (Ni200, 1325 °C): "
+            "20 h and 40 h runs held within a few °C of setpoint.",
+            "",
+        ]
+    return out
+
+
+def sem_optical_section() -> list[str]:
+    """Summarize the SEM/optical catalogs (full archive vs committed subset)."""
+    out = ["## SEM / optical characterization catalog", ""]
+    any_found = False
+    for top, label in (("SEM", "SEM / EBSD"), ("optical", "Optical microscopy")):
+        cat = DOCS / top / "CATALOG.csv"
+        if not cat.exists():
+            continue
+        any_found = True
+        rows = list(csv.DictReader(cat.open()))
+        nfull = len(rows)
+        sfull = sum(int(r["size_bytes"]) for r in rows)
+        comm = [r for r in rows if r["committed"] == "yes"]
+        scomm = sum(int(r["size_bytes"]) for r in comm)
+        exts = Counter(r["ext"] for r in rows)
+        out += [
+            f"- **{label}** (`docs/{top}/`): full archive {nfull} files, "
+            f"{sfull/1e9:.2f} GB; representative subset committed here "
+            f"{len(comm)} files, {scomm/1e6:.0f} MB. Top file types: "
+            + ", ".join(f"{k} ({v})" for k, v in exts.most_common(6)) + ".",
+        ]
+    if not any_found:
+        return []
+    out += [
+        "",
+        "Full per-file inventories are in `docs/SEM/CATALOG.csv` and",
+        "`docs/optical/CATALOG.csv`; the complete multi-gigabyte raster/EBSD",
+        "archives remain on the lab's Box share (see each folder's README).",
+        "",
+    ]
+    return out
+
+
 def main() -> None:
     rows = parse_runs()
     mats = Counter(r["material"] for r in rows if r["material"])
@@ -116,10 +205,12 @@ def main() -> None:
         md.append(f"- **{mat}:** {len(ids)} runs — "
                   + ", ".join(sorted(ids)))
     md += ["",
+           *thermal_traces_section(),
            "## Characterization / supporting assets",
            "",
            *characterization_assets(),
            "",
+           *sem_optical_section(),
            "## Labeled runs (material + soak condition parsed from filename)",
            "",
            fmt_table(rows),

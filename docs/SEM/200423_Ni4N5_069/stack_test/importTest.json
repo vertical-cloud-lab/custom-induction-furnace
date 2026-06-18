@@ -1,0 +1,36 @@
+{
+    "0": {
+        "EulerTransformation": {
+            "angle": 90,
+            "h": 0,
+            "k": 0,
+            "l": 1
+        },
+        "FileExtension": "ang",
+        "FilePrefix": "Scan3_",
+        "FileSuffix": "",
+        "FilterVersion": "6.5.138",
+        "Filter_Enabled": true,
+        "Filter_Human_Label": "Import Orientation File(s) to H5EBSD",
+        "Filter_Name": "EbsdToH5Ebsd",
+        "Filter_Uuid": "{6e332fca-0475-5fec-821e-e01f668ec1d3}",
+        "InputPath": "C:\\Users\\sterg\\Box\\Johnson\\SEM\\200423_Ni4N5_069\\stack_test",
+        "OutputFile": "C:/Users/sterg/Box/Johnson/SEM/200423_Ni4N5_069/stack_test/test.h5ebsd",
+        "PaddingDigits": 1,
+        "RefFrameZDir": 0,
+        "SampleTransformation": {
+            "angle": 180,
+            "h": 0,
+            "k": 1,
+            "l": 0
+        },
+        "ZEndIndex": "2",
+        "ZResolution": 50,
+        "ZStartIndex": "1"
+    },
+    "PipelineBuilder": {
+        "Name": "importTest",
+        "Number_Filters": 1,
+        "Version": 6
+    }
+}

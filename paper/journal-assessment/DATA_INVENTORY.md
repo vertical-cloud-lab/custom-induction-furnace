@@ -6,11 +6,11 @@ to assess feasibility of a traditional (non-HardwareX) journal contribution.
 
 ## Summary
 
-- **Total files under `docs/data_log/`:** 102
-- **Files with a parseable material/condition label:** 102
-- **Materials (by labeled file count):** Ni4N5 (64), Ni200 (11), crucible (8), Pd (3)
+- **Total files under `docs/data_log/`:** 197
+- **Files with a parseable material/condition label:** 197
+- **Materials (by labeled file count):** Ni4N5 (138), Ni200 (19), crucible (14), Pd (5)
 - **Soak temperatures observed (°C):** 900, 1100, 1150, 1200, 1250, 1300, 1325, 1350, 1400
-- **Data file types:** xlsx (47), txt (26), jpg (15), lvm (5), png (4), pptx (1), crtx (1), csv (1), tdms (1), tdms_index (1)
+- **Data file types:** png (51), csv (49), xlsx (47), txt (26), jpg (15), lvm (5), pptx (1), crtx (1), tdms (1), tdms_index (1)
 
 ### Distinct run IDs by material
 
@@ -19,11 +19,38 @@ to assess feasibility of a traditional (non-HardwareX) journal contribution.
 - **Pd:** 2 runs — IFRun078, IFrun073
 - **crucible:** 4 runs — IFrun035, IFrun036, IFrun037, IFrun043
 
+## Parsed raw-data thermal traces
+
+The raw `.xlsx`/`.lvm` run logs were parsed into uniform per-run CSV/PNG
+traces under `docs/data_log/processed/` by `paper/build_run_traces.py`
+(time, analog power command, pyrometer temperature, optional flow).
+
+- **Runs with a parsed trace:** 49
+- **Peak temperature range (°C):** 799–1459
+- **Soak-mean temperature range (°C):** 799–1402
+- **Soak duration range (min):** 0–2483 (≈41 h)
+- **Gas-flow flag:** yes=25, no=24
+
+### Validation cohorts (computed by `build_validation_figures.py`)
+
+- **Power→temperature calibration** (fixed Ni4N5 geometry, n=4): T = 931 + 632·I (mA), R² = 0.991.
+- **Repeatability** (Ni4N5 1200 °C / 12 h, n=8): 1201.2 ± 1.3 °C (CV 0.11%).
+- **Long-soak stability** (Ni200, 1325 °C): 20 h and 40 h runs held within a few °C of setpoint.
+
 ## Characterization / supporting assets
 
 - `docs/student-work/RyanWeber.pdf` — 1877 KB
 - `docs/equipment-reference/` — 7 file(s)
 - `docs/ThermalEvaporation/` — 4 file(s)
+
+## SEM / optical characterization catalog
+
+- **SEM / EBSD** (`docs/SEM/`): full archive 2870 files, 8.66 GB; representative subset committed here 72 files, 339 MB. Top file types: m (1529), html (281), png (181), tif (155), ang (99), json (84).
+- **Optical microscopy** (`docs/optical/`): full archive 1484 files, 3.47 GB; representative subset committed here 248 files, 230 MB. Top file types: jpg (610), png (225), tif (219), jar (76), zmg (49), rag (42).
+
+Full per-file inventories are in `docs/SEM/CATALOG.csv` and
+`docs/optical/CATALOG.csv`; the complete multi-gigabyte raster/EBSD
+archives remain on the lab's Box share (see each folder's README).
 
 ## Labeled runs (material + soak condition parsed from filename)
 
@@ -115,3 +142,93 @@ to assess feasibility of a traditional (non-HardwareX) journal contribution.
 | data_log/IFrun081-100/IFrun084_Ni4N5_086_1300C_20h.txt | Ni4N5 | 1300 | 20h | txt |
 | data_log/IFrun081-100/IFrun084_Ni4N5_086_1300C_20h.xlsx | Ni4N5 | 1300 | 20h | xlsx |
 | data_log/IFrun081-100/IFrun085_Ni4N5_087_1300C_20h.xlsx | Ni4N5 | 1300 | 20h | xlsx |
+| data_log/processed/csv/IFrun016_Ni4N5_010.csv | Ni4N5 | — | — | csv |
+| data_log/processed/csv/IFrun017_Ni4N5_011.csv | Ni4N5 | — | — | csv |
+| data_log/processed/csv/IFrun018_Ni4N5_011.csv | Ni4N5 | — | — | csv |
+| data_log/processed/csv/IFrun019_Ni4N5_012.csv | Ni4N5 | — | — | csv |
+| data_log/processed/csv/IFrun020_Ni4N5_013.csv | Ni4N5 | — | — | csv |
+| data_log/processed/csv/IFrun032_Ni4N5_022_1400C_10min.csv | Ni4N5 | 1400 | 10min | csv |
+| data_log/processed/csv/IFrun034_Ni4N5_024_1400C_5min.csv | Ni4N5 | 1400 | 5min | csv |
+| data_log/processed/csv/IFrun035_crucible_1150C_10min.csv | crucible | 1150 | 10min | csv |
+| data_log/processed/csv/IFrun036_crucible_1100C_5min.csv | crucible | 1100 | 5min | csv |
+| data_log/processed/csv/IFrun037_crucible_1100C_5min.csv | crucible | 1100 | 5min | csv |
+| data_log/processed/csv/IFrun038_Ni4N5_025_1300C_1h.csv | Ni4N5 | 1300 | 1h | csv |
+| data_log/processed/csv/IFrun039_Ni4N5_026_1200C_6h.csv | Ni4N5 | 1200 | 6h | csv |
+| data_log/processed/csv/IFrun040_Ni4N5_027_1250C_6h.csv | Ni4N5 | 1250 | 6h | csv |
+| data_log/processed/csv/IFrun049_Ni4N5_034_1200C_12h.csv | Ni4N5 | 1200 | 12h | csv |
+| data_log/processed/csv/IFrun052_Ni4N5_040_1200C_12h.csv | Ni4N5 | 1200 | 12h | csv |
+| data_log/processed/csv/IFrun054_Ni4N5_042,044_1200C_12h.csv | Ni4N5 | 1200 | 12h | csv |
+| data_log/processed/csv/IFrun055_Ni4N5_045,046_1200C_12h.csv | Ni4N5 | 1200 | 12h | csv |
+| data_log/processed/csv/IFrun056_Ni4N5_047,048_1200C_12h (enterprise1.sterling@gmail.com).csv | Ni4N5 | 1200 | 12h | csv |
+| data_log/processed/csv/IFrun056_Ni4N5_047,048_1200C_12h.csv | Ni4N5 | 1200 | 12h | csv |
+| data_log/processed/csv/IFrun057_Ni4N5_049,050_1200C_12h - Copy.csv | Ni4N5 | 1200 | 12h | csv |
+| data_log/processed/csv/IFrun057_Ni4N5_049,050_1200C_12h.csv | Ni4N5 | 1200 | 12h | csv |
+| data_log/processed/csv/IFrun058_Ni4N5_051,052_1200C_12h.csv | Ni4N5 | 1200 | 12h | csv |
+| data_log/processed/csv/IFrun059_Ni4N5_053,054_1200C_12h.csv | Ni4N5 | 1200 | 12h | csv |
+| data_log/processed/csv/IFrun060_Ni4N5_056,057_1200C_12h.csv | Ni4N5 | 1200 | 12h | csv |
+| data_log/processed/csv/IFrun071_Ni4N5_077,078_1350C_12h.csv | Ni4N5 | 1350 | 12h | csv |
+| data_log/processed/csv/IFrun072_Ni4N5_079,080_1400C_12h.csv | Ni4N5 | 1400 | 12h | csv |
+| data_log/processed/csv/IFrun073_evapDryRun_900C_10min.csv | Pd | 900 | 10min | csv |
+| data_log/processed/csv/IFrun074_evap_Ni4N5_053_Pd_001a_900C_10min.csv | Ni4N5 | 900 | 10min | csv |
+| data_log/processed/csv/IFrun075_evap_Ni4N5_053_Pd_001a_900C_10min.csv | Ni4N5 | 900 | 10min | csv |
+| data_log/processed/csv/IFrun076_evap_Ni4N5_053_Pd_001a_1100C_10min.csv | Ni4N5 | 1100 | 10min | csv |
+| data_log/processed/csv/IFrun077_evap_Ni4N5_053_Pd_001a_1200C_10min.csv | Ni4N5 | 1200 | 10min | csv |
+| data_log/processed/csv/IFrun078_evap_Ni4N5_053_Pd_001a_1300C_10min.csv | Ni4N5 | 1300 | 10min | csv |
+| data_log/processed/csv/IFrun079_Ni4N5_084_1300C_12h.csv | Ni4N5 | 1300 | 12h | csv |
+| data_log/processed/csv/IFrun080_Ni200_017_1325C_40h.csv | Ni200 | 1325 | 40h | csv |
+| data_log/processed/csv/IFrun081_Ni200_015_1325C_20h.csv | Ni200 | 1325 | 20h | csv |
+| data_log/processed/csv/IFrun082_Ni4N5_081_1300C_20h.csv | Ni4N5 | 1300 | 20h | csv |
+| data_log/processed/csv/IFrun083_Ni4N5_083_1300C_20h.csv | Ni4N5 | 1300 | 20h | csv |
+| data_log/processed/csv/IFrun084_Ni4N5_086_1300C_20h.csv | Ni4N5 | 1300 | 20h | csv |
+| data_log/processed/csv/IFrun085_Ni4N5_087_1300C_20h.csv | Ni4N5 | 1300 | 20h | csv |
+| data_log/processed/csv/Ni200_001_IFrun004.csv | Ni200 | — | — | csv |
+| data_log/processed/csv/Ni200_001_IFrun005.csv | Ni200 | — | — | csv |
+| data_log/processed/csv/Ni4N5_001b_IFrun006.csv | Ni4N5 | — | — | csv |
+| data_log/processed/csv/Ni4N5_002_IFrun007.csv | Ni4N5 | — | — | csv |
+| data_log/processed/csv/Ni4N5_002_IFrun008.csv | Ni4N5 | — | — | csv |
+| data_log/processed/csv/Ni4N5_002_IFrun009.csv | Ni4N5 | — | — | csv |
+| data_log/processed/png/IFrun016_Ni4N5_010.png | Ni4N5 | — | — | png |
+| data_log/processed/png/IFrun017_Ni4N5_011.png | Ni4N5 | — | — | png |
+| data_log/processed/png/IFrun018_Ni4N5_011.png | Ni4N5 | — | — | png |
+| data_log/processed/png/IFrun019_Ni4N5_012.png | Ni4N5 | — | — | png |
+| data_log/processed/png/IFrun020_Ni4N5_013.png | Ni4N5 | — | — | png |
+| data_log/processed/png/IFrun032_Ni4N5_022_1400C_10min.png | Ni4N5 | 1400 | 10min | png |
+| data_log/processed/png/IFrun034_Ni4N5_024_1400C_5min.png | Ni4N5 | 1400 | 5min | png |
+| data_log/processed/png/IFrun035_crucible_1150C_10min.png | crucible | 1150 | 10min | png |
+| data_log/processed/png/IFrun036_crucible_1100C_5min.png | crucible | 1100 | 5min | png |
+| data_log/processed/png/IFrun037_crucible_1100C_5min.png | crucible | 1100 | 5min | png |
+| data_log/processed/png/IFrun038_Ni4N5_025_1300C_1h.png | Ni4N5 | 1300 | 1h | png |
+| data_log/processed/png/IFrun039_Ni4N5_026_1200C_6h.png | Ni4N5 | 1200 | 6h | png |
+| data_log/processed/png/IFrun040_Ni4N5_027_1250C_6h.png | Ni4N5 | 1250 | 6h | png |
+| data_log/processed/png/IFrun049_Ni4N5_034_1200C_12h.png | Ni4N5 | 1200 | 12h | png |
+| data_log/processed/png/IFrun052_Ni4N5_040_1200C_12h.png | Ni4N5 | 1200 | 12h | png |
+| data_log/processed/png/IFrun054_Ni4N5_042,044_1200C_12h.png | Ni4N5 | 1200 | 12h | png |
+| data_log/processed/png/IFrun055_Ni4N5_045,046_1200C_12h.png | Ni4N5 | 1200 | 12h | png |
+| data_log/processed/png/IFrun056_Ni4N5_047,048_1200C_12h (enterprise1.sterling@gmail.com).png | Ni4N5 | 1200 | 12h | png |
+| data_log/processed/png/IFrun056_Ni4N5_047,048_1200C_12h.png | Ni4N5 | 1200 | 12h | png |
+| data_log/processed/png/IFrun057_Ni4N5_049,050_1200C_12h - Copy.png | Ni4N5 | 1200 | 12h | png |
+| data_log/processed/png/IFrun057_Ni4N5_049,050_1200C_12h.png | Ni4N5 | 1200 | 12h | png |
+| data_log/processed/png/IFrun058_Ni4N5_051,052_1200C_12h.png | Ni4N5 | 1200 | 12h | png |
+| data_log/processed/png/IFrun059_Ni4N5_053,054_1200C_12h.png | Ni4N5 | 1200 | 12h | png |
+| data_log/processed/png/IFrun060_Ni4N5_056,057_1200C_12h.png | Ni4N5 | 1200 | 12h | png |
+| data_log/processed/png/IFrun071_Ni4N5_077,078_1350C_12h.png | Ni4N5 | 1350 | 12h | png |
+| data_log/processed/png/IFrun072_Ni4N5_079,080_1400C_12h.png | Ni4N5 | 1400 | 12h | png |
+| data_log/processed/png/IFrun073_evapDryRun_900C_10min.png | Pd | 900 | 10min | png |
+| data_log/processed/png/IFrun074_evap_Ni4N5_053_Pd_001a_900C_10min.png | Ni4N5 | 900 | 10min | png |
+| data_log/processed/png/IFrun075_evap_Ni4N5_053_Pd_001a_900C_10min.png | Ni4N5 | 900 | 10min | png |
+| data_log/processed/png/IFrun076_evap_Ni4N5_053_Pd_001a_1100C_10min.png | Ni4N5 | 1100 | 10min | png |
+| data_log/processed/png/IFrun077_evap_Ni4N5_053_Pd_001a_1200C_10min.png | Ni4N5 | 1200 | 10min | png |
+| data_log/processed/png/IFrun078_evap_Ni4N5_053_Pd_001a_1300C_10min.png | Ni4N5 | 1300 | 10min | png |
+| data_log/processed/png/IFrun079_Ni4N5_084_1300C_12h.png | Ni4N5 | 1300 | 12h | png |
+| data_log/processed/png/IFrun080_Ni200_017_1325C_40h.png | Ni200 | 1325 | 40h | png |
+| data_log/processed/png/IFrun081_Ni200_015_1325C_20h.png | Ni200 | 1325 | 20h | png |
+| data_log/processed/png/IFrun082_Ni4N5_081_1300C_20h.png | Ni4N5 | 1300 | 20h | png |
+| data_log/processed/png/IFrun083_Ni4N5_083_1300C_20h.png | Ni4N5 | 1300 | 20h | png |
+| data_log/processed/png/IFrun084_Ni4N5_086_1300C_20h.png | Ni4N5 | 1300 | 20h | png |
+| data_log/processed/png/IFrun085_Ni4N5_087_1300C_20h.png | Ni4N5 | 1300 | 20h | png |
+| data_log/processed/png/Ni200_001_IFrun004.png | Ni200 | — | — | png |
+| data_log/processed/png/Ni200_001_IFrun005.png | Ni200 | — | — | png |
+| data_log/processed/png/Ni4N5_001b_IFrun006.png | Ni4N5 | — | — | png |
+| data_log/processed/png/Ni4N5_002_IFrun007.png | Ni4N5 | — | — | png |
+| data_log/processed/png/Ni4N5_002_IFrun008.png | Ni4N5 | — | — | png |
+| data_log/processed/png/Ni4N5_002_IFrun009.png | Ni4N5 | — | — | png |
