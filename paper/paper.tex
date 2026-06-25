@@ -90,33 +90,23 @@ this draft against the HardwareX section requirements is recorded in
 \section{Specifications table}
 %==============================================================
 
+% HardwareX mandates exactly these seven rows (Guide for Authors). Machine-/build-
+% specific values (generator model, vacuum level, temperatures, coil geometry, etc.)
+% are deliberately NOT placed here --- they are build-dependent and a reader supplies
+% their own --- and instead appear in the ``Technical specifications'' table in the
+% Hardware description.
 \begin{table*}[ht]
 \small
-\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.34\linewidth} X}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.30\linewidth} X}
 \toprule
-\textbf{Property} & \textbf{Value} \\
+\textbf{Hardware name} & Computer-controlled, vacuum-integrated induction annealing system \\
 \midrule
-Hardware name & Computer-controlled, vacuum-integrated induction annealing system \\
-Subject area & Materials science; mechanical engineering (thermal processing / grain growth) \\
+Subject area & Engineering and materials science (thermal processing / grain growth) \\
 Hardware type & Heat-treatment / annealing furnace; vacuum system; instrument control \\
 Closest commercial analog & Vacuum induction annealing furnace (turn-key systems cost \$50k--\$200k+) \\
-Open source license & \todo{proposed --- CERN-OHL-S v2 for hardware/design files + MIT for code; add a LICENSE file at the repo root before submission} \\
-Cost of hardware & \todo{total; retrofit + consumables $\approx$ \$1--2k on top of the generator} \\
-Source file repository & \todo{mint a permanent DOI --- e.g. Zenodo --- for the repository; HardwareX does not accept a bare GitHub URL} \\
-Induction generator (reproducible build) & CEIA ``Power Cube'' 6\,kW solid-state RF generator + Master Controller v3+ (East Coast Induction, USA) \\
-Induction generator (prototype) & LEPEL high-frequency tube furnace ($\sim$1970), up to $\sim$35\,kW \\
-Power-control input & 4--20\,mA analog setpoint via LabVIEW/DAQ $\rightarrow$ V$\rightarrow$I conditioner (CEIA canonical build; the LEPEL prototype used 0--5\,mA --- see migration table) \\
-Generator-input standard required & External analog power-control input with \textbf{monotonic} command$\rightarrow$power response over the usable range \\
-Control signal chain & DAQ analog output (0--5\,V) $\rightarrow$ voltage-to-current (4--20\,mA) loop conditioner $\rightarrow$ generator power-setpoint input; pyrometer analog output $\rightarrow$ DAQ analog input (scaled to \celsius) \\
-Max sample temperature & $\sim$1400--1500\,\celsius+ (Ni/Fe melting range) \\
-Pyrometer detection range & $\sim$800--2500\,\celsius{} (dual-wavelength ratio); does not report below $\sim$700\,\celsius \\
-Demonstrated soak duration & minutes up to $\sim$40\,h (per \texttt{docs/data\_log/} run logs) \\
-Sample / crucible envelope & charge fits inside a 35\,mm-ID quartz tube and a machined graphite crucible \\
-Vacuum level & $\sim$1$\times$10$^{-6}$ to 1$\times$10$^{-8}$\,Torr (Edwards T-Station 85 turbo-molecular pump) \\
-Temperature measurement & LumaSense IMPAC ISR 6 dual-wavelength ratio pyrometer ($\sim$800--2500\,\celsius) \\
-Chamber & Quartz tube, KF40 optical-window flange, inert-gas vent \\
-Crucible / susceptor & In-house machined graphite (3000\,\celsius{} grade) crucible-susceptor \\
-Work coil & Water-cooled copper, $\sim$3\,in tall, 2.5\,in ID, $\sim$6.5 turns \\
+Open source license & CERN-OHL-S v2 (hardware / design files); MIT (control code) \\
+Cost of hardware & Retrofit + consumables $\approx$ \$1--2k on top of a compatible induction generator; for a from-scratch build the generator + heating head + controller + chiller adds $\approx$\$16.5k (CEIA quote 210203AP, USD, 2021) \\
+Source file repository & \href{https://doi.org/10.5281/zenodo.20878017}{https://doi.org/10.5281/zenodo.20878017} (archived deposit); development repository \url{https://github.com/vertical-cloud-lab/custom-induction-furnace} \\
 \bottomrule
 \end{tabularx}
 \end{table*}
@@ -162,7 +152,7 @@ the only departmental machine able to reach the Ni/Fe melting range. A ``remote
 control'' capability was added in August 2019 to drive the generator's power from a
 computer instead of the front-panel knob. The lab subsequently moved the same stack
 onto a current, USA-sourced solid-state generator (CEIA ``Power Cube'' 6\,kW via
-East Coast Induction), whose Master Controller v3+ accepts a standard analog
+East Coast Induction), whose Power Controller C-V3 Plus accepts a standard analog
 (4--20\,mA) power setpoint. An intermediate, separately-purchased import generator
 (CYSI GP-15A) was evaluated but did not meet the lab's control requirements --- the
 required analog remote-control input was lost across vendor model substitutions ---
@@ -227,7 +217,7 @@ alignment, maximum safe ramp rate, and any generator-specific interlock behavior
 \toprule
 \textbf{Aspect} & \textbf{LEPEL prototype ($\sim$1970)} & \textbf{CEIA reproducible build (current)} & \textbf{Transferred?} \\
 \midrule
-Analog control interface & 0--5\,mA & 4--20\,mA (Master Controller v3+) & Concept yes; scaling re-set \\
+Analog control interface & 0--5\,mA & 4--20\,mA (Power Controller C-V3 Plus) & Concept yes; scaling re-set \\
 Frequency & $\sim$200--450\,kHz tube & solid-state (generator-set) & n/a (generator internal) \\
 Max power & up to $\sim$35\,kW & 6\,kW & Re-tuned for charge \\
 Pyrometer / optical feedback & dual-wavelength & same dual-wavelength stack & Yes \\
@@ -243,13 +233,46 @@ LabVIEW/DAQ control concept & manual + ramp/PID VIs & same VIs & Yes \\
 \section{Hardware description}
 %==============================================================
 
+Table~\ref{tab:techspecs} lists the technical specifications of the build documented
+here. These are \emph{build-dependent} values (a reader supplies their own generator,
+pump, and pyrometer) and so are kept out of the mandatory HardwareX specifications
+table.
+
+\begin{table*}[ht]
+\small
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.30\linewidth} X}
+\toprule
+\textbf{Specification} & \textbf{Value (this build)} \\
+\midrule
+Induction generator (reproducible build) & CEIA ``Power Cube'' PW3-90/50 solid-state RF generator + Power Controller C-V3 Plus (East Coast Induction, USA) \\
+Induction generator (prototype) & LEPEL high-frequency tube furnace ($\sim$1970), up to $\sim$35\,kW \\
+Power-control input & 4--20\,mA analog setpoint via LabVIEW/DAQ $\rightarrow$ V$\rightarrow$I conditioner (CEIA build; the LEPEL prototype used 0--5\,mA --- see migration table) \\
+Generator-input requirement & External analog power-control input with \textbf{monotonic} command$\rightarrow$power response over the usable range \\
+Control signal chain & DAQ analog output (0--5\,V) $\rightarrow$ voltage-to-current (4--20\,mA) loop conditioner $\rightarrow$ generator power-setpoint input; pyrometer analog output $\rightarrow$ DAQ analog input (scaled to \celsius) \\
+Max sample temperature & $\sim$1400--1500\,\celsius+ (Ni/Fe melting range) \\
+Pyrometer detection range & $\sim$800--2500\,\celsius{} (dual-wavelength ratio); does not report below $\sim$700\,\celsius \\
+Demonstrated soak duration & minutes up to $\sim$40\,h (per \texttt{docs/data\_log/} run logs) \\
+Sample / crucible envelope & charge fits inside a 35\,mm-ID quartz tube and a machined graphite crucible \\
+Operating vacuum & $\sim$1$\times$10$^{-6}$ to 1$\times$10$^{-8}$\,Torr (turbo-molecular pump) \\
+Temperature measurement & Dual-wavelength ratio pyrometer (LumaSense IMPAC ISR 6, $\sim$800--2500\,\celsius) \\
+Chamber & Quartz tube, KF40 optical-window flange, inert-gas vent \\
+Crucible / susceptor & In-house machined graphite (3000\,\celsius{} grade) crucible-susceptor \\
+Work coil & Water-cooled copper, $\sim$3\,in tall, 2.5\,in ID, $\sim$6.5 turns \\
+\bottomrule
+\end{tabularx}
+\caption{Technical specifications of the documented build. Build-dependent values
+that a reader replaces with their own generator/pump/pyrometer; not part of the
+mandatory HardwareX specifications table.}
+\label{tab:techspecs}
+\end{table*}
+
 The system comprises five subsystems (see the schematics in
 \texttt{extracted-context/schematic\_induction\_furnace.md} and
 \texttt{extracted-context/schematic\_support\_stand.md}):
 
 \begin{enumerate}[nosep]
 \item \textbf{RF generator + work coil.} A solid-state induction generator (current
-build: CEIA Power Cube 6\,kW) drives a water-cooled copper work coil. The coil
+build: CEIA Power Cube PW3-90/50) drives a water-cooled copper work coil. The coil
 carries both the oscillating current and cooling water. Coil geometry ($\sim$3\,in
 tall, 2.5\,in ID, $\sim$6.5 turns) was tuned to the sample/crucible stack~\cite{vankan2024electromagneticinductionheating} (see
 \texttt{extracted-context/order\_corrections\_coils.md}).
@@ -290,6 +313,23 @@ hands over to \textbf{closed-loop} PID on the optical temperature~\cite{meng2023
 pyrometer holder, and quartz disc. An \textbf{in-house machined graphite crucible}
 holds the sample and acts as the RF susceptor.
 \end{enumerate}
+
+The LabVIEW control front panel (Fig.~\ref{fig:controlpanel}) exposes the ramp-up,
+PID-soak, and cool-down setpoint tables, the PID gains, the inert-gas flow control,
+and live power-command and pyrometer-temperature traces used to run and monitor an
+anneal.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\linewidth]{fig_control_panel.png}
+\caption{LabVIEW control front panel (\texttt{docs/equipment-reference/frontPanel\_200219.PNG}):
+editable ramp-up / PID-soak / cool-down setpoint tables (time vs.\ analog command in
+mA below the pyrometer floor and vs.\ \celsius{} once closed-loop), PID gains and
+output range, inert-gas flow setpoint/readback, and live power-command and
+pyrometer-temperature strip charts. Here the pyrometer reads $\sim$800\,\celsius{}
+during ramp.}
+\label{fig:controlpanel}
+\end{figure}
 
 \subsection{Custom-machined graphite crucible / susceptor}
 
@@ -364,20 +404,22 @@ table, not in the BOM.
 \toprule
 \textbf{Desig.} & \textbf{Component} & \textbf{No.} & \textbf{Unit \$} & \textbf{Total} & \textbf{Source} & \textbf{Material} \\
 \midrule
-GEN-1 & CEIA ``Power Cube'' 6\,kW solid-state RF generator & 1 & \todo{} & \todo{} & East Coast Induction (USA) & --- \\
-GEN-2 & Master Controller v3+ & 1 & \todo{} & \todo{} & East Coast Induction (USA) & --- \\
-GEN-3 & Recirculating water chiller & 1 & \todo{} & \todo{} & \todo{} & --- \\
+GEN-1 & CEIA ``Power Cube'' PW3-90/50 solid-state RF generator (V3000-0070) & 1 & \$8{,}240 & \$8{,}240 & East Coast Induction (USA) & --- \\
+GEN-2 & Power Controller C-V3 Plus (V3000-0414) & 1 & \$1{,}670 & \$1{,}670 & East Coast Induction (USA) & --- \\
+GEN-3 & Recirculating water chiller (MIL043008 air-cooled closed-loop, V1650-0060) & 1 & \$1{,}575 & \$1{,}575 & East Coast Induction (USA) & --- \\
+GEN-4 & Heating head + 3\,m cable and water lines (PWH-13-12-30/50, V3000-0300); 1 coil made to spec at no charge with a complete unit & 1 & \$3{,}337 & \$3{,}337 & East Coast Induction (USA) & copper \\
+GEN-5 & Line auto-transformer, 12\,kVA / 3PH / 480$\times$380\,V with taps (V049-0508; facility-dependent) & 1 & \$1{,}665 & \$1{,}665 & East Coast Induction (USA) & --- \\
 RETRO-1 & LabVIEW-compatible DAQ with analog out + in (e.g. NI USB-6001/6009-class, 0--5\,V AO) \todo{confirm exact model} & 1 & \todo{} & \todo{} & National Instruments & --- \\
-RETRO-2 & Dual-wavelength ratio pyrometer (LumaSense IMPAC ISR 6, 800--2500\,\celsius) & 1 & \$241 (used) & \$241 & eBay / OEM & --- \\
+RETRO-2 & Dual-wavelength ratio pyrometer (LumaSense IMPAC ISR 6, 800--2500\,\celsius) & 1 & \$241 (used) & \$241 & eBay --- used (new list $\sim$\$5{,}500, LumaSense quote 00161403) & --- \\
 RETRO-3 & 24\,V linear power supply for pyrometer (International Power) & 1 & \$51 & \$51 & Mouser & --- \\
 RETRO-4 & Voltage-to-current (0--5\,V $\rightarrow$ 4--20\,mA) loop conditioner for the generator power-setpoint input & 1 & \todo{} & \todo{} & \todo{signal-conditioning vendor} & --- \\
 RETRO-5 & Edwards T-Station 85 turbo-molecular pump + gauge & 1 & \todo{} & \todo{} & Edwards & --- \\
-RETRO-6 & Edwards TAV5 vent valve & 1 & \$59 & \$59 & eBay & --- \\
+RETRO-6 & Edwards TAV5 vent valve & 1 & \$59 (used) & \$59 & eBay --- used (price from purchase record; verify current listing or use a vacuum-supply quote) & --- \\
 RETRO-7 & Inert-gas regulator (Fisher FS-50) & 1 & \$38 & \$38 & Fisher Scientific & --- \\
 RETRO-8 & KF40 overpressure centering ring & 1 & \$19 & \$19 & IdealVac & aluminum \\
 RETRO-9 & KF40 plastic quick vacuum clamp & 1 & \$23 & \$23 & IdealVac & polymer \\
-RETRO-10 & Optical window, quartz disc 55\,mm $\times$ 1.5\,mm (1 used; buy 3 for spares) & 3 & \$18 & \$54 & \todo{verify vendor --- custom quartz disc} & fused quartz \\
-RETRO-11 & Ultra-high-temperature quartz disc 2\,in $\times$ 1/16\,in & 1 & \$19 & \$19 & McMaster-Carr & fused quartz \\
+RETRO-10 & Optical window, custom quartz disc 55\,mm $\times$ 1.5\,mm (1 used; buy 3 for spares) & 3 & \$18 (est.) & \$54 & Custom-cut metric disc --- vendor not recorded in parts list; price approximate (McMaster stocks only imperial sizes) & fused quartz \\
+RETRO-11 & Ultra-high-temperature quartz disc 2\,in $\times$ 1/16\,in (McMaster 1357T12) & 1 & \$19 & \$19 & McMaster-Carr & fused quartz \\
 RETRO-12 & Inert-gas plumbing (BSPT/KF adapters, barbs, tee, 10\,psi relief valve McMaster 4772K4) & 1 set & see parts list & $\sim$\$66 & McMaster-Carr / BMotionTech & brass / steel \\
 CONS-1 & Quartz tube, 4\,ft $\times$ 35\,mm ID, cut to length & 2 & \$67 & \$134 & QSI Quartz & fused quartz \\
 CONS-2 & Graphite stock for machined crucible/susceptor (56L-3, 3000\,\celsius, 1$\times$6$\times$6\,in) & 1 & \$99 & \$99 & Cotronics & graphite \\
@@ -389,9 +431,10 @@ CONS-6 & Torr-Seal high-vacuum epoxy / O-rings & 1 set & \$57 & \$57 & Varian / 
 \end{tabularx}
 \end{table*}
 
-\todo{confirm GEN-1/2/3, RETRO-1/4/5 pricing, the exact NI DAQ model, and the
-V$\rightarrow$I loop-conditioner model; the GEN line items dominate total cost and
-must be filled from the East Coast Induction quote before submission.}
+\todo{confirm RETRO-1/4/5 pricing, the exact NI DAQ model, and the
+V$\rightarrow$I loop-conditioner model. GEN line items are filled from East Coast
+Induction quote 210203AP (3 Feb 2021; generator + heating head + controller + chiller
++ line transformer total \$16{,}487).}
 
 %==============================================================
 \section{Build instructions}
@@ -457,8 +500,7 @@ graphite crucible, insert into the quartz tube, and clamp the KF40 flange
 finger-tight with the O-ring.
 \item \textbf{Pump down.} Close the vent valve, start the roughing/turbo pumps, and
 wait for high vacuum ($\sim$1$\times$10$^{-6}$\,Torr or better).
-\item \textbf{Cooling water.} Open the facility cooling-water valve ($\sim$45\degree,
-half open) and the generator chiller; check for leaks and confirm flow before
+\item \textbf{Cooling water.} Check for leaks and confirm flow before
 applying RF power.
 \end{enumerate}
 
@@ -508,10 +550,28 @@ experiments, every comparison is restricted to an internally consistent subset
 power$\rightarrow$temperature relation is reported as an \emph{operational}
 calibration for one fixed geometry, not as a universal transfer function.
 
-\paragraph{System overview (lead figure, planned).} A labeled photograph/composite of generator,
-controller, chiller, coil, quartz chamber, pyrometer line-of-sight, vacuum station,
-and control computer (candidate hardware photographs in
-\texttt{paper/extracted-context/figures/}).
+\paragraph{System overview (Fig.~\ref{fig:overview}).} Figure~\ref{fig:overview} is a
+labeled schematic of the full system --- recirculating water chiller, induction
+generator, heating head, water-cooled work coil, quartz-tube vacuum chamber with
+optical quartz disc, pyrometer holder/pyrometer line-of-sight, pressure sensor,
+bellows, and the Edwards T-Station~85 turbo-molecular pump on the bolted support
+stand, with the DAQ/control laptop closing the loop. (Hardware photographs are
+collected in \texttt{paper/extracted-context/figures/}; a labeled composite
+photograph will replace this schematic on final submission.)
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\linewidth]{fig_system_overview.png}
+\caption{System overview of the computer-controlled, vacuum-integrated induction
+annealing system: recirculating water chiller and induction generator drive a
+water-cooled heating head/work coil around a quartz-tube vacuum chamber; a
+dual-wavelength pyrometer sights the charge through a quartz optical disc; an Edwards
+T-Station~85 turbo-molecular pump (with pressure gauge and bellows) evacuates the
+chamber; and a DAQ/laptop sets generator power and reads the pyrometer for
+closed-loop control. Rendered from the editable source schematic
+\texttt{docs/induction-furnace-schematic.pptx}.}
+\label{fig:overview}
+\end{figure}
 
 \paragraph{Power-command $\rightarrow$ temperature calibration
 (Fig.~\ref{fig:calibration}).} For one fixed Ni4N5/quartz/graphite/optical
@@ -778,9 +838,11 @@ Kevin Cole. \todo{funding sources.}
 \paragraph{Declaration of competing interests} \todo{} --- provisional: the authors
 declare no competing interests.
 
-\paragraph{Data availability} design files, logs, and extracted context are in this
-repository (\texttt{vertical-cloud-lab/custom-induction-furnace}); a permanent DOI
-will be minted (Zenodo) before submission and listed in the specifications table.
+\paragraph{Data availability} design files, logs, and extracted context are in the
+development repository (\texttt{vertical-cloud-lab/custom-induction-furnace},
+\url{https://github.com/vertical-cloud-lab/custom-induction-furnace}); an archival
+snapshot is deposited at Zenodo,
+\href{https://doi.org/10.5281/zenodo.20878017}{https://doi.org/10.5281/zenodo.20878017}.
 
 %==============================================================
 % References

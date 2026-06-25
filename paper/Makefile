@@ -23,6 +23,7 @@ all: pdf
 figures:
 	python3 build_validation_figures.py
 	python3 build_characterization_crossref.py
+	python3 build_schematic_figures.py
 
 pdf: paper.pdf
 paper.pdf: $(SRC) template/elsarticle.cls references.bib
