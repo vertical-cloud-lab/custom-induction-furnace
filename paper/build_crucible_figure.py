@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Compose the custom-machined graphite crucible/susceptor photo panel.
 
-The two source photographs live under ``docs/graphite-crucible/`` (lab photos of
+The four source photographs live under ``docs/graphite-crucible/`` (lab photos of
 the in-house machined two-piece graphite crucible, contributed on the PR). This
-script lays them out as a labelled two-panel figure (a)/(b) and writes the
+script lays them out as a labelled four-panel figure (a)--(d) and writes the
 canonical ``fig_crucible.png`` into ``paper/figures/`` so the manuscript uses an
 *actual* figure rather than a placeholder.
 
@@ -30,10 +30,13 @@ FIGURES = os.path.join(REPO_ROOT, "paper", "figures")
 
 DPI = 300  # HardwareX requires >=300 dpi raster figures.
 
-# (filename relative to SRC_DIR, panel sub-caption label).
+# (filename relative to SRC_DIR, panel sub-caption label). Ordered as a
+# disassembled -> nested -> assembled (oblique) -> assembled (top) narrative.
 PANELS = [
     ("crucible_disassembled.jpg", "(a)"),
-    ("crucible_assembled.jpg", "(b)"),
+    ("crucible_stacked.jpg", "(b)"),
+    ("crucible_assembled_oblique.jpg", "(c)"),
+    ("crucible_assembled.jpg", "(d)"),
 ]
 
 
@@ -46,8 +49,8 @@ def main() -> int:
             return 1
         images.append((Image.open(path), label))
 
-    fig, axes = plt.subplots(1, len(images), figsize=(7.0, 3.0))
-    for ax, (img, label) in zip(axes, images):
+    fig, axes = plt.subplots(2, 2, figsize=(7.0, 5.6))
+    for ax, (img, label) in zip(axes.flat, images):
         ax.imshow(img)
         ax.axis("off")
         ax.text(
@@ -57,7 +60,8 @@ def main() -> int:
             bbox=dict(boxstyle="round,pad=0.2", fc="black", ec="none", alpha=0.6),
         )
 
-    fig.subplots_adjust(left=0.01, right=0.99, top=0.99, bottom=0.01, wspace=0.03)
+    fig.subplots_adjust(left=0.01, right=0.99, top=0.99, bottom=0.01,
+                        wspace=0.03, hspace=0.03)
     os.makedirs(FIGURES, exist_ok=True)
     out = os.path.join(FIGURES, "fig_crucible.png")
     fig.savefig(out, dpi=DPI, bbox_inches="tight", pad_inches=0.02)
