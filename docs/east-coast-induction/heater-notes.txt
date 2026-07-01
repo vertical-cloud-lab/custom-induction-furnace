@@ -1,0 +1,30 @@
+These are 380 V (European), 400 V 3 phase as actual line voltage, then 
+
+380 +- 20%, if it's 480 V. autotransformer specd for 12 kW
+
+6 kW unit. pic was for 
+controller wasn't in the picture
+
+Coil comes with the head. coupling efficiency, bringing it to temperature quickly and peak temperature
+
+Send Elliot a PO.
+
+6 kW unit chiller
+
+rs232
+
+6kW CEIA, cooling system, figure out our actual line 
+generator
+head
+chiller
+if necessary, transformer
+
+RFQ
+
+controller is the only one with 4-20 mA input, etc.
+
+you can set the debounce relay time
+
+inside diameter of coil somewhat larger. 
+
+fibrax, something like that. high-T insulator

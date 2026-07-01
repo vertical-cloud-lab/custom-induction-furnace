@@ -1,0 +1,8 @@
+# Define the number of dimensions we are working on
+dim = 2
+
+# Define the image coordinates
+im_0.JPG; ; (0.0, 0.0)
+im_1.JPG; ; (0.0, 0.0)
+im_2.JPG; ; (0.0, 0.0)
+im_3.JPG; ; (0.0, 0.0)

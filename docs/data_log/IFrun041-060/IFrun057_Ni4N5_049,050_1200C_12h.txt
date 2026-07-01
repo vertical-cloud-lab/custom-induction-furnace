@@ -1,0 +1,13 @@
+crucible -> Al2O3 plate -> Ni4N5_049 -> Al2O3 plate -> Ni4N5_050 -> Al2O3 plate -> stub & window
+
+Letting it purge for a few minutes with ball valve open. Also, I'm down to ~300 psi so I should request a new argon tank.
+purge start: 2020-02-28 ~12:03 pm
+pumping: 12:07 pm
+backfill: 1:15 pm
+switch to 20 sccm: 1:17 pm
+
+There was an issue with the furnace. Apparently it started struggling to keep up the current at about 1:30 pm, and did it's automatic shut-off at about 2:00 pm.
+
+Some weird stuff was going on with the flow-rate. Lots of wide oscillations from zero to max. Possibly related to the fan being too close to the coil stand and the induction furnace being double grounded in some sense? Thought I might have heard some buzzing that stopped when I moved the fan further away. I'm so confused.
+
+Also changed the derivative time from 1 to 0.2. This may have been affecting the temperature. That was a big mess. 

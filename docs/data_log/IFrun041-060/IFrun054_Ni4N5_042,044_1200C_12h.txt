@@ -1,0 +1,23 @@
+Trying two samples at once. Ni4N5_042 is on bottom, Ni4N5_044 is on the top, and both samples have s1 facing up, where s1 is the orientation where the big triangular cut is on the top-right, and the small triangular cut is on the top-left. Accidentally made a weird cut a bit too far into Ni4N5_043 (was trying to make a square cut) which is why I decided not to use that one anymore and also why I went with a large and small triangular cut instead. From bottom to top: Al2O3 plate -> Ni4N5_042 -> Al2O3 plate -> Ni4N5_044 -> Al2O3 powder -> crucible lid w/ sapphire window. Situated the middle of the crucible approximately halfway up the height of the coils. 
+
+3 backfills from high-vac followed by purge flow. Next time will probably try 20 sccm. Also might try higher temperature and same time and/or higher temperature and less time later on.
+
+I think this is 3 backfills, but I may have lost count. It might be 2, but probably 3.
+
+In the middle of the run, adjusted it so that the crucible sits below the coils. Definitely is requiring a higher power to maintain the same temperature reading. ~0.8 instead of ~0.6. Also had a pretty sharp drop in the temperature around the time I adjusted it.
+
+Using:
+P: 1.00
+I: 0.5
+D: 0.1
+
+from 5:52 pm on (200225)
+
+There still seems to be somewhat of a disparity between the plug and the crucible. Maybe I should lower the sample even more. It may be an issue of heat insulation as well.
+
+Another steep drop in temperature from lowering the sample relative to the coils even further. The disparity in color between the plug and the crucible seems to be significantly less. Where the sapphire window is, it almost seems to be cooler. Perhaps an optimal configuration could be having a hole in the plug, and having an alumina plate that the plug goes up against. Possibly with or without the sapphire window.
+
+200226
+Bent Ni4N5_002 a little bit, might affect the exposed area grains later on, so wanted to make a note of it here.
+
+Both samples have minimal oxidation and neither of the samples melted. I think that having it lower to promote a more even heating across the crucible was a good idea. Still not exactly sure what temperature things are getting annealed at. I'm also running low on gas, and will want to order some more through Kevin. Thinking about checking to see if a higher purity option is available in a smaller size - potentially less storage cost and less overall cost for the gas. This of course would be assuming a 20 sccm flow-rate or similar which I still need to test.

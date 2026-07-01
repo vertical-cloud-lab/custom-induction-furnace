@@ -1,0 +1,3 @@
+gain: 621
+exposure: 10 ms
+Dynamic background subtract on

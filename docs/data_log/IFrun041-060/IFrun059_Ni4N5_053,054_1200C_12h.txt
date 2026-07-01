@@ -1,0 +1,21 @@
+5 min US clean in ethanol sitting atop PTFE sheet in glass jar.
+
+Going to have the argon switched out soon. Having them put the tank in the corner and I'll switch it out myself at some point. Outlet pressure of 6 psi usually. ~200 psi left in tank.
+
+Switching the turbo start-up pressure from 2 torr to 1 torr.
+
+Pumping starting at 2:37 pm.
+Backfilling at 5:16 pm. Vacuum reached ~2E-5 torr.
+
+MFC started: 5:19 pm
+Ball valve closed: 5:19 pm
+
+Seeing if doing the US clean will decrease the amount of oxidation. It may be more related to the flow-rate and how well the graphite crucible is sealed. If it's the flow-rate, I can consider doing tests at the purge rate again, but I would want to get it set up so I can do an auto-shutoff of the purge, which wasn't working because of a ground issue with one of the DAQ modules.
+
+I could of course re-do the graphite crucible. I'm thinking it may really be worth it to get a second pyrometer and measure the temperature from the bottom. Not doing so may dramatically preclude the possibility of doing a composite study on the effect of furnace parameters on how accurate the through-thickness linear interpolation is. Maybe I don't have time to do that study, or maybe if I have extra time at the end, then I can do that sort of study as an add-on. One of those "fills the volume available" principles might come into play though, where there's not enough time because it got left to the end instead of being done in sequence.
+
+In total it would probably only add a few more hundred dollars for a much better understanding of the thermal gradient and the actual temperature of the samples. It would provide a nice "upper limit" criteria, where that reading should not reach some critical temperature below the melting point. It would also provide the functionality needed to run reducing environments followed by Pd thermal evaporation experiments.
+
+I should be thinking of how to get the permeation experiments running quickly, though. I could order some 25 um thick nickel as well as some more 100 um thick nickel and test multiple thicknesses, as I think would be fairly important to do. It's seeming more and more like the permeation experiments will still be the limiting factor.
+
+It seems that the oxidation is still present after the run (I haven't actually checked if it's oxidation, but it looks like faint traces around the GBs. The argon gas hasn't come yet, so it may be worth it to ask Kevin about switching that to forming gas (5% H2, 95% Ar) instead of pure argon, to give a slightly reducing atmosphere to get rid of oxide at the surface.

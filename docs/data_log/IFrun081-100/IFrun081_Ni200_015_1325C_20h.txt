@@ -1,0 +1,6 @@
+Some purging before high vac. No roughing. Time step changed from 10 s to 1 s. PID controls same as IFrun080: 1 : 0.2 : 0.1
+With the z position of the crucible, the center plug looks a bit cooler than the edges. Might want to move it down for later runs.
+
+Also note that the pyrometer is out of focus. Would need to check back to previous runs to see if it's under- or over-focused.
+
+With a timestep of 1 s, the dither seems to be a lot better (+/- ~5 deg C).

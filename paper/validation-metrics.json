@@ -1,0 +1,132 @@
+{
+  "band_C": 15.0,
+  "calibration": {
+    "runs": [
+      "IFrun039_Ni4N5_026_1200C_6h",
+      "IFrun040_Ni4N5_027_1250C_6h",
+      "IFrun038_Ni4N5_025_1300C_1h",
+      "IFrun032_Ni4N5_022_1400C_10min"
+    ],
+    "fit": {
+      "slope": 632.4,
+      "intercept": 931.4,
+      "r2": 0.991,
+      "n": 4
+    },
+    "points": {
+      "IFrun039_Ni4N5_026_1200C_6h": {
+        "setpoint_C": 1200.0,
+        "soak_mean_C": 1200.36,
+        "soak_sd_C": 3.97,
+        "soak_mean_power_mA": 0.4399,
+        "power_sd_mA": 0.0055,
+        "max_dev_C": 15.0,
+        "drift_C_per_h": 0.071,
+        "rise_time_s": 2722.0,
+        "overshoot_C": 19.0,
+        "soak_minutes_in_band": 361.8
+      },
+      "IFrun040_Ni4N5_027_1250C_6h": {
+        "setpoint_C": 1250.0,
+        "soak_mean_C": 1249.99,
+        "soak_sd_C": 2.43,
+        "soak_mean_power_mA": 0.4888,
+        "power_sd_mA": 0.0058,
+        "max_dev_C": 15.0,
+        "drift_C_per_h": 0.0438,
+        "rise_time_s": 1202.0,
+        "overshoot_C": 11.0,
+        "soak_minutes_in_band": 278.3
+      },
+      "IFrun038_Ni4N5_025_1300C_1h": {
+        "setpoint_C": 1300.0,
+        "soak_mean_C": 1299.38,
+        "soak_sd_C": 4.38,
+        "soak_mean_power_mA": 0.5784,
+        "power_sd_mA": 0.0258,
+        "max_dev_C": 15.0,
+        "drift_C_per_h": 6.5449,
+        "rise_time_s": 1134.0,
+        "overshoot_C": 11.0,
+        "soak_minutes_in_band": 7.2
+      },
+      "IFrun032_Ni4N5_022_1400C_10min": {
+        "setpoint_C": 1400.0,
+        "soak_mean_C": 1399.38,
+        "soak_sd_C": 4.21,
+        "soak_mean_power_mA": 0.7441,
+        "power_sd_mA": 0.0331,
+        "max_dev_C": 15.0,
+        "drift_C_per_h": 7.9271,
+        "rise_time_s": 1348.0,
+        "overshoot_C": 59.0,
+        "soak_minutes_in_band": 11.3
+      }
+    }
+  },
+  "representative": {
+    "run": "IFrun079_Ni4N5_084_1300C_12h",
+    "metrics": {
+      "setpoint_C": 1300.0,
+      "soak_mean_C": 1302.08,
+      "soak_sd_C": 3.02,
+      "soak_mean_power_mA": 1.6139,
+      "power_sd_mA": 0.0515,
+      "max_dev_C": 15.0,
+      "drift_C_per_h": -0.0213,
+      "rise_time_s": 1135.0,
+      "overshoot_C": 12.0,
+      "soak_minutes_in_band": 721.0
+    }
+  },
+  "repeatability": {
+    "runs": [
+      "IFrun052_Ni4N5_040_1200C_12h",
+      "IFrun054_Ni4N5_042,044_1200C_12h",
+      "IFrun055_Ni4N5_045,046_1200C_12h",
+      "IFrun056_Ni4N5_047,048_1200C_12h",
+      "IFrun057_Ni4N5_049,050_1200C_12h",
+      "IFrun058_Ni4N5_051,052_1200C_12h",
+      "IFrun059_Ni4N5_053,054_1200C_12h",
+      "IFrun060_Ni4N5_056,057_1200C_12h"
+    ],
+    "stats": {
+      "n": 8,
+      "soak_mean_C": 1201.2,
+      "soak_sd_C": 1.32,
+      "soak_min_C": 1199.8,
+      "soak_max_C": 1204.2,
+      "cv_pct": 0.11,
+      "peak_mean_C": 1212.59,
+      "peak_sd_C": 6.74,
+      "duration_mean_min": 766.2,
+      "duration_sd_min": 15.3
+    }
+  },
+  "long_soak": {
+    "IFrun081_Ni200_015_1325C_20h": {
+      "setpoint_C": 1325.0,
+      "soak_mean_C": 1326.49,
+      "soak_sd_C": 1.49,
+      "soak_mean_power_mA": 1.0536,
+      "power_sd_mA": 0.0192,
+      "max_dev_C": 15.0,
+      "drift_C_per_h": -0.0039,
+      "rise_time_s": 1130.0,
+      "overshoot_C": 9.0,
+      "soak_minutes_in_band": 1198.1
+    },
+    "IFrun080_Ni200_017_1325C_40h": {
+      "setpoint_C": 1325.0,
+      "soak_mean_C": 1328.71,
+      "soak_sd_C": 7.13,
+      "soak_mean_power_mA": 1.1039,
+      "power_sd_mA": 0.0504,
+      "max_dev_C": 15.0,
+      "drift_C_per_h": -0.0999,
+      "rise_time_s": 2500.0,
+      "overshoot_C": 25.0,
+      "soak_minutes_in_band": 2401.2
+    }
+  }
+}

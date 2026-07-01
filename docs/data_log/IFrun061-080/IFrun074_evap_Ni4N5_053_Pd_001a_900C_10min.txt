@@ -1,0 +1,10 @@
+Trying my first Pd evap test.
+
+Roughing backfill, then high vac. ~7E-5 torr when starting up test.
+
+dt = 1 s
+PID = 1, 0.04, 0.02
+~20 min to ramp to 1 mA
+
+
+Ni4N5_053 heated faster than the crucible. Going to raise the sample relative to the coils. At this point, Ni4N5_053 was situated near the top of the coils. I guess that makes sense.

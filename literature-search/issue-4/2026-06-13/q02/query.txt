@@ -1,0 +1,1 @@
+Review literature on emissivity and pyrometry uncertainty during induction heating/annealing of metallic samples (especially steel and nickel alloys). Summarize calibration/correction methods and provide references with bibtex.

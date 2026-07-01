@@ -1,0 +1,17 @@
+There seems to be about a 10 um difference in height from the top-left corner to the bottom-right corner of a ~2 mm x 2 mm square.. It will be pretty difficult to get a scan over the whole area if I can't get down to about a 1-2 um difference. I may be able to get away with the 50x objective, but there was that waviness at the grain boundaries. That waviness wasn't there for the 100x. I believe the top-left corner was higher than the bottom-right corner. It also didn't really seem like the vacuum was doing much.
+
+Using the 3 point stage:
+bottom-left: 11666.06 um
+top-right: 11666.53 um
+top-left: 11667.09 um
+
+I should plan on using this while the sample is taped to a silicon wafer. The wafer had a very uniform thickness when I checked it with a micrometer. Basically sub-micron accurate (or within tolerance of micrometer).
+
+
+Now at 100x
+top-left: 11678.49 um
+bottom-right: 11680.92 um
+
+So still pretty good. Probably manageable. (i.e. ~2.5 um difference).
+
+I should probably engage the vacuum next time as well.

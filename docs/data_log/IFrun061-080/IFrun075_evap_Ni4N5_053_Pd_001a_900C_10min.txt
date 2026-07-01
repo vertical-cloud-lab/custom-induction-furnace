@@ -1,0 +1,7 @@
+A follow-up to IFrun074.
+
+The sample is a few cm at least above the coils.
+
+The bottom of the crucible definitely seems hot enough to be registering on the pyrometer, but it's still not showing. This means I probably do need to take the temperature measurement from below if I want to use anything besides a pre-determined power control value.
+
+Faint circular trace noticeable on part of Ni4N5_053. No noticable difference in the Pd sample and didn't seem like there was noticable deposit on the walls of the alumina tube either.

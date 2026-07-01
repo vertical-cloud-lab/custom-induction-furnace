@@ -1,0 +1,1 @@
+pretty sure that sideA is the one with Au/Pd coating (80/20).

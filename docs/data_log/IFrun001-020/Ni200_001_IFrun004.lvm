@@ -1,0 +1,30 @@
+LabVIEW Measurement	
+Writer_Version	2
+Reader_Version	2
+Separator	Tab
+Decimal_Separator	.
+Multi_Headings	Yes
+X_Columns	No
+Time_Pref	Relative
+Operator	DAQ9
+Date	2019/11/15
+Time	02:48:40.9156751632690429688
+***End_of_Header***	
+	
+Channels	2		
+Samples	7	7	
+Date	2019/11/15	2019/11/15	
+Time	02:48:40.9156751632690429688	02:48:40.9156751632690429688	
+X_Dimension	Time	Time	
+X0	0.0000000000000000E+0	0.0000000000000000E+0	
+Delta_X	1.000000	1.000000	
+***End_of_Header***			
+X_Value	X Array	Y Array	Comment
+	0.000000	0.000000
+	5.000000	0.000000
+	10.000000	0.100000
+	1810.000000	0.180000
+	3600.000000	0.180000
+	5200.000000	0.100000
+	5201.000000	0.000000
+
