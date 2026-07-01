@@ -58,9 +58,12 @@ GREY = "#404040"
 CROPS = [
     (0, "01_alumina", (0.02, 0.16, 0.49, 0.71)),
     (1, "02_sapphire", (0.15, 0.12, 0.42, 0.67)),
-    (2, "03_body_top", (0.0, 0.15, 0.45, 0.75)),
+    (2, "03_body_top", (0.0, 0.0, 0.45, 0.73)),
     (3, "04_body_bottom", (0.03, 0.16, 0.59, 0.78)),
-    (4, "05_lid_oblique", (0.01, 0.21, 0.41, 0.80)),
+    # The updated deck carries two dimensioned photos for the lid oblique view ---
+    # diameters (teal/orange) on top and heights (yellow/green) below --- so crop
+    # the full left column to show both sets of colour-matched call-outs.
+    (4, "05_lid_oblique", (0.0, 0.0, 0.42, 1.0)),
     (5, "06_lid_top", (0.50, 0.0, 0.91, 1.0)),
     (6, "07_lid_bottom", (0.0, 0.12, 0.37, 0.66)),
 ]
@@ -70,13 +73,15 @@ PANELS = [
     ("01_alumina", "(a)", "Alumina disc",
      [("14 mm dia.", GREY)]),
     ("02_sapphire", "(b)", "Sapphire window",
-     [("9.5 mm dia.", GREY)]),
+     [("9.5 mm dia.", GREY), ("0.5 mm thick", GREY)]),
     ("03_body_top", "(c)", "Crucible body, top",
-     [("inner 14.55 mm", TEAL), ("outer 20.30 mm", ORANGE)]),
+     [("inner 14.55 mm", TEAL), ("outer 20.30 mm", ORANGE),
+      ("6.5 mm tall", GREY), ("2 mm base", GREY)]),
     ("04_body_bottom", "(d)", "Crucible body, bottom",
      [("20.30 mm dia.", GREY)]),
     ("05_lid_oblique", "(e)", "Crucible lid, oblique",
-     [("upper 13.70 mm", TEAL), ("lower 14.55 mm", ORANGE)]),
+     [("upper 13.70 mm", TEAL), ("lower 14.55 mm", ORANGE),
+      ("H1 4 mm", YELLOW), ("H2 6 mm", GREEN)]),
     ("06_lid_top", "(f)", "Crucible lid, top",
      [("outer 13.70 mm", YELLOW), ("2nd 9.75 mm", TEAL),
       ("3rd 5 mm", RED), ("bore 3.5 mm", GREEN)]),
