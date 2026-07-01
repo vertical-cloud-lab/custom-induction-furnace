@@ -26,6 +26,7 @@ figures:
 	python3 build_schematic_figures.py
 	python3 build_crucible_figure.py
 	python3 build_crucible_dimensions_figure.py
+	python3 build_crucible_assembly_figure.py
 
 pdf: paper.pdf
 paper.pdf: $(SRC) template/elsarticle.cls references.bib
