@@ -1,0 +1,1373 @@
+Author Instructions - AIP Publishing LLC
+AIP Publishing LLC
+pubs.aip.org
+AIP
+AIP China
+Resources
+Find Your Breakthrough
+Get first-hand expertise and insights for every step of your publishing journey.
+Visit blog
+Resources
+Researchers
+Librarians
+Publishing Partners
+Topical Portfolios
+Commercial Partners
+Find Your Breakthrough
+Publications
+Find the Right Journal
+Explore the AIP Publishing collection by title, topic, impact, citations, and more.
+Browse Journals
+Latest Content
+Read about the newest discoveries and developments in the physical sciences.
+See What's New
+Publications
+Journals
+Books
+Physics Today
+AIP Conference Proceedings
+Scilight
+Find the Right Journal
+Latest Content
+About
+About Us
+News and Announcements
+Careers
+Events
+Leadership
+Contact
+pubs.aip.org
+AIP
+AIP China
+Researcher Resources
+Author Instructions
+Author Instructions
+Table of Contents
+Preparing Your Manuscript
+Acceptable File Formats
+Microsoft Word Users
+LaTeX Users
+Format Needed for Initial Submissions
+English-Language Editing
+General Manuscript Guidelines
+Essentials
+Formatting
+Preparing Your Author Declaration Section
+Preparing Your Data Availability Statement
+Using Supplementary Material in Your Manuscript
+Using Multimedia in Your Manuscript
+Preparing Your Graphics
+Providing Alt Text
+Guidelines for Using Native Name Characters
+Additional Journal Specific Instructions
+AIP Advances: MMM Articles
+Applied Physics Letters (APL)
+APL Bioengineering (APB)
+APL Computational Physics (ACO)
+APL Electronic Devices (AED)
+APL Energy (APE)
+APL Engineering Physics (AEP)
+APL Machine Learning (AML)
+APL Materials (APM)
+APL Quantum (APQ)
+AVS Quantum Science (AQS)
+Applied Physics Reviews (APR)
+APL Photonics (APP)
+Biomicrofluidics (BMF)
+Biophysics Reviews (BPR)
+Chaos (CHA)
+Chemical Physics Reviews (CPR)
+International Journal of Fluid Engineering (IJFE)
+The Journal of Chemical Physics (JCP)
+Journal of Laser Applications (JLA)
+The Journal of Mathematical Physics (JMP)
+Journal of Physical and Chemical Reference Data (JPCRD)
+Journal of Rheology (JOR)
+Matter and Radiation at Extremes (MRE)
+MechanoEngineering (MEG)
+Nanotechnology and Precision Engineering (NPE)
+Physics of Fluids (POF)
+Physics of Plasmas (POP)
+The Journal of Renewable and Sustainable Energy (JRSE)
+Review of Scientific Instruments (RSI)
+Structural Dynamics (SDY)
+Preparing Your Manuscript
+These are general guidelines for preparing your paper for submission. There are also journal-specific requirements given below.
+Acceptable File Formats
+Please use either Microsoft Word® or LaTeX.
+Microsoft Word Users
+Equations
+– Use the built-in Microsoft® Equation Editor of Mathtype to insert math, since it needs to be editable.
+If using Mathtype, check the system requirements
+here
+.
+Windows users, please embed all fonts.
+Mac users, save all files in “DOCX” format. Use fonts available from basic installation.
+Tables
+– Use Word’s “Insert Table” function for proper typesetting.
+Figures
+– Follow the information in the
+Preparing Your Graphics
+section.
+LaTeX Users
+Template
+– Use the formatted
+AIP Publishing template
+in Overleaf for best results and full support. Authors submitting to JMP should use this
+template
+in Overleaf.
+Download either the PDF template (best for initial submissions) or the .zip containing the template, which can then be uploaded to the submission system.
+Template Support
+–
+Support with using the
+AIP Publishing template
+is provided by
+Overleaf
+.
+If you did not use the template and are experiencing LaTeX issues, upload your project into
+AIP Publishing template
+in Overleaf for support.
+If you use are not using the template, you can seek support from community-help based forums, i.e.,
+tex.stackexchange.com
+or
+http://latex.org/forum/
+.
+Figures
+– Follow the information in the
+Preparing Your Graphics
+section.
+Alt text
+– Follow the information in the
+Including Alt Text with Your Manuscript
+section.
+Format Needed for Initial Submissions
+Submit a single, compiled manuscript pdf.
+If you have supplementary material (SM), please include it as a separate SM pdf.
+English-Language Editing
+To improve the quality of your written English so editors, reviewers, and readers can fully understand your research, AIP Publishing recommends that authors use
+AIP Author Services
+.
+Using this service is not a requirement or a guarantee of acceptance for review or publication.
+General Manuscript Guidelines
+These are the general guidelines for the AIP Publishing journals. If you are submitting to ADV- MMM, AML, APL, APB, APM, APP, APR, AQS, BPR, BMF, BPR, CHA, CPR, JCP, JPCRD, POF, POP, RSE, RSI, or SDY, there are additional requirements that apply to each journal. Please read the section “Specific Journal Guidelines” below after reading this section.
+Essentials
+The manuscript needs to be in good, scientific, American English.
+Your motivation for the research presented, central results, and conclusion should be stated in nontechnical language for a broad audience.
+Authors should present their names in the same way across publications.
+Your abstract should not contain displayed equations, footnotes, references, graphics, or tables. It should be one paragraph of 250 words providing a summary of the new information, results of general interest, and conclusions.
+Manuscripts must be presented in an accessible format, see instructions for
+details
+.
+Formatting
+Manuscript Order
+Your manuscript should be arranged in the following order: Title, author(s), affiliation(s), abstract, text, conclusion, supplementary material section, acknowledgments, author declarations section (conflict of interest, ethics approval, and author contributions), data availability statement, appendixes (if any), and references.
+All pages should be numbered consecutively.
+Name Formatting and Indexing Notice
+We support authors in choosing how their names are displayed, including the use of initials, hyphenation, special characters, and cultural naming conventions.
+However,
+please note:
+Indexing services such as Google Scholar and PubMed rely on complete surnames to correctly associate publications with author profiles. If you abbreviate your surname (e.g., “S” instead of “Singh”), your article may not be correctly linked to your publication history or author record. Authors may choose how their names appear, but we encourage the use of a
+full surname
+to support accurate indexing and discoverability of your work.
+Equations
+Displayed equations should be punctuated, aligned to bring out their structure, and numbered on the right-hand side.
+Multi-line continued equations should have the operator placed at the beginning of the next line.
+Except for scalar products of vectors, use “x” and not a center dot.
+A solidus (/) should be used for built-up fractions in text and in displayed math.
+Math font use should be consistent throughout the paper.
+For complicated exponents, use “exp.”
+Notation needs to be clear and consistent with standard use.
+Footnotes
+Footnotes to the title should be set as a “Note” above affiliation footnotes.
+Footnotes to the affiliations should be labeled as a), b), c), etc.
+Footnotes in text are not permitted. You can either add that information into the text or in the references list.
+Figures
+All figures should be embedded in the text. Follow the information in the
+Preparing Your Graphics
+section.
+Figures should have a caption and be cited in text and numbered consecutively, i.e., 1, 2, 3, etc.
+All figures must include alt text. See instructions for
+details
+.
+Tables
+Tables should be embedded in the text.
+Tables should have a caption and be cited in text and numbered consecutively, i.e., I, II, III, etc.
+Footnotes in tables should be labeled as a), b), c), etc.
+Units should be noted in column headings.
+If using bold font to emphasize table data, include an explanation, i.e., “Boldface denotes…”
+Unaltered computer output cannot be accepted.
+All tables must include alt text. See instructions for
+details
+.
+Appendixes
+A descriptive title should be added to the Appendix heading.
+If you have more than one Appendix in your paper, label them as “Appendix A,” Appendix B,” etc.
+Equations in the Appendixes are numbered according to the Appendix. Equations in a single Appendix, or an appendix labeled “Appendix A,” are numbered as (A1), (A2), etc. Equations in following Appendixes are numbered according to the Appendix label, i.e., (B1), (B2), (C1), (C2), etc.
+The numbering of figures and tables in an Appendix continues the numbering in text.
+References
+All references should be cited within the text.
+Adequate information should be provided on the reference list for the reviewer and readers to access the information.
+References can appear in one of these three formats:
+By number
+– present the names of the authors, the journal, volume, page number(s) and year, as in: 19F. Hernandez, H. Wang, D. Dubrovski, and L. Blum, Appl. Phys. Lett. 121(9), 080401 (2022). (This paper will be listed as the 19th on the reference list. It can be cited in text as Ref. 19, superscript 19, or Hernandez et al.19)
+In alphabetical order
+– according to the first author’s last name, the article title, journal name, volume, first and last page, and year, as in
+Hernandez, F., Wang, H., Dubrovski, D., and Blum, L., “Advances toward a universal fault-tolerant quantum computer,” Appl. Phys. Lett. 121(9), 080401 (2022).
+By number and alphabetical order
+– numbering references on an alphabetical-order reference list and citing them by their number in the text.
+Preparing Your Author Declaration Section
+Conflict of Interest Statement
+– A Conflict of Interest (COI) disclosure statement is required for every article.
+A COI is any personal interest or relationship that may be affected by publishing the submitted manuscript.
+A COI may exist from owning a patent or stock; being a member of a board of directors, advisory board, or committee for a company; receiving speaker or consultancy fees; etc.
+All potential conflicts directly related to the submitted work should be disclosed including any COI from 3 years before the start of the work. For more information about COIs, please see
+AIP Publishing’s COI policy
+and the
+COI form
+provided by the International Committee of Medical Journal Editors
+A COI statement is required even if the authors have no conflicts to report.
+The following chart shows types of COI and the related statement to place in your manuscript after the Acknowledgments section.
+Type of COI
+Sample COI statement to include in your manuscript
+None
+1-The author (authors) has (have) no conflicts to disclose.
+Financial Interests
+1-(Author’s initials or name) reports grant(s) from {name of organization} and speaking fees for {insert name of organization} during the conduct of the study.
+2-(Author’s initials or name) reports personal fees from (name of organization) outside the submitted work.
+3-(Author’s initials or name) is a paid consultant for (name of organization) and owns stock in (name of company).
+Non-financial interests
+1-{Author’s initials or name} is an unpaid member of {name of organization}.
+2-{Author’s initials or name} is on the advisory board of {name of organization}.
+Intellectual Property
+{Author’s initials or name} has Patent {patent number} {pending/issued/licensed}.
+Ethics Approval Statement
+– Any research article that includes experiments using animals or humans needs to contain an ethics approval statement.
+The statement should include the name of the ethics committee, internal review board, an approval ID number, etc.
+For research using human participants, the ethics approval statement should indicate that informed consent was obtained from all participants or why this was not needed.
+Not meeting these requirements or following ethical standards in experiments using animals can result in the rejection of your manuscript
+Additional supporting documents can be uploaded when you submit your manuscript.
+For more guidance on accepted standards for human animal subjects in research, you can consult
+World Medical Association’s Declaration of Helsinki, International Guiding Principles for Biomedical Research Involving Animals, and Guidelines for Animal Research: Reporting of In Vivo Experiments (ARRIVE)
+Author Contributions
+– A list of authors and their specific contributions, known as a CRediT (Contribution Role Taxonomy) Statement, is required for all submissions in accordance with the
+NISO standard
+.
+Please see the
+CRediT portion of our Ethics and Policy page
+for more information and to develop this statement for your paper.
+The Corresponding Author is responsible for providing accurate contribution descriptions for each author listed on the manuscript. They need to ensure that all authors have reviewed, discussed, and agreed to the complete statement.
+CrediT statements will be published as part of the article, in the Author Contributions section in the full text view and pdf/version of record.
+Preparing Your Data Availability Statement
+In accordance with our
+Data Sharing Policy
+, all datasets supporting the conclusion of your paper need to be available to readers.
+The data should include the minimal dataset needed to interpret, replicate, and build upon your findings.
+You can either deposit your datasets in a publicly available repository (where available or appropriate) or you can present them in the manuscript.
+To inform readers of where your data can be found, all manuscripts need to contain a data availability statement.
+Based on the availability of your dataset, select the appropriate data availability statement text from the chart below and include it in your manuscript after the Acknowledgments section.
+AVAILABILITY OF DATA
+AVAILABILITY STATEMENT
+TEMPLATE FOR DATA AVAILABILITY STATEMENT
+Authors have the data
+The data that support the findings of this study are available from the corresponding author upon reasonable request.
+Data available in article or supplementary material
+The data that support the findings of this study are available within the article [and its supplementary material].
+Data openly available in a public repository that issues datasets with DOIs
+The data that support the findings of this study are openly available in [repository name] at http://doi.org/[doi], reference number [reference number].
+Data openly available in a public repository that does not issue DOIs
+The data that support the findings of this study are openly available in [repository name], reference number [reference number].
+Data sharing not applicable – no new data generated
+Data sharing is not applicable to this article as no new data were created or analyzed in this study.
+Data generated at a central, large scale facility
+Raw data were generated at the [facility name] large scale facility. Derived data supporting the findings of this study are available from the corresponding author upon reasonable request.
+Embargo on data due to commercial restrictions
+The data that support the findings will be available in [repository name] at [DOI link] following an embargo from the date of publication to allow for commercialization of research findings.
+Data available on request due to privacy/ethical restrictions
+The data that support the findings of this study are available on request from the corresponding author. The data are not publicly available due [state restrictions such as privacy or ethical restrictions].
+Data subject to third party restrictions
+The data that support the findings of this study are available from [third party]. Restrictions apply to the availability of these data, which were used under license for this study. Data are available from the authors upon reasonable request and with the permission of [third party].
+How to Cite Datasets in References:
+We recommend the following dataset citation format:
+Creator(s): The author names that you have listed
+Publication year: The year when the data was made publicly available
+Title: This should match the upload.
+Publisher: The name of the entity that holds and archives the dataset
+Identifier: DOIs should be displayed as linkable, permanent URLs, including the https://doi.org prefix.
+Example:
+Dataset: J. Smith and M. Ross (2015). “Chemical and mineral compositions of sediments from ODP Site,” Name of repository.
+https://doi.org/12.3456/nameofrepository.78901
+Information about Version and Resource Type can also be included in the reference but is not required: Creator(s) (Publication Year). “Title,” Version, Publisher, Resource Type. Identifier
+Example:
+J. Smith and M. Ross (2015). “Chemical and mineral compositions of sediments from ODP Site,” Name of repository, V. 2.1, Dataset.
+https://doi.org/12.3456/nameofrepository.78901
+Using Supplementary Material in Your Manuscript
+Data tables and/or text that are too long or may be of limited interest to readers can be included as “supplementary material,” which can aid the reviewer and be accessed by readers online after publication.
+If you are uploading supplementary material, please note the following:
+Please create a “Supplementary Material” section in your paper after the Conclusions. Within this section, you can provide a brief description of this information.
+Note that any mention of this information within the body of your paper should use the phrase “supplementary material,” so readers can access it.
+At initial submission, please upload your supplementary material in a pdf (SI.pdf), as it needs to be approved by the Journal Editor as part of the manuscript’s peer review process.
+Please note that all supplementary   materials must be provided with alt text when required. Please see instructions for
+details
+.
+We have partnered with Figshare—a general-purpose repository—to host all supplementary material.
+After your manuscript has been accepted for publication, AIP Publishing will deposit your supplementary material in Figshare on your behalf, where it will be assigned a digital object identifier (DOI) for citation and referencing.
+This increases the discoverability of your materials due to the searchable, user-friendly Figshare platform, which contains analytics and usage data to note the impact and influence of your work.
+This simple process helps you share your supplementary material more broadly without additional effort.
+Additional information can be found
+here
+.
+Using Multimedia in Your Manuscript
+Audio, Video, and 3D rendering are multimedia files you can include in your manuscript. Submit all multimedia files with your initial submission.
+Audio:
+Acceptable file formats include PCM (.pcm), WAV (.wav), AIFF (.aif), and MP3 (.mp3) at 128 KB or greater.
+Video/Animation:
+Acceptable file formats for are mp4, .m4v, .mov, .avi, .wmv, with MP4 files preferred. Animated gifs (.gif) cannot be accepted. For best playability, use the following settings:
+Video codec: H.264
+Chroma subsampling: YUV 4:2:0
+If the video includes audio, use audio codec AAC
+JPEG, HTML, and PDF cannot be accepted as multimedia. These formats should be submitted as supplementary materials instead.
+A representative “still” image, taken from the video, should be placed in the manuscript as a figure, ensuring that the fine lines and details are clear. Acceptable file formats for these still images are JPEG, EPS, and TIFF.
+Treat all multimedia files as figures, numbering them in the order they are referred to in text. Number the static figure and multimedia file the same.
+Add (Multimedia available online) in the figure caption and after the figure citation in text.
+Cite all multimedia within the text, referring to their figure number.
+Keep the file size less than 10 MB, so readers can view them.
+You can provide video as either Supplementary Material or Multimedia files.
+Multimedia metadata:
+If using multimedia files in your manuscript, provide the following:
+Caption/description:
+A caption describing the content of the media object (similar to a figure caption) is required. See instructions for
+details
+.
+Type:
+The type of content, such as video or audio, is desirable (optional).
+Format:
+The format indicates the media file type, such as MOV, MP4, or WAV (optional).
+Preparing Your Graphics
+For both Word and TeX submissions, a separate, author-generated PDF of your manuscript source file is required. To help make the submission process easier and save you time, please include your figure images in this PDF file. (Please do not upload separate figure files.) To include your figures, simply follow the directives below based on your source manuscript file type.
+For Authors Using Word:
+Please insert all figure images into the main body near the figure callout or at the end of the paper.
+For Authors Using TeX:
+Please use the appropriate TeX commands, such as \includegraphics or \includepdf, to incorporate figure images into your manuscript PDF. Ensure that these figure images are sized and formatted precisely as you want them to appear in the final online article. (Please note that your author-generated PDF with figures will be used to override the system-generated PDF.)
+Guidelines
+All fonts should be embedded in your figures.
+Number your figures in the order in which they appear in text.
+Identify all figure parts with (a), (b), etc. Avoid any large size differences of the lettering and labels used within one illustration.
+Submit illustrations in the size and resolution you wish them to appear in print.
+For JMP (one-column journal) The maximum published width of figures is 6.69 inches (17 cm). The maximum depth of figures should be 8 ¼ in. (21.1 cm). Legends or labels within figures should be a minimum of 8-point type size (2.8 mm high; 1/8 in. high). A minimum of 0.5-point width for lines.
+For all other journals: The maximum published width for a one-column figure is 3.37 inches (8.5 cm). The maximum width for a two-column figure is 6.69 inches (17 cm). The maximum depth of figures should be 8 ¼ in. (21.1 cm). Legends or labels within figures should be a minimum of 8-point type size (2.8 mm high; 1/8 in. high). A minimum of 0.5-point width for lines.
+Each graphic should be prepared for 100% reproduction to avoid problems from large reductions in size.
+Ensure that lettering and lines are dark enough and thick enough to reproduce clearly, especially if reduction is necessary. Remember that fine lines tend to disappear upon reduction.
+For figure creation or figure redrawing services, see how we can help at
+https://authorservices.aip.org/services_pricing
+Electronic graphic formats
+Use only these file formats: SVG, EPS, PS, TIFF (.tif), PDF, JPEG (.jpg), and PNG (.png).
+Application files (e.g., Corel Draw, Microsoft Word) are not acceptable. AIP Publishing suggests the use of
+Adobe Illustrator
+(Paid, OS X, Windows) or
+Inkscape
+(Freeware, OS X, Windows, Linux) for creating acceptable illustrations and
+Adobe Photoshop
+(Paid, OS X, Windows) or
+GIMP
+(Freeware, OS X, Windows Linux) for editing acceptable images.
+Label each figure part (a), (b), etc., if applicable.
+When submitting your manuscript, include all illustrations and line art for your paper.
+Set the correct orientation for each graphics file.
+Set the graphic for:
+Line art:
+600 dpi resolution and black/white bitmap, not grayscale.
+Halftones:
+264 dpi and grayscale, not black/white bitmap.
+Combinations (line art and halftone):
+600 dpi for and grayscale, not black/white bitmap.
+Color online:
+300 dpi TIFF, PS, or EPS format. If selecting a file mode, use
+RGB
+(red, green, blue).
+Production-ready PDF graphics
+For accepted manuscripts, a PDF source file for graphics is not preferred. However, properly prepared PDF illustration files may be used in the production process of your accepted manuscript if you follow these guidelines:
+PDF should only be used as the source file for graphics when the preferred formats (PS, EPS, or TIFF) cannot be generated.
+In the PDF graphic, the resolution of any shaded or photographic images needs to be 600 pixels per inch (PPI).
+Within the PDF illustration, resolution of line art with no shading should be 1200 pixels per inch (PPI).
+All fonts need to be embedded in the PDF.
+When creating a PDF through your application’s print command, select “High Quality Print.”
+Highlight Image
+To establish a strong and consistent visual identity for your article, a highlight image is strongly recommended with your revised submission. It can be either a figure from your paper or another image you create that reflects your work. Your highlight image effectively represents your article online.
+This image should measure 8.0139 in. wide X 6.2739 in. high and be a minimum of 300 dpi.
+Acceptable file types for the highlight image are EPS, TIFF, and JPEG.
+Your highlight image will display above your article title in the Table of Contents online.
+If your paper is selected as the cover article, your highlight image may serve as the cover image for the journal issue.
+It should be a visually interesting figure representing your manuscript and must not include third party copyrighted material.
+If you need support in creating your highlight image, you can contact
+AIP Author Services
+for figure formatting or figure creation services.
+NOTE:
+If your article does not contain figures, a highlight image is encouraged but not necessary.
+If your article does contain figures and a highlight image is not provided, then Fig. 1 will be used as the highlight image.
+Color Printing Charges
+As a service to our authors, effective 2 January 2018, illustrations will appear in color in the online journal free of charge and will be reproduced in black and white in the printed journals.To take advantage of this free service, you need to:
+supply color graphics files (.eps, .ps, .tif, or .pdf only),
+submit graphics files in time for utilization during the production process,
+submit only one version of each graphics file,
+ensure that colors chosen will reproduce well when printed in black & white, and
+ensure that descriptions of figures in text will be sufficiently clear for both print and online versions.
+Providing Alt Text
+Alt Text (Alternative Text) and Why Alt Text is Required
+To ensure all published content can be interpreted by assistive technologies such as screen readers, authors are required to provide alt text (alternative text) descriptions for visual content included in their manuscripts.
+Alt text enables readers who cannot see visual elements to understand the scientific information presented in figures, tables, and multimedia. The goal is to give readers using screen readers and other assistive software a quick summary of the visual content rather than a detailed literal description.
+Providing alt text is a requirement for publication. For more detailed information about alt text, please see our
+Alt Text FAQs
+or visit our
+Accessibility
+site.
+Including Alt Text with Your Manuscript
+Upon revision, please submit a separate Word document listing the alt text for every required element. This document can be in a .txt or .docx format.
+This document should be formatted so each element is called out and numbered sequentially, i.e. 1, 2, 3, etc.
+Example:
+Figure 1: [Alt text description]
+Figure 2: [Alt text description]
+Table 1: [Alt text description]
+If your manuscript contains no figures or tables, upload a blank file.
+For supplementary material, please include the alt text under the figure/table captions in the file.
+General Principles for Writing Alt Text
+Be concise
+Aim for one or two simple sentences, about 25-50 words
+Use simple, clear language that can be deciphered by a screen reader
+Remove unnecessary details that do not contribute to the point of the image, such as color, shape, and size
+Select key details
+Focus on important details that illustrate the meaning of your work rather than the appearance of the object
+Summarize the data/information being communicated
+Highlight abnormalities or outliers pertinent to understanding the object’s meaning
+Provide context that explains the scientific process or experiment being illustrated
+Be specific
+Specify what the object is (i.e., a bar graph, scatter plot, flow chart, etc.)
+Use discipline-specific terms that provide context for an informed audience
+Incorporate a few relevant scientific terms from the text to improve searchability and context (without repeating caption or article text verbatim)
+Be objective
+Stick to the facts, focusing on details of immediate importance to the image
+Do not offer opinions or interpretations
+Use unbiased language, avoiding adjectives or descriptions that could be interpreted as subjective or debatable (i.e., say “sunset” instead of “beautiful sunset”)
+Avoid suggestions of emotion or intention
+Common mistakes
+Effective alt text provides clear language for assistive technology systems and avoids cluttering the content with extraneous details. Here are a few things to consider when writing alt text
+Avoid redundancy
+Do not include modifiers such as “image of” or “figure of” at the beginning of alt text (unless it is something specific like “bar graph” or “flowchart”)
+Do not repeat information already given in captions or article text
+Do not repeat blocks of text from the article or captions verbatim
+Avoid overcomplication
+Avoid jargon or overcomplicated language, as this may be difficult for screen readers to interpret
+Avoid complex sentence structures or excessive punctuation
+Do not use alt text as a substitute for a caption or long description
+Exclude unnecessary details
+Exclude details that do not contribute to the overall meaning or immediate interpretation of the image (i.e., color, shape, artistic/stylistic elements)
+Do not repeat text contained in the image itself (summarize or describe the text instead)
+Do not list file names or URLs (describe what it is instead)
+Do not use the space to draw conclusions or present an argument
+General Formatting Guidelines
+Accurate formatting and grammar are crucial when creating alt text and successful alt text is consistent across all media in an article. By following a few formatting guidelines, alt text can be effective for readers and accessible to assistive software. Please keep the following formatting features in mind:
+Maintain consistent style
+Use a consistent writing style and sentence structure across an article/book
+Use capitalization and punctuation correctly and consistently
+End lines with a period to signal the end of the text
+Use plain text
+Prioritize functionality over creativity
+Do not use bullet points or symbols
+Do not use color or unusual fonts
+Avoid using varied or colorful vocabulary
+Object-Specific Guidelines
+Much of the visual content in scientific publishing consists of unique, data-oriented objects. While alt text for these items generally adheres to the guidelines outlined above, these are specific elements to consider:
+Graphs/Charts
+Specify the type (i.e., pie chart, bar graph, etc.)
+Describe the trends being shown
+Do not include details such as color and visual style, unless they are necessary for understanding the graph/chart’s overall meaning
+Schemes/Diagrams
+Specify the type of diagram, if applicable
+Describe the purpose or results illustrated in the diagram
+Tables
+Summarize the table’s significant trends
+Identify the table’s main point in relation to your work
+Do not write “table of” unless identifying a specific type of table or clarifying something unusual
+Do not repeat point-by-point data or table headings
+Equations
+Use words to describe what the equation solves for or why it is important in the context of the article
+Do not reproduce equations (partially or fully) verbatim in alt text
+Hyperlinks
+Avoid writing “link of,” as the screen reader will already indicate it is a link
+Avoid phrases such as “click here”
+Provide a few key words to specify what the link is and why it is included
+Logos, Cartoons, and Illustrations
+Identify the object type
+If the object is a widely known brand, a public figure, or a visual icon that would be familiar to your audience, just state what it is (i.e., “Starbucks logo” or “The Mona Lisa”)
+If a logo is used frequently or as a stand-in for text, refer to the logo by the company’s name (i.e., “AIP Publishing” instead of repeating “AIP Publishing logo”)
+Complex Figure/Infographics
+Provide only one alt text description, capturing the main idea of the image as a whole
+Do not repeat text or numbers from the graphic verbatim
+Do not submit separate alt text lines for every panel or separate section of an image
+Do not list panel labels or titles
+Decorative Icons and Aesthetic Features
+Visuals placed for aesthetic appeal such as borders and animations do not need alt text
+Do not include alt text for visual content that does not directly relate to article content
+Videos and Multimedia
+For video or multimedia content, authors should provide:
+A brief alt text description summarizing the purpose of the video
+Video descriptions should summarize the key scientific content shown in the video.
+Example:
+Video demonstrating the experimental plasma discharge process and resulting emission patterns under varying voltage conditions.
+Providing captions or transcripts ensures that multimedia content is accessible to readers who cannot hear or view the video.
+For more detailed instructions about transcribing audio to text, please see the W3C’s Web Accessibility Initiative (WAI) resource:
+https://www.w3.org/WAI/media/av/transcribing/
+Guidelines for Using Native Name Characters
+We encourage authors to insert their respective native name characters, so their native names will also be displayed in their paper. To do so, please follow the instructions below.
+In your manuscript, beside each author name, please add the native name characters for each author who would like their name shown in their native language.
+Select your native language from the drop-down list in the submission system, Peer X-Press, when submitting your paper.
+The Peer X-Press system will produce a PDF of your manuscript. Please check this PDF during your first submission to ensure that the native name characters appear correctly.
+In addition, as your paper moves through the production process, carefully check the native name characters in any proofs received before the paper is published.
+Additional Journal Specific Instructions
+AIP Advances: MMM Articles
+Manuscript Length for “Contributed” MMM Articles (3500 words)
+Contributed MMM Manuscripts should not exceed 3500 words. Please note that the abstract, title, author list, acknowledgments, and references are all excluded from the 3500-word limit. Figures, tables, and equations, however, are included and need to be accounted for by calculating a word-count equivalent to the space they occupy.
+Please use these guidelines for estimating length.
+LaTeX users
+Authors are advised to use the
+LaTeX file.
+If the version of the manuscript obtained using the “reprint” option fits on 4 pages, the length is acceptable.
+Word users
+Highlight the manuscript text, excluding abstract, author list, acknowledgments, and references, and note the word count at the bottom of the screen. Add to that the word-count-equivalents for figures, tables, and equations as follows:
+Figures:
+400 words for an average figure.
+Tables:
+13 words per line, plus 26 words.
+Equations:
+13 words per line.
+If the total number of words (text + figures + tables + equations) is 3500 or less, the length is acceptable.
+Manuscript Length for “Invited” MMM Articles (6000 words)
+Invited
+MMM Manuscripts should not exceed 6000 words. Please note that the abstract, title, author list, acknowledgments, and references are all excluded from the 6000-word limit. Figures, tables, and equations, however, are included and need to be accounted for by calculating a word-count equivalent to the space they occupy.
+Please use these guidelines for estimating length.
+LaTeX users
+Authors are advised to use the
+LaTeX file.
+If the version of the manuscript obtained using the “reprint” option fits on seven pages, the length is acceptable.
+Word users
+Highlight the manuscript text, excluding abstract, author list, acknowledgments, and references, and note the word count at the bottom of the screen. Add to that the word-count-equivalents for figures, tables, and equations as follows:
+Figures:
+400 words for an average figure.
+Tables:
+13 words per line, plus 26 words.
+Equations:
+13 words per line.
+If the total number of words (text + figures + tables + equations) is 6000 or less, the length is acceptable.
+Applied Physics Letters (APL)
+Applied Physics Letters
+(APL) is an international, peer-reviewed letters journal publishing concise papers in all areas of applied physics that communicate original research discoveries justifying rapid publication.
+Cover Letter
+Authors submitting to APL are encouraged to provide a cover letter as part of their submission.
+It can help convey the importance of the research to the Editors, explain why you consider the paper appropriate for the broad readership of
+Applied Physics Letters
+, and specifically how it aligns with the
+criteria for publication
+.
+The cover letter should make a clear statement on the manuscript’s significance and list related work by the authors.
+This letter will not be shared with reviewers. It is intended to aid in the editorial pre-screening of manuscripts.
+Manuscript Information:
+Article Length
+At the time of initial submission, your paper needs to be 3000 words or less, including figure and table captions. This word count excludes the title, author list, abstract, acknowledgments, data availability statement, references, and non-text items including figures, tables, and equations.
+Normally, papers longer than 3000 words will be rejected, and the authors will be required to shorten the paper and submit it again as a new manuscript.
+Longer papers may be considered only in exceptional cases if the quality warrants special consideration. Authors will need to explain the need for the additional length in their cover letter.
+Use of Figures
+Authors are encouraged to include up to five figures in the paper to illustrate their results.
+Images may be grouped together as separate panels in one figure if they are logically connected and clear to the reviewer and readers.
+Use of Section Headings
+Section heading are not permitted in Letters.
+APL Bioengineering (APB)
+Manuscript Information:
+There is no length limit in this journal; however, manuscripts should be concise and present a clear description of the research for reproducibility. As a guideline, the main text of an article should contain approximately 3500 words, excluding the title and references.
+Required Methods Section
+All APB articles need to contain a concise Methods section, which includes the elements needed for interpreting and replicating results.
+This is the only mandatory section with a heading in APB. Other sections or section headings are permitted but not required.
+The Methods section should be placed at the end of the body of the paper, before the Supplementary Material, Acknowledgments, Contributions, Appendix, and References sections. It may appear after the Conclusions.
+Required Ethics Approval Statement
+All APB articles need to include an ethics approval statement, even if the manuscript does not present research using human participants or animals.
+If ethics approval does not apply to your work, please include the statement “Ethics approval not required.”
+If the work presented used human participants or animals, the ethics approval statement needs to include the name of the ethics committee or institutional review board and the approval ID number.
+For research using human participants, the ethics approval statement needs to also indicate that informed consent was obtained from all participants or why it was not needed.
+Not meeting these requirements, or following ethical standards in experiments using animals, can result in the rejection of your manuscript
+Additional supporting documents can be uploaded when you submit your manuscript.
+For more information, see
+https://pubs.aip.org/aip/apb/pages/policies
+.
+Authors who would like more guidance on the accepted standards for human and animal subjects in research may consult the following documents:
+World Medical Association’s Declaration of Helsinki
+International Guiding Principles for Biomedical Research Involving Animals
+Guidelines for Animal Research: Reporting of In Vivo Experiments (ARRIVE)
+APL Computational Physics (ACO)
+Manuscript Length:
+There is no length limit in this journal; however, manuscripts should be concise and present a clear description of the research for reproducibility.
+Data Availability and Reporting Standards
+APL Computational Physics
+requires that authors make any data, code, and additional supplementary material publicly available either in a repository of the author’s choosing or within the manuscript itself at the time of manuscript submission.
+For information on acceptable Data Availability Statements and appropriate data repositories, see
+Research Data Policy
+.
+APL Electronic Devices (AED)
+Manuscript Length:
+There is no length limit in this journal; however, manuscripts should be concise and present a clear description of the research for reproducibility.
+Data Availability and Reporting Standards
+APL Electronic Devices
+recommends that authors make any new data publicly available on a repository of the author’s choosing at the time of submission. Authors are encouraged to disclose any reasons that the material cannot be made available to readers to the editors.
+APL Energy (APE)
+Cover Letter and Statement of Significance
+Authors of
+APL Energy
+are required to provide a cover letter as part of their submission. This can help convey the importance of the research to the Editors, explain why you consider the paper appropriate for the readership of
+APL Energy
+and specifically how it aligns with the criteria for publication. The cover letter should make a clear statement on the manuscript’s significance and list related work by the authors. In addition, authors will be required to indicate the significance of their work in the Statement of Significance section during the submission process.
+Data Availability
+APL Energy
+recommends that authors make any new data publicly available on a repository of the author’s choosing at the time of submission. Authors are encouraged to disclose any reasons that the material cannot be made available to readers to the editors.
+Manuscript Length
+There is no length limit in this journal; however, manuscripts should be concise and present a clear description of the research for reproducibility.
+As a guideline, the main text of an article should contain approximately 3500 words, excluding the title and references. For guidance on Perspectives, the main text should contain less than 5500 words. Reviews and Roadmaps are recommended to be up to 8000 words. In these papers, please insert section headings to structure the content and guide the reader.
+Proof of Concepts and Prototypes
+Proof of Concept and Prototype articles describe an already demonstrated or intellectual property (IP) protected idea and its pathway to commercial viability. Authors will report the innovation derived from the idea, the problem to be solved, the resulting application, and the Technology Readiness Level. Discussion on further testing requirements, next-level demonstrations, scale-up, marketability, and financial potential is recommended.
+These articles are typically by invitation only and the recommended length is 2000 words. If you are interested in submitting a Proof of Concept and Prototype article to
+APL Energy
+, please complete the
+pre-submission proposal form
+and send it to
+aplenergy-journalmanager@aip.org
+.
+Author Guidelines
+for Proof of Concepts and Prototypes.
+APL Engineering Physics (AEP)
+Manuscript Length
+There is no length limit in this journal; however, manuscripts should be concise and present a clear description of the research for reproducibility.
+Data Availability and Reporting Standards
+APL Engineering Physics
+recommends that authors make any new data publicly available on a repository of the author’s choosing at the time of submission. Authors are encouraged to disclose any reasons that the material cannot be made available to the readers should be disclosed to the editors.
+APL Machine Learning (AML)
+Manuscript Length
+There is no length limit in this journal; however, manuscripts should be concise and present a clear description of the research for reproducibility.
+As a guideline, the main text of an article should contain approximately 3500 words, excluding the title and references.
+For guidance on Reviews, Perspectives, and Roadmaps, the main text should contain less than 5500 words. In these papers, please insert section headings to structure the content and guide the reader.
+Data Availability
+APL Machine Learning
+requires that authors make any data, code, and additional supplementary material publicly available either in a repository of the author’s choosing or within the manuscript itself at the time of manuscript submission.
+For information on acceptable Data Availability Statements and appropriate data repositories, see
+Research Data Policy
+.
+APL Materials (APM)
+Manuscript Length
+There are no article length restrictions in this journal. Guidelines are presented below.
+Regular articles
+: Your manuscript should be concise and present a clear description of the research for reproducibility. As a guideline, the main text of a regular article should contain approximately 3500 words, excluding the title and references.
+Perspectives, Research Updates, and Commentaries
+: The main text of these article types should contain less than 5500 words. In these papers, please insert section headings to structure the content and guide the reader.
+Comments and Responses
+: A Comments section is available for criticism of or additions to Letters that have already been published. A Response to a critical Comment will be requested from the authors of the published article. Comments and Responses should not exceed 1000 words.
+APL Quantum (APQ)
+Manuscript Length
+There is no length limit in this journal; however, manuscripts should be concise and present a clear description of the research for reproducibility.
+As a guideline, the main text of an article should contain approximately 3500 words, excluding the title and references. For guidance on Perspectives, the main text should contain less than 5500 words. Reviews, Tutorials, and Roadmaps are recommended to be up to 8000 words. In these papers, please insert section headings to structure the content and guide the reader.
+Data Availability
+APL Quantum
+recommends that authors make any new data publicly available on a repository of the author’s choosing at the time of submission. Authors are encouraged to disclose any reasons that the material cannot be made available to readers to the editors.
+AVS Quantum Science (AQS)
+AVS Quantum Science (AQS) launched in 2019 with a focus on Review articles. We are now considering proposals for Reviews, Perspectives, and Original Research Articles.
+Manuscript Length
+There are no strict page limits set but we provide the following advice:
+Reviews
+can be
+Focused Reviews
+that are short, timely reviews that cover recent advances in established fields or an emerging area of quantum science and are approximately 10–20 pages in length or can be
+Standard Reviews
+that are comprehensive, providing more in-depth coverage in established areas of quantum science, that are approximately 20–50 pages in length.
+Perspectives
+provide a balanced and objective overview of recent advances and the author’s unique view on where the field is headed and are typically around 10 pages in length.
+Additional AQS information
+Author responsibilities:
+https://publishing.aip.org/resources/researchers/policies-and-ethics/
+Permissions:
+https://publishing.aip.org/resources/researchers/rights-and-permissions/
+Sharing Content Online:
+https://publishing.aip.org/resources/researchers/rights-and-permissions/sharing-content-online/
+For additional questions:
+Editorial team
+.
+Applied Physics Reviews (APR)
+Applied Physics Reviews publishes the following types of articles:
+Original Research Articles
+report on important and novel research study of high quality and general interest to the chemical physics community.
+Review Articles
+can be either an authoritative and comprehensive review of an established area, or a short, timely review covering an emerging area or recent advance in an established field of chemical physics.
+Cover Letter Requirements for Original Research Manuscripts
+Research manuscript to APRAuthors submitting an Original Research manuscript to APR need to provide a cover letter with their submission. This will help the Editor can make an adequate assessment of your manuscript. The cover letter should make a clear statement about the manuscript, including the following:
+The knowledge gap filled by this study
+The novelty of the work
+The importance of the of results
+Its appeal to CPR’s broad readership
+A list related work by the authors
+APL Photonics (APP)
+Article Types with Length Limits:
+Letters
+should contain no more than 3500 words
+Comments and Responses
+should contain no more than 1000 words
+Please note that the abstract, title, author list, references, figures, tables, equations, and acknowledgments are all excluded from the respective word limit. Other article types do not have a length limit, but the
+APL Photonics
+editors may ask that you shorten your manuscript if they decide it should be more concise.
+LaTeX users
+Authors are advised to use the
+LaTeX template
+.
+Use of Headings
+In manuscripts other than Letters and Comments, please insert section headings to structure the content and guide the reader.
+Biomicrofluidics (BMF)
+Fast Track Articles
+BMF Fast Track articles replace Brief Communications to report on the most novel, high impact, cutting edge, and technically significant developments in the field. Because of the urgency and scientific importance of the work, Fast Track articles have an accelerated review process and will receive priority consideration for the journal’s Editor’s Picks and AIP Publishing press releases.
+To be meet the criteria for a Fast Track article, the manuscript needs to
+be highly original, reporting the most novel, significant, relevant, and timely advances in the field,
+be of the highest scientific quality,
+be written in a clear and concise manner with no further need for technical/grammatical editing, and
+adhere to the length guidelines.
+Papers submitted to Fast Track will be initially screened for novelty and quality by the Editors and then reviewed by Editorial Advisory Board members, with a review response in under 14 days. Fast Track authors are requested to respond to reviews within 10 days.
+Fast Track Article Length
+Fast Track Articles should not exceed 2000 words (approximately three printed journal pages). Please note that the abstract, title, author list, references, and acknowledgments are all excluded from the 2000-word limit. Figures, tables, and equations are included and need to be accounted for by calculating a word-count equivalent to the space they occupy. Note that the abstract should not exceed 100 words.
+Please use these guidelines for estimating Fast Track Article length.
+Fast Track Word users
+Highlight the manuscript text, excluding abstract, author list, acknowledgments, and references, and note the word count at the bottom of the screen. Add to that the word-count-equivalents for figures, tables and equations as follows:
+Figures:
+400 words for an average figure
+Tables:
+13 words per line, plus 26 words.
+Equations:
+13 words per line.
+If the total number of words (text + figures + tables + equations) is 2000 or less, the length is acceptable.
+Fast Track LaTeX users
+Authors are advised to use the
+LaTeX template
+. If the version of the manuscript obtained using the “reprint” option fits on three pages, the length is acceptable.
+Fast Track Supplementary Material
+Fast track articles may contain supplementary material (e.g., supporting information, multimedia, etc.); it cannot contain or discuss/interpret essential results and cannot be considered an extension of the manuscript. Failure to adhere to these guidelines may result in either a delay in processing of the manuscript or rejection at initial screening. A Fast Track manuscript that is rejected at initial screening may be resubmitted as a “regular” original-research paper.
+Biophysics Reviews (BPR)
+Biophysics Reviews
+publishes the following types of articles:
+Original Research Articles
+report on important and novel research study of high quality and general interest to the chemical physics community.
+Review Articles
+can be either an authoritative and comprehensive review of an established area, or a short, timely review covering an emerging area or recent advance in an established field of chemical physics.
+Invitations for Review Articles
+The need to develop a topic is proposed by the journal’s Editorial Board.
+Before extending an invitation, Editors—with a related research field—fully evaluate the potential author’s academic reputation, publication records, and other academic activities.
+Generally, decisions about research topics and appropriate authors are made by editorial discussions that often involve consultations with the journal’s Editorial Advisory Board.
+Cover Letter Requirements for Original Research Manuscripts
+Authors submitting an Original Research manuscript to BPR need to provide a cover letter with their submission. This will help the Editor can make an adequate assessment of your manuscript. The cover letter should make a clear statement about the manuscript, including the following:
+The knowledge gap filled by this study
+The novelty of the work
+The importance of the of results
+Its appeal to BPR’s broad readership
+A list related work by the authors
+Required Methods Section in Original Research Articles
+All BPR Original Research articles need to contain a concise Methods section, which includes the elements needed for interpreting and replicating results. You may place the Methods section after the Conclusion.
+Required Ethics Approval Statement on Original Research Articles
+All BPR Original Research articles need to include an ethics approval statement, even if the manuscript does not present research using human participants or animals.
+If ethics approval does not apply to your work, please include the statement “Ethics approval not required.”
+If the work presented used human participants or animals, the ethics approval statement needs to include the name of the ethics committee or institutional review board and the approval ID number.
+For research using human participants, the ethics approval statement needs to also indicate that informed consent was obtained from all participants or why it was not needed.
+Not meeting these requirements, or following ethical standards in experiments using animals, can result in the rejection of your manuscript.
+Additional supporting documents can be uploaded when you submit your manuscript.
+For more information, see
+https://pubs.aip.org/aip/bpr/pages/policies
+.
+Authors who would like more guidance on the accepted standards for human and animal subjects in research may consult the following documents:
+World Medical Association’s Declaration of Helsinki
+International Guiding Principles for Biomedical Research Involving Animals
+Guidelines for Animal Research: Reporting of In Vivo Experiments (ARRIVE)
+Chaos (CHA)
+Lead Paragraph
+The first paragraph of the article should be the
+Lead Paragraph
+and contain the main points of the article,
+providing the “big picture” in a way that can be understood by non-specialist readers.
+Chaos Fast Track Article Length
+Chaos
+Fast Track Articles should not exceed 5750 words [approximately six (6) printed journal pages]. The abstract, title, author list, references, and acknowledgments are all excluded from the 5750-word limit. Figures, tables, and equations are included and need to be accounted for by calculating a word-count equivalent to the space they occupy. Note that the abstract should not exceed 250 words.
+Please use these guidelines for estimating length.
+LaTeX users
+Authors are advised to use the
+LaTeX template
+. The double-column version of the manuscript obtained using the “reprint” option will indicate whether the length is acceptable.
+Word users
+Highlight the manuscript text, excluding the abstract, author list, acknowledgments, and references, making note of the word count at the bottom of the screen. Add to that the word-count-equivalents for figures, tables, and equations as follows:
+Figures:
+An average single-column figure will displace 200 words; an average double column figure will displace 400 words.
+Tables:
+6.5 words per line, plus 13 words for single-column tables. 13 words per line, plus 26 words for double-column tables.
+Equations:
+7 words per line for single-column equations. 13 words per line for double-column equations.
+If the total number of words (text + figures + tables + equations) is 5750 or less, the length is acceptable.
+Chemical Physics Reviews (CPR)
+Chemical Physics Reviews
+publishes the following types of articles:
+Original Research Articles
+report on important and novel research study of high quality and general interest to the chemical physics community.
+Review Articles
+can be either an authoritative and comprehensive review of an established area, or a short, timely review covering an emerging area or recent advance in an established field of chemical physics.
+Cover Letter Requirements for Original Research Manuscripts
+Authors submitting an Original Research manuscript to CPR need to provide a cover letter with their submission. This will help the Editor can make an adequate assessment of your manuscript. The cover letter should make a clear statement about the manuscript, including the following:
+The knowledge gap filled by this study
+The novelty of the work
+The importance of the of results
+Its appeal to CPR’s broad readership
+A list related work by the authors
+International Journal of Fluid Engineering (IJFE)
+Manuscript Length
+International Journal of Fluid Engineering
+mainly publishes two types of articles:
+Original Research Articles
+and
+Reviews
+. We recommend the following page limits:
+Original Research Articles
+report on original and novel research relating to fluid mechanics and should not exceed 15,000 words (approximately sixteen printed journal pages). Please note that the abstract, title, author list, references, and acknowledgments are all excluded from the word limit. Figures, tables, and equations, however, are included and need to be accounted for by calculating a word-count equivalent to the space they occupy.
+Reviews
+can be
+Brief Reviews
+that are short, timely reviews that cover recent advances in
+established fields or an emerging field of fluid engineering and should not exceed 21,000 words (approximately twenty-five printed journal pages) or can be
+Standard Reviews
+that are comprehensive, providing more in-depth coverage in established areas of fluid mechanics, should not exceed 35,000 words (approximately forty printed journal pages).
+LaTeX users
+Authors are advised to use the
+LaTeX template
+. If the version of the manuscript obtained using the “reprint” option fits on approximately twelve pages (excluding abstract, title, author list, references, and acknowledgments), the length is acceptable.
+Word users
+Highlight the manuscript text, excluding abstract, author list, acknowledgments, and references, and note the word count at the bottom of the screen. Add to that the word-count equivalents for figures, tables and equations as follows:
+Figures:
+An average single-column figure will displace 200 words. An average double-column figure will displace 400 words.
+Tables:
+6.5 words per line, plus 13 words for single-column tables. 13 words per line, plus 26 words for double-column tables.
+Equations:
+7 words per line for single-column equations. 13 words per line for double-column equations.
+References
+Numerical references
+are required. Include the citation to the dataset(s) in the References list of your manuscript, providing the following required elements: Creator(s), Title, Publisher, Publication Year, and Identifier and may contain these optional elements: Version and Resource Type.
+In the References list: Numbering references according to the cited order.
+In the text: Citing references by their number in the upper right corner of the corresponding positions.
+Formatting
+Variables should be in italic. Their subscripts or superscripts, if they are also variables, should be italicized. However, if the subscripts or superscripts are not variables, they should not be italicized.
+Vectors and matrices should be both bold and italic.
+Variables in figures, tables, and equations should be formatted in italic, the same as in the text.
+Displayed equations should be punctuated (period or comma), aligned to bring out their structure, and numbered on the right-hand side.
+Indentation after equations is dependent on whether an author has started a new paragraph after an equation (indent), or if the text following the equation is part of the same paragraph (no indent).
+Identify all figure parts with (a), (b), etc. Avoid any large size differences of the lettering and labels used within one illustration.
+The Journal of Chemical Physics (JCP)
+JCP Communications
+These are preliminary reports of highly significant work whose rapid publication will be important to a relatively large number of workers in the field.
+Communications may be complete in themselves or may be followed by Articles, which present substantial additional significant information.
+Communications have a length limit of 3500 words. Note that figures, equations, tables, and references should not be included in the 3500-word count.
+Because of the length limitation, the standard of proof required to support the scientific argument is relaxed somewhat. Scientific arguments that are plausible and, if correct, important, may be presented in Communications even if the detailed proof needs to be presented in a later publication.
+Arguments that are implausible but can be demonstrated by lengthy and detailed proof to be correct should not be presented in Communications.
+Communications are given priority attention in both the peer review and production processes.
+Reports of new potential energy surfaces in JCP
+All papers on new potential energy surfaces need to be accompanied by a tape archive (e.g., PES.tar) file.
+The PES.tar (tape archive file) should contain a computer program that can be used to generate the potential and preferably also its forces for use in classical trajectory calculations.
+The only exception will be potentials that are simple enough to be reconstructed based only from the information given in the paper.
+The computer program can be written in any modern computer language, but the compiler that the authors used (including its version number) needs to be specified, and the program needs to be accompanied by example input and output files that reproduce some of the key results presented in the paper.
+The PES.tar file will be made available to the referees to give them the option to examine it.
+If the manuscript is accepted for publication, the PES.tar file will be published as supplementary material.
+Journal of Laser Applications (JLA)
+Special Topic for the Proceedings of the International Congress of Applications of Lasers & Electro-Optics
+All papers must be formatted using the
+official Microsoft Word template
+and converted into PDF format for submission. Detailed instructions can be found in this document. Submissions that do not adhere to these guidelines will be returned for revision.
+Journal of Mathematical Physics (JMP)
+TeX Submission Template
+Authors are encouraged to use the
+JMP-specific TeX template
+in Overleaf to prepare their submission.
+Journal of Physical and Chemical Reference Data (JPCRD)
+Uncertainties
+The objective of JPCRD is to provide critically evaluated physical and chemical property data, fully documented as to the original sources and the criteria used for evaluation. Such data are of little use without a quantitative characterization of uncertainties that includes effects of both random (precision) and systemic (bias) uncertainties, as well as a discussion of sources of errors and the rationale for assigning uncertainty estimates. For a more detailed discussion of uncertainty analysis, we refer authors to the following resources:
+U.S. Guide to the Expression of Uncertainty in Measurement
+, ANSI/NCSL Z540-2-1997, American National Standard for Expressing Uncertainty (National Conference of Standards Laboratories, Boulder, CO, 1997).
+B. N. Taylor and C. E. Kuyatt,
+Guidelines for Evaluating and Expressing the Uncertainty of NIST Measurement Results
+, NIST Technical Note 1297 (NIST, Gaithersburg, MD, 1994).
+References
+The use of
+et al.
+is permitted in the reference list. Do not insert “and” before the final author’s name or a comma before “et al.” [
+21
+A. Cavalleri, S. Wall, C. Simpson et al., Nature (London)
+442
+, 664 (2006).]
+Please note that including article titles in the reference list is optional but encouraged.
+Four styles of references are acceptable in a JPR article: numerical (preferred style), bibliographic, numerical/bibliographic, and Squib:
+Numerical references (Preferred)
+In the text:
+“The residual intensity decreases and the side lobes
+12
+are stretched for a linearly polarized LG beam.”
+On the reference list:
+(This example would be the 12th reference on the list.)
+12
+W. E. Acree, Jr. and J. S. Chickos, “Phase change enthalpies and entropies of liquid crystals,” J. Phys. Chem. Ref. Data
+35
+, 1051 (2006).
+Bibliographic References
+In the text:
+“Such a 2D pattern can be generated by the superposition of the orthogonally oriented standing waves (Oberti et al., 2007; Manneberg
+et al.,
+2008).”
+“For the early history of such studies, we refer the reader to Yosioka and Kawasima, 1955; Gor’kov, 1962; Nyborg, 1968; Crum, 1975.”
+“Liu
+et al.
+(2002, 2003) developed an approach to micromixing based on acoustic microstreaming…”
+On the reference list:
+Mulero, A., Cachadiña, I., and Bautista, D., “Recommended correlations for the surface tension of n-alkanes,” J. Phys. Chem. Ref. Data
+50
+, 023104 (2021).
+Numerical/Bibliographic References
+(They are numbered according to their alphabetical order in the reference list and cited by their number in text. They do not have to be cited in numerical sequence in text.)
+In the text:
+“…which reflects the fundamental concepts as described by Mulero et al.
+19
+”
+On the reference list:
+19
+Mulero, A., Cachadiña, I., and Bautista, D., “Recommended correlations for the surface tension of n-alkanes,” J. Phys. Chem. Ref. Data
+50
+, 023104 (2021).
+Squib References
+In the text:
+(enclosed in square brackets)
+“The characteristic wavelengths of neutral cesium were first observed in 1861 by Kirchhoff and Bunsen [61KIR/BUN].”
+“Using Doppler-free two-photon spectroscopy, several experiments [79LOR/NIE, 80LOR/WEB, 82GOY/RAI] were done to extend the range and accuracy of measured transitions and fine structure splittings.”
+On the reference list
+(Use of either the 2-digit or 4-digit year is acceptable as long as it is consistent throughout the paper.):
+02DOE Doe, J., J. Phys. Chem. Ref. Data
+36
+, 625 (2002).
+2002DOE Doe, J., J. Phys. Chem. Ref. Data
+36
+, 625 (2002).
+Units, symbol, terminology, and chemical nomenclature
+It is the policy of JPCRD to follow the recommendations of recognized internationals bodies such as ISO, IUPAC, and IUPAP unless there are strong grounds for making an exception. Sources of recommendations on symbols, terminology, and units are the following:
+Quantities and Units
+, ISO Standards Handbook, 3rd ed. (International Organization for Standardization, Geneva, Switzerland, 1993).
+Quantities, Units and Symbols in Physical Chemistry
+(the Green Book), 3rd ed. (IUPAC, RSC Publishing, Cambridge, 2007).
+Symbols, Units and Nomenclature in Physics
+, IUPAP Document IUPAP 25, 1985. [Reproduced in Physica A 146, 1 (1987)].
+A. Thompson and B. N. Taylor,
+Guide for the Use of the International System of Units (SI)
+, NIST Special Pub. 811, 2008 edition (NIST, Gaithersburg, MD, 2008).
+The International System of Units (SI) should always be used unless the Editor has granted an exception. The nomenclature practices of Chemical Abstracts, or those based on IUPAC recommendations, should be followed. If you are preparing compound indices for your paper, please consult the current CA Index Guide. It is desirable to include CAS Registry Numbers in papers that give data for multiple chemical compounds.
+Please follow the conventions for using roman and italic fonts. Roman (non-italic) font is always used for chemical formulas, units, numbers, mathematical constants, and operators (∏ and ln), and descriptive terms. Italic font is used to denote variables, physical quantities, and functions.
+The following are some examples of correct usage:
+T
+min
+= 273 K (italicize physical quantity temperature and not descriptive “min” or “K”)
+(Do not italicize operator “exp” or subscript “B” for Boltzmann.)
+Avoid the ambiguous term “log”; natural logarithms should be written “ln” (preferred) or “log
+e
+” while base-10 logarithms should be written “lg” or “log
+10
+”. Please use a minus sign (−) rather than a hyphen (-) to denote negative numbers or subtraction. Superscripts or subscripts should be formatted through the font group rather than raising or lowering individual characters.
+List of symbols
+A
+list of symbols
+is optional. It is recommended to use a list of symbols if the paper contains many symbols, whose meaning is not obvious, especially if the paper is relatively long. Otherwise, symbols should be defined when they first appear in text.
+Headings and subheadings
+Headings and subheadings
+in the text should have a maximum of four levels and should be numbered as follows:
+1. (Main level)
+1.1. (Second Level)
+1.1.1. (Third level)
+1.1.1.1. (Fourth level)
+The first level is normally “1. Introduction” and the last is “References.” Please refer to the sections in text as “Sec. 1.1”, etc., except at the beginning of a sentence where “Section 1.1” should be used.
+Journal of Rheology (JOR)
+Preparing Your Graphics
+When possible, authors are encouraged to adjust their figures for the black and white hard copy version of the journal. For example, using different symbols (i.e., circles, squares, etc.) or different types of lines (i.e., dashed lines, dotted lines, etc.) is useful to those who are viewing the figure in black and white instead of color. Please see the
+“Color Printing Charges” section of the author guidelines
+for additional information on preparing graphics suitable for the print journal.
+Nomenclature
+Authors are asked to comply with the official nomenclature and symbols of the Society of Rheology:
+https://pubs.aip.org/sor/jor/pages/nomenclature
+Matter and Radiation at Extremes (MRE)
+Figures
+Prior to submission, please ensure that there are no typos or errors in the figures.
+The font size of legends and labels within figures should be a minimum of 8-point type size (2.8 mm high; 1/8 in. high). 10-point type size is recommended.
+Please italicize the physical quantity symbols in all figures.
+Only capitalize the first letter of the first word in each phrase.
+Please ensure that the font colors are clearly readable.
+Please separate physical quantities and their units in figures with the slash symbol “/”. For example, v/(m·s
+-1
+).
+References
+For each reference with more than five authors, please list the first five authors followed by
+‘et al.’
+instead of listing all of the authors’ names.
+Journal references
+must include the following elements: the names of the authors, the article title, the journal name, the volume, page number(s), and year. For example:
+2
+B. Albertazzi, A. Ciardi, M. Nakatsutsumi, T. Vinci, J. Béard
+et al.
+, “Laboratory formation of a scaled protostellar jet by coaligned poloidal magnetic field,” Science 346, 325–328 (2014).
+Book references
+must include the following elements: the names of the authors, the book title, the publisher, publication year, and page number(s). For example:
+20
+F. Herlach and N. Miura, High Magnetic Fields: Science and Technology (World Scientific Publishing Company, 2006), pp. 1–312.
+MechanoEngineering (MEG)
+References
+Numerical references are required.
+Within the text, references should be cited in numerical order according to their order of appearance. When cited in the text, reference numbers are superscript. In the case of two citations, the numbers should be separated by a comma (i.e.,
+1,2
+). In the case of more than two references, the numbers should be separated by a dash (i.e.,
+5-7
+).
+The References section at the end of the paper should list the full information for each source and should be numbered according to the sequence of citations within the text, not alphabetically.
+Journal references must include the following elements: the names of the authors, the article title, the journal name, the volume, page number(s), and year. For example:
+19
+F. Hernandez, H. Wang, D. Dubrovski, and L. Blum, “Advances toward a universal fault-tolerant quantum computer,” Appl. Phys. Lett.
+121
+, 080401 (2022).
+Nanotechnology and Precision Engineering (NPE)
+All papers must be formatted using the
+official Microsoft Word template
+and converted into PDF format for submission. Detailed instructions can be found in this document. Submissions that do not adhere to these guidelines will be returned for revision.
+Formatting
+Special characters such as “μ” in “μm” and “μs” should not be italicized.
+Variables should be in italic. Their subscripts or superscripts, if they are also variables, should be italicized. For example, with
+“T
+i
+, i=1,2,3…,”
+then
+“i”
+should be in italic. However, if the subscripts or superscripts are not variables, they should not be italicized. For example, if defining the temperature of a door and window as “
+T
+d
+” and “
+T
+w
+” then “d” and “w” should not be italicized.
+The natural logarithm base “e”, imaginary unit “I”, and pi “π” (when it equals 3.14159…) should not be bold or italic.
+Vectors and matrices should be both bold and italic.
+Points should be in italic, such as
+O(x,y), P(m,n)
+, while the comma and parentheses should not be italicized.
+Variables in figures and tables should be formatted the same as in the text.
+For phrases in figures and tables, only the initial letter of the first word should be capitalized.
+There should be a space between a number and unit.
+Identify all figure parts with (a), (b), etc. Avoid any large size differences of the lettering and labels used within one illustration.
+For more instructions, please refer to:
+https://publishing.aip.org/resources/researchers/author-instructions/
+Physics of Fluids (POF)
+No Cover Letter for
+Physics of Fluids
+Submissions
+Cover letters are not accepted with submissions for Physics of Fluids. The Editor-in-Chief wants to save authors the time of writing cover letters and Associate Editors the time of reviewing them. Any submission with a cover letter will not be considered.
+Response Letter Required for Revisions and Resubmissions
+When submitting a
+revised
+manuscript during the peer review process, authors need to provide a response letter summarizing how they addressed the reviewers’ feedback in the new version of their manuscript.
+When submitting a
+resubmission
+, or an initial submission that was previously declined, authors need to provide a response letter summarizing how they addressed the editor’s and/or reviewers’ feedback in the new version of their manuscript.
+Letters
+The purpose of the
+Letters
+section is to provide rapid publication of important and time-sensitive new results in the fields regularly covered by
+Physics of Fluids
+, in the form of a condensed communication.
+Results of extended research should not be presented as a series of Letters in place of comprehensive articles.
+Except for length, Letters manuscripts have the same criteria as longer articles.
+However, there is usually a three-month time limit, from date of receipt to acceptance, for processing Letters manuscripts.
+Timeliness, current importance of the subject matter, brevity, and clarity of presentation determine the acceptability of contributions.
+Feasibility studies and proposals for future research are not appropriate for the Letters section and will rarely be accepted.
+Each Letter should be self-contained and may, on occasion, be followed by a comprehensive article in Physics of Fluids or elsewhere.
+Letters are limited to seven (7) printed pages in length, including space for title, figures, tables, references, and the abstract limited to 100 words; Letters do not have section headings.
+Please use these guidelines for estimating length of POF Letters.
+LaTeX users
+Authors are advised to use the
+LaTeX template
+. If the version of the manuscript obtained using the “reprint” option fits on approximately seven (7) pages (excluding abstract, title, author list, references, and acknowledgments), the length is acceptable.
+Word users
+Highlight the manuscript text, excluding abstract, author list, acknowledgments, and references, making note of the word count at the bottom of the screen. Add to that the word-count equivalents for figures, tables, and equations as follows:
+Figures:
+An average single-column figure will displace 200 words; an average double column figure will displace 400 words
+Tables:
+6.5 words per line, plus 13 words for single-column tables. 13 words per line, plus 26 words for double-column tables.
+Equations:
+7 words per line for single-column equations. 13 words per line for double-column equations.
+If the total number of words (text + figures + tables + equations) is 6125 or less, the length is acceptable.
+Comments and Responses
+As POF Comments and Responses each have a length limit of two journal pages, manuscripts should not exceed 1750 words.
+Please use these guidelines for estimating length of a Comment or a Response.
+Reference list
+Including the article title of journals on the reference list is preferred by the community. As such, we ask that you please style your references, as follows:
+G. Imani, L. Zhang, C. Xu, M. Ntibahanana, H. Sun, and J. Yao, “Finite droplets vs long droplets: Discrepancy in release conditions in a microscopic constricted channel,” Phys. Fluids 35(3), 032101 (2023).
+Physics of Plasmas (POP)
+Manuscript Length for POP Letters and Brief Communications
+Manuscripts for Letters and Brief Communications in Physics of Plasmas should not exceed 3500 words (approximately four printed journal pages). Please note that the abstract, title, author list, references, and acknowledgments are all excluded from the 3500-word limit. Figures, tables, and equations, however, are included and need to be accounted for by calculating a word-count equivalent to the space they occupy.
+Please use these guidelines for estimating length of PoP Letters and Brief Communications
+LaTeX users
+Authors are advised to use the
+LaTeX template
+. If the version of the manuscript obtained using the “reprint” option fits on approximately four pages (excluding abstract, title, author list, references, and acknowledgments), the length is acceptable.
+Word users
+Highlight the manuscript text, excluding abstract, author list, acknowledgments, and references, and note the word count at the bottom of the screen. Add to that the word-count equivalents for figures, tables and equations as follows:
+Figures
+: An average single-column figure will displace 200 words. An average double-column figure will displace 400 words.
+Tables:
+6.5 words per line, plus 13 words for single-column tables. 13 words per line, plus 26 words for double-column tables.
+Equations:
+7 words per line for single-column equations. 13 words per line for double-column equations.
+If the total number of words (text + figures + tables + equations) is 3500 or less, the length is acceptable.
+Physics of Plasmas Data Accessibility Project
+AIP Publishing and
+Physics of Plasmas
+have partnered with Zenodo to help you create links to share the datasets underlying your figures and tables.
+Benefits of participation
+The Data Accessibility Project will
+PROVIDE ACCESS
+to the datasets underlying figures and tables in the published articles.
+Datasets will become available, discoverable,
+CITABLE
+, and reusable.
+Datasets will be
+OPEN ACCESS
+, provided with persistent identifiers, and linked from the articles.
+Datasets will undergo
+PEER REVIEW
+.
+The Data Accessibility Project
+REDUCES BARRIERS
+to advancing research.
+SUPPORTS RESEARCHERS
+in complying with some funding agencies’ mandates.
+Making your data accessible from your Physics of Plasmas paper in 3 simple steps:
+Click here
+to create an account and deposit your dataset with Zenodo. Write down the doi (digital object identifier) assigned by Zenodo to each upload.
+For each dataset you share, cite the doi url in the respective figure/table caption in your manuscript.
+Citing a dataset in a figure caption:
+FIG. 4. This is a usual figure caption in your manuscript. [Associated dataset available at
+http://dx.doi.org/10.5281/zenodo.45520
+] (Ref. 5).
+Citing a dataset as a “Note” in a table caption:
+2.0
+362
+11.25
+4.28
+3.0
+1033
+10.23
+4.23
+Note: Associated dataset available at
+http://dx.doi.org/10.5281/zenodo.45520
+(Ref. 5).
+Include the citation to the dataset(s) in the reference list of your manuscript providing Include the citation to the dataset(s) in the reference list of your manuscript providing the following required elements: Creator(s), Publication Year, Title, Publisher, and Identifier and may contain these optional elements: Version and Resource Type.
+Example of a dataset reference with required elements and optional elements of version and resource type:
+Created by OpenAIRE and CERN in 2013, Zenodo is an open digital repository for everyone and every research output, addressing in particular the needs of those not served by a dedicated service; the so called “long tail” of research results.
+Proposals for Perspective, Review, and Tutorial Articles in Physics of Plasmas
+If you plan to write a Perspective, Review, or Tutorial for Physics of Plasmas, please complete the respective form, and send it to the Editorial Team at
+POP-JournalManager@aip.org
+.
+POP Editorial Summary Form –
+Perspectives
+POP Editorial Summary Form –
+Reviews
+POP Editorial Summary Form –
+Tutorials
+The editors will review your proposal and provide feedback on its suitability for Physics of Plasmas. Editor comments will help you write your paper with the best chance of positive review and fast publication.
+If you have already written a paper, please submit it directly at
+http://pop.peerx-press.org
+without completing a Summary Form. Instructions for preparing Perspectives and Tutorials are given below.
+Preparing your Perspective Manuscript for Physics of Plasmas
+Perspectives
+are articles on focused topics of current interest in plasma physics research.
+Editors commission recognized experts in the field to write these articles.
+Authors writing a perspective article provide an objective and balanced overview of recent advances within the field and, importantly, provide their unique views on where the field is headed and promising strategies for progress.
+Perspectives are not Review articles.
+Perspectives may be submitted by a single author or from multiple co-authors.
+All Perspectives are subject to peer review. An invitation from the editors does not guarantee acceptance.
+When preparing your Perspective manuscript, please consider the following general guidelines:
+Recommended length in print: We suggest 5–10 pages, although longer articles are also appropriate.
+Title: Use a short descriptive title to attract readers’ attention.
+Figures: There is no limit to the number of figures that can be included in the article.
+Video/multimedia: Including these in your manuscript is encouraged.
+Number of references: There is no limit to the number of references that can be included in the article.
+Permissions: If you are reusing material from previously published work, please be sure to obtain the proper permissions for publication. We recommend that you request permissions as soon as possible to avoid publication delays. For more information on permissions, please see
+https://publishing.aip.org/authors/author-permission-faq
+.
+While no specific format is required for Perspective articles, we recommend that you include:
+A brief, concise assessment of the status of the field: This assessment should focus on the last 3–5 years of research and can be written either in a brief overview or by presenting new, unpublished results from the author’s own research. Please note: Extensive reviews of the field are not appropriate for a Perspective article, and brief overviews should constitute no more than 50 percent of the total article.
+A unique, forward look at where the field is headed: Perspectives are characterized by the personal views and opinions of the author (or authors) as an expert in the field. Authors are encouraged to focus on newly implemented innovations and their broad-ranging implications for the area of study, identify open questions that need to be addressed, and propose or support new hypotheses.
+Preparing your Tutorial Manuscript for Physics of Plasmas
+Tutorials
+are graduate-level educational tools used to help shape the new generation of researchers in plasma physics. They also support researchers who are interested in improving their knowledge of and skills in particular areas.
+Tutorials do not have to provide original research content.
+They should explain the principles and techniques in a particular research area with an educational perspective.
+They need to convey a broad overview of the objectives, results, and open question for that area.
+Tutorials may be as short as 3–5 printed pages or as long as 10–15 printed pages.
+They are screen by the Editor-in-Chief, assisted by the Associate Editor.
+Once a Tutorial manuscript is accepted, it will go through the same peer review process and needs to meet the same high standards as regularly published papers.
+Considering the purpose of a Tutorial, referees will write their reviews on the following points:
+Is the Tutorial aimed at the appropriate level for the Physics of Plasmas readership?
+Is the research area covered with enough depth and broad perspective (for extended Tutorials)? Can the presentation be improved?
+Is the topic of the Tutorial timely?
+Does the reference list appear to be appropriate? Are the references too one-dimensional, i.e., directed toward the author’s own research or research at the author’s institution? Do the references provide adequate background references to allow readers to put the work in context with previous and current work?
+Is the Tutorial written in clear English, so editors, reviewers, and readers can fully understand it?
+The Journal of Renewable and Sustainable Energy (JRSE)
+The Journal of Renewable and Sustainable Energy Data Accessibility Project
+AIP Publishing and
+The Journal of Renewable and Sustainable Energy
+have partnered with
+Zenodo
+to help you create links to share the datasets underlying your figures and tables.
+Benefits of participation
+The Data Accessibility Project will
+PROVIDE ACCESS
+to the datasets underlying figures and tables in the published articles.
+Datasets will become available, discoverable,
+CITABLE
+, and reusable.
+Datasets will be
+OPEN ACCESS
+, provided with persistent identifiers, and linked from the articles.
+Datasets will undergo
+PEER REVIEW
+.
+The Data Accessibility Project
+REDUCES BARRIERS
+to advancing research.
+SUPPORTS RESEARCHERS
+in complying with some funding agencies’ mandates.
+Making your data accessible from your The Journal of Renewable and Sustainable Energy paper in 3 simple steps:
+Click
+here
+to create an account and deposit your dataset with Zenodo. Write down the doi (digital object identifier) assigned by Zenodo to each upload.
+For each dataset you share, cite the doi url in the respective figure/table caption in your manuscript.
+Citing a dataset in a figure caption:
+FIG. 4. This is a usual figure caption in your manuscript. [Associated dataset available at http://dx.doi.org/10.5281/zenodo.45520] (Ref. 5).
+Citing a dataset as a “Note” in a table caption:
+2.0
+362
+11.25
+4.28
+3.0
+1033
+10.23
+4.23
+Note: Associated dataset available at
+http://dx.doi.org/10.5281/zenodo.45520
+(Ref. 5).
+Include the citation to the dataset(s) in the reference list of your manuscript providing Include the citation to the dataset(s) in the reference list of your manuscript providing the following required elements: Creator(s), Publication Year, Title, Publisher, and Identifier and may contain these optional elements: Version and Resource Type.
+Example of a dataset reference with required elements and optional elements of version and resource type:
+Created by OpenAIRE and CERN in 2013, Zenodo is an open digital repository for everyone and every research output, addressing in particular the needs of those not served by a dedicated service; the so called “long tail” of research results.
+Preparing your Perspective Manuscript for The Journal of Renewable and Sustainable Energy
+JRSE publishes short Perspectives that emphasize authors’ unique views and opinions on the state of a field of research in renewable energy disciplines.
+Perspectives discuss recent advances in a subfield of energy research and where the research is headed.
+They are not review articles: the authors present their personal views and opinions on developments that could lead to disruptive technologies, open questions, and possible solutions.
+Perspectives need to be written in clear English with a descriptive Title and Abstract that explain the manuscript’s contents, consistent with the standards for publication in
+Journal of Renewable and Sustainable Energy
+.
+For more information on Perspectives, view the journal’s Editorial Policies:
+http://pubs.aip.org/aip/jrse/pages/policies
+Considering the purpose of a Perspective Manuscript, referees will write their reviews on the following points:
+Is the topic of the Perspective focused and timely?
+Is the Perspective presenting a unique look at where the field is headed characterized by the personal views and opinions of the author as an expert in the field?
+Is the Perspective free of commercial content and free of excessive author bias toward a particular product or industry?
+Review of Scientific Instruments (RSI)
+TeX users
+Authors are recommended to use the
+AIP Publishing template in Overleaf
+. The manuscript cannot exceed five pages for contributed Conference Articles or nine pages for invited Conference Articles.
+Word users
+Highlight the manuscript text, excluding the abstract, author list, acknowledgments, and references, and note the word count at the bottom of the screen. Add to that the word-count- equivalents for figures, tables, and equations as follows:
+Figures
+: An average single-column figure will displace 260 words; an average double column figure will displace 550 words.
+Tables
+: 5 words per line, plus 13 words for single-column tables. 13 words per line, plus 26 words for double-column tables.
+Equations
+: 7 words per line for single-column equations. 13 words per line for double-column equations.
+If the total number of words (text + figures + tables + equations) is 4000 or less for a contributed Conference Article, or 7500 or less for an invited Conference Article, the length is acceptable.
+Structural Dynamics (SDY)
+Structural Data for Biological Macromolecules
+Authors reporting new crystal structures need to adhere to the following requirements:
+Deposit the atomic coordinates and related experimental data (i.e., structure factor amplitudes/intensities, NMR restraints) in a member site of the Worldwide Protein Data Bank (wwPDB).
+Agree to immediately release such data upon publication of their manuscript.
+Include the accession number(s) in the experimental section of the manuscript.
+Include the PDB validation reports as “Additional Material for Reviewers” at the time the manuscript is submitted. (These reports will be used for peer review purposes and will not be published along with the final manuscript.)
+Short Communications
+Since Short Communications have a length limit of 4 journal pages, manuscripts should not exceed 3500 words.
+Please use these guidelines for estimating the length of Short Communications
+Preparing Your Perspective Manuscript
+Perspectives
+are articles about focused topics of current interest in structural science.
+Authors writing a Perspective article provide an objective and balanced overview of recent advances within the field and, importantly, provide their unique views on where the field is headed and promising strategies for progress.
+Perspectives are not Review articles.
+Perspectives may be submitted by a single author or from multiple co-authors.
+All Perspectives are subject to peer review. An invitation from the editors does not guarantee acceptance.
+When preparing your Perspective manuscript, please consider the following general guidelines:
+Recommended length in print: We suggest 5–10 pages, although longer articles are also appropriate.
+Title: Use a short descriptive title to attract readers’ attention.
+Figures: There is no limit to the number of figures that can be included in the article.
+Video/multimedia: Including these in your manuscript is encouraged.
+Number of references: There is no limit to the number of references that can be included in the article.
+Permissions: If you are reusing material from previously published work, please be sure to obtain the proper permissions for publication. We recommend that you request permissions as soon as possible to avoid publication delays. For more information on permissions, please see
+https://publishing.aip.org/authors/author-permission-faq
+.
+While no specific format is required for Perspective articles, we recommend that you include:
+A brief, concise assessment of the status of the field: This assessment should focus on the last 3–5 years of research and can be written either in a brief overview or by presenting new, unpublished results from the author’s own research. Please note: Extensive reviews of the field are not appropriate for a Perspective article, and brief overviews should constitute no more than 50 percent of the total article.
+A unique, forward look at where the field is headed: Perspectives are characterized by the personal views and opinions of the author (or authors) as an expert in the field. Authors are encouraged to focus on newly implemented innovations and their broad-ranging implications for the area of study, identify open questions that need to be addressed, and propose or support new hypotheses.
+LaTeX users
+Authors are advised to use the
+LaTeX template
+. If the version of the manuscript obtained using the “reprint” option fits on four pages, the length is acceptable.
+Word users
+Highlight the manuscript text, excluding the abstract, author list, acknowledgments, and references, and note the word count at the bottom of the screen. Add to that the word-count equivalents for figures, tables, and equations as follows:
+Figures
+: 400 words for an average figure.
+Tables
+: 13 words per line, plus 26 words for double-column tables.
+Equations
+: 13 words per line.
+If the total number of words (text + figures + tables + equations) is 3500 or less, the length is acceptable.
+Reference List
+Including the article title of journals on the reference list is preferred by the community. As such, we ask that you please style your references as follows:G. Imani, L. Zhang, C. Xu, M. Ntibahanana, H. Sun, and J. Yao, “Finite droplets vs long droplets: Discrepancy in release conditions in a microscopic constricted channel,” Phys. Fluids 35(3), 032101 (2023).
+Featured
+Author Instructions
+Before You Begin
+Open Science
+Early Career Recognition
+Policies and Ethics
+Rights and Permissions
+Publishing Academy
+Awards
+Submit Your Article
+Author Services
+Keep Up
+With AIP Publishing
+Sign up for the AIP newsletter to receive the latest news and information from AIP Publishing.
+Sign Up
+AIP PUBLISHING
+1305 Walt Whitman Road,
+Suite 110
+Melville, NY 11747
+(516) 576-2200
+Resources
+Researchers
+Librarians
+Publishing Partners
+Commercial Partners
+About
+About Us
+Careers
+Leadership
+Support
+Contact Us
+Terms Of Use
+Privacy Policy
+© 2026 AIP Publishing LLC

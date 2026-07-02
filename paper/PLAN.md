@@ -1,12 +1,49 @@
-# HardwareX manuscript plan — Custom Induction Furnace
+# Manuscript plan — Custom Induction Furnace
 
-A working plan for drafting a [HardwareX](https://www.sciencedirect.com/journal/hardwarex)
-article from the material in this repository. HardwareX publishes reproducible,
-open-source scientific hardware, so the manuscript must let a reader **rebuild and
-operate the system** from the design files, bill of materials, and instructions
-provided here.
+## 0. Venue change: Review of Scientific Instruments (2026-07-02)
 
-This plan (1) frames the contribution, (2) maps every required HardwareX section
+The target venue is now **[Review of Scientific Instruments](https://pubs.aip.org/aip/rsi)
+(RSI, AIP Publishing)** instead of HardwareX — the more relevant venue for a
+computer-controlled instrument/apparatus paper (per the PR #3 discussion; RSI is
+subscription-based with **no page or color charges**, an optional \$3,800 open-access
+fee, and a **preprint-friendly** policy, so a free arXiv preprint covers open access).
+What changed in the migration (all carried out; see `template/rsi/RSI_GUIDE_FOR_AUTHORS.md`
+for the official-source summary):
+
+- **Class/template:** `paper.tex` moved from Elsevier `elsarticle` to
+  **REVTeX 4.2 with the official AIP `rsi` journal substyle**
+  (`\documentclass[aip,rsi,reprint]{revtex4-2}`); AIP numeric BibTeX style.
+  Official template + author instructions mirrored in [`template/rsi/`](template/rsi/).
+- **Structure:** restructured from the HardwareX template into a traditional
+  instrument paper — Introduction → System design and description → Construction
+  and operation → Performance validation → Microstructural validation →
+  Conclusions, followed by AIP's required back matter (Supplementary Material,
+  Acknowledgments, Author Declarations with COI/Ethics/CRediT, Data Availability).
+- **HardwareX-specific machinery:** the mandatory 7-row specifications table was
+  dropped (license/cost/repository info moved into the Introduction and Data
+  Availability); the **bill of materials** and **design-file inventory** moved to
+  **Appendices A and B** (they remain a differentiator for RSI reviewers, just not
+  mandated sections). All tables now carry numbered captions.
+- **Archived:** the HardwareX version is preserved at
+  [`archive/paper-hardwarex.tex`](archive/paper-hardwarex.tex) (+ compiled PDF).
+- **Still open after the migration:** the outstanding BOM corrections from
+  R. Guymon's review (exact NI DAQ/module models + prices, Edwards T-Station 85H
+  variant, wide-range gauge, TAV5/pyrometer prices) and the cost-summary revision
+  in the abstract/intro; the remaining \todo{} items (funding, CRediT confirmation,
+  LabVIEW block-diagram exports, crucible machining drawing); and RSI submission
+  logistics (cover letter, suggested referees, arXiv preprint).
+
+The sections below are the original HardwareX-era plan. The contribution framing,
+file mapping, and gap checklist remain valid — only the section names/venue
+requirements changed, as summarized above.
+
+---
+
+A working plan for drafting the article from the material in this repository. The
+manuscript must let a reader **rebuild and operate the system** from the design
+files, bill of materials, and instructions provided here.
+
+This plan (1) frames the contribution, (2) maps every manuscript section
 to the concrete repository files that feed it, and (3) lists the gaps that still
 need to be filled before submission.
 

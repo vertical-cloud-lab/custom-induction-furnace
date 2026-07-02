@@ -1,7 +1,10 @@
 # Repository agent guide
 
-This file captures durable, **throughout-the-document** conventions for the HardwareX
+This file captures durable, **throughout-the-document** conventions for the journal
 manuscript in `paper/` (and related artifacts), distilled from PR review feedback.
+The manuscript targets **Review of Scientific Instruments (RSI)** as of 2026-07-02
+(REVTeX 4.2, `aip,rsi`); it was previously drafted for HardwareX, and that version
+is archived in `paper/archive/`.
 When a reviewer flags something "that applies throughout" and points at one example,
 the rule is recorded here so it is applied consistently and recognized in future
 sessions. See also `.github/copilot-instructions.md` for tooling/environment notes.
@@ -39,18 +42,21 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
    *originating prototype* and the rejected CYSI/GP-15A import is documented only as
    historical context — neither is a BOM line item.
 
-5. **Specifications table = HardwareX's 7 mandatory rows only.** The mandatory
-   specifications table has exactly: Hardware name, Subject area, Hardware type,
-   Closest commercial analog, Open source license, Cost of hardware, Source file
-   repository. Do **not** add machine-/build-dependent rows (e.g. "vacuum level",
-   temperatures, coil geometry) there — those are build-specific and belong in the
-   "Technical specifications" table in the Hardware description.
+5. **Follow the AIP/RSI manuscript structure, not HardwareX's.** RSI has no
+   mandatory specifications table or design-files/BOM sections; the bill of
+   materials and design-file inventory live in **appendices**, and the required
+   AIP order is: title → abstract (≤250 words, one paragraph) → text (ending in a
+   Conclusions section) → Supplementary Material → Acknowledgments → Author
+   Declarations (Conflict of Interest, Ethics, CRediT Author Contributions) →
+   Data Availability → appendices → references. Build-dependent values (vacuum
+   level, temperatures, coil geometry) belong in the "Technical specifications"
+   table in the System design section. See `paper/template/rsi/RSI_GUIDE_FOR_AUTHORS.md`.
 
 6. **Use the minted Zenodo DOI for the archival deposit; keep the GitHub link too.**
-   Wherever a permanent DOI is required (specifications table, Data availability), use
-   `https://doi.org/10.5281/zenodo.20878017`, and keep the development repository link
-   `https://github.com/vertical-cloud-lab/custom-induction-furnace` in appropriate
-   places. A bare GitHub URL is not accepted by HardwareX as the archival location.
+   Wherever a permanent DOI is required (Data availability, Supplementary material),
+   use `https://doi.org/10.5281/zenodo.20878017`, and keep the development repository
+   link `https://github.com/vertical-cloud-lab/custom-induction-furnace` in
+   appropriate places. A bare GitHub URL is not an acceptable archival location.
 
 7. **Mark used/eBay-sourced BOM items as "used" with an approximate/estimated cost,
    and prefer verifiable part numbers.** For items bought used (eBay, surplus), label
@@ -64,7 +70,11 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
 ## Build
 
 - Build the manuscript with `make pdf` in `paper/` (pdflatex × multiple passes +
-  bibtex; Elsevier `elsarticle` class). Always rebuild `paper/paper.pdf` after editing
-  `paper/paper.tex`.
+  bibtex; REVTeX 4.2 class with the `aip,rsi` options). Always rebuild
+  `paper/paper.pdf` after editing `paper/paper.tex`.
+- REVTeX 4.2f predates the 2023+ LaTeX kernel/array table internals; `paper.tex`
+  disables REVTeX's begin-document tabular patching (see the commented
+  `\switch@tabular` override in the preamble) — do not remove it, and do not use
+  REVTeX's `ruledtabular` environment (use booktabs, as the manuscript already does).
 - Regenerate figures with `make figures` in `paper/` (validation + characterization +
   schematic/photo figures).

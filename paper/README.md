@@ -1,19 +1,23 @@
-# HardwareX manuscript workspace
+# Manuscript workspace (Review of Scientific Instruments)
 
-Working materials for a [HardwareX](https://www.sciencedirect.com/journal/hardwarex)
-article describing the custom induction furnace — the retrofit of a ~1970 LEPEL
-high-frequency induction furnace into a computer-controlled, vacuum-integrated
-annealing system.
+Working materials for a
+[Review of Scientific Instruments](https://pubs.aip.org/aip/rsi) (AIP Publishing)
+article describing the custom induction furnace — the retrofit of a bare RF
+induction generator into a computer-controlled, vacuum-integrated annealing
+system. The manuscript was originally drafted for HardwareX and was retargeted
+to RSI on 2026-07-02 (the better venue fit; see the PR #3 discussion) — the
+HardwareX version is archived in [`archive/`](archive/).
 
 ## Contents
 
 | Path | Purpose |
 |------|---------|
-| [`paper.tex`](paper.tex) / [`paper.pdf`](paper.pdf) | The HardwareX manuscript draft (LaTeX, Elsevier `elsarticle` class) and its compiled PDF. Build with `make pdf` (pdflatex / MiKTeX). |
-| [`template/`](template/) | Mirrored Elsevier `elsarticle` class/template files and a summary of the [HardwareX Guide for Authors](template/HARDWAREX_GUIDE_FOR_AUTHORS.md). |
+| [`paper.tex`](paper.tex) / [`paper.pdf`](paper.pdf) | The RSI manuscript draft (LaTeX, REVTeX 4.2 with the `aip,rsi` options) and its compiled PDF. Build with `make pdf` (pdflatex / MiKTeX). |
+| [`template/rsi/`](template/rsi/) | Mirrored REVTeX 4.2 / AIP template files (incl. the `rsi` substyle) and the official author instructions — see the [RSI guide summary](template/rsi/RSI_GUIDE_FOR_AUTHORS.md). |
+| [`archive/`](archive/) | The archived HardwareX version of the manuscript (Elsevier `elsarticle` class); [`template/`](template/) retains the `elsarticle` files it builds against, plus the [HardwareX Guide for Authors summary](template/HARDWAREX_GUIDE_FOR_AUTHORS.md). |
 | [`paper.md`](paper.md) | Migration note — the manuscript moved from Markdown to LaTeX; kept as a pointer. |
 | [`Makefile`](Makefile) | Builds `paper.pdf` from `paper.tex`. |
-| [`PLAN.md`](PLAN.md) | The manuscript plan: contribution framing, draft specifications table, every required HardwareX section mapped to the repository files that feed it, and a pre-submission gap checklist. |
+| [`PLAN.md`](PLAN.md) | The manuscript plan: the RSI migration plan (top), contribution framing, section-by-section mapping to the repository files that feed the manuscript, and a pre-submission gap checklist. |
 | [`run_edison_review.py`](run_edison_review.py) | Submits the draft + context to an Edison Scientific Analysis review job and saves the feedback. |
 | [`edison-feedback/`](edison-feedback/) | Reviewer feedback on the draft (and the analysis notebook) returned by the Edison Analysis job. |
 | [`extract_context.py`](extract_context.py) | Reproducible utility that extracts text and embedded figures from the binary documents in [`../docs/`](../docs/) into `extracted-context/`. |
