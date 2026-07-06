@@ -27,12 +27,14 @@ rejected CYSI import path are documented in the manuscript text, not here.
 | GEN-3 | Recirculating water chiller (MIL043008 air-cooled closed-loop, V1650-0060) | 1 | $1,575 | $1,575 | East Coast Induction (USA) | — |
 | GEN-4 | Heating head + 3 m cable and water lines (PWH-13-12-30/50, V3000-0300); 1 coil made to spec at no charge with a complete unit | 1 | $3,337 | $3,337 | East Coast Induction (USA) | copper |
 | GEN-5 | Line auto-transformer, 12 kVA / 3PH / 480×380 V with taps (V049-0508; facility-dependent) | 1 | $1,665 | $1,665 | East Coast Induction (USA) | — |
-| RETRO-1 | LabVIEW-compatible DAQ with analog out + in (0–5 V AO) — **TODO: confirm exact model** (co-author review: NI USB-6000, $281 per NI) | 1 | TODO | TODO | National Instruments | — |
-| RETRO-2 | Dual-wavelength ratio pyrometer (LumaSense IMPAC ISR 6, 800–2500 °C) | 1 | $241 (used) | $241 | eBay — used (new list ~$5,500, LumaSense quote 00161403; co-author review found a current used listing at $385) | — |
+| RETRO-1 | LabVIEW-compatible DAQ with analog out + in (0–5 V AO): NI USB-6000 DAQ | 1 | $281.00 | $281.00 | National Instruments | — |
+| RETRO-2 | Dual-wavelength ratio pyrometer (LumaSense IMPAC ISR 6, 800–2500 °C), used | 1 | $385.00 (used) | $385.00 | eBay — used listing (new list ~$5,500, LumaSense quote 00161403) | — |
 | RETRO-3 | 24 V linear power supply for pyrometer (International Power) | 1 | $51 | $51 | Mouser | — |
-| RETRO-4 | Voltage-to-current (0–5 V → 4–20 mA) loop conditioner for the generator power-setpoint input — **TODO: model/vendor** (co-author review: NI-9265 $856 + NI-9203 $1,181 + cDAQ-9174 chassis $1,718, prices per NI) | 1 | TODO | TODO | TODO | — |
-| RETRO-5 | Edwards T-Station 85 turbo-molecular pump — **TODO** (co-author review: nEXT T-Station 85H Dry, 1Ph 100–120 V, DN 40 ISO-KF, $13,573.65 per Edwards; gauge NOT included — wide-range gauge D14701000, $1,543.29 from Chemtech Scientific, discontinued/replaced by D3G0021100) | 1 | TODO | TODO | Edwards Vacuum | — |
-| RETRO-6 | Edwards TAV5 vent valve | 1 | $59 (used) | $59 | eBay — used (co-author review: $652.80 new from Edwards; no used listings found at $59) | — |
+| RETRO-4 | Voltage-to-current (0–5 V → 4–20 mA) loop conditioner set for generator power-setpoint input (NI-9265 input module + NI-9203 output module + NI cDAQ-9174 chassis) | 1 set | $3,755.00 | $3,755.00 | National Instruments | — |
+| RETRO-5 | Edwards nEXT T-Station 85H Dry turbo pumping station (1Ph 100–120 V, 50/60 Hz, DN 40 ISO-KF) | 1 | $13,573.65 | $13,573.65 | Edwards Vacuum | — |
+| RETRO-5A | Wide-range vacuum gauge D14701000 (36 V, 2 W); discontinued, replaced by D3G0021100 | 1 | $1,543.29 | $1,543.29 | Chemtech Scientific | — |
+| RETRO-6 | Edwards TAV5 vent valve (new) | 1 | $652.80 | $652.80 | Edwards Vacuum | — |
+| RETRO-6A | Sierra SmartTrak 100L mass flow controller | 1 | $550–$1,000 (quote range) | $550–$1,000 | Sierra / distributor quote | — |
 | RETRO-7 | Inert-gas regulator (Fisher FS-50) | 1 | $38 | $38 | Fisher Scientific | — |
 | RETRO-8 | KF40 overpressure centering ring | 1 | $19 | $19 | IdealVac | aluminum |
 | RETRO-9 | KF40 plastic quick vacuum clamp | 1 | $23 | $23 | IdealVac | polymer |
@@ -52,10 +54,11 @@ crucible (MgO / BN / alumina, per the compatibility findings in the
 manuscript's YSZ section and `docs/YSZ/`); vendor records for the tantalum
 blocks and BN crucibles are **TODO** (not in the archived parts list).
 
-**Outstanding co-author (R. Guymon) review corrections still to fold in:**
-exact NI DAQ/module models and prices (NI USB-6000 $281; NI-9265 $856 +
-NI-9203 $1,181 + cDAQ-9174 $1,718), Edwards nEXT T-Station 85H price
-($13,573.65), wide-range gauge D14701000 ($1,543.29), TAV5 $652.80 new,
-pyrometer $385 used. GEN line items are from East Coast Induction quote
-210203AP (3 Feb 2021; generator + heating head + controller + chiller + line
-transformer total $16,487).
+**Co-author (R. Guymon) corrections incorporated in this revision:**
+NI USB-6000 pricing, NI-9265/NI-9203/cDAQ-9174 loop-conditioner component
+pricing, Edwards nEXT T-Station 85H pricing, wide-range gauge D14701000
+pricing and replacement part number, TAV5 new-price update, pyrometer used
+price update, and inclusion of the Sierra SmartTrak 100L MFC as a RETRO line
+item. GEN line items remain from East Coast Induction quote 210203AP (3 Feb
+2021; generator + heating head + controller + chiller + line transformer total
+$16,487).
