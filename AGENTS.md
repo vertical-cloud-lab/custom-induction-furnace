@@ -77,6 +77,19 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
    draft against recent RSI publications, e.g.
    https://pubs.aip.org/aip/rsi/article/97/6/063303/3394533.)
 
+9. **Keep the manuscript to a single data table; no BOM or specs tables.** The
+   exemplar RSI publication R. Guymon provided (Rev. Sci. Instrum. 97, 063303
+   (2026), doi:10.1063/5.0299443) has exactly one table, presented while
+   discussing the data, and no bill-of-materials table. The manuscript's one
+   table is the specimen ↔ thermal-history/characterization linkage in the
+   validation section. Technical specifications are prose in the System design
+   section; the itemized bill of materials and design-file inventory live in
+   `paper/supplementary/bill-of-materials.md` and
+   `paper/supplementary/design-file-inventory.md` (referenced from the
+   Supplementary Material section), NOT as manuscript appendices. Outstanding
+   BOM corrections are tracked in the supplementary BOM file. (Requested by
+   R. Guymon in PR #3, 2026-07-06.)
+
 ## Build
 
 - Build the manuscript with `make pdf` in `paper/` (pdflatex × multiple passes +
