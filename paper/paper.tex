@@ -99,7 +99,7 @@ schematics, and run logs, retargeted from HardwareX to \emph{Review of Scientifi
 Instruments} (REVTeX 4.2, \texttt{aip,rsi}). \todo{}-marked items flag values or
 figures that still need to be confirmed or added before submission; outstanding
 bill-of-materials corrections from co-author review are tracked in the pull
-request and in \texttt{paper/supplementary/bill-of-materials.md}.}}
+request and in the supplementary bill of materials.}}
 
 %==============================================================
 \section{Introduction}
@@ -154,8 +154,7 @@ current USA generator, with the LEPEL retrofit retained as historical context.
 Compared with commercial vacuum annealing furnaces, this approach has
 \textbf{substantially lower capital cost} (the generator + heating head +
 controller + chiller package was quoted at $\approx$\$16.5k in 2021, and the
-retrofit components are itemized in the supplementary bill of materials,
-\texttt{paper/supplementary/bill-of-materials.md}, versus
+retrofit components are itemized in the supplementary bill of materials, versus
 \$50k--\$200k+ for turn-key systems), is repairable and modifiable by the user,
 and is broadly reusable: any lab with an induction generator and an analog power
 input can reproduce the control, vacuum, and temperature-sensing additions
@@ -211,10 +210,8 @@ work adds.
 \subsection{Architecture and control signal flow}
 
 The system comprises five subsystems, shown in the labeled overview schematic of
-Fig.~\ref{fig:overview} (the editable source schematics are in
-\texttt{docs/induction-furnace-schematic.pptx} and are extracted to text in
-\texttt{paper/extracted-context/}); Fig.~\ref{fig:furnacephoto} shows the
-corresponding assembled system at operating power:
+Fig.~\ref{fig:overview}; Fig.~\ref{fig:furnacephoto} shows the corresponding
+assembled system, with its main components labeled, at operating power:
 
 \begin{figure}[ht]
 \centering
@@ -225,8 +222,7 @@ water-cooled heating head/work coil around a quartz-tube vacuum chamber; a
 dual-wavelength pyrometer sights the charge through a quartz optical disc; an Edwards
 T-Station~85 turbo-molecular pump (with pressure gauge and bellows) evacuates the
 chamber; and a DAQ/laptop sets generator power and reads the pyrometer for
-closed-loop control. Rendered from the editable source schematic
-\texttt{docs/induction-furnace-schematic.pptx}.}
+closed-loop control.}
 \label{fig:overview}
 \end{figure}
 
@@ -235,17 +231,18 @@ closed-loop control. Rendered from the editable source schematic
 build: CEIA Power Cube PW3-90/50) drives a water-cooled copper work coil. The coil
 carries both the oscillating current and cooling water. Coil geometry ($\sim$3\,in
 tall, 2.5\,in ID, $\sim$6.5 turns) was tuned to the sample/crucible
-stack~\cite{vankan2024electromagneticinductionheating} (see
-\texttt{extracted-context/order\_corrections\_coils.md}).
+stack~\cite{vankan2024electromagneticinductionheating}.
 
 \item \textbf{Vacuum + gas.} A quartz tube forms the chamber and is connected through
 a KF40 flange and flexible bellows to an Edwards T-Station 85 turbo-molecular pump
 ($\sim$1$\times$10$^{-6}$--10$^{-8}$\,Torr). A manual vent valve and an inert-gas
-regulator allow controlled venting/backfilling to suppress oxidation of reactive
-metals. The vacuum connection stack, in order, is: \textbf{quartz tube $\rightarrow$
-KF40 flange + optical window $\rightarrow$ flexible bellows $\rightarrow$ vacuum
-gauge $\rightarrow$ Edwards T-Station 85 $\rightarrow$ vent / inert-gas backfill
-branch.}
+regulator/mass flow controller allow controlled venting and backfilling to suppress
+oxidation of reactive metals. The choice of atmosphere matters for graphite-crucible
+anneals: the best results were achieved by pumping the chamber to high vacuum and
+then backfilling with argon through the vent valve --- purging the chamber with the
+inert gas before setting the mass flow controller to a steady trickle
+($\sim$20\,SCCM) for the anneal. Heating under vacuum alone instead tended to
+sublime graphite from the crucible onto the chamber walls.
 
 \item \textbf{Optical temperature sensing.} A dual-wavelength (ratio) pyrometer (the
 canonical unit is a LumaSense IMPAC ISR 6, 800--2500\,\celsius; the IMPAC brand is
@@ -255,8 +252,8 @@ would corrupt thermocouples~\cite{ham2016insituspectralemissivity,suleiman2025im
 
 \item \textbf{Control / DAQ + LabVIEW.} A LabVIEW DAQ analog output sets generator
 power; the pyrometer signal is read back for closed-loop ramp/soak control. The VIs
-implement manual control, automated ramping, PID tuning, and email alerts (see
-\texttt{code/} in the repository). In the CEIA build the DAQ outputs \textbf{0--5\,V}
+implement manual control, automated ramping, PID tuning, and email alerts.
+In the CEIA build the DAQ outputs \textbf{0--5\,V}
 to a \textbf{voltage-to-current loop conditioner} that converts the command to the
 controller's \textbf{4--20\,mA} power-setpoint input (the LEPEL prototype instead
 took a 0--5\,mA command directly). The closed-loop \textbf{signal flow} is therefore:
@@ -283,7 +280,7 @@ anneal.
 \begin{figure}[ht]
 \centering
 \includegraphics[width=\linewidth]{fig_control_panel.png}
-\caption{LabVIEW control front panel (\texttt{docs/equipment-reference/frontPanel\_200219.PNG}):
+\caption{LabVIEW control front panel:
 editable ramp-up / PID-soak / cool-down setpoint tables (time vs.\ analog command in
 mA below the pyrometer floor and vs.\ \celsius{} once closed-loop), PID gains and
 output range, inert-gas flow setpoint/readback, and live power-command and
@@ -421,9 +418,7 @@ Photographs contributed by R.~Guymon.
 This section describes how the subsystems of Fig.~\ref{fig:overview} are
 physically connected, following the heating, vacuum, gas, and control paths in
 turn; the costed part list and the design-file inventory (coil drawing,
-editable schematics, STEP models) are maintained as supplementary material in
-the repository (\texttt{paper/supplementary/bill-of-materials.md},
-\texttt{paper/supplementary/design-file-inventory.md}).
+editable schematics, STEP models) are maintained as supplementary material.
 Figure~\ref{fig:furnacephoto} shows the
 assembled system at operating power, and Fig.~\ref{fig:vacuumdetails} details
 the vacuum and gas-handling connections described below.
@@ -431,12 +426,14 @@ the vacuum and gas-handling connections described below.
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.8\linewidth]{fig_furnace_photo.jpg}
-\caption{The fully assembled, functioning furnace. The heating head and work
-coil, driven by the CEIA Power Cube generator, sit on the adjustable support
-platform at left; the vertical quartz-tube vacuum chamber passes through the
-coil and glows at the crucible position; the argon cylinder (rear) feeds the
-gas-handling line; and the turbo pumping station connects at the lower right of
-the chamber stack. Photograph contributed by R.~Guymon.}
+\caption{The fully assembled, functioning furnace with the main components
+labeled. The Power Cube generator (left) drives the water-cooled induction
+coil around the vertical quartz vacuum chamber, which glows at the sample-stack
+position; the pyrometer sights down the chamber axis from the top of the
+stack; the vent valve admits the argon backfill; and the wide-range vacuum
+gauge, turbopump, and separately supported roughing pump complete the vacuum
+path at the bottom of the stack. Photograph and call-outs contributed by
+R.~Guymon.}
 \label{fig:furnacephoto}
 \end{figure}
 
@@ -486,10 +483,9 @@ flow setpoint and readback (Fig.~\ref{fig:controlpanel}).
 voltage-to-current loop conditioner, whose 4--20\,mA output lands on the CEIA
 Power Controller's analog power-setpoint input (the LEPEL prototype took a
 0--5\,mA command directly); the pyrometer's analog output returns to a DAQ
-analog input, scaled to \celsius{} (wiring details in
-\texttt{docs/temp-control-modification/}). Electrical isolation is maintained
+analog input, scaled to \celsius. Electrical isolation is maintained
 between the DAQ/control path and the generator interface throughout. The
-LabVIEW VIs from \texttt{code/} are deployed against these DAQ channels, and
+LabVIEW VIs are deployed against these DAQ channels, and
 manual control is verified before automated ramp/soak is enabled.
 
 \begin{figure*}[ht]
@@ -497,8 +493,8 @@ manual control is verified before automated ramp/soak is enabled.
 \includegraphics[width=0.92\linewidth]{fig_vacuum_details.jpg}
 \caption{Vacuum and gas-handling details of the assembled system.
 (a)~Turbo pumping station with the roughing pump mounted on a separate support,
-not connected to the vacuum-chamber attachment tubes, so pump vibration is not
-transmitted into the chamber (chamber shown disassembled).
+coupled to the pumping station only through a flexible hose, so pump vibration
+is not transmitted into the chamber.
 (b)~Overpressure relief valve (0.5\,psi cracking pressure) at the bottom of the
 vacuum chamber stack. (c)~Digital mass flow controller (Sierra Smart-Trak)
 connecting the argon tank to the vent valve for controlled venting and inert
@@ -508,8 +504,8 @@ backfill. Photographs contributed by R.~Guymon.}
 
 \subsection{Operating procedure}
 
-The operating procedure below is condensed from the lab SOP
-(\texttt{extracted-context/SOP\_induction\_200901.md}). Before RF power is ever
+The operating procedure below is condensed from the lab standard operating
+procedure. Before RF power is ever
 applied, the chamber must be at high vacuum
 ($\sim$1$\times$10$^{-6}$\,Torr or better) or backfilled to the intended inert
 atmosphere; cooling-water flow at the coil and generator must be confirmed and
@@ -564,14 +560,13 @@ instruments, which are shielded and kept clear of the coil.
 \section{Performance validation}
 %==============================================================
 
-The repository contains 100+ logged runs (\texttt{docs/data\_log/}, IFrun001--100)
+The archive contains 100+ logged runs (IFrun001--100)
 across Ni200, Ni4N5, YSZ, and Pd thermal-evaporation experiments, with temperatures
 of $\sim$900--1400\,\celsius{} and soak durations from minutes to $\sim$40\,h, each
-with \texttt{.xlsx}/\texttt{.txt}/\texttt{.lvm} traces and some photos. Per-run traces
-were parsed into uniform CSV/PNG files (\texttt{docs/data\_log/processed/};
-\texttt{build\_run\_traces.py}), and the quantitative metrics below were computed
-reproducibly from those traces by \texttt{paper/build\_validation\_figures.py}
-(values mirrored in \texttt{paper/validation-metrics.json}). Because the archive is a
+with raw spreadsheet/text/LabVIEW-measurement traces and some photos. Per-run traces
+were parsed into uniform CSV/PNG files, and the quantitative metrics below were
+computed reproducibly from those traces by scripts archived alongside the data
+(see Data Availability). Because the archive is a
 retrospective operating record rather than a prospectively balanced design of
 experiments, every comparison is restricted to an internally consistent subset
 (matching material, nominal profile, and operating configuration) and the
@@ -601,7 +596,8 @@ of the analog command. The dashed line is a guide-to-the-eye linear fit
 \end{figure}
 
 \paragraph{Representative ramp/soak with control metrics
-(Fig.~\ref{fig:representative}).} Run \texttt{IFrun079\_Ni4N5\_084\_1300C\_12h} is a
+(Fig.~\ref{fig:representative}).} Run \texttt{IFrun079} (specimen
+\texttt{Ni4N5\_084}, nominal 1300\,\celsius{} / 12\,h) is a
 representative closed-loop anneal. Measured against the 1300\,\celsius{} setpoint, the
 soak held $1302.1 \pm 3.0$\,\celsius{} (mean\,$\pm$\,SD) over the 12\,h plateau, with a
 10--90\,\% rise time of $\sim$1135\,s, an overshoot of $\sim$12\,\celsius, a maximum
@@ -656,15 +652,13 @@ temperatures; the band is mean\,$\pm$\,SD ($1201.2 \pm 1.3$\,\celsius).}
 
 The furnace exists to change microstructure, so the key validation is
 \textbf{real microstructural data} tied to specific thermal histories. The
-committed SEM/EBSD and optical-microscopy archives (\texttt{docs/SEM/},
-\texttt{docs/optical/}) are keyed by \texttt{Ni4N5\_\#\#\#} /
-\texttt{Ni200\_\#\#\#} specimen IDs that map directly
-to the run IDs in \texttt{docs/data\_log/}. This mapping is built reproducibly by
-\texttt{paper/build\_characterization\_crossref.py}, which parses the specimen ID
+archived SEM/EBSD and optical-microscopy datasets are keyed by
+\texttt{Ni4N5\_\#\#\#} / \texttt{Ni200\_\#\#\#} specimen IDs that map directly
+to the run IDs of the anneal logs. This mapping is built reproducibly by a
+script that parses the specimen ID
 out of every characterization folder, joins it to the machine-parsed run summary,
-and writes the per-specimen cross-reference in
-\texttt{paper/characterization-crossref.csv}/\texttt{.md}: \textbf{35 characterized
-specimens}, of which \textbf{9 link to a parsed run log}, \textbf{8 carry committed
+and writes a per-specimen cross-reference: \textbf{35 characterized
+specimens}, of which \textbf{9 link to a parsed run log}, \textbf{8 carry archived
 EBSD/OIM data}, and one carries EDS. Inverse-pole-figure (IPF) EBSD orientation
 maps of two annealed specimens (Fig.~\ref{fig:ebsd}) resolve hundreds of indexed
 grains, and the best-correlated specimen, \texttt{Ni4N5\_081} (annealed in
@@ -673,8 +667,8 @@ $\sim$1301\,\celsius), is documented across length scales --- optical grain map
 with in-image grain-size measurements, SEM survey, and high-magnification
 grain-boundary detail (Fig.~\ref{fig:microstructure}). The full multi-gigabyte
 raster/EBSD archive (including \texttt{.oim}, \texttt{.osc}, \texttt{.ang}, and
-DREAM.3D volumes) remains on the lab's Box share and is inventoried per file in
-\texttt{docs/SEM/CATALOG.csv} and \texttt{docs/optical/CATALOG.csv}.
+DREAM.3D volumes) remains on the lab's institutional share and is inventoried
+per file in the characterization catalogs distributed with the data.
 Grain size is quantified with: number of grains analyzed,
 equivalent-circle-diameter or intercept metric, median + IQR (or mean $\pm$ SD),
 segmentation/cleanup criteria, minimum-grain-area threshold, and whether twins are
@@ -687,7 +681,7 @@ parameterized grain-growth kinetics.
 \centering
 \includegraphics[width=0.86\linewidth]{fig_ebsd.png}
 \caption{EBSD inverse-pole-figure (IPF) orientation maps of two annealed Ni4N5
-specimens, rendered from the committed \texttt{docs/SEM/} archive.
+specimens, rendered from the archived EBSD scans.
 (a)~\texttt{Ni4N5\_034} (\texttt{IFrun049}, 1200\,\celsius{} / 12\,h);
 (b)~\texttt{Ni4N5\_069}. Each indexed color is a crystallographic orientation;
 the maps resolve hundreds of grains for grain-size and texture analysis.}
@@ -702,8 +696,7 @@ the maps resolve hundreds of grains for grain-size and texture analysis.}
 characterization archive with a single logged thermal history.
 (a)~Optical micrograph (grain structure, 200\,\textmu m scale bar, with in-image
 grain-size measurements); (b)~SEM survey; (c)~high-magnification SEM
-grain-boundary detail. All panels are committed files under \texttt{docs/optical/}
-and \texttt{docs/SEM/}.}
+grain-boundary detail.}
 \label{fig:microstructure}
 \end{figure*}
 
@@ -715,18 +708,16 @@ extensions for a prospective study.
 
 \paragraph{Specimen $\leftrightarrow$ thermal-history linkage.} Each
 specimen used in the thermal-performance and microstructural validation is
-tied to its exact run, and to its committed characterization data, in
+tied to its exact run, and to its archived characterization data, in
 Table~\ref{tab:linkage}. ``Nominal soak'' is the target parsed from the run
-filename; ``logged soak T'' is the machine-parsed soak-mean from the trace
-(\texttt{run\_summary.csv}); ``atmosphere'' indicates whether active gas flow
-was present in the parsed log summary (\texttt{has\_flow}), not a fully
-reconstructed gas chemistry; the characterization column gives committed
-SEM/optical file counts and flags committed EBSD/OIM data (generated by
-\texttt{paper/build\_characterization\_crossref.py}). The complete
+filename; ``logged soak T'' is the machine-parsed soak-mean from the trace;
+``atmosphere'' indicates whether active gas flow
+was present in the parsed log summary, not a fully
+reconstructed gas chemistry; the characterization column gives archived
+SEM/optical file counts and flags archived EBSD/OIM data. The complete
 35-specimen cross-reference, including characterized specimens whose run logs
-are not in the parsed set, is in
-\texttt{paper/characterization-crossref.csv}; run IDs are abbreviated here
-(full run filenames in \texttt{run\_summary.csv}).
+are not in the parsed set, is distributed with the supplementary material;
+run IDs are abbreviated here.
 
 \begin{table*}[ht]
 \caption{Specimen $\leftrightarrow$ thermal-history linkage and committed
@@ -784,8 +775,8 @@ generator, vacuum path, gas handling, pyrometer, and LabVIEW control are
 untouched --- the swap is a specimen-stack change, not a furnace change.
 
 \paragraph{Tantalum-susceptor heat curve.} Figure~\ref{fig:taheatcurve}
-quantifies the temperature range this stack opens up, from the archived lab
-workbook (\texttt{docs/YSZ/Tantalum-Heat-Curve.xlsx}). With a single tantalum
+quantifies the temperature range this stack opens up, from an archived lab
+workbook. With a single tantalum
 block the pyrometer reads $\sim$1230\,\celsius{} at a 10\,\% power command,
 rising monotonically to $\sim$2020\,\celsius{} at 31\,\%; stacking two blocks
 shifts the whole curve upward ($\sim$1790\,\celsius{} at 10\,\%), sustains a
@@ -800,8 +791,7 @@ range.
 \begin{figure*}[ht]
 \centering
 \includegraphics[width=0.9\linewidth]{fig_ta_heatcurve.png}
-\caption{Measured heat curves of the tantalum-susceptor (ceramic) stack, from
-the archived workbook \texttt{docs/YSZ/Tantalum-Heat-Curve.xlsx} (data
+\caption{Measured heat curves of the tantalum-susceptor (ceramic) stack (data
 contributed by R.~Guymon). (a)~Pyrometer temperature vs.\ generator power
 command for one and two stacked tantalum susceptor blocks (the faint series
 repeats the single-block measurement on the original power controller); the
@@ -815,9 +805,7 @@ final hour) before a stepped ramp-down.}
 \paragraph{High-temperature material compatibility.} Operating between
 2000 and 2500\,\celsius{} makes chemical compatibility between the specimen,
 susceptor, and crucible the design constraint, and the archived configuration
-survey (\texttt{docs/YSZ/Induction-Furnace-Key-Takeaways.pdf},
-\texttt{docs/YSZ/Observed-Adverse-Chemical-Reactions.docx}) maps it
-empirically. Three stack variants were run: Ta susceptor blocks with the YSZ
+survey maps it empirically. Three stack variants were run: Ta susceptor blocks with the YSZ
 specimen in a BN-lined alumina crucible at 2500\,\celsius{} for 8\,h
 (successful grain growth, but Ta vapor deposited on the YSZ); YSZ over
 graphite in a BN/alumina stack at 2000\,\celsius{} for 168\,h (the YSZ reacted
@@ -828,16 +816,14 @@ alumina--graphite eutectic near 1800\,\celsius; carbon consuming YSZ at
 2000\,\celsius; YSZ--Ta interdiffusion and Ta deposition at 2500\,\celsius;
 Ta--BN and Ta--MgO surface degradation; Ta carburizing to (still-functional)
 gold-colored TaC; and Ta gettering oxygen from any source --- are recorded
-with photographs in \texttt{docs/YSZ/}. Two practical rules emerged: shorter,
+with photographs in the archived survey. Two practical rules emerged: shorter,
 hotter anneals stay clean (a \textbf{$\sim$90\,\textmu m clean-grained YSZ
 specimen was produced in 45\,min} in the double-Ta configuration, while runs
 past $\sim$3\,h contaminated the specimen), and above $\sim$2200\,\celsius{} a
 carbon susceptor that does not touch the YSZ (e.g.\ graphite contained in a BN
-crucible) is the indicated configuration. Committed optical micrographs
+crucible) is the indicated configuration. Archived optical micrographs
 (Fig.~\ref{fig:ysz}(b,c)) show the resulting equiaxed YSZ grain structures,
-including a specimen after a 1700\,\celsius{} / 10\,h anneal; a micrograph
-with in-image feature measurements from the same survey is committed at
-\texttt{docs/YSZ/key-takeaways-images/ysz-grain-measurements.png}.
+including a specimen after a 1700\,\celsius{} / 10\,h anneal.
 \todo{link the YSZ anneals to their IFrun IDs (which logged runs the heat
 curves and the 2500/2130/2000\,\celsius{} configuration tests correspond to),
 and confirm which generator the tantalum heat curves were recorded on.}
@@ -851,11 +837,9 @@ fresh $\sim$35\,mm-ID quartz tube, the YSZ specimen (red) is sandwiched between
 two 25.5\,mm tantalum susceptor blocks, seated in a 28\,mm MgO crucible on an
 alumina support rod that raises the stack to coil height; the coil, vacuum,
 pyrometer, and control paths are unchanged from the metal configuration.
-(b)~Optical micrograph of YSZ after a 1700\,\celsius{} / 10\,h anneal
-(\texttt{docs/optical/.../190823\_YSZ/YSZ\_1700C\_10h.JPG}).
-(c)~Optical micrograph of an induction-annealed YSZ specimen
-(\texttt{docs/optical/.../190909\_YSZ/}), showing the equiaxed grain structure;
-scale-bar originals are inventoried in \texttt{docs/optical/CATALOG.csv}.}
+(b)~Optical micrograph of YSZ after a 1700\,\celsius{} / 10\,h anneal.
+(c)~Optical micrograph of an induction-annealed YSZ specimen,
+showing the equiaxed grain structure.}
 \label{fig:ysz}
 \end{figure*}
 
@@ -909,18 +893,14 @@ and the full run-log and characterization archives are openly available.
 The development repository
 (\url{https://github.com/vertical-cloud-lab/custom-induction-furnace}; archival
 snapshot \href{https://doi.org/10.5281/zenodo.20878017}{10.5281/zenodo.20878017})
-contains the complete supplementary material: LabVIEW control VIs and MATLAB
-utilities (\texttt{code/}), system schematics and the coil drawing
-(\texttt{docs/}), the standard operating procedure, the itemized bill of
-materials and design-file inventory
-(\texttt{paper/supplementary/bill-of-materials.md},
-\texttt{paper/supplementary/design-file-inventory.md}), the
-100+ raw and machine-parsed anneal logs (\texttt{docs/data\_log/}), the SEM/EBSD
-and optical characterization archives with per-file catalogs
-(\texttt{docs/SEM/}, \texttt{docs/optical/}), the tantalum-susceptor heat-curve
-workbook and high-temperature configuration survey (\texttt{docs/YSZ/}), and
-the scripts that reproduce every figure and metric in this paper
-(\texttt{paper/}).
+contains the complete supplementary material: the LabVIEW control VIs and MATLAB
+utilities, the system schematics and coil drawing, the standard operating
+procedure, the itemized bill of materials and design-file inventory, the
+100+ raw and machine-parsed anneal logs, the SEM/EBSD
+and optical characterization archives with per-file catalogs,
+the tantalum-susceptor heat-curve
+workbook and high-temperature configuration survey, and
+the scripts that reproduce every figure and metric in this paper.
 
 \begin{acknowledgments}
 BYU Mechanical Engineering Department; the Johnson group; Kevin Cole.

@@ -4,7 +4,8 @@
 Sources (all committed):
 
 * ``docs/furnace-photos/`` -- photographs of the assembled, operating furnace
-  contributed by R. Guymon (PR #3): the full assembly at temperature, the
+  contributed by R. Guymon (PR #3): the full assembly at temperature with
+  part call-outs (cropped from ``assembled-furnace-callouts.pdf``), the
   chamber-bottom relief valve, the Sierra Smart-Trak mass flow controller, and
   the vibration-isolated roughing-pump support.
 * ``docs/YSZ/ysz-stack-schematic.png`` -- hand schematic of the
@@ -16,7 +17,7 @@ Sources (all committed):
 
 Outputs (paper/figures/):
 
-* ``fig_furnace_photo.jpg``  -- single photo of the assembled system at power.
+* ``fig_furnace_photo.jpg``  -- labeled photo of the assembled system at power.
 * ``fig_vacuum_details.jpg`` -- 3-panel vacuum/gas-handling detail photos.
 * ``fig_ysz.png``            -- YSZ stack schematic + optical micrographs.
 
@@ -67,8 +68,9 @@ def _load(path: str, max_px: int = 1600) -> Image.Image:
 
 
 def build_furnace_photo() -> str:
-    """Single-photo figure of the assembled system at operating power."""
-    img = _load(os.path.join(PHOTOS, "furnace-assembled.png"), max_px=1400)
+    """Labeled photo of the assembled system at operating power."""
+    img = _load(os.path.join(PHOTOS, "furnace-assembled-callouts.png"),
+                max_px=2000)
     fig, ax = plt.subplots(figsize=(4.6, 4.6 * img.size[1] / img.size[0]))
     ax.imshow(img)
     ax.axis("off")
@@ -137,7 +139,7 @@ def build_ysz() -> str:
 
 
 def main() -> int:
-    for path in (os.path.join(PHOTOS, "furnace-assembled.png"),
+    for path in (os.path.join(PHOTOS, "furnace-assembled-callouts.png"),
                  os.path.join(YSZ_DIR, "ysz-stack-schematic.png"),
                  YSZ_1700, YSZ_INDUCTION):
         if not os.path.exists(path):
