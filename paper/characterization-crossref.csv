@@ -5,7 +5,7 @@ Ni200_017,Ni200,IFrun080_Ni200_017_1325C_40h,1330.7C/2483.2min,0,2,optical,no,no
 Ni4N5_001,Ni4N5,,,0,2,optical,no,no,no,,docs/optical/CB121/1912##_Ni4N5/191202_Ni4N5_001
 Ni4N5_001a,Ni4N5,,,0,2,optical,no,no,no,,"docs/optical/CB121/1912##_Ni4N5/191204_Ni4N5_001a,b/Ni4N5_001a"
 Ni4N5_001b,Ni4N5,Ni4N5_001b_IFrun006,799.0C/1.3min,0,2,optical,no,no,yes,,"docs/optical/CB121/1912##_Ni4N5/191204_Ni4N5_001a,b/Ni4N5_001b"
-Ni4N5_007,Ni4N5,,,7,2,"EBSD, SEM, optical",yes,no,no,"docs/SEM/200616_Ni4N5_007,081_Ni_003b2; docs/SEM/200616_Ni4N5_007,081_Ni_003b2/Ni4N5_007",docs/optical/CB121/1912##_Ni4N5/191231_Ni4N5_007
+Ni4N5_007,Ni4N5,,,10,2,"EBSD, SEM, optical",yes,no,no,"docs/SEM/200616_Ni4N5_007,081_Ni_003b2; docs/SEM/200616_Ni4N5_007,081_Ni_003b2/Ni4N5_007; docs/SEM/200616_Ni4N5_007,081_Ni_003b2/Ni4N5_007/boxscan_003a1b_0degRot",docs/optical/CB121/1912##_Ni4N5/191231_Ni4N5_007
 Ni4N5_010,Ni4N5,IFrun016_Ni4N5_010,1199.9C/1478.0min,0,4,optical,no,no,yes,,docs/optical/CB121/2001##_Ni4N5/200111_Ni4N5_010; docs/optical/CB121/2001##_Ni4N5/200111_Ni4N5_010/post_EP
 Ni4N5_012,Ni4N5,IFrun019_Ni4N5_012,1199.6C/991.2min,0,1,optical,no,no,yes,,docs/optical/CB121/2001##_Ni4N5/200116_Ni4N5_011-015
 Ni4N5_014,Ni4N5,,,0,3,optical,no,no,no,,docs/optical/CB121/2001##_Ni4N5/200116_Ni4N5_011-015
@@ -13,7 +13,7 @@ Ni4N5_015,Ni4N5,,,0,3,optical,no,no,no,,docs/optical/CB121/2001##_Ni4N5/200116_N
 Ni4N5_017,Ni4N5,,,0,4,optical,no,no,no,,docs/optical/CB121/2001##_Ni4N5/200125_Ni4N5_017; docs/optical/CB121/2001##_Ni4N5/200128_Ni4N5_017
 Ni4N5_021,Ni4N5,,,0,4,optical,no,no,no,,docs/optical/CB121/2001##_Ni4N5/200125_Ni4N5_020&023; docs/optical/CB121/2001##_Ni4N5/200125_Ni4N5_021
 Ni4N5_023,Ni4N5,,,0,4,optical,no,no,no,,docs/optical/CB121/2001##_Ni4N5/200125_Ni4N5_020&023; docs/optical/CB121/2001##_Ni4N5/200125_Ni4N5_023
-Ni4N5_028,Ni4N5,,,10,7,"EBSD, SEM, optical",yes,no,no,docs/SEM/200205_Ni4N5_028_s1; docs/SEM/200206_Ni4N5_028_s2; docs/SEM/200227_Ni4N5_028,docs/optical/CB121/2002##_Ni4N5/200206_Ni4N5_028_s2; docs/optical/CB121/2002##_Ni4N5/200225_Ni4N5_028; docs/optical/CB121/2002##_Ni4N5/200225_Ni4N5_028/s1; docs/optical/CB121/2002##_Ni4N5/200225_Ni4N5_028/s2
+Ni4N5_028,Ni4N5,,,12,7,"EBSD, SEM, optical",yes,no,no,docs/SEM/200205_Ni4N5_028_s1; docs/SEM/200206_Ni4N5_028_s2; docs/SEM/200227_Ni4N5_028; docs/SEM/raw-kikuchi-patterns/200203_Ni4N5_028_s1,docs/optical/CB121/2002##_Ni4N5/200206_Ni4N5_028_s2; docs/optical/CB121/2002##_Ni4N5/200225_Ni4N5_028; docs/optical/CB121/2002##_Ni4N5/200225_Ni4N5_028/s1; docs/optical/CB121/2002##_Ni4N5/200225_Ni4N5_028/s2
 Ni4N5_030,Ni4N5,,,3,2,"SEM, optical",no,no,no,docs/SEM/200212_Ni4N5_030_s1,docs/optical/CB121/2001##_Ni4N5/200131_Ni4N5_030
 Ni4N5_033,Ni4N5,,,4,0,"EBSD, SEM",yes,no,no,"docs/SEM/200305_Ni4N5_033,053_sharpie_grooving/Ni4N5_033_sharpie",
 Ni4N5_034,Ni4N5,IFrun049_Ni4N5_034_1200C_12h,1200.0C/741.6min,4,0,"EBSD, SEM",yes,no,yes,docs/SEM/200303_Ni4N5_034_specialHolder1stTry,
@@ -32,5 +32,5 @@ Ni_003,Ni,,,0,14,optical,no,no,no,,docs/optical/CB121/1909##_Ni_YSZ_Pd/190916_Ni
 Ni_003a1,Ni,,,0,2,optical,no,no,no,,docs/optical/CB121/1910##_Ni/191021_Ni_003/Ni_003a1
 Ni_003a2,Ni,,,0,4,optical,no,no,no,,docs/optical/CB121/1909##_Ni_YSZ_Pd/190930_Ni_003a2; docs/optical/CB121/1910##_Ni/191009_Ni_003a2
 Ni_003b1,Ni,,,0,1,optical,no,no,no,,docs/optical/CB121/1910##_Ni/191021_Ni_003/Ni_003b1
-Ni_003b1a,Ni,,,0,2,optical,no,no,no,,docs/optical/CB121/1910##_Ni/191021_Ni_003/Ni_003b1/Ni_003b1a
+Ni_003b1a,Ni,,,8,2,"EBSD, SEM, optical",yes,no,no,docs/SEM/raw-kikuchi-patterns/191026_Ni_003b1a; docs/SEM/raw-kikuchi-patterns/191026_Ni_003b1a/reg1a; docs/SEM/raw-kikuchi-patterns/191026_Ni_003b1a/rega1a1; docs/SEM/raw-kikuchi-patterns/191031_Ni_003b1a; docs/SEM/raw-kikuchi-patterns/191031_Ni_003b1a/reg2,docs/optical/CB121/1910##_Ni/191021_Ni_003/Ni_003b1/Ni_003b1a
 Ni_003b2,Ni,,,3,4,"SEM, optical",no,no,no,"docs/SEM/200616_Ni4N5_007,081_Ni_003b2; docs/SEM/200616_Ni4N5_007,081_Ni_003b2/Ni_003b2",docs/optical/CB121/1910##_Ni/191021_Ni_003/Ni_003b2; docs/optical/Zeta/2006##/200611_Ni_003b2

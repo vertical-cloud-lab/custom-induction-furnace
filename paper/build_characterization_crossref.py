@@ -316,27 +316,54 @@ def fig_ebsd():
 
 
 def fig_kikuchi():
-    """Raw (as-collected) Kikuchi pattern of Ni4N5_053, cropped from the archived
-    OIM Data Collection screenshot recorded live during scan reg1, alongside the
-    tilted SEM live view of the thermally grooved as-annealed surface."""
-    src = (
-        "docs/SEM/200305_Ni4N5_033,053_sharpie_grooving/Ni4N5_053_grooves/"
-        "OIM_pattern.JPG"
+    """Raw (as-collected) Kikuchi patterns. Top row: the live OIM Data Collection
+    view of Ni4N5_028 (pattern panel + the SEM view of the thermally grooved
+    boundaries the line scans cross). Bottom row: representative per-scan-point
+    raw patterns from the >100k-pattern archives saved during EBSD mapping of
+    the early-campaign Ni_003-series specimens."""
+    scan3 = Image.open(
+        ROOT
+        / "docs/SEM/raw-kikuchi-patterns/200203_Ni4N5_028_s1/Scan3.JPG"
     )
-    im = Image.open(ROOT / src)
     # Fixed panel positions inside the 1432x1072 OIM DC screenshot.
-    pattern = im.crop((725, 170, 1052, 462))
-    scanview = im.crop((30, 165, 600, 680))
-    fig, axes = plt.subplots(1, 2, figsize=(7.2, 3.4))
-    axes[0].imshow(np.asarray(pattern.convert("L")), cmap="gray")
-    axes[0].set_title(
-        "(a) Raw Kikuchi pattern (EBSP)\nNi4N5_053, live detector view", fontsize=9
+    pattern = scan3.crop((722, 165, 1053, 466))
+    scanview = scan3.crop((38, 163, 598, 680))
+    saved = [
+        (
+            "docs/SEM/raw-kikuchi-patterns/191026_Ni_003b1a/reg1a/"
+            "reg1a_x4100y1628.jpg",
+            "(c) Saved raw pattern\nNi_003b1a, scan reg1a",
+        ),
+        (
+            "docs/SEM/raw-kikuchi-patterns/191026_Ni_003b1a/rega1a1/"
+            "rega1a1_x550y12817.jpg",
+            "(d) Saved raw pattern\nNi_003b1a, scan rega1a1",
+        ),
+        (
+            "docs/SEM/200616_Ni4N5_007,081_Ni_003b2/Ni4N5_007/"
+            "boxscan_003a1b_0degRot/boxscan_003a1b_0degRot_x360y415.jpg",
+            "(e) Saved raw pattern\nNi_003a1b, box scan",
+        ),
+    ]
+    fig = plt.figure(figsize=(7.2, 6.2))
+    gs = fig.add_gridspec(2, 6, height_ratios=[1.35, 1.0])
+    ax_a = fig.add_subplot(gs[0, 0:3])
+    ax_b = fig.add_subplot(gs[0, 3:6])
+    ax_a.imshow(np.asarray(pattern.convert("L")), cmap="gray")
+    ax_a.set_title(
+        "(a) Raw Kikuchi pattern (EBSP)\nNi4N5_028, live detector view", fontsize=9
     )
-    axes[1].imshow(np.asarray(scanview.convert("RGB")))
-    axes[1].set_title(
-        "(b) SEM live view, 70° tilt\n(thermal grooves + IPF overlay)",
-        fontsize=9,
+    ax_b.imshow(np.asarray(scanview.convert("RGB")))
+    ax_b.set_title(
+        "(b) SEM live view, 70,068x\n(grooved GBs + EBSD line scans)", fontsize=9
     )
+    axes = [ax_a, ax_b]
+    for i, (rel, title) in enumerate(saved):
+        ax = fig.add_subplot(gs[1, 2 * i : 2 * i + 2])
+        im = Image.open(ROOT / rel)
+        ax.imshow(np.asarray(im.convert("L")), cmap="gray", interpolation="lanczos")
+        ax.set_title(title, fontsize=9)
+        axes.append(ax)
     for ax in axes:
         ax.set_xticks([])
         ax.set_yticks([])

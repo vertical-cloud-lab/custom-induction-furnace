@@ -66,6 +66,21 @@ def _discover_root_folder_id(session: "requests.Session", token: str) -> str:
     return m.group(1)
 
 
+def _discover_single_file(session: "requests.Session", token: str) -> dict | None:
+    """If the shared link points at a single file (not a folder), return its
+    metadata (id, name); otherwise return None."""
+    r = session.get(f"https://byu.box.com/s/{token}", timeout=60)
+    r.raise_for_status()
+    if '"itemType":"file"' not in r.text:
+        return None
+    id_m = re.search(r'"typedID":"f_(\d+)"', r.text)
+    name_m = re.search(r'"name":"([^"]+)"', r.text)
+    if not id_m or not name_m:
+        return None
+    name = html.unescape(name_m.group(1).encode().decode("unicode_escape"))
+    return {"id": id_m.group(1), "name": name}
+
+
 def _folder_page(session: "requests.Session", folder_id: str, token: str) -> str:
     """Fetch the server-rendered HTML page for a folder in the shared link."""
     url = f"https://byu.box.com/s/{token}/folder/{folder_id}"
@@ -230,6 +245,13 @@ def download_all(
     token = _extract_token(shared_link)
 
     if root_folder_id is None:
+        # Some shares point at a single file (e.g. the raw-Kikuchi-pattern zip
+        # archives) rather than a folder; download it directly.
+        single = _discover_single_file(session, token)
+        if single is not None:
+            print(f"Shared file: https://byu.box.com/s/{token} ({single['name']})")
+            ok = download_file(session, single["id"], out_root / single["name"], token)
+            return 1 if ok else 0
         root_folder_id = _discover_root_folder_id(session, token)
 
     print(f"Shared folder: https://byu.box.com/s/{token}")

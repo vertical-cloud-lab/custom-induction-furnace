@@ -8,7 +8,7 @@ the machine-parsed soak temperature/duration from
 
 - Characterized specimens with committed data: **35**
 - Of those, specimens with a matched parsed run log: **9**
-- Specimens with committed EBSD/OIM data: **9**
+- Specimens with committed EBSD/OIM data: **10**
 - Specimens with committed EDS data: **1**
 
 | Specimen | Material | Matched run(s) | Soak (parsed) | SEM files | Optical files | Techniques | EBSD | EDS |
@@ -19,7 +19,7 @@ the machine-parsed soak temperature/duration from
 | Ni4N5_001 | Ni4N5 | — | — | 0 | 2 | optical | no | no |
 | Ni4N5_001a | Ni4N5 | — | — | 0 | 2 | optical | no | no |
 | Ni4N5_001b | Ni4N5 | Ni4N5_001b_IFrun006 | 799.0C/1.3min | 0 | 2 | optical | no | no |
-| Ni4N5_007 | Ni4N5 | — | — | 7 | 2 | EBSD, SEM, optical | yes | no |
+| Ni4N5_007 | Ni4N5 | — | — | 10 | 2 | EBSD, SEM, optical | yes | no |
 | Ni4N5_010 | Ni4N5 | IFrun016_Ni4N5_010 | 1199.9C/1478.0min | 0 | 4 | optical | no | no |
 | Ni4N5_012 | Ni4N5 | IFrun019_Ni4N5_012 | 1199.6C/991.2min | 0 | 1 | optical | no | no |
 | Ni4N5_014 | Ni4N5 | — | — | 0 | 3 | optical | no | no |
@@ -27,7 +27,7 @@ the machine-parsed soak temperature/duration from
 | Ni4N5_017 | Ni4N5 | — | — | 0 | 4 | optical | no | no |
 | Ni4N5_021 | Ni4N5 | — | — | 0 | 4 | optical | no | no |
 | Ni4N5_023 | Ni4N5 | — | — | 0 | 4 | optical | no | no |
-| Ni4N5_028 | Ni4N5 | — | — | 10 | 7 | EBSD, SEM, optical | yes | no |
+| Ni4N5_028 | Ni4N5 | — | — | 12 | 7 | EBSD, SEM, optical | yes | no |
 | Ni4N5_030 | Ni4N5 | — | — | 3 | 2 | SEM, optical | no | no |
 | Ni4N5_033 | Ni4N5 | — | — | 4 | 0 | EBSD, SEM | yes | no |
 | Ni4N5_034 | Ni4N5 | IFrun049_Ni4N5_034_1200C_12h | 1200.0C/741.6min | 4 | 0 | EBSD, SEM | yes | no |
@@ -46,5 +46,5 @@ the machine-parsed soak temperature/duration from
 | Ni_003a1 | Ni | — | — | 0 | 2 | optical | no | no |
 | Ni_003a2 | Ni | — | — | 0 | 4 | optical | no | no |
 | Ni_003b1 | Ni | — | — | 0 | 1 | optical | no | no |
-| Ni_003b1a | Ni | — | — | 0 | 2 | optical | no | no |
+| Ni_003b1a | Ni | — | — | 8 | 2 | EBSD, SEM, optical | yes | no |
 | Ni_003b2 | Ni | — | — | 3 | 4 | SEM, optical | no | no |
