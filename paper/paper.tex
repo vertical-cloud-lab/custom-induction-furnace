@@ -80,7 +80,9 @@ power--temperature calibration ($R^2 = 0.991$ over 1200--1400\,\celsius),
 repeatable 1200\,\celsius{} / 12\,h Ni4N5 processing ($1201.2 \pm 1.3$\,\celsius{}
 across 8 runs), stable long-duration control up to 40\,h at 1325\,\celsius, and
 SEM/EBSD/optical microstructural characterization of annealed reactive-metal
-specimens cross-referenced to their logged thermal histories. Complete design
+specimens cross-referenced to their logged thermal histories. A
+tantalum-susceptor/MgO-crucible variant of the same charge stack extends the
+furnace to non-coupling ceramics, demonstrated with YSZ. Complete design
 files, a costed bill of materials, control software, and the full run-log and
 characterization archives are openly available.
 \end{abstract}
@@ -189,22 +191,16 @@ described here.
 
 \subsection{Prior art and comparison}
 
-Table~\ref{tab:priorart} situates the design among the available alternatives.
-
-\begin{table*}[ht]
-\caption{Prior art and the limitation each class of alternative presents.
-\label{tab:priorart}}
-\small
-\begin{tabularx}{\linewidth}{L{0.26\linewidth} L{0.30\linewidth} X}
-\toprule
-\textbf{Class} & \textbf{Examples} & \textbf{Limitation this design addresses} \\
-\midrule
-Commercial vacuum induction annealing furnaces & turn-key systems (\$50k--\$200k+) & Cost; closed/non-modifiable; vendor lock-in \\
-Open non-induction annealing systems & tube/box furnaces with resistive heating & Lower max temperature and slower ramp than induction; no RF-susceptor heating of non-coupling charges \\
-Induction generators sold bare & CEIA, Ambrell, etc. & Ship without integrated vacuum, optical feedback, or computer setpoint control --- exactly the layer added here \\
-\bottomrule
-\end{tabularx}
-\end{table*}
+Three classes of alternative exist, and each presents a limitation this design
+addresses. Commercial vacuum induction annealing furnaces are turn-key systems
+costing \$50k--\$200k+; they are closed, difficult to modify or repair in-house,
+and carry vendor lock-in. Openly documented resistively heated tube and box
+furnaces reach lower maximum temperatures with slower ramps than induction
+heating, and offer no RF-susceptor route to heating a non-coupling charge.
+Finally, induction generators themselves are widely available as bare industrial
+units (CEIA, Ambrell, and others), but ship without integrated vacuum, optical
+temperature feedback, or computer setpoint control --- exactly the layer this
+work adds.
 
 %==============================================================
 \section{System design and description}
@@ -212,10 +208,25 @@ Induction generators sold bare & CEIA, Ambrell, etc. & Ship without integrated v
 
 \subsection{Architecture and control signal flow}
 
-The system comprises five subsystems (see the schematics in
-\texttt{extracted-context/schematic\_induction\_furnace.md} and
-\texttt{extracted-context/schematic\_support\_stand.md}, and the labeled overview
-in Fig.~\ref{fig:overview}):
+The system comprises five subsystems, shown in the labeled overview schematic of
+Fig.~\ref{fig:overview} (the editable source schematics are in
+\texttt{docs/induction-furnace-schematic.pptx} and are extracted to text in
+\texttt{paper/extracted-context/}); Fig.~\ref{fig:furnacephoto} shows the
+corresponding assembled system at operating power:
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\linewidth]{fig_system_overview.png}
+\caption{System overview of the computer-controlled, vacuum-integrated induction
+annealing system: recirculating water chiller and induction generator drive a
+water-cooled heating head/work coil around a quartz-tube vacuum chamber; a
+dual-wavelength pyrometer sights the charge through a quartz optical disc; an Edwards
+T-Station~85 turbo-molecular pump (with pressure gauge and bellows) evacuates the
+chamber; and a DAQ/laptop sets generator power and reads the pyrometer for
+closed-loop control. Rendered from the editable source schematic
+\texttt{docs/induction-furnace-schematic.pptx}.}
+\label{fig:overview}
+\end{figure}
 
 \begin{enumerate}
 \item \textbf{RF generator + work coil.} A solid-state induction generator (current
@@ -297,10 +308,8 @@ generator/pump/pyrometer equivalents.
 \midrule
 Induction generator (reproducible build) & CEIA ``Power Cube'' PW3-90/50 solid-state RF generator + Power Controller C-V3 Plus (East Coast Induction, USA) \\
 Induction generator (prototype) & LEPEL high-frequency tube furnace ($\sim$1970), up to $\sim$35\,kW \\
-Power-control input & 4--20\,mA analog setpoint via LabVIEW/DAQ $\rightarrow$ V$\rightarrow$I conditioner (CEIA build; the LEPEL prototype used 0--5\,mA --- see Table~\ref{tab:migration}) \\
-Generator-input requirement & External analog power-control input with \textbf{monotonic} command$\rightarrow$power response over the usable range \\
-Control signal chain & DAQ analog output (0--5\,V) $\rightarrow$ voltage-to-current (4--20\,mA) loop conditioner $\rightarrow$ generator power-setpoint input; pyrometer analog output $\rightarrow$ DAQ analog input (scaled to \celsius) \\
-Max sample temperature & $\sim$1400--1500\,\celsius+ (Ni/Fe melting range) \\
+Power-control input & 4--20\,mA analog setpoint via LabVIEW/DAQ $\rightarrow$ V$\rightarrow$I conditioner (CEIA build; the LEPEL prototype used 0--5\,mA) \\
+Max sample temperature & $\sim$1400--1500\,\celsius+ (Ni/Fe melting range); $\sim$1700\,\celsius{} with the tantalum/MgO ceramic stack (Sec.~\ref{sec:ysz}) \\
 Pyrometer detection range & $\sim$800--2500\,\celsius{} (dual-wavelength ratio); does not report below $\sim$700\,\celsius \\
 Demonstrated soak duration & minutes up to $\sim$40\,h (per \texttt{docs/data\_log/} run logs) \\
 Sample / crucible envelope & charge fits inside a 35\,mm-ID quartz tube and a machined graphite crucible \\
@@ -314,6 +323,7 @@ Work coil & Water-cooled copper, $\sim$3\,in tall, 2.5\,in ID, $\sim$6.5 turns \
 \end{table*}
 
 \subsection{Generator compatibility and portability}
+\label{sec:portability}
 
 The control/sensing/vacuum layer transfers to any generator that meets these
 criteria:
@@ -330,29 +340,19 @@ criteria:
 When porting to a new generator, the following must be re-established:
 analog-command scaling, power-to-temperature calibration, PID gains, coil/sample
 alignment, maximum safe ramp rate, and any generator-specific interlock behavior.
-Table~\ref{tab:migration} records which elements of the stack transferred unchanged
-from the $\sim$1970 LEPEL prototype to the current CEIA build.
-
-\begin{table*}[ht]
-\caption{Transferability of the modernization stack: LEPEL prototype
-$\rightarrow$ CEIA reproducible build.
-\label{tab:migration}}
-\small
-\begin{tabularx}{\linewidth}{L{0.21\linewidth} L{0.22\linewidth} L{0.24\linewidth} X}
-\toprule
-\textbf{Aspect} & \textbf{LEPEL prototype ($\sim$1970)} & \textbf{CEIA reproducible build (current)} & \textbf{Transferred?} \\
-\midrule
-Analog control interface & 0--5\,mA & 4--20\,mA (Power Controller C-V3 Plus) & Concept yes; scaling re-set \\
-Frequency & $\sim$200--450\,kHz tube & solid-state (generator-set) & n/a (generator internal) \\
-Max power & up to $\sim$35\,kW & 6\,kW & Re-tuned for charge \\
-Pyrometer / optical feedback & dual-wavelength & same dual-wavelength stack & Yes \\
-Vacuum chamber / quartz tube & quartz + KF40 & same & Yes \\
-Graphite crucible/susceptor & machined graphite & same & Yes \\
-Support stand / fixturing & bolted stand & same & Yes \\
-LabVIEW/DAQ control concept & manual + ramp/PID VIs & same VIs & Yes \\
-\bottomrule
-\end{tabularx}
-\end{table*}
+The port from the $\sim$1970 LEPEL prototype to the current CEIA build is the
+existence proof for this portability claim: the dual-wavelength pyrometer
+feedback, the quartz-tube/KF40 vacuum chamber, the machined graphite
+crucible/susceptor, the bolted support stand, and the LabVIEW/DAQ control VIs
+all transferred unchanged. Only the analog interface itself differed --- the
+LEPEL took a 0--5\,mA command directly, whereas the CEIA Power Controller C-V3
+Plus expects 4--20\,mA, hence the V$\rightarrow$I loop conditioner --- and the
+power--temperature calibration and PID gains were re-established for the new
+generator, as they must be for any port. The generator's internal operating
+frequency ($\sim$200--450\,kHz vacuum-tube LEPEL vs.\ the solid-state CEIA's
+self-set frequency) and maximum power ($\sim$35\,kW vs.\ 6\,kW) sit behind the
+analog interface and required no change to the stack beyond re-tuning power for
+the charge.
 
 \subsection{Custom-machined graphite crucible / susceptor}
 
@@ -373,7 +373,10 @@ sapphire pyrometer window) are given in Fig.~\ref{fig:crucible-dims}; fully
 assembled, the crucible stack stands 13\,mm tall. The
 specimen-loading sequence --- specimen sandwiched between two alumina sheets in
 the cup body, lid seated on top, and sapphire window placed over the lid bore
---- is shown step by step in Fig.~\ref{fig:crucible-assembly}.
+--- is shown step by step in Fig.~\ref{fig:crucible-assembly}. For ceramic
+charges requiring soak temperatures beyond the graphite/alumina stack's service
+range, the crucible stack is exchanged for a tantalum-susceptor/MgO-crucible
+variant described in Sec.~\ref{sec:ysz}.
 
 \begin{figure}[ht]
 \centering
@@ -424,130 +427,140 @@ Photographs contributed by R.~Guymon.
 \section{Construction and operation}
 %==============================================================
 
-\subsection{Build sequence}
+\subsection{System assembly}
 
-\begin{enumerate}
-\item \textbf{Support stand.} Assemble the bolted stand (8 short + 4 long sections, 12
-corner braces, 4 floor mounts) and mount the generator/heating head and pyrometer
-holder.
-\item \textbf{Work coil.} Form/water-cool the copper coil to the corrected geometry
-($\sim$3\,in tall, 2.5\,in ID, $\sim$6.5 turns); connect to the generator head and
-the cooling-water circuit. Use the before/after figures from
-\texttt{induction\_order\_corrections.pptx} as the reference. \todo{state the exact
-copper-tube OD/wall, bend radius/spacing method, and cooling-connection fittings from
-the coil drawing (docs/coils-drawing.pdf).}
-\item \textbf{Graphite crucible/susceptor.} Machine the crucible from 3000\,\celsius{}
-graphite stock to fit inside the quartz tube and accept the sample. Seat it on the
-ceramic-cylinder / Teflon spacer stack. Repair any cracks with graphite cement.
-\item \textbf{Vacuum chamber.} Mount the quartz tube with the KF40 flange and optical
-window. The \textbf{reference build} seats a 55\,mm quartz window on the overpressure
-KF40 centering ring and secures it with the plastic quick-clamp (reusable, no
-adhesive); a Torr-Seal'd blank flange is documented as an alternative for a permanent
-seal. Connect the flexible bellows to the Edwards T-Station 85 turbo pump; install
-the manual vent valve and inert-gas line.
-\item \textbf{Control wiring.} Wire the DAQ analog output (0--5\,V) through the
-voltage-to-current loop conditioner to the generator's analog power-control input
-(4--20\,mA on the current CEIA controller; the LEPEL prototype took 0--5\,mA
-directly). Wire the pyrometer output into the DAQ analog input and, for closed-loop
-ramping, the pyrometer/PLC temperature-control path
-(\texttt{docs/temp-control-modification/}). Maintain electrical isolation between the
-DAQ/control path and the generator interface.
-\item \textbf{Software.} Deploy the LabVIEW VIs from \texttt{code/} in the repository
-and configure the DAQ channels; verify manual control before enabling automated
-ramp/soak.
-\end{enumerate}
+This section describes how the subsystems of Fig.~\ref{fig:overview} are
+physically connected, following the heating, vacuum, gas, and control paths in
+turn; the costed part list is in Appendix~\ref{app:bom} and the design files
+(coil drawing, editable schematics, STEP models) in
+Appendix~\ref{app:designfiles}. Figure~\ref{fig:furnacephoto} shows the
+assembled system at operating power, and Fig.~\ref{fig:vacuumdetails} details
+the vacuum and gas-handling connections described below.
 
-\todo{curate a clean, photographed build sequence --- candidate photos exist in
-docs/data\_log/.../IFrun036\_* and the PPTX media.}
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.8\linewidth]{fig_furnace_photo.jpg}
+\caption{The fully assembled, functioning furnace. The heating head and work
+coil, driven by the CEIA Power Cube generator, sit on the adjustable support
+platform at left; the vertical quartz-tube vacuum chamber passes through the
+coil and glows at the crucible position; the argon cylinder (rear) feeds the
+gas-handling line; and the turbo pumping station connects at the lower right of
+the chamber stack. Photograph contributed by R.~Guymon.}
+\label{fig:furnacephoto}
+\end{figure}
+
+\paragraph{Heating path.} The generator's heating head, carrying the
+water-cooled copper work coil ($\sim$3\,in tall, 2.5\,in ID, $\sim$6.5 turns;
+drawing in \texttt{docs/coils-drawing.pdf}), mounts on an adjustable platform on
+the bolted support stand (8 short + 4 long sections, 12 corner braces, 4 floor
+mounts) so the coil can be centered on the crucible position of the vertically
+mounted quartz tube. The recirculating chiller supplies cooling water to the
+generator and coil, which carry both the RF current and the coolant. \todo{state
+the exact copper-tube OD/wall, bend radius/spacing method, and
+cooling-connection fittings from the coil drawing (docs/coils-drawing.pdf).}
+Inside the tube, the machined graphite crucible/susceptor
+(Figs.~\ref{fig:crucible}--\ref{fig:crucible-assembly}), machined from
+3000\,\celsius{} graphite stock and repaired with graphite cement when cracked,
+seats at coil height on a ceramic-cylinder/Teflon spacer stack; the pyrometer,
+held by a stand-mounted holder, sights the specimen through the optical window
+and the sapphire disc in the crucible lid.
+
+\paragraph{Vacuum path.} The chamber is the fused-quartz tube itself. Its open
+end terminates in a KF40 flange whose optical window --- a 55\,mm quartz disc
+seated on the overpressure centering ring and held by a reusable plastic
+quick-clamp (a Torr-Seal'd blank flange is the documented permanent-seal
+alternative) --- closes the top of the stack. From the bottom of the chamber
+stack, a tee carries a 0.5\,psi overpressure relief valve
+(Fig.~\ref{fig:vacuumdetails}(b)) that protects the quartz tube from accidental
+overpressure during backfilling, and a flexible stainless bellows continues
+through the wide-range vacuum gauge to the Edwards T-Station~85 turbo pumping
+station. The roughing pump sits on a separate support, mechanically decoupled
+from the vacuum-chamber attachment tubes, so its vibration does not reach the
+chamber and the pyrometer sight line (Fig.~\ref{fig:vacuumdetails}(a)).
+
+\paragraph{Gas path.} The argon cylinder regulator feeds a digital mass flow
+controller (Sierra Smart-Trak; Fig.~\ref{fig:vacuumdetails}(c)) whose metered
+output connects to the manual vent valve, providing both controlled venting and
+low-flow inert backfilling of the chamber; the LabVIEW front panel exposes the
+flow setpoint and readback (Fig.~\ref{fig:controlpanel}).
+
+\paragraph{Control path.} The DAQ's 0--5\,V analog output drives the
+voltage-to-current loop conditioner, whose 4--20\,mA output lands on the CEIA
+Power Controller's analog power-setpoint input (the LEPEL prototype took a
+0--5\,mA command directly); the pyrometer's analog output returns to a DAQ
+analog input, scaled to \celsius{} (wiring details in
+\texttt{docs/temp-control-modification/}). Electrical isolation is maintained
+between the DAQ/control path and the generator interface throughout. The
+LabVIEW VIs from \texttt{code/} are deployed against these DAQ channels, and
+manual control is verified before automated ramp/soak is enabled.
+
+\begin{figure*}[ht]
+\centering
+\includegraphics[width=0.92\linewidth]{fig_vacuum_details.jpg}
+\caption{Vacuum and gas-handling details of the assembled system.
+(a)~Turbo pumping station with the roughing pump mounted on a separate support,
+not connected to the vacuum-chamber attachment tubes, so pump vibration is not
+transmitted into the chamber (chamber shown disassembled).
+(b)~Overpressure relief valve (0.5\,psi cracking pressure) at the bottom of the
+vacuum chamber stack. (c)~Digital mass flow controller (Sierra Smart-Trak)
+connecting the argon tank to the vent valve for controlled venting and inert
+backfill. Photographs contributed by R.~Guymon.}
+\label{fig:vacuumdetails}
+\end{figure*}
 
 \subsection{Operating procedure}
 
-Condensed from the lab SOP
-(\texttt{extracted-context/SOP\_induction\_200901.md}).
+The operating procedure below is condensed from the lab SOP
+(\texttt{extracted-context/SOP\_induction\_200901.md}). Before RF power is ever
+applied, the chamber must be at high vacuum
+($\sim$1$\times$10$^{-6}$\,Torr or better) or backfilled to the intended inert
+atmosphere; cooling-water flow at the coil and generator must be confirmed and
+leak-free; the coil, sample, and pyrometer sight line must be aligned; and all
+conductive objects (jewelry, watches, phones, tools) must be at least
+6--12\,in from the coil.
 
-\paragraph{Preflight checklist (before energizing RF).}
+A run begins with the chamber vented to atmosphere --- the vent valve is never
+opened while the turbo pump is spinning. The specimen is loaded into the
+graphite crucible (Fig.~\ref{fig:crucible-assembly}), the crucible/spacer stack
+is inserted into the quartz tube, and the KF40 flange is clamped finger-tight on
+its O-ring. With the vent valve closed, the roughing and turbo pumps are brought
+up and the chamber pumped to high vacuum. The generator is then powered on per
+its own startup sequence and the LabVIEW ramp/soak profile started. Below the
+pyrometer's $\sim$700\,\celsius{} detection floor the VI ramps open-loop on the
+analog command; once the pyrometer returns a sustained valid reading above that
+floor, control hands over to closed-loop PID on the optical temperature, and the
+programmed profile (e.g., $\sim$1200\,\celsius{} for several hours for Ni grain
+growth) runs to completion, with optional email status alerts from the VI. At
+the end of the profile, power ramps down and RF stops; the sample cools under
+vacuum, and the chamber is vented only after the turbo pump has fully stopped.
 
-\begin{itemize}
-\item[$\square$] Chamber at high vacuum ($\sim$1$\times$10$^{-6}$\,Torr or better) or backfilled to the intended inert atmosphere.
-\item[$\square$] Cooling-water flow confirmed at the coil/generator (no leaks).
-\item[$\square$] Coil/sample alignment and chamber clearance verified.
-\item[$\square$] Pyrometer aligned and sighted on the sample/crucible.
-\item[$\square$] No conductive objects (jewelry, watches, phones, tools) within $\ge$6--12\,in of the coil.
-\end{itemize}
-
-\paragraph{Startup.}
-
-\begin{enumerate}
-\item \textbf{Load the sample.} With the chamber vented to atmosphere (never open the
-vent valve while the turbo pump is spinning), stack sample $\rightarrow$ optional
-alumina plate $\rightarrow$ ceramic cylinder $\rightarrow$ Teflon spacer inside the
-graphite crucible, insert into the quartz tube, and clamp the KF40 flange
-finger-tight with the O-ring.
-\item \textbf{Pump down.} Close the vent valve, start the roughing/turbo pumps, and
-wait for high vacuum ($\sim$1$\times$10$^{-6}$\,Torr or better).
-\item \textbf{Cooling water.} Check for leaks and confirm flow before
-applying RF power.
-\end{enumerate}
-
-\paragraph{Normal run.}
-
-\begin{enumerate}
-\setcounter{enumi}{3}
-\item \textbf{Power on.} Bring up the generator per its sequence, then run the LabVIEW
-ramp/soak profile. Below the pyrometer's $\sim$700\,\celsius{} detection floor the VI
-ramps \textbf{open-loop} on the analog command; once the pyrometer returns a
-\textbf{sustained valid reading above the $\sim$700\,\celsius{} floor} (the handoff
-criterion), control switches to \textbf{closed-loop} PID on the optical temperature.
-\item \textbf{Anneal.} Hold the temperature/time profile (e.g. $\sim$1200\,\celsius{}
-for several hours for Ni grain growth); the VI can email status alerts.
-\end{enumerate}
-
-\paragraph{Shutdown.}
-
-\begin{enumerate}
-\setcounter{enumi}{5}
-\item \textbf{Ramp down.} Ramp power down and stop RF, then turn off cooling water,
-allow the sample to cool under vacuum, and vent only after the turbo pump has fully
-stopped.
-\end{enumerate}
-
-\paragraph{Abort / emergency stop.}
-
-\begin{itemize}
-\item \textbf{Loss of cooling water or chiller alarm:} immediately command power to zero / stop RF, then investigate; do not re-energize until flow is restored.
-\item \textbf{Vacuum loss or quartz-tube fracture:} stop RF immediately; do not vent against a spinning turbo pump.
-\item \textbf{Arcing, smoke, or runaway temperature:} zero the analog command, kill RF at the generator, and lock out before inspecting.
-\end{itemize}
+Off-normal conditions all call for removing RF power first. On loss of cooling
+water or a chiller alarm, the analog command is zeroed immediately and the
+generator not re-energized until flow is restored. On vacuum loss or a
+quartz-tube fracture, RF is stopped immediately and the chamber is never vented
+against a spinning turbo pump. On arcing, smoke, or runaway temperature, the
+command is zeroed, RF is killed at the generator, and the system is locked out
+before inspection.
 
 \subsection{Safety}
 
-The system combines high voltage/RF, high vacuum, high temperature, and water
-cooling; the principal hazards and mitigations are summarized in
-Table~\ref{tab:hazards}.
-
-\begin{table*}[ht]
-\caption{Principal hazards and mitigations.
-\label{tab:hazards}}
-\small
-\begin{tabularx}{\linewidth}{L{0.16\linewidth} L{0.22\linewidth} L{0.16\linewidth} X}
-\toprule
-\textbf{Hazard} & \textbf{Failure mode} & \textbf{Consequence} & \textbf{Mitigation} \\
-\midrule
-High voltage / RF field & Contact with coil or induced currents in nearby conductors & Electric shock, burns & Keep conductive objects/electronics $\ge$6--12\,in from the coil while powered; isolate DAQ/control path \\
-Lockout-tagout & Internal transformer-tap change (LEPEL prototype) & Shock during service & Follow LOTO before opening the generator \\
-Vacuum / quartz & Venting against a spinning turbo pump; quartz fracture/implosion & Pump destruction; flying glass & Never vent while the turbo spins; handle quartz/gauge carefully; use eye protection \\
-Water + electricity & Coil/chiller leak near energized hardware & Shock, equipment damage & Confirm flow and check for leaks before RF; route water away from electronics \\
-Thermal & Sample melt-through; hot graphite oxidizing on vent & Pump-line contamination, burns & Cool under vacuum; let cool before venting; nitrile gloves when loading/unloading \\
-Inert gas & Backfill/venting in an enclosed space & Asphyxiation & Adequate ventilation; do not backfill in confined areas \\
-EMI & RF coupling into nearby instruments & Data corruption, instrument damage & Shield/separate sensitive electronics; keep them clear of the coil \\
-\bottomrule
-\end{tabularx}
-\end{table*}
-
-\textbf{PPE / shielding.} Operators should wear safety glasses
-(quartz-fracture/implosion risk), clean nitrile gloves when handling vacuum
-components, and remove all conductive personal items before approaching the energized
-coil; keep sensitive instrumentation outside the RF near-field.
+The system combines RF power, high vacuum, high temperature, and cooling water,
+and each pairing carries its own hazard. The energized coil can shock or burn
+through direct contact or through currents induced in nearby conductors, so
+conductive objects and electronics are kept at least 6--12\,in away, the
+DAQ/control path is electrically isolated from the generator interface, and any
+service inside the generator follows lockout/tagout. The evacuated quartz tube
+poses a fracture/implosion risk --- operators wear safety glasses --- and
+venting against a spinning turbo pump can destroy the pump, so the turbo must
+spin down fully before the vent valve opens. Because the coil and chiller run
+water immediately next to energized hardware, flow is confirmed and leaks are
+checked before RF is applied, and water lines are routed away from electronics.
+A melted-through specimen or hot graphite oxidizing on a premature vent can
+contaminate the pump line and burn the operator, so samples cool under vacuum
+and vacuum components are handled with clean nitrile gloves. Inert-gas
+backfilling in an enclosed space is an asphyxiation risk and is done only with
+adequate ventilation. Finally, the RF near-field can corrupt or damage nearby
+instruments, which are shielded and kept clear of the coil.
 
 %==============================================================
 \section{Performance validation}
@@ -566,29 +579,6 @@ experiments, every comparison is restricted to an internally consistent subset
 (matching material, nominal profile, and operating configuration) and the
 power--temperature relation is reported as an \emph{operational}
 calibration for one fixed geometry, not as a universal transfer function.
-
-\paragraph{System overview (Fig.~\ref{fig:overview}).} Figure~\ref{fig:overview} is a
-labeled schematic of the full system --- recirculating water chiller, induction
-generator, heating head, water-cooled work coil, quartz-tube vacuum chamber with
-optical quartz disc, pyrometer holder/pyrometer line-of-sight, pressure sensor,
-bellows, and the Edwards T-Station~85 turbo-molecular pump on the bolted support
-stand, with the DAQ/control laptop closing the loop. (Hardware photographs are
-collected in \texttt{paper/extracted-context/figures/}; a labeled composite
-photograph will replace this schematic on final submission.)
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=\linewidth]{fig_system_overview.png}
-\caption{System overview of the computer-controlled, vacuum-integrated induction
-annealing system: recirculating water chiller and induction generator drive a
-water-cooled heating head/work coil around a quartz-tube vacuum chamber; a
-dual-wavelength pyrometer sights the charge through a quartz optical disc; an Edwards
-T-Station~85 turbo-molecular pump (with pressure gauge and bellows) evacuates the
-chamber; and a DAQ/laptop sets generator power and reads the pyrometer for
-closed-loop control. Rendered from the editable source schematic
-\texttt{docs/induction-furnace-schematic.pptx}.}
-\label{fig:overview}
-\end{figure}
 
 \paragraph{Power-command $\rightarrow$ temperature calibration
 (Fig.~\ref{fig:calibration}).} For one fixed Ni4N5/quartz/graphite/optical
@@ -797,6 +787,49 @@ Ni4N5\_081 & Ni4N5 & IFrun082 (1300\,\celsius/20\,h) & 10 & 10 & \textbf{yes} \\
 \end{tabular}
 \end{table}
 
+\subsection{Extension to ceramic charges: YSZ}
+\label{sec:ysz}
+
+The same control, vacuum, and sensing stack extends to charges that do not
+couple to the RF field at all, demonstrated with grain growth in
+yttria-stabilized zirconia (YSZ). Ceramic grain growth requires substantially
+higher soak temperatures ($\sim$1600--1700\,\celsius) than the Ni anneals ---
+beyond the service range of the alumina spacers (1787\,\celsius{} rating) and
+too hot for the graphite lid/sapphire-window geometry of
+Fig.~\ref{fig:crucible-assembly} --- so only the charge stack inside the quartz
+tube is exchanged (Fig.~\ref{fig:ysz}(a)). The YSZ specimen is sandwiched
+between two tantalum blocks (25.5\,mm diameter) that replace graphite as the
+susceptor at these temperatures; the pair seats in a MgO crucible (28\,mm) that
+tolerates the higher temperature, and the crucible stands on an alumina support
+rod that raises the stack to coil height inside a fresh $\sim$35\,mm-ID quartz
+tube. The generator, vacuum path, gas handling, pyrometer, and LabVIEW control
+are untouched --- the swap is a specimen-stack change, not a furnace change.
+Committed optical micrographs from the characterization archive
+(Fig.~\ref{fig:ysz}(b,c)) show the resulting equiaxed YSZ grain structures,
+including a specimen after a 1700\,\celsius{} / 10\,h anneal. \todo{the
+quantitative YSZ grain-growth dataset (anneal temperatures/times, grain-size
+series) lives in a BYU Box folder whose shared link currently requires login
+(byu.app.box.com/folder/298111707639); incorporate run conditions and grain-size
+measurements, and confirm which archived YSZ anneals were performed in this
+furnace, once the link is opened.}
+
+\begin{figure*}[ht]
+\centering
+\includegraphics[width=0.92\linewidth]{fig_ysz.png}
+\caption{High-temperature ceramic (YSZ) configuration and resulting
+microstructure. (a)~Charge-stack schematic (contributed by R.~Guymon): inside a
+fresh $\sim$35\,mm-ID quartz tube, the YSZ specimen (red) is sandwiched between
+two 25.5\,mm tantalum susceptor blocks, seated in a 28\,mm MgO crucible on an
+alumina support rod that raises the stack to coil height; the coil, vacuum,
+pyrometer, and control paths are unchanged from the metal configuration.
+(b)~Optical micrograph of YSZ after a 1700\,\celsius{} / 10\,h anneal
+(\texttt{docs/optical/.../190823\_YSZ/YSZ\_1700C\_10h.JPG}).
+(c)~Optical micrograph of an induction-annealed YSZ specimen
+(\texttt{docs/optical/.../190909\_YSZ/}), showing the equiaxed grain structure;
+scale-bar originals are inventoried in \texttt{docs/optical/CATALOG.csv}.}
+\label{fig:ysz}
+\end{figure*}
+
 \subsection{Limitations of the retrospective validation}
 
 The validation dataset is retrospective rather than prospectively designed, so the
@@ -829,7 +862,10 @@ demonstrated an operational power--temperature calibration ($R^2 = 0.991$ over
 $1201.2 \pm 1.3$\,\celsius{} across eight nominally identical Ni4N5 anneals, and
 stable closed-loop soaks up to 40\,h at 1325\,\celsius, with annealed-specimen
 microstructures (SEM/EBSD/optical) cross-referenced to their logged thermal
-histories. Because the layer requires only a monotonic analog power-control input
+histories. Exchanging the graphite crucible stack for a
+tantalum-susceptor/MgO-crucible variant extends the same furnace to
+non-coupling ceramic charges at $\sim$1700\,\celsius, demonstrated with YSZ
+grain growth. Because the layer requires only a monotonic analog power-control input
 from the generator, the design is directly reusable by other laboratories at a
 small fraction of the cost of turn-key vacuum induction furnaces; complete design
 files, the costed bill of materials (Appendix~\ref{app:bom}), control software,
@@ -906,8 +942,8 @@ in \texttt{extracted-context/parts\_list.md} (extracted from
 purchase records (quote year $\sim$2019--2021), several from used/surplus/eBay sources
 as noted; shipping and tax are excluded unless stated. \textbf{The build instructions
 and the bill of materials are canonical for the CEIA system only}; the legacy LEPEL
-prototype and the rejected CYSI import path are documented in the text and in
-Table~\ref{tab:migration}, not here.
+prototype and the rejected CYSI import path are documented in the text
+(Sec.~\ref{sec:portability}), not here.
 
 \begin{table*}[ht]
 \caption{Bill of materials for the reproducible CEIA-anchored build (USD; see

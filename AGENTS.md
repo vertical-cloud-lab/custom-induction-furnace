@@ -67,6 +67,16 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
    McMaster stocks only imperial sizes, so the 55 mm metric disc is a custom-cut part
    with a vendor not recorded in the parts list).
 
+8. **Match the prose-first style of published RSI articles.** RSI apparatus
+   papers describe construction with labeled schematics/photographs plus prose
+   explaining how the parts are connected --- not numbered step-by-step build
+   recipes or checklists --- and they use tables sparingly, only to relay data
+   (specifications, per-run results, inventories). Rhetorical or comparative
+   content (prior art, hazards/mitigations, migration history) belongs in prose,
+   not tables. (Requested by R. Guymon in PR #3, 2026-07-06, after comparing the
+   draft against recent RSI publications, e.g.
+   https://pubs.aip.org/aip/rsi/article/97/6/063303/3394533.)
+
 ## Build
 
 - Build the manuscript with `make pdf` in `paper/` (pdflatex × multiple passes +
