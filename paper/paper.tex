@@ -242,7 +242,11 @@ anneals: the best results were achieved by pumping the chamber to high vacuum an
 then backfilling with argon through the vent valve --- purging the chamber with the
 inert gas before setting the mass flow controller to a steady trickle
 ($\sim$20\,SCCM) for the anneal. Heating under vacuum alone instead tended to
-sublime graphite from the crucible onto the chamber walls.
+sublime graphite from the crucible onto the chamber walls. For the
+highest-temperature work, such as the temperatures needed for ceramic grain
+growth (Sec.~\ref{sec:ysz}), the chamber was evacuated and then continuously
+filled with argon while the turbopump was running, which helped avoid
+oxidation during heating.
 
 \item \textbf{Optical temperature sensing.} A dual-wavelength (ratio) pyrometer (the
 canonical unit is a LumaSense IMPAC ISR 6, 800--2500\,\celsius; the IMPAC brand is
@@ -391,7 +395,7 @@ pyrometer-sighting bore. (g)~Crucible lid, bottom: 14.55\,mm seating face (green
 and the 3.5\,mm through-bore (orange). Two alumina discs sandwich the specimen
 inside the cavity, the lid seats on top, and the sapphire window closes the bore
 so the pyrometer sights the sample through the lid; fully assembled the stack
-stands 13\,mm tall. Measurements contributed by R.~Guymon.
+stands 13\,mm tall.
 \label{fig:crucible-dims}}
 \end{figure}
 
@@ -405,7 +409,6 @@ the alumina discs isolate the specimen from the graphite. (b)~The graphite lid i
 seated on top of the alumina/specimen stack. (c)~The sapphire window is placed
 over the lid bore, closing the crucible while leaving an optical path for the
 pyrometer to sight the specimen temperature through the window.
-Photographs contributed by R.~Guymon.
 \label{fig:crucible-assembly}}
 \end{figure}
 
@@ -432,8 +435,7 @@ coil around the vertical quartz vacuum chamber, which glows at the sample-stack
 position; the pyrometer sights down the chamber axis from the top of the
 stack; the vent valve admits the argon backfill; and the wide-range vacuum
 gauge, turbopump, and separately supported roughing pump complete the vacuum
-path at the bottom of the stack. Photograph and call-outs contributed by
-R.~Guymon.}
+path at the bottom of the stack.}
 \label{fig:furnacephoto}
 \end{figure}
 
@@ -498,7 +500,7 @@ is not transmitted into the chamber.
 (b)~Overpressure relief valve (0.5\,psi cracking pressure) at the bottom of the
 vacuum chamber stack. (c)~Digital mass flow controller (Sierra Smart-Trak)
 connecting the argon tank to the vent valve for controlled venting and inert
-backfill. Photographs contributed by R.~Guymon.}
+backfill.}
 \label{fig:vacuumdetails}
 \end{figure*}
 
@@ -795,7 +797,10 @@ temperatures; the pair seats in a ceramic crucible (MgO shown; boron nitride
 and alumina were also used, see below) on an alumina support rod that raises
 the stack to coil height inside a fresh $\sim$35\,mm-ID quartz tube. The
 generator, vacuum path, gas handling, pyrometer, and LabVIEW control are
-untouched --- the swap is a specimen-stack change, not a furnace change.
+untouched --- the swap is a specimen-stack change, not a furnace change. For
+these high-temperature runs the chamber was first evacuated and then
+continuously filled with argon while the turbopump was running, which helped
+avoid oxidation during heating.
 
 \paragraph{Tantalum-susceptor heat curve.} Figure~\ref{fig:taheatcurve}
 quantifies the temperature range this stack opens up, from an archived lab
@@ -814,8 +819,8 @@ range.
 \begin{figure*}[ht]
 \centering
 \includegraphics[width=0.9\linewidth]{fig_ta_heatcurve.png}
-\caption{Measured heat curves of the tantalum-susceptor (ceramic) stack (data
-contributed by R.~Guymon). (a)~Pyrometer temperature vs.\ generator power
+\caption{Measured heat curves of the tantalum-susceptor (ceramic) stack.
+(a)~Pyrometer temperature vs.\ generator power
 command for one and two stacked tantalum susceptor blocks (the faint series
 repeats the single-block measurement on the original power controller); the
 two-block ramp reached 2344\,\celsius{} at a 33\,\% command before the chamber
@@ -855,7 +860,7 @@ and confirm which generator the tantalum heat curves were recorded on.}
 \centering
 \includegraphics[width=0.92\linewidth]{fig_ysz.png}
 \caption{High-temperature ceramic (YSZ) configuration and resulting
-microstructure. (a)~Charge-stack schematic (contributed by R.~Guymon): inside a
+microstructure. (a)~Charge-stack schematic: inside a
 fresh $\sim$35\,mm-ID quartz tube, the YSZ specimen (red) is sandwiched between
 two 25.5\,mm tantalum susceptor blocks, seated in a 28\,mm MgO crucible on an
 alumina support rod that raises the stack to coil height; the coil, vacuum,
