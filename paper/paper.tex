@@ -658,10 +658,17 @@ to the run IDs of the anneal logs. This mapping is built reproducibly by a
 script that parses the specimen ID
 out of every characterization folder, joins it to the machine-parsed run summary,
 and writes a per-specimen cross-reference: \textbf{35 characterized
-specimens}, of which \textbf{9 link to a parsed run log}, \textbf{8 carry archived
+specimens}, of which \textbf{9 link to a parsed run log}, \textbf{9 carry archived
 EBSD/OIM data}, and one carries EDS. Inverse-pole-figure (IPF) EBSD orientation
 maps of two annealed specimens (Fig.~\ref{fig:ebsd}) resolve hundreds of indexed
-grains, and the best-correlated specimen, \texttt{Ni4N5\_081} (annealed in
+grains. Notably, the anneals leave surfaces that index well with no
+metallographic preparation: Fig.~\ref{fig:kikuchi} shows a raw, as-collected
+Kikuchi pattern (electron backscatter pattern) recorded live from specimen
+\texttt{Ni4N5\_053} --- annealed in \texttt{IFrun059} (1200\,\celsius{} /
+12\,h) and transferred directly from the furnace to the microscope, without
+polishing --- with bands and zone axes clearly resolved even at coarse
+$8\times8$ detector binning, alongside the tilted live view in which thermal
+grooving alone delineates the grain boundaries. The best-correlated specimen, \texttt{Ni4N5\_081} (annealed in
 \texttt{IFrun082} at a nominal 1300\,\celsius{} for 20\,h; logged soak
 $\sim$1301\,\celsius), is documented across length scales --- optical grain map
 with in-image grain-size measurements, SEM survey, and high-magnification
@@ -686,6 +693,22 @@ specimens, rendered from the archived EBSD scans.
 (b)~\texttt{Ni4N5\_069}. Each indexed color is a crystallographic orientation;
 the maps resolve hundreds of grains for grain-size and texture analysis.}
 \label{fig:ebsd}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.98\linewidth]{fig_kikuchi.png}
+\caption{As-collected EBSD acquisition from specimen \texttt{Ni4N5\_053}
+(annealed in \texttt{IFrun059}, 1200\,\celsius{} / 12\,h), taken directly from
+the furnace with no metallographic preparation.
+(a)~Raw Kikuchi pattern (electron backscatter pattern) as seen live on the
+detector at $8\times8$ binning (10\,ms exposure), with Kikuchi bands and zone
+axes clearly resolved; (b)~the corresponding SEM live view of the as-annealed
+surface at 70\textdegree{} tilt, where thermal grooving alone delineates the
+grain boundaries (in-progress IPF overlay; 100\,\textmu m scale bar). The
+pattern quality obtainable straight from the furnace reflects the low residual
+surface damage of the annealed condition.}
+\label{fig:kikuchi}
 \end{figure}
 
 \begin{figure*}[ht]
@@ -740,7 +763,7 @@ Ni4N5\_045,046 & Ni4N5 & IFrun055 & 1200\,\celsius & 1204.2\,\celsius & 12\,h & 
 Ni4N5\_047,048 & Ni4N5 & IFrun056 & 1200\,\celsius & 1200.6\,\celsius & 12\,h & flow & --- & Repeatability \\
 Ni4N5\_049,050 & Ni4N5 & IFrun057 & 1200\,\celsius & 1201.2\,\celsius & 12\,h & flow & --- & Repeatability \\
 Ni4N5\_051,052 & Ni4N5 & IFrun058 & 1200\,\celsius & 1201.0\,\celsius & 12\,h & flow & --- & Repeatability \\
-Ni4N5\_053,054 & Ni4N5 & IFrun059 & 1200\,\celsius & 1200.3\,\celsius & 12\,h & flow & 3 SEM, 3 opt.\ (Ni4N5\_053) & Repeatability \\
+Ni4N5\_053,054 & Ni4N5 & IFrun059 & 1200\,\celsius & 1200.3\,\celsius & 12\,h & flow & 4 SEM, 3 opt.\ (Ni4N5\_053) & Repeatability; raw EBSP (Fig.~\ref{fig:kikuchi}) \\
 Ni4N5\_056,057 & Ni4N5 & IFrun060 & 1200\,\celsius & 1200.9\,\celsius & 12\,h & flow & --- & Repeatability \\
 Ni200\_015 & Ni200 & IFrun081 & 1325\,\celsius & 1326.5\,\celsius & 20\,h & flow & 3 opt. & Long soak (Fig.~\ref{fig:longsoak}) \\
 Ni200\_017 & Ni200 & IFrun080 & 1325\,\celsius & 1326.3\,\celsius & 40\,h & flow & 2 opt. & Long soak \\

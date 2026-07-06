@@ -315,6 +315,38 @@ def fig_ebsd():
     return out
 
 
+def fig_kikuchi():
+    """Raw (as-collected) Kikuchi pattern of Ni4N5_053, cropped from the archived
+    OIM Data Collection screenshot recorded live during scan reg1, alongside the
+    tilted SEM live view of the thermally grooved as-annealed surface."""
+    src = (
+        "docs/SEM/200305_Ni4N5_033,053_sharpie_grooving/Ni4N5_053_grooves/"
+        "OIM_pattern.JPG"
+    )
+    im = Image.open(ROOT / src)
+    # Fixed panel positions inside the 1432x1072 OIM DC screenshot.
+    pattern = im.crop((725, 170, 1052, 462))
+    scanview = im.crop((30, 165, 600, 680))
+    fig, axes = plt.subplots(1, 2, figsize=(7.2, 3.4))
+    axes[0].imshow(np.asarray(pattern.convert("L")), cmap="gray")
+    axes[0].set_title(
+        "(a) Raw Kikuchi pattern (EBSP)\nNi4N5_053, live detector view", fontsize=9
+    )
+    axes[1].imshow(np.asarray(scanview.convert("RGB")))
+    axes[1].set_title(
+        "(b) SEM live view, 70° tilt\n(thermal grooves + IPF overlay)",
+        fontsize=9,
+    )
+    for ax in axes:
+        ax.set_xticks([])
+        ax.set_yticks([])
+    fig.tight_layout()
+    out = FIG_DIR / "fig_kikuchi.png"
+    fig.savefig(out, dpi=200, bbox_inches="tight")
+    plt.close(fig)
+    return out
+
+
 def fig_multimodal():
     """Multi-scale microstructure of the best-correlated specimen (Ni4N5_081,
     IFrun082, 1300 C / 20 h): optical grain map -> SEM survey -> SEM GB detail."""
@@ -355,7 +387,7 @@ def main():
     write_md(rows)
     print(f"Wrote {OUT_CSV.relative_to(ROOT)} ({len(rows)} specimens)")
     print(f"Wrote {OUT_MD.relative_to(ROOT)}")
-    for fn in (fig_ebsd, fig_multimodal):
+    for fn in (fig_ebsd, fig_kikuchi, fig_multimodal):
         out = fn()
         print(f"Wrote {out.relative_to(ROOT)}")
 

@@ -8,7 +8,7 @@ the machine-parsed soak temperature/duration from
 
 - Characterized specimens with committed data: **35**
 - Of those, specimens with a matched parsed run log: **9**
-- Specimens with committed EBSD/OIM data: **8**
+- Specimens with committed EBSD/OIM data: **9**
 - Specimens with committed EDS data: **1**
 
 | Specimen | Material | Matched run(s) | Soak (parsed) | SEM files | Optical files | Techniques | EBSD | EDS |
@@ -32,7 +32,7 @@ the machine-parsed soak temperature/duration from
 | Ni4N5_033 | Ni4N5 | — | — | 4 | 0 | EBSD, SEM | yes | no |
 | Ni4N5_034 | Ni4N5 | IFrun049_Ni4N5_034_1200C_12h | 1200.0C/741.6min | 4 | 0 | EBSD, SEM | yes | no |
 | Ni4N5_039 | Ni4N5 | — | — | 3 | 0 | EBSD, SEM | yes | no |
-| Ni4N5_053 | Ni4N5 | IFrun059_Ni4N5_053,054_1200C_12h; IFrun074_evap_Ni4N5_053_Pd_001a_900C_10min; IFrun075_evap_Ni4N5_053_Pd_001a_900C_10min; IFrun076_evap_Ni4N5_053_Pd_001a_1100C_10min; IFrun077_evap_Ni4N5_053_Pd_001a_1200C_10min; IFrun078_evap_Ni4N5_053_Pd_001a_1300C_10min | 1200.3C/758.3min; 901.1C/15.0min; 799.5C/11.7min; 1098.3C/51.6min; 1199.3C/53.3min; 1299.1C/55.0min | 3 | 3 | SEM, optical | no | no |
+| Ni4N5_053 | Ni4N5 | IFrun059_Ni4N5_053,054_1200C_12h; IFrun074_evap_Ni4N5_053_Pd_001a_900C_10min; IFrun075_evap_Ni4N5_053_Pd_001a_900C_10min; IFrun076_evap_Ni4N5_053_Pd_001a_1100C_10min; IFrun077_evap_Ni4N5_053_Pd_001a_1200C_10min; IFrun078_evap_Ni4N5_053_Pd_001a_1300C_10min | 1200.3C/758.3min; 901.1C/15.0min; 799.5C/11.7min; 1098.3C/51.6min; 1199.3C/53.3min; 1299.1C/55.0min | 4 | 3 | EBSD, SEM, optical | yes | no |
 | Ni4N5_069 | Ni4N5 | — | — | 16 | 0 | EBSD, SEM | yes | no |
 | Ni4N5_073 | Ni4N5 | — | — | 0 | 1 | optical | no | no |
 | Ni4N5_075 | Ni4N5 | — | — | 9 | 0 | EBSD, EDS, SEM | yes | yes |
