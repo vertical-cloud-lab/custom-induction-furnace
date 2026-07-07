@@ -77,18 +77,66 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
    draft against recent RSI publications, e.g.
    https://pubs.aip.org/aip/rsi/article/97/6/063303/3394533.)
 
-9. **Keep the manuscript to a single data table; no BOM or specs tables.** The
+9. **At most one data table in the main text; no BOM or specs tables.** The
    exemplar RSI publication R. Guymon provided (Rev. Sci. Instrum. 97, 063303
    (2026), doi:10.1063/5.0299443) has exactly one table, presented while
-   discussing the data, and no bill-of-materials table. The manuscript's one
-   table is the specimen ↔ thermal-history/characterization linkage in the
-   validation section. Technical specifications are prose in the System design
+   discussing the data, and no bill-of-materials table. The manuscript
+   currently has **zero** main-text tables: the specimen ↔ thermal-history
+   linkage moved to `paper/supplementary/specimen-run-linkage.md` (Table S1)
+   per S. Baird's PDF annotations (PR #3, 2026-07-07). Technical
+   specifications are prose in the System design
    section; the itemized bill of materials and design-file inventory live in
    `paper/supplementary/bill-of-materials.md` and
    `paper/supplementary/design-file-inventory.md` (referenced from the
    Supplementary Material section), NOT as manuscript appendices. Outstanding
    BOM corrections are tracked in the supplementary BOM file. (Requested by
    R. Guymon in PR #3, 2026-07-06.)
+
+10. **No rhetorical bolding in the manuscript body.** `\textbf{}` is not used
+    for emphasis in prose (S. Baird: "There's way too much bolded text here").
+    Bold remains only in the CRediT author-contribution names and the
+    draft-only status box. Use plain prose (or sparing `\emph{}`).
+
+11. **No bullet or numbered lists in the manuscript body.** S. Baird: "All of
+    these numbered lists are distracting and look weird" / "Stop with all the
+    bullet points." Subsystem descriptions, audience statements, portability
+    criteria, etc. are written as flowing prose paragraphs.
+
+12. **No run-ID (`IFrunNNN`) level detail in the main text or figures.**
+    S. Baird: run/specimen-ID-level detail "could be supporting information as
+    long as the raw data is made available or hyperlinked." Run IDs live only
+    in `paper/supplementary/specimen-run-linkage.md` (Table S1), whose rows
+    hyperlink to the raw logs; the manuscript references that cross-reference.
+    Specimen IDs (`Ni4N5_###`) may appear where needed to key the
+    characterization figures, but without their run IDs. Figure builders label
+    plots by nominal condition / chronological run number, not run ID.
+
+13. **The mass flow controller is optional equipment.** Everywhere the MFC is
+    mentioned, describe it as optional (a regulator + needle valve suffices in
+    a minimal build); the MFC photo panel was removed from the vacuum-details
+    figure. (S. Baird, PR #3, 2026-07-07.)
+
+14. **Do not reinsert the LabVIEW front-panel screenshot as a figure.** The
+    archived screenshot (`fig_control_panel.png` /
+    `docs/equipment-reference/frontPanel_200219.PNG`) shows the old LEPEL-era
+    interface; the original LabVIEW files were lost and no current-interface
+    screenshot exists. The front panel is described in prose only.
+    (S. Baird, PR #3, 2026-07-07.)
+
+15. **Clean vs. draft PDFs.** `make pdf` builds the clean `paper.pdf` (no
+    status box, no red \todo markers — the shareable version); `make draft`
+    builds `paper-draft.pdf` with the notes rendered (`\DRAFTNOTES` toggle in
+    the preamble). Keep both in sync when editing. (S. Baird, PR #3,
+    2026-07-07.)
+
+16. **Kevin Cole is acknowledged, not an author.** (S. Baird, PR #3,
+    2026-07-06/07-07.) The LEPEL prototype is historical context and is not
+    mentioned in the abstract.
+
+17. **Never fabricate a reference.** Only cite entries already present in
+    `paper/references.bib`, which is compiled and validated from the Edison
+    literature-query artifacts in `literature-search/`. (S. Baird, PR #3,
+    2026-07-07.)
 
 ## Physical-configuration facts (from lab feedback)
 
@@ -114,8 +162,9 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
 ## Build
 
 - Build the manuscript with `make pdf` in `paper/` (pdflatex × multiple passes +
-  bibtex; REVTeX 4.2 class with the `aip,rsi` options). Always rebuild
-  `paper/paper.pdf` after editing `paper/paper.tex`.
+  bibtex; REVTeX 4.2 class with the `aip,rsi` options); `make draft` builds the
+  notes-visible `paper-draft.pdf`. Always rebuild both `paper/paper.pdf` and
+  `paper/paper-draft.pdf` after editing `paper/paper.tex`.
 - REVTeX 4.2f predates the 2023+ LaTeX kernel/array table internals; `paper.tex`
   disables REVTeX's begin-document tabular patching (see the commented
   `\switch@tabular` override in the preamble) — do not remove it, and do not use

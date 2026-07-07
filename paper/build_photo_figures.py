@@ -83,16 +83,15 @@ def build_furnace_photo() -> str:
 
 
 def build_vacuum_details() -> str:
-    """Three vacuum/gas-handling detail photos as one row."""
+    """Two vacuum detail photos as one row (the MFC photo was dropped from the
+    manuscript per PR #3 review -- the MFC is described as optional in prose)."""
     panels = [
         ("roughing-pump-isolation.png", "(a)",
          "Pumping station: roughing pump on a\nseparate support (vibration isolation)"),
         ("relief-valve.png", "(b)",
          "Overpressure relief valve at the\nbottom of the chamber stack"),
-        ("mfc-argon.png", "(c)",
-         "Mass flow controller between the\nargon tank and the vent valve"),
     ]
-    fig, axes = plt.subplots(1, 3, figsize=(9.0, 4.2))
+    fig, axes = plt.subplots(1, 2, figsize=(6.2, 4.2))
     for ax, (fname, label, caption) in zip(axes, panels):
         img = _load(os.path.join(PHOTOS, fname), max_px=1100)
         ax.imshow(img)
@@ -116,7 +115,9 @@ def build_ysz() -> str:
                           wspace=0.05)
 
     ax_schem = fig.add_subplot(gs[:, 0])
-    ax_schem.imshow(_load(os.path.join(YSZ_DIR, "ysz-stack-schematic.png")))
+    # Panel (a) uses the redrawn stack schematic (make_ysz_stack_schematic.py ->
+    # build_schematic_figures.py), not the original hand sketch.
+    ax_schem.imshow(_load(os.path.join(FIGURES, "fig_ysz_stack.png"), max_px=2000))
     ax_schem.axis("off")
     ax_schem.set_title("(a)", fontsize=10, fontweight="bold", loc="left",
                        pad=4)
@@ -140,7 +141,7 @@ def build_ysz() -> str:
 
 def main() -> int:
     for path in (os.path.join(PHOTOS, "furnace-assembled-callouts.png"),
-                 os.path.join(YSZ_DIR, "ysz-stack-schematic.png"),
+                 os.path.join(FIGURES, "fig_ysz_stack.png"),
                  YSZ_1700, YSZ_INDUCTION):
         if not os.path.exists(path):
             print(f"ERROR: missing source image {path}", file=sys.stderr)

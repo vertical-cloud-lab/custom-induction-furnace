@@ -13,15 +13,16 @@
 #   sudo initexmf --admin --set-config-value '[MPM]AutoInstall=1'
 #
 # Usage:
-#   make pdf     # build paper.pdf from paper.tex (pdflatex + bibtex + 2x pdflatex)
-#   make clean   # remove the compiled PDF and LaTeX aux files
+#   make pdf     # build the clean paper.pdf (no status box / \todo notes)
+#   make draft   # build paper-draft.pdf with the status box + red \todo markers
+#   make clean   # remove the compiled PDFs and LaTeX aux files
 #   make figures # regenerate the validation/characterization/crucible figures
 
 PDFLATEX ?= pdflatex
 SRC := paper.tex
 
-.PHONY: all pdf clean figures
-all: pdf
+.PHONY: all pdf draft clean figures
+all: pdf draft
 
 # Regenerate the validation + characterization figures from the archived data.
 figures:
@@ -42,5 +43,14 @@ paper.pdf: $(SRC) references.bib
 	$(PDFLATEX) -interaction=nonstopmode $(SRC)
 	$(PDFLATEX) -interaction=nonstopmode $(SRC)
 
+# Draft build: predefines \DRAFTNOTES so the status box and \todo markers render.
+draft: paper-draft.pdf
+paper-draft.pdf: $(SRC) references.bib
+	$(PDFLATEX) -interaction=nonstopmode -jobname=paper-draft "\def\DRAFTNOTES{1}\input{$(SRC)}"
+	-bibtex paper-draft
+	$(PDFLATEX) -interaction=nonstopmode -jobname=paper-draft "\def\DRAFTNOTES{1}\input{$(SRC)}"
+	$(PDFLATEX) -interaction=nonstopmode -jobname=paper-draft "\def\DRAFTNOTES{1}\input{$(SRC)}"
+
 clean:
 	rm -f paper.pdf paper.aux paper.log paper.out paper.toc paper.bbl paper.blg paper.spl paperNotes.bib
+	rm -f paper-draft.pdf paper-draft.aux paper-draft.log paper-draft.out paper-draft.bbl paper-draft.blg paper-draftNotes.bib

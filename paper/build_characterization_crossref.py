@@ -298,7 +298,7 @@ def fig_ebsd():
     panels = [
         (
             "docs/SEM/200303_Ni4N5_034_specialHolder1stTry/reg1_IPF.bmp",
-            "(a) Ni4N5_034 IPF map\nIFrun049, 1200 C / 12 h",
+            "(a) Ni4N5_034 IPF map\n(annealed 1200 °C / 12 h)",
         ),
         (
             "docs/SEM/200423_Ni4N5_069/IPF.png",
@@ -375,27 +375,24 @@ def fig_kikuchi():
 
 
 def fig_multimodal():
-    """Multi-scale microstructure of the best-correlated specimen (Ni4N5_081,
-    IFrun082, 1300 C / 20 h): optical grain map -> SEM survey -> SEM GB detail."""
+    """Microstructure of the best-correlated specimen (Ni4N5_081, annealed
+    1300 C / 20 h): optical grain map + SEM GB detail. (The low-detail SEM
+    survey panel was dropped from the manuscript per PR #3 review.)"""
     panels = [
         (
             "docs/optical/CB121/2005##_Ni200_Ni4N5/200506_Ni4N5_081/im_sclbr_measure_1.jpg",
             "(a) Optical, grain structure\n(scale bar + grain-size measurements)",
         ),
         (
-            "docs/SEM/200616_Ni4N5_007,081_Ni_003b2/Ni4N5_081/im_003.tif",
-            "(b) SEM survey",
-        ),
-        (
             "docs/SEM/200511_Ni4N5_081_postEP/GB.tif",
-            "(c) SEM grain-boundary detail",
+            "(b) SEM grain-boundary detail",
         ),
     ]
-    fig, axes = plt.subplots(1, 3, figsize=(10.5, 3.6))
+    fig, axes = plt.subplots(1, 2, figsize=(7.2, 3.6))
     for ax, (rel, title) in zip(axes, panels):
         show(ax, rel, title)
     fig.suptitle(
-        "Ni4N5_081 microstructure after IFrun082 (1300 \u00b0C / 20 h, flow)",
+        "Ni4N5_081 microstructure after its 1300 \u00b0C / 20 h anneal",
         fontsize=10,
     )
     fig.tight_layout(rect=(0, 0, 1, 0.93))

@@ -168,8 +168,12 @@ def fig_calibration(metrics):
     xline = [min(xs) - 0.02, max(xs) + 0.02]
     ax.plot(xline, [intercept + slope * x for x in xline], "--", color="#444",
             label=f"T = {intercept:.0f} + {slope:.0f}\u00b7I  (R\u00b2 = {r2:.3f})")
+    # Points are labeled by nominal soak target (run IDs live in the
+    # supplementary specimen-run cross-reference, not the manuscript figures).
     for s, x, y in zip(CALIBRATION, xs, ys):
-        ax.annotate(s.split("_")[0], (x, y), textcoords="offset points",
+        nominal = s.split("_")[3]  # e.g. "1200C"
+        ax.annotate(nominal.replace("C", " °C"), (x, y),
+                    textcoords="offset points",
                     xytext=(6, -10), fontsize=7, color="#333")
     ax.set_xlabel("Soak-mean analog power command (mA)")
     ax.set_ylabel("Soak-mean pyrometer temperature (\u00b0C)")
@@ -195,7 +199,7 @@ def fig_representative(stem, m):
     a1.set_ylabel("Temperature (\u00b0C)")
     a1.legend(fontsize=8, loc="lower right")
     a1.grid(alpha=0.3)
-    a1.set_title(f"{stem.split('_')[0]}: closed-loop 12 h soak\n"
+    a1.set_title(f"Representative closed-loop 12 h soak\n"
                  f"soak {m['soak_mean_C']:.1f} \u00b1 {m['soak_sd_C']:.1f} \u00b0C, "
                  f"drift {m['drift_C_per_h']:+.3f} \u00b0C/h", fontsize=9)
     a2.plot(th, p, color="#1f77b4", lw=0.8)
@@ -208,7 +212,9 @@ def fig_representative(stem, m):
 
 
 def fig_repeatability(metrics, summary):
-    labels = [s.split("_")[0] for s in REPEATABILITY]
+    # Runs are numbered chronologically; the run-ID mapping lives in the
+    # supplementary specimen-run cross-reference.
+    labels = [str(i + 1) for i in range(len(REPEATABILITY))]
     soak = [metrics[s]["soak_mean_C"] for s in REPEATABILITY]
     m, sd = mean(soak), std(soak)
     fig, ax = plt.subplots(figsize=(5.4, 3.4))
@@ -217,7 +223,8 @@ def fig_repeatability(metrics, summary):
     ax.axhspan(m - sd, m + sd, color="#2ca02c", alpha=0.15,
                label=f"mean {m:.1f} \u00b1 {sd:.1f} \u00b0C (n={len(soak)})")
     ax.set_xticks(range(len(labels)))
-    ax.set_xticklabels(labels, rotation=45, ha="right", fontsize=7)
+    ax.set_xticklabels(labels, fontsize=8)
+    ax.set_xlabel("Run (chronological order)")
     ax.set_ylabel("Soak-mean temperature (\u00b0C)")
     ax.set_title("Repeatability: Ni4N5 1200 \u00b0C / 12 h cohort")
     ax.legend(fontsize=8)
@@ -246,7 +253,7 @@ def fig_longsoak(metrics):
         th = [x / 3600.0 for x in t]
         m = metrics[stem]
         ax.plot(th, temp, lw=0.7, color=colors[stem],
-                label=f"{stem.split('_')[0]} ({stem.split('_')[-1]}): "
+                label=f"{stem.split('_')[-1]} run: "
                       f"{m['soak_mean_C']:.1f}\u00b1{m['soak_sd_C']:.1f} \u00b0C")
     ax.axhline(1325, ls="--", color="#555", lw=0.7)
     ax.set_xlabel("Elapsed time (h)")
