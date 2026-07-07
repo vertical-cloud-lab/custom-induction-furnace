@@ -221,8 +221,8 @@ annealing system: recirculating water chiller and induction generator drive a
 water-cooled heating head/work coil around a quartz-tube vacuum chamber; a
 dual-wavelength pyrometer sights the charge through a quartz optical disc; an Edwards
 T-Station~85 turbo-molecular pump (with pressure gauge and bellows) evacuates the
-chamber; and a DAQ/laptop sets generator power and reads the pyrometer for
-closed-loop control.}
+chamber; and a control computer (LabVIEW + DAQ, top left) sets generator power and
+reads the pyrometer for closed-loop control.}
 \label{fig:overview}
 \end{figure}
 
@@ -823,7 +823,7 @@ the charge stack inside the quartz tube is exchanged
 (Fig.~\ref{fig:ysz}(a)). The YSZ specimen is sandwiched between two tantalum
 blocks (25.5\,mm diameter) that replace graphite as the susceptor at these
 temperatures; the pair seats in a ceramic crucible (MgO shown; boron nitride
-and alumina were also used, see below) on an alumina support rod that raises
+was also used, see below) on an alumina support rod that raises
 the stack to coil height inside a fresh $\sim$35\,mm-ID quartz tube. The
 generator, vacuum path, gas handling, pyrometer, and LabVIEW control are
 untouched --- the swap is a specimen-stack change, not a furnace change. For
@@ -862,13 +862,14 @@ final hour) before a stepped ramp-down.}
 \paragraph{High-temperature material compatibility.} Operating between
 2000 and 2500\,\celsius{} makes chemical compatibility between the specimen,
 susceptor, and crucible the design constraint, and the archived configuration
-survey maps it empirically. Three stack variants were run: Ta susceptor blocks with the YSZ
-specimen in a BN-lined alumina crucible at 2500\,\celsius{} for 8\,h
-(successful grain growth, but Ta vapor deposited on the YSZ); YSZ over
-graphite in a BN/alumina stack at 2000\,\celsius{} for 168\,h (the YSZ reacted
-with the graphite and was consumed); and a double-Ta-block sandwich at
-2130\,\celsius{} for 80.4\,h (a reaction shell formed around the tantalum,
-attributed to Ta--BN contact). The observed pairwise incompatibilities ---
+survey maps it empirically. Three stack variants were run, each seated in a
+boron nitride crucible resting on the alumina support rod: a tantalum
+susceptor block placed on top of the YSZ specimen at 2500\,\celsius{} for 8\,h
+(successful grain growth, but Ta vapor deposited on the YSZ); the YSZ specimen
+set into a graphite susceptor block at 2000\,\celsius{} for 168\,h (the YSZ
+reacted with the graphite and was consumed); and a Ta/YSZ/Ta double-block
+sandwich at 2130\,\celsius{} for 80.4\,h (a reaction shell formed around the
+tantalum, attributed to Ta--BN contact). The observed pairwise incompatibilities ---
 alumina--graphite eutectic near 1800\,\celsius; carbon consuming YSZ at
 2000\,\celsius; YSZ--Ta interdiffusion and Ta deposition at 2500\,\celsius;
 Ta--BN and Ta--MgO surface degradation; Ta carburizing to (still-functional)
