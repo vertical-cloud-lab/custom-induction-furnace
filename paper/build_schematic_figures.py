@@ -37,6 +37,9 @@ SCHEMATIC_RENDERS = [
     ("induction-furnace-schematic.pptx", 1, "fig_system_overview.png"),
     ("induction-furnace-schematic-v2.pptx", 1, "fig_system_overview_v2.png"),
     ("schematic.pptx", 1, "fig_system_overview_alt.png"),
+    # YSZ charge-stack detail (paper/make_ysz_stack_schematic.py), also a draft
+    # under review in PR #3 and NOT referenced by paper.tex yet.
+    ("ysz-stack-schematic.pptx", 1, "fig_ysz_stack.png"),
 ]
 
 # Committed raster screenshots copied verbatim (source relative to docs/, output).
