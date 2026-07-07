@@ -1,0 +1,85 @@
+%% main.tex -- RSI manuscript for the custom induction furnace
+%%
+%% Based on the official AIP Publishing REVTeX 4.1 template
+%% (aiptemplate.tex / aipsamp.tex in this directory).
+%%
+%% Journal: Review of Scientific Instruments (RSI)
+%%   - documentclass option `rsi` selects the RSI substyle
+%%   - `reprint` produces two-column formatted output (as published);
+%%     switch to `preprint` for one-column double-spaced submission format
+%%
+%% Compile with:  latexmk -pdf main.tex
+
+\documentclass[%
+ aip,
+ rsi,%
+ amsmath,amssymb,
+ reprint,%
+%preprint,%
+]{revtex4-1}
+
+\usepackage{graphicx}% Include figure files
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
+
+\begin{document}
+
+\preprint{AIP/123-QED}
+
+\title[Custom induction furnace]{A custom induction furnace for
+high-temperature materials processing}
+% An article title in RSI should be concise; a short version for the
+% running header goes in the optional [] argument.
+
+\author{A. Author}
+ \email{first.author@institution.edu}
+\author{B. Author}%
+\affiliation{%
+Authors' institution and/or address%
+}%
+
+\date{\today}
+
+\begin{abstract}
+An abstract of fewer than 250 words summarizing the instrument, its
+novel aspects, and representative performance results goes here.
+\end{abstract}
+
+\maketitle
+
+\section{\label{sec:intro}Introduction}
+
+Introduce the motivation for the instrument and survey prior
+work.\cite{Note1} Citations use \verb+\cite{key}+ with entries in
+\texttt{references.bib}.
+
+\section{\label{sec:design}Instrument design}
+
+Describe the furnace design: induction power supply, coil and crucible
+geometry, vacuum system, gas handling, and instrumentation.
+
+\section{\label{sec:performance}Performance}
+
+Present representative measurements demonstrating the capabilities of
+the instrument.
+
+\section{\label{sec:conclusion}Conclusion}
+
+Summarize the instrument capabilities and outlook.
+
+\begin{acknowledgments}
+We wish to acknowledge the support of \ldots
+\end{acknowledgments}
+
+\section*{Author Declarations}
+\subsection*{Conflict of Interest}
+The authors have no conflicts to disclose.
+
+\section*{Data Availability Statement}
+The data that support the findings of this study are available from the
+corresponding author upon reasonable request.
+
+\nocite{*}
+\bibliography{references}% references.bib, processed with aipnum4-1.bst
+
+\end{document}
