@@ -31,8 +31,11 @@ FIGURES = os.path.join(REPO_ROOT, "paper", "figures")
 DPI = "300"  # HardwareX requires >=300 dpi raster figures.
 
 # (source .pptx relative to docs/, slide page number, output figure name).
+# The v2 overview (paper/make_schematic_v2.py) is a draft under review in PR #3
+# and is deliberately NOT referenced by paper.tex yet.
 SCHEMATIC_RENDERS = [
     ("induction-furnace-schematic.pptx", 1, "fig_system_overview.png"),
+    ("induction-furnace-schematic-v2.pptx", 1, "fig_system_overview_v2.png"),
     ("schematic.pptx", 1, "fig_system_overview_alt.png"),
 ]
 
