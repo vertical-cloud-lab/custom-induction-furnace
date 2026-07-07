@@ -19,10 +19,14 @@ housing, and the stand label moves under the heating-head support.
 
 Second follow-up (R. Guymon, PR #3, 2026-07-07):
   - cooling water runs chiller -> heating head -> generator -> chiller
-  - the housing hangs from THREE ceiling cables (the third is drawn angled so
-    it reads as the attachment point behind the pyrometer in this side view)
   - the 0.5 psi overpressure relief valve hangs from the bottom of the chamber
     stack, at the KF40 cross where the bellows connects
+
+Third follow-up (R. Guymon, PR #3, 2026-07-07):
+  - draw only TWO ceiling cables (the housing physically hangs from three, but
+    two reads better in this flat side view -- see AGENTS.md)
+  - move the generator and chiller in next to the heating head / pump instead
+    of leaving them far off at the left edge
 """
 import copy, os, shutil
 from pptx import Presentation
@@ -111,29 +115,27 @@ for sid in (34, 35):
     for d in ln.findall(qn('a:prstDash')):
         ln.remove(d)
 
-# ---- 2b. third ceiling cable: the housing hangs from three cables. In this
-#          side view the third attachment sits behind the pyrometer, so it is
-#          drawn from the ceiling midpoint angling down to the housing top,
-#          passing just right of the pyrometer body.
-cable3 = shapes.add_connector(MSO_CONNECTOR.STRAIGHT,
-                              Inches(8.578), Inches(0.396), Inches(8.86), Inches(5.19))
-style_line(cable3, 3.0)
+# (Only two cables are drawn. The housing physically hangs from three, but in
+#  this flat side view the third attachment sits behind the pyrometer and an
+#  angled third line read poorly, so it is deliberately omitted -- R. Guymon,
+#  PR #3, 2026-07-07.)
 
-# ---- 3. shrink + reposition chiller and generator
+# ---- 3. shrink + reposition chiller and generator, tucked in next to the
+#         heating head / pumping station instead of far off at the left edge
 ch = by_id[71]
-ch.left, ch.top, ch.width, ch.height = Inches(0.60), Inches(8.50), Inches(1.50), Inches(0.95)
+ch.left, ch.top, ch.width, ch.height = Inches(3.90), Inches(8.50), Inches(1.50), Inches(0.95)
 set_text(ch, ["Recirculating", "Water Chiller"], 11)
 gen = by_id[72]
-gen.left, gen.top, gen.width, gen.height = Inches(0.60), Inches(6.55), Inches(1.40), Inches(0.90)
+gen.left, gen.top, gen.width, gen.height = Inches(4.00), Inches(6.65), Inches(1.40), Inches(0.90)
 set_text(gen, ["Induction", "Generator"], 11)
 
 # ---- 4. RF leads: generator -> heating head (dotted, +/- polarity labels kept)
-for y in (6.85, 7.15):
-    c = shapes.add_connector(MSO_CONNECTOR.STRAIGHT, Inches(2.00), Inches(y), Inches(6.82), Inches(y))
+for y in (6.90, 7.18):
+    c = shapes.add_connector(MSO_CONNECTOR.STRAIGHT, Inches(5.40), Inches(y), Inches(6.82), Inches(y))
     style_line(c, 2.0, dash='sysDot')
 plus, minus = by_id[133], by_id[134]
-plus.left, plus.top = Inches(2.04), Inches(6.48)
-minus.left, minus.top = Inches(2.04), Inches(6.88)
+plus.left, plus.top = Inches(5.44), Inches(6.53)
+minus.left, minus.top = Inches(5.44), Inches(6.91)
 
 # ---- 5. cooling-water loop: chiller -> heating head -> generator -> chiller
 BLUE = RGBColor(0x1F, 0x6F, 0xC4)
@@ -146,10 +148,10 @@ def water(points):
     style_line(sh, 2.0, rgb=BLUE)
     tail_arrow(sh)
     return sh
-water([(2.10, 8.70), (5.35, 8.70), (5.35, 7.75), (6.95, 7.75), (6.95, 7.31)])   # chiller -> head
-water([(7.20, 7.31), (7.20, 7.60), (1.30, 7.60), (1.30, 7.45)])                 # head -> generator
-water([(0.90, 7.45), (0.90, 8.50)])                                             # generator -> chiller
-label("Cooling Water", 2.35, 8.38, 1.15, size=10, rgb=BLUE)
+water([(5.40, 8.70), (5.57, 8.70), (5.57, 7.75), (6.95, 7.75), (6.95, 7.31)])   # chiller -> head
+water([(7.20, 7.31), (7.20, 7.65), (4.90, 7.65), (4.90, 7.55)])                 # head -> generator
+water([(4.30, 7.55), (4.30, 8.50)])                                             # generator -> chiller
+label("Cooling Water", 4.45, 7.98, 1.15, size=10, rgb=BLUE)
 
 # ---- 6. heating-head support post standing on its own base bar; the chamber
 #         stack itself has NO stand (it hangs from the ceiling cables), so the
@@ -190,8 +192,10 @@ cru.line.color.rgb = RGBColor(0, 0, 0); cru.line.width = Pt(0.75)
 cru.shadow.inherit = False
 
 # ---- 10. vacuum-stack labels with leader arrows
-label("Quartz Tube (Vacuum Chamber)", 4.42, 6.33, 2.18, align=PP_ALIGN.RIGHT)
-leader(6.65, 6.46, 8.40, 6.55)
+# (label sits left of the repositioned generator; its leader passes over the
+#  generator/head gap to reach the tube)
+label("Quartz Tube (Vacuum Chamber)", 3.17, 6.33, 2.18, align=PP_ALIGN.RIGHT)
+leader(5.42, 6.46, 8.40, 6.55)
 label("KF40 Fitting", 9.02, 6.16, 0.95)
 leader(9.00, 6.29, 8.74, 6.29)
 label("Crucible", 9.05, 6.52, 0.85)

@@ -99,8 +99,11 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
   head/work coil**, not the chamber. Any text, caption, or schematic implying a
   stand-supported chamber or a "stand-mounted pyrometer holder" is wrong.
   (R. Guymon, PR #3, 2026-07-07.)
-- **Three ceiling cables.** The pyrometer housing hangs from **three** cables to the
-  ceiling, not two. (R. Guymon, PR #3, 2026-07-07.)
+- **Three ceiling cables physically; draw two.** The pyrometer housing hangs from
+  **three** cables to the ceiling. In the v2 overview schematic, however, only two
+  are drawn — the third attachment sits behind the pyrometer in the flat side view
+  and an angled third line read poorly, so it is deliberately omitted for clarity.
+  Do not "fix" the schematic back to three. (R. Guymon, PR #3, 2026-07-07.)
 - **Cooling water is a series loop**: chiller → heating head/work coil → generator →
   back to the chiller. (R. Guymon, PR #3, 2026-07-07.)
 - **Overpressure relief valve** (0.5 psi cracking) hangs at the bottom of the chamber
