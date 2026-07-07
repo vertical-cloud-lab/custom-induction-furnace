@@ -1,0 +1,67 @@
+{
+  "generated_at_utc": "2026-07-07T22:35:00+00:00",
+  "job_name": "LITERATURE_HIGH (job-futurehouse-paperqa3-high)",
+  "session_status": "complete (5 of 5 queries fetched; submitted 2026-07-07T21:42-21:43Z by prior session, fetched this session)",
+  "note": "Queries q05-q09 were derived from the manuscript in PR #3 (paper/paper.tex). They were submitted as high-effort tasks by the previous Claude session, which ended before fetching; this session fetched the completed jobs per instruction (fetch, don't rerun).",
+  "total_unique_references_this_run": 147,
+  "total_unique_references_all_queries_q01_q09": 310,
+  "combined_bibliography": "literature-search/issue-4/2026-07-07/combined_references.bib",
+  "master_bibliography_all_queries": "literature-search/issue-4/combined_references_all.bib",
+  "queries": [
+    {
+      "query_id": "q05",
+      "topic": "Susceptor-assisted induction heating of non-conductive/ceramic charges (graphite & refractory-metal susceptors, 1700-2500 C)",
+      "query": "For induction heating systems that use susceptors to heat electrically non-conductive or poorly coupling charges (e.g., ceramics such as yttria-stabilized zirconia), review the literature on graphite and refractory-metal (e.g., tantalum) susceptor design and use: RF coupling efficiency, susceptor geometry and placement, heat transfer to the charge by conduction/radiation, achievable temperatures and operating limits at 1700-2500 C, and susceptor vapor deposition / contamination of the charge. Cite high-quality sources with bibtex.",
+      "status": "success",
+      "task_id": "ace9f738-1cbb-4240-bdb6-3318e95bc5ce",
+      "trajectory_id": "ace9f738-1cbb-4240-bdb6-3318e95bc5ce",
+      "submitted_at_utc": "2026-07-07T21:42:58.182058Z",
+      "bib_entries": 31,
+      "contexts": 49
+    },
+    {
+      "query_id": "q06",
+      "topic": "Grain growth in yttria-stabilized zirconia (YSZ): kinetics, temperature-time regimes, atmosphere effects",
+      "query": "Review the literature on grain growth in yttria-stabilized zirconia (YSZ): kinetics (growth exponents, activation energies), temperature-time regimes for producing large-grained (tens of microns) equiaxed microstructures at 1700-2500 C, and the effects of atmosphere (vacuum, argon, reducing conditions) and contamination (carbon, refractory metals) on grain growth, darkening/reduction, and specimen integrity. Cite high-quality sources with bibtex.",
+      "status": "success",
+      "task_id": "d343f74b-1f31-445f-97d1-21a182af0dfd",
+      "trajectory_id": "d343f74b-1f31-445f-97d1-21a182af0dfd",
+      "submitted_at_utc": "2026-07-07T21:42:59.104950Z",
+      "bib_entries": 43,
+      "contexts": 59
+    },
+    {
+      "query_id": "q07",
+      "topic": "High-temperature chemical compatibility of refractory materials (Ta, graphite, BN, MgO, alumina, zirconia)",
+      "query": "Review high-temperature (1700-2500 C) chemical compatibility among refractory materials used as crucibles and susceptors: tantalum, graphite/carbon, boron nitride, magnesia (MgO), alumina, and zirconia. Include carburization of tantalum (TaC formation), alumina-carbon reactions and eutectics near 1800 C, carbothermal reduction/consumption of zirconia by carbon, Ta-BN and Ta-MgO interface degradation, interdiffusion and vapor transport (Ta deposition on ceramic specimens), and oxygen gettering by tantalum. Cite high-quality sources with bibtex.",
+      "status": "success",
+      "task_id": "159bf943-0408-48cb-9a2f-9b99110113e2",
+      "trajectory_id": "159bf943-0408-48cb-9a2f-9b99110113e2",
+      "submitted_at_utc": "2026-07-07T21:42:59.958150Z",
+      "bib_entries": 21,
+      "contexts": 49
+    },
+    {
+      "query_id": "q08",
+      "topic": "Low-cost/open-source laboratory furnace instrumentation and closed-loop pyrometer/PID control retrofits",
+      "query": "Review literature on low-cost, open-source, or custom-built laboratory high-temperature furnaces and instrument retrofits/modernizations: computer/DAQ-based (e.g., LabVIEW) analog power control of induction or resistance furnaces, closed-loop PID temperature control using non-contact (pyrometer) feedback, vacuum or controlled-atmosphere chamber integration, and open-source-hardware approaches to scientific furnace construction, validation, and publication. Cite high-quality sources with bibtex.",
+      "status": "success",
+      "task_id": "6dfa8647-b58b-44f6-931f-871ebd97234f",
+      "trajectory_id": "6dfa8647-b58b-44f6-931f-871ebd97234f",
+      "submitted_at_utc": "2026-07-07T21:43:00.640295Z",
+      "bib_entries": 36,
+      "contexts": 57
+    },
+    {
+      "query_id": "q09",
+      "topic": "Grain-boundary thermal grooving (Mullins theory) and characterization of as-annealed surfaces",
+      "query": "Review literature on grain-boundary thermal grooving in annealed metals (especially nickel) and its use for microstructure characterization: Mullins grooving theory and groove growth kinetics, groove dihedral-angle measurement of grain-boundary to surface energy ratios, thermal grooving as a way to reveal grain boundaries without metallographic preparation (etching/polishing), and the quality of EBSD/Kikuchi patterns obtainable from as-annealed (unprepared) surfaces. Cite high-quality sources with bibtex.",
+      "status": "success",
+      "task_id": "c1b8bdf5-3837-4be8-8ecd-3631c281d257",
+      "trajectory_id": "c1b8bdf5-3837-4be8-8ecd-3631c281d257",
+      "submitted_at_utc": "2026-07-07T21:43:01.467858Z",
+      "bib_entries": 18,
+      "contexts": 49
+    }
+  ]
+}
