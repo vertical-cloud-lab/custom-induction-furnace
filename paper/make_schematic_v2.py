@@ -16,6 +16,13 @@ pyrometer housing, which is suspended from the ceiling by cables. The stand
 supports only the heating head. So: the chamber-side stand/clamps are removed,
 both ceiling cables are drawn solid (load-bearing) down to the pyrometer
 housing, and the stand label moves under the heating-head support.
+
+Second follow-up (R. Guymon, PR #3, 2026-07-07):
+  - cooling water runs chiller -> heating head -> generator -> chiller
+  - the housing hangs from THREE ceiling cables (the third is drawn angled so
+    it reads as the attachment point behind the pyrometer in this side view)
+  - the 0.5 psi overpressure relief valve hangs from the bottom of the chamber
+    stack, at the KF40 cross where the bellows connects
 """
 import copy, os, shutil
 from pptx import Presentation
@@ -97,12 +104,20 @@ def leader(x1, y1, x2, y2):
 for sid in (9, 137, 121, 122, 135, 136):
     delete(sid)
 
-# ---- 2. both ceiling cables solid: they are load-bearing (the chamber stack
+# ---- 2. all ceiling cables solid: they are load-bearing (the chamber stack
 #         hangs from the pyrometer housing, which the cables tie to the ceiling)
 for sid in (34, 35):
     ln = by_id[sid]._element.find('.//' + qn('a:ln'))
     for d in ln.findall(qn('a:prstDash')):
         ln.remove(d)
+
+# ---- 2b. third ceiling cable: the housing hangs from three cables. In this
+#          side view the third attachment sits behind the pyrometer, so it is
+#          drawn from the ceiling midpoint angling down to the housing top,
+#          passing just right of the pyrometer body.
+cable3 = shapes.add_connector(MSO_CONNECTOR.STRAIGHT,
+                              Inches(8.578), Inches(0.396), Inches(8.86), Inches(5.19))
+style_line(cable3, 3.0)
 
 # ---- 3. shrink + reposition chiller and generator
 ch = by_id[71]
@@ -120,7 +135,7 @@ plus, minus = by_id[133], by_id[134]
 plus.left, plus.top = Inches(2.04), Inches(6.48)
 minus.left, minus.top = Inches(2.04), Inches(6.88)
 
-# ---- 5. cooling-water loop: chiller -> heating head -> chiller
+# ---- 5. cooling-water loop: chiller -> heating head -> generator -> chiller
 BLUE = RGBColor(0x1F, 0x6F, 0xC4)
 def water(points):
     fb = shapes.build_freeform(Emu(Inches(points[0][0])), Emu(Inches(points[0][1])), scale=1.0)
@@ -131,8 +146,9 @@ def water(points):
     style_line(sh, 2.0, rgb=BLUE)
     tail_arrow(sh)
     return sh
-water([(2.10, 8.70), (5.35, 8.70), (5.35, 7.75), (6.95, 7.75), (6.95, 7.31)])   # supply
-water([(7.20, 7.31), (7.20, 7.95), (5.55, 7.95), (5.55, 9.00), (2.10, 9.00)])   # return
+water([(2.10, 8.70), (5.35, 8.70), (5.35, 7.75), (6.95, 7.75), (6.95, 7.31)])   # chiller -> head
+water([(7.20, 7.31), (7.20, 7.60), (1.30, 7.60), (1.30, 7.45)])                 # head -> generator
+water([(0.90, 7.45), (0.90, 8.50)])                                             # generator -> chiller
 label("Cooling Water", 2.35, 8.38, 1.15, size=10, rgb=BLUE)
 
 # ---- 6. heating-head support post standing on its own base bar; the chamber
@@ -184,6 +200,18 @@ label("Induction Coil", 9.02, 6.93, 0.95)
 leader(9.00, 7.06, 8.77, 7.06)
 label("KF40 Cross", 9.02, 7.80, 0.95)
 leader(9.00, 7.93, 8.74, 7.93)
+
+# ---- 11. overpressure relief valve (0.5 psi cracking pressure) hanging from
+#          the bottom of the chamber stack, at the KF40 cross where the bellows
+#          connects (matches Fig. fig_vacuum_details(b) and the vacuum-path text)
+stub = shapes.add_connector(MSO_CONNECTOR.STRAIGHT, Inches(8.71), Inches(8.30), Inches(8.71), Inches(8.55))
+style_line(stub, 2.0)
+rv = shapes.add_shape(1, Inches(8.63), Inches(8.55), Inches(0.16), Inches(0.14))
+rv.fill.solid(); rv.fill.fore_color.rgb = RGBColor(0xFF, 0xFF, 0xFF)
+rv.line.color.rgb = RGBColor(0, 0, 0); rv.line.width = Pt(1.25)
+rv.shadow.inherit = False
+label("Relief Valve", 9.02, 8.49, 0.95)
+leader(9.00, 8.62, 8.81, 8.62)
 
 prs.save(DST)
 print("saved", DST)
