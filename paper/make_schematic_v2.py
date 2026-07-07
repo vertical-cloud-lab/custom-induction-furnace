@@ -9,6 +9,13 @@ Requested revisions (R. Guymon, PR #3, 2026-07-07):
   - mount the heating head on a support
   - label the vacuum chamber stack
   - shrink the chiller and generator
+
+Follow-up correction (R. Guymon, PR #3, 2026-07-07): there is no support stand
+for the vacuum chamber -- the chamber stack is joined by KF40 flanges to the
+pyrometer housing, which is suspended from the ceiling by cables. The stand
+supports only the heating head. So: the chamber-side stand/clamps are removed,
+both ceiling cables are drawn solid (load-bearing) down to the pyrometer
+housing, and the stand label moves under the heating-head support.
 """
 import copy, os, shutil
 from pptx import Presentation
@@ -90,10 +97,12 @@ def leader(x1, y1, x2, y2):
 for sid in (9, 137, 121, 122, 135, 136):
     delete(sid)
 
-# ---- 2. right vertical line fully solid (was sysDot fixturing cable over the post)
-ln35 = by_id[35]._element.find('.//' + qn('a:ln'))
-for d in ln35.findall(qn('a:prstDash')):
-    ln35.remove(d)
+# ---- 2. both ceiling cables solid: they are load-bearing (the chamber stack
+#         hangs from the pyrometer housing, which the cables tie to the ceiling)
+for sid in (34, 35):
+    ln = by_id[sid]._element.find('.//' + qn('a:ln'))
+    for d in ln.findall(qn('a:prstDash')):
+        ln.remove(d)
 
 # ---- 3. shrink + reposition chiller and generator
 ch = by_id[71]
@@ -126,8 +135,9 @@ water([(2.10, 8.70), (5.35, 8.70), (5.35, 7.75), (6.95, 7.75), (6.95, 7.31)])   
 water([(7.20, 7.31), (7.20, 7.95), (5.55, 7.95), (5.55, 9.00), (2.10, 9.00)])   # return
 label("Cooling Water", 2.35, 8.38, 1.15, size=10, rgb=BLUE)
 
-# ---- 6. heating-head support post, drawn behind the plumbing, standing on an
-#         extension of the stand's base bar
+# ---- 6. heating-head support post standing on its own base bar; the chamber
+#         stack itself has NO stand (it hangs from the ceiling cables), so the
+#         chamber-side stand/clamps group is removed entirely
 post = shapes.add_shape(1, Inches(7.38), Inches(7.29), Inches(0.13), Inches(2.15))  # 1 = rectangle
 post.fill.solid(); post.fill.fore_color.rgb = RGBColor(0xA6, 0xA6, 0xA6)
 post.line.color.rgb = RGBColor(0, 0, 0); post.line.width = Pt(1.0)
@@ -139,15 +149,10 @@ foot = shapes.add_shape(1, Inches(7.28), Inches(9.435), Inches(0.90), Inches(0.0
 foot.fill.solid(); foot.fill.fore_color.rgb = RGBColor(0, 0, 0)
 foot.line.fill.background()
 foot.shadow.inherit = False
-base = by_id[91]
-base.left, base.width = Inches(7.28), Inches(2.50)
-nowrap(91, 12)
-
-# the support-stand group's upper post segments were dotted ("dashed section near
-# the top" of an otherwise solid line) -- make the whole stand solid
-grp = by_id[115]
-for d in grp._element.findall('.//' + qn('a:prstDash')):
-    d.getparent().remove(d)
+delete(115)                       # chamber support stand + clamps: does not exist
+base = by_id[91]                  # relabel + center the label under the head support
+base.left, base.width = Inches(6.93), Inches(1.60)
+set_text(base, ["Support Stand"], 12)
 
 # ---- 7. bellows text off the hose (support post would cross it)
 by_id[14].text_frame.text = ""
@@ -157,9 +162,9 @@ label("Bellows", 5.72, 8.28, 0.70, size=10)
 nowrap(11, 11)          # T-Station 85 (Pump)
 nowrap(23, 12)          # Pyrometer (rotated)
 nowrap(24, 9)           # Pressure Sensor
-nowrap(25, 12)          # Pyrometer Holder
+set_text(by_id[25], ["Pyrometer Housing"], 12)   # matches manuscript terminology
 nowrap(26, 12)          # Quartz Disc
-set_text(by_id[38], ["Fixturing Cable", "(with slack)"], 12)
+set_text(by_id[38], ["Fixturing Cables", "(to ceiling)"], 12)
 set_text(by_id[70], ["Heating", "Head"], 11)
 
 # ---- 9. crucible inside the quartz tube, at coil height

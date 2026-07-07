@@ -90,6 +90,16 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
    BOM corrections are tracked in the supplementary BOM file. (Requested by
    R. Guymon in PR #3, 2026-07-06.)
 
+## Physical-configuration facts (from lab feedback)
+
+- **The vacuum chamber has no support stand.** The chamber stack is joined by KF40
+  flanges to the pyrometer housing, which is suspended from the ceiling by cables —
+  the vertical stack hangs from above. The bolted support stand (8 short + 4 long
+  sections, 12 corner braces, 4 floor mounts) carries the generator's **heating
+  head/work coil**, not the chamber. Any text, caption, or schematic implying a
+  stand-supported chamber or a "stand-mounted pyrometer holder" is wrong.
+  (R. Guymon, PR #3, 2026-07-07.)
+
 ## Build
 
 - Build the manuscript with `make pdf` in `paper/` (pdflatex × multiple passes +
