@@ -140,15 +140,50 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
 
 18. **The paper must be 5 pages or less** (clean `paper.pdf`, including
     references). (R. Guymon, PR #3, 2026-07-08, citing the AIP author
-    instructions.) The main text carries only the four essential figures
+    instructions.) The main text carries only the five essential figures
     (system overview v2, assembled-furnace photo, crucible loading sequence,
-    and the `Ni4N5_081` microstructure panel); all
+    the `Ni4N5_081` microstructure panel, and the YSZ grain-growth results
+    graph); all
     other figures live in `paper/supplementary/supplementary-figures.md`
     (S1–S13) with their full captions, and the prose states the corresponding
     metrics and points to the supplementary material. When adding content,
     keep the clean build at ≤5 pages — cut or move material to supplementary
     rather than exceeding it. (The draft build with the status box/\todo
     markers may exceed 5 pages; the clean build is what counts.)
+
+19. **No LEPEL mentions anywhere in the manuscript.** (R. Guymon, PR #3,
+    2026-07-08: "do not include anything about the LEPEL furnace, it is not
+    necessary.") Generator portability may be stated as "the layer has been
+    ported between two generators of very different designs" without naming
+    or dating the prototype. This supersedes the earlier "brief historical
+    origin context" allowance for LEPEL.
+
+20. **No dates in the manuscript body** (no years like "prototyped in 2019",
+    "quoted in 2021", "~1970"). `\date{\today}` on the title page is the
+    only exception. (R. Guymon, PR #3, 2026-07-08.)
+
+21. **No specific equipment model or brand names in the manuscript** — for
+    now, per R. Guymon (PR #3, 2026-07-08). Use generic descriptions ("a
+    6 kW solid-state induction generator", "a compact turbo pumping
+    station", "a dual-wavelength ratio pyrometer, 800–2500 °C sensing
+    range", "3000 °C-grade graphite stock"). Exact models/prices live only
+    in `paper/supplementary/bill-of-materials.md`. Standards (KF40),
+    material grades (Ni200, Ni4N5, YSZ), and the LabVIEW/DAQ software stack
+    are not "models" and stay. The v2 schematic likewise says "Turbo
+    Pumping Station", not "T-Station 85".
+
+22. **Keep the graphite crucible (metals) and the tantalum-susceptor stack
+    (ceramics) strictly separate.** The graphite crucible is used
+    exclusively for metal grain growth; ceramic charges (YSZ) are never
+    loaded into it and use the entirely separate tantalum-susceptor charge
+    stack (Sec. V A). Never write anything implying the graphite crucible
+    holds ceramic samples. (R. Guymon, PR #3, 2026-07-08.)
+
+23. **Keep the Supplementary Material section and the Sec. III safety prose
+    short.** The safety discussion ends at the off-normal-conditions
+    sentence (zero the command, remove RF power, lock out) — the
+    hazard-by-hazard enumeration was removed; the SI section is a single
+    compact paragraph. (R. Guymon, PR #3, 2026-07-08.)
 
 ## Physical-configuration facts (from lab feedback)
 
@@ -164,8 +199,17 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
   are drawn — the third attachment sits behind the pyrometer in the flat side view
   and an angled third line read poorly, so it is deliberately omitted for clarity.
   Do not "fix" the schematic back to three. (R. Guymon, PR #3, 2026-07-07.)
-- **Cooling water is a series loop**: chiller → heating head/work coil → generator →
-  back to the chiller. (R. Guymon, PR #3, 2026-07-07.)
+- **Cooling water is a series loop**: chiller → generator → heating head/work coil →
+  back to the chiller. (Order verified by R. Guymon, PR #3, 2026-07-08; this
+  corrects the head-first order stated on 2026-07-07.)
+- **The crucible rests on an alumina support rod** inside the quartz-tube vacuum
+  chamber, which positions it at coil height (both the graphite/metal and the
+  tantalum/ceramic stacks). (R. Guymon, PR #3, 2026-07-08.)
+- **Ceiling cables are drawn short.** In the v2 overview schematic the ceiling
+  bar sits just above the pyrometer and the two cables are short stubs — the
+  full-height run wasted figure space (R. Guymon, PR #3, 2026-07-08). The
+  schematic renders are auto-cropped to content by
+  `paper/build_schematic_figures.py`.
 - **Overpressure relief valve** (0.5 psi cracking) hangs at the bottom of the chamber
   stack, at the KF40 cross where the bellows connects; every KF40 joint in the stack
   seals on an elastomer O-ring carried on its centering ring. (R. Guymon, PR #3,

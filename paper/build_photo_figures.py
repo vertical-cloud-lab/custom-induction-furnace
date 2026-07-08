@@ -67,10 +67,34 @@ def _load(path: str, max_px: int = 1600) -> Image.Image:
     return img
 
 
+def _relabel_generator(img: Image.Image) -> Image.Image:
+    """Rewrite the "Power Cube Generator" call-out as "Induction Generator".
+
+    No specific equipment model names appear in the manuscript for now
+    (R. Guymon, PR #3, 2026-07-08), and "Power Cube" is a model name. The
+    call-out box (a solid black rectangle at (35, 432)-(360, 682) in the
+    committed 1692x2250 source) is repainted and re-lettered in place.
+    """
+    from PIL import ImageDraw, ImageFont
+    img = img.copy()
+    draw = ImageDraw.Draw(img)
+    draw.rectangle((35, 432, 360, 682), fill=(0, 0, 0))
+    try:
+        font = ImageFont.truetype(
+            "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 56)
+    except OSError:
+        font = ImageFont.load_default()
+    for i, line in enumerate(("Induction", "Generator")):
+        draw.text((65, 478 + i * 82), line, fill=(255, 255, 255), font=font)
+    return img
+
+
 def build_furnace_photo() -> str:
     """Labeled photo of the assembled system at operating power."""
-    img = _load(os.path.join(PHOTOS, "furnace-assembled-callouts.png"),
-                max_px=2000)
+    img = _relabel_generator(
+        Image.open(os.path.join(PHOTOS,
+                                "furnace-assembled-callouts.png")).convert("RGB"))
+    img.thumbnail((2000, 2000), Image.LANCZOS)
     fig, ax = plt.subplots(figsize=(4.6, 4.6 * img.size[1] / img.size[0]))
     ax.imshow(img)
     ax.axis("off")

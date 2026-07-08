@@ -35,6 +35,7 @@ figures:
 	python3 build_photo_figures.py
 	python3 build_ysz_figures.py
 	python3 build_grooving_figure.py
+	python3 build_grain_growth_figure.py
 
 pdf: paper.pdf
 paper.pdf: $(SRC) references.bib

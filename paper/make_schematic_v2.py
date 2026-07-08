@@ -27,6 +27,14 @@ Third follow-up (R. Guymon, PR #3, 2026-07-07):
     two reads better in this flat side view -- see AGENTS.md)
   - move the generator and chiller in next to the heating head / pump instead
     of leaving them far off at the left edge
+
+Fourth follow-up (R. Guymon, PR #3, 2026-07-08):
+  - greatly shorten the ceiling cables (the long run wasted vertical space);
+    the ceiling bar now sits just above the pyrometer
+  - cooling water verified to run chiller -> generator -> heating head ->
+    chiller (reverses the previous head-first order)
+  - no specific equipment model names in the drawing ("Turbo Pumping Station"
+    instead of "T-Station 85")
 """
 import copy, os, shutil
 from pptx import Presentation
@@ -120,6 +128,20 @@ for sid in (34, 35):
 #  angled third line read poorly, so it is deliberately omitted -- R. Guymon,
 #  PR #3, 2026-07-07.)
 
+# ---- 2b. greatly shorten the cables (R. Guymon, PR #3, 2026-07-08): drop the
+#          ceiling bar to just above the pyrometer so the cables read as short
+#          stubs instead of a full-height run that wastes figure space.
+CEILING_Y = 4.05
+ceiling = by_id[50]
+ceiling.top = Inches(CEILING_Y)
+for sid in (34, 35):
+    cab = by_id[sid]
+    bottom = cab.top + cab.height
+    cab.top = Inches(CEILING_Y)
+    cab.height = Emu(bottom - Inches(CEILING_Y))
+lab38 = by_id[38]                 # move the cables label down next to them
+lab38.top, lab38.height = Inches(4.30), Inches(0.70)
+
 # ---- 3. shrink + reposition chiller and generator, tucked in next to the
 #         heating head / pumping station instead of far off at the left edge
 ch = by_id[71]
@@ -137,7 +159,8 @@ plus, minus = by_id[133], by_id[134]
 plus.left, plus.top = Inches(5.44), Inches(6.53)
 minus.left, minus.top = Inches(5.44), Inches(6.91)
 
-# ---- 5. cooling-water loop: chiller -> heating head -> generator -> chiller
+# ---- 5. cooling-water loop: chiller -> generator -> heating head -> chiller
+#         (order verified by R. Guymon, PR #3, 2026-07-08)
 BLUE = RGBColor(0x1F, 0x6F, 0xC4)
 def water(points):
     fb = shapes.build_freeform(Emu(Inches(points[0][0])), Emu(Inches(points[0][1])), scale=1.0)
@@ -148,10 +171,10 @@ def water(points):
     style_line(sh, 2.0, rgb=BLUE)
     tail_arrow(sh)
     return sh
-water([(5.40, 8.70), (5.57, 8.70), (5.57, 7.75), (6.95, 7.75), (6.95, 7.31)])   # chiller -> head
-water([(7.20, 7.31), (7.20, 7.65), (4.90, 7.65), (4.90, 7.55)])                 # head -> generator
-water([(4.30, 7.55), (4.30, 8.50)])                                             # generator -> chiller
-label("Cooling Water", 4.45, 7.98, 1.15, size=10, rgb=BLUE)
+water([(4.30, 8.50), (4.30, 7.55)])                                             # chiller -> generator
+water([(4.90, 7.55), (4.90, 7.65), (6.95, 7.65), (6.95, 7.31)])                 # generator -> head
+water([(7.20, 7.31), (7.20, 7.75), (5.57, 7.75), (5.57, 8.70), (5.42, 8.70)])   # head -> chiller
+label("Cooling Water", 4.42, 7.98, 1.10, size=10, rgb=BLUE)
 
 # ---- 6. heating-head support post standing on its own base bar; the chamber
 #         stack itself has NO stand (it hangs from the ceiling cables), so the
@@ -176,8 +199,9 @@ set_text(base, ["Support Stand"], 12)
 by_id[14].text_frame.text = ""
 label("Bellows", 5.72, 8.28, 0.70, size=10)
 
-# ---- 8. single-line words everywhere
-nowrap(11, 11)          # T-Station 85 (Pump)
+# ---- 8. single-line words everywhere; no equipment model names in the
+#         drawing (R. Guymon, PR #3, 2026-07-08)
+set_text(by_id[11], ["Turbo Pumping", "Station"], 11)
 nowrap(23, 12)          # Pyrometer (rotated)
 nowrap(24, 9)           # Pressure Sensor
 set_text(by_id[25], ["Pyrometer Housing"], 12)   # matches manuscript terminology

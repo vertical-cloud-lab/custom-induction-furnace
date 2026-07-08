@@ -52,6 +52,28 @@ def _have(cmd: str) -> bool:
     return shutil.which(cmd) is not None
 
 
+def _autocrop(path: str, margin: int = 24) -> None:
+    """Trim the white slide margins around the drawn content (+ a small margin),
+    so schematic edits that free up canvas space (e.g. the shortened ceiling
+    cables, R. Guymon PR #3 2026-07-08) actually shrink the rendered figure."""
+    try:
+        from PIL import Image, ImageChops
+    except ImportError:
+        print("WARNING: Pillow unavailable; skipping autocrop", file=sys.stderr)
+        return
+    im = Image.open(path).convert("RGB")
+    bg = Image.new("RGB", im.size, (255, 255, 255))
+    bbox = ImageChops.difference(im, bg).getbbox()
+    if bbox is None:
+        return
+    left, top, right, bottom = bbox
+    left = max(0, left - margin)
+    top = max(0, top - margin)
+    right = min(im.width, right + margin)
+    bottom = min(im.height, bottom + margin)
+    im.crop((left, top, right, bottom)).save(path)
+
+
 def render_schematics() -> None:
     if not (_have("soffice") and _have("pdftoppm")):
         print("WARNING: soffice/pdftoppm not found; skipping schematic renders "
@@ -85,7 +107,9 @@ def render_schematics() -> None:
             if rendered is None:
                 print(f"WARNING: render produced no PNG for {src}", file=sys.stderr)
                 continue
-            shutil.copyfile(rendered, os.path.join(FIGURES, out_name))
+            out_path = os.path.join(FIGURES, out_name)
+            shutil.copyfile(rendered, out_path)
+            _autocrop(out_path)
             print(f"wrote figures/{out_name}  (from docs/{src} slide {page})")
 
 
