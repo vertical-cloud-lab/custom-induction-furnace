@@ -302,9 +302,6 @@ down. The LabVIEW profile ramps open-loop below the pyrometer floor, hands
 over to closed-loop PID, and runs the programmed soak; afterwards the sample
 cools under vacuum and the chamber is vented only once the turbo pump has
 stopped.
-Off-normal conditions --- loss of cooling water, vacuum loss, arcing, or
-runaway temperature --- all call for zeroing the command and removing RF power
-first, then locking the system out.
 
 %==============================================================
 \section{Performance validation}
@@ -379,7 +376,7 @@ scale~\cite{bramfitt2001metallographersguidepractice}.
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.74\linewidth]{fig_microstructure.png}
-\caption{Microstructure of specimen \texttt{Ni4N5\_081} after a
+\caption{Microstructure of a Ni4N5 specimen after a
 1300\,\celsius{} / 20\,h anneal under argon trickle flow. (a)~Optical grain
 map with in-image grain-size measurements (200\,\textmu m scale bar);
 (b)~high-magnification SEM grain-boundary detail.}
@@ -417,10 +414,10 @@ ceramic anneal, 45\,min at 2500\,\celsius: the grain-boundary network of the
 YSZ surface after coarsening from $\sim$20 to $\sim$90\,\textmu m --- growth
 that a commercial 1600\,\celsius{} box furnace
 needed more than 228\,h to approach (10 to 80\,\textmu m).
-Two practical rules emerged: shorter, hotter anneals stay clean (runs past
-$\sim$3\,h contaminated the specimen), and above
-$\sim$2200\,\celsius{} a carbon susceptor not touching the YSZ is the
-indicated configuration.
+Two practical rules emerged from the survey: keep the high-temperature soak
+short enough that these contact reactions have no time to act --- the clean
+90\,\textmu m result above came from a 45\,min anneal --- and above
+$\sim$2200\,\celsius{} use a carbon susceptor that does not touch the YSZ.
 
 \begin{figure}[ht]
 \centering

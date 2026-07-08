@@ -107,8 +107,9 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
     long as the raw data is made available or hyperlinked." Run IDs live only
     in `paper/supplementary/specimen-run-linkage.md` (Table S1), whose rows
     hyperlink to the raw logs; the manuscript references that cross-reference.
-    Specimen IDs (`Ni4N5_###`) may appear where needed to key the
-    characterization figures, but without their run IDs. Figure builders label
+    Specific specimen IDs (`Ni4N5_###`) are likewise not named in the main
+    text or captions — write "a Ni4N5 specimen" and let Table S1 carry the
+    IDs (R. Guymon, PR #3, 2026-07-08). Figure builders label
     plots by nominal condition / chronological run number, not run ID.
 
 13. **The mass flow controller is optional equipment.** Everywhere the MFC is
@@ -142,7 +143,7 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
     references). (R. Guymon, PR #3, 2026-07-08, citing the AIP author
     instructions.) The main text carries only the six essential figures
     (system overview v2, assembled-furnace photo, crucible loading sequence,
-    the raw Kikuchi pattern, the `Ni4N5_081` microstructure panel, and the
+    the raw Kikuchi pattern, the Ni4N5 microstructure panel, and the
     as-recorded YSZ 2500 °C/45 min micrograph); all
     other figures live in `paper/supplementary/supplementary-figures.md`
     (S1–S13) with their full captions, and the prose states the corresponding
@@ -180,9 +181,11 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
     holds ceramic samples. (R. Guymon, PR #3, 2026-07-08.)
 
 23. **Keep the Supplementary Material section and the Sec. III safety prose
-    short.** The safety discussion ends at the off-normal-conditions
-    sentence (zero the command, remove RF power, lock out) — the
-    hazard-by-hazard enumeration was removed; the SI section is a single
+    short.** The hazard-by-hazard enumeration was removed, and the
+    off-normal-conditions sentence (zero the command, remove RF power, lock
+    out) was subsequently removed as well — Sec. III now ends at the
+    run/shutdown description and contains no dedicated safety sentence; do
+    not add safety prose back. The SI section is a single
     compact paragraph. (R. Guymon, PR #3, 2026-07-08.)
 
 24. **Never self-generate a data figure for the main text — use the lab's
@@ -200,7 +203,18 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
     profiles, `docs/YSZ/Tantalum-Heat-Curve.xlsx`,
     `docs/SEM/raw-kikuchi-patterns/`.
 
-25. **Do not describe the data as "archived" or write meta-information about
+25. **Do not state the "runs longer than 3 h contaminated the specimen"
+    claim as a general rule.** The parenthetical on slide 2 of
+    `docs/YSZ/Induction-Furnace-Key-Takeaways.pdf` ("90 um clean samples
+    achieved with setup #3 after 45 min. Anything longer than 3hrs
+    contaminated sample") is scoped to the surveyed YSZ susceptor/crucible
+    contact configurations, and R. Guymon flagged the generalized "soaks
+    past ~3 h contaminate" phrasing as contradicting other observations
+    (PR #3, 2026-07-08). The manuscript states only that the extended-soak
+    survey runs gave the contact reactions time to act while the 45 min
+    anneal stayed clean, without a numeric duration rule.
+
+26. **Do not describe the data as "archived" or write meta-information about
     the data — present the data itself and expound on it.** (R. Guymon,
     PR #3, 2026-07-08.) The reader is someone learning how the furnace
     retrofit works and understanding the Ni/YSZ grain-growth results, not
