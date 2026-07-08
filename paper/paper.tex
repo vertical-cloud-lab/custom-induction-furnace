@@ -3,6 +3,10 @@
 %% behind the official AIP Publishing template. Template files and the RSI/AIP
 %% author guidelines are mirrored in paper/template/rsi/.
 %%
+%% LENGTH: the paper must be 5 pages or less (R. Guymon, PR #3, 2026-07-08).
+%% Main text carries 5 figures; the remaining figures and extended detail live
+%% in the supplementary material (paper/supplementary/supplementary-figures.md).
+%%
 %% The earlier HardwareX version of this manuscript (Elsevier elsarticle class)
 %% is archived in paper/archive/paper-hardwarex.tex.
 %%
@@ -79,30 +83,25 @@ Provo, Utah 84602, USA}
 \date{\today}
 
 \begin{abstract}
-High-temperature vacuum annealing near a metal's melting point drives controlled
-grain growth but normally requires expensive turn-key vacuum induction furnaces.
-We describe an open, generator-agnostic modernization stack that converts a bare
-commercial RF induction generator into a computer-controlled, vacuum-integrated,
-pyrometer-feedback annealing system. The contribution is the reproducible
-control/sensing/vacuum layer --- LabVIEW/DAQ analog power control, dual-wavelength
-optical temperature feedback, a high-vacuum quartz-tube chamber, and an in-house
-machined graphite crucible/susceptor --- which transfers between induction
-generators provided the generator exposes a monotonic analog power-control input.
-The reproducible build is anchored on the lab's current, USA-sourced generator
-(CEIA ``Power Cube'' 6\,kW, procured through East Coast Induction). We report the
-system design, construction and operating procedures, and a performance
-validation grounded in the archived furnace-run data and the associated
-SEM/EBSD/optical characterization: a fixed-geometry
-power--temperature calibration ($R^2 = 0.991$ over 1200--1400\,\celsius),
-repeatable 1200\,\celsius{} / 12\,h Ni4N5 processing ($1201.2 \pm 1.3$\,\celsius{}
-across 8 runs), stable long-duration control up to 40\,h at 1325\,\celsius, and
-SEM/EBSD/optical microstructural characterization of annealed reactive-metal
-specimens cross-referenced to their logged thermal histories. A
-tantalum-susceptor variant of the same charge stack extends the furnace to
-non-coupling ceramics at 2000--2350\,\celsius, demonstrated with YSZ grain
-growth and an empirical high-temperature material-compatibility map. Complete design
-files, a costed bill of materials, control software, and the full run-log and
-characterization archives are openly available.
+High-temperature vacuum annealing near a metal's melting point drives
+controlled grain growth but normally requires an expensive turn-key vacuum
+induction furnace. We describe an open, generator-agnostic modernization stack
+that converts a bare commercial RF induction generator into a
+computer-controlled, vacuum-integrated, pyrometer-feedback annealing system:
+LabVIEW/DAQ analog power control, dual-wavelength optical temperature
+feedback, a high-vacuum quartz-tube chamber, and an in-house machined graphite
+crucible/susceptor. The layer transfers between generators that expose a
+monotonic analog power-control input; the reproducible build is anchored on a
+current CEIA ``Power Cube'' 6\,kW generator. Validation from the archived
+furnace-run data and associated SEM/EBSD/optical characterization shows a
+fixed-geometry power--temperature calibration ($R^2 = 0.991$ over
+1200--1400\,\celsius), repeatable 1200\,\celsius{} / 12\,h nickel anneals
+($1201.2 \pm 1.3$\,\celsius{} across 8 runs), stable soaks up to 40\,h at
+1325\,\celsius, and annealed-specimen microstructures cross-referenced to
+their logged thermal histories. A tantalum-susceptor variant extends the
+furnace to non-coupling ceramics at 2000--2350\,\celsius, demonstrated with
+YSZ grain growth. Complete design files, bill of materials, control software,
+and data archives are openly available.
 \end{abstract}
 
 \keywords{induction furnace; grain growth; vacuum annealing; LabVIEW;
@@ -111,13 +110,10 @@ pyrometer; open-source hardware}
 \maketitle
 
 \ifdraftnotes
-\noindent\fbox{\parbox{\linewidth}{\small\textbf{Status:} working draft generated
-from the repository's design files, standard operating procedure, parts list,
-schematics, and run logs, retargeted from HardwareX to \emph{Review of Scientific
-Instruments} (REVTeX 4.2, \texttt{aip,rsi}). \todo{}-marked items flag values or
-figures that still need to be confirmed or added before submission; outstanding
-bill-of-materials corrections from co-author review are tracked in the pull
-request and in the supplementary bill of materials.}}
+\noindent\fbox{\parbox{\linewidth}{\small\textbf{Status:} working draft
+condensed to the 5-page limit; the removed figures and extended detail are in
+the supplementary material. \todo{}-marked items flag values that still need
+to be confirmed before submission.}}
 \fi
 
 %==============================================================
@@ -125,827 +121,341 @@ request and in the supplementary bill of materials.}}
 %==============================================================
 
 High-temperature annealing near a metal's melting point drives controlled
-grain growth, which is central to studying microstructure--property
-relationships in metals such as nickel and
+grain growth, central to studying microstructure--property relationships in
+metals such as nickel and
 iron~\cite{liu2021studyofgrain,mohrbacher2026applicationofmicroalloying,alogab2007theinfluenceof,tian2009experimentalandsimulation,moore2017graincoarseningbehaviour}.
 Doing this without oxidizing the sample requires both high temperature
-($\sim$1400--1500\,\celsius) and high vacuum (or inert
-atmosphere)~\cite{zhornyak1982reductionanddecarburization,muramatsu2005gascontaminationdue}.
-Commercial vacuum induction annealing furnaces that meet these requirements are
-expensive turn-key systems, which puts them out of reach for many academic labs.
+($\sim$1400--1500\,\celsius) and high vacuum or an inert
+atmosphere~\cite{zhornyak1982reductionanddecarburization,muramatsu2005gascontaminationdue}.
+Commercial vacuum induction furnaces meeting these requirements are closed,
+turn-key systems costing \$50k--\$200k+; resistive tube and box furnaces reach
+lower temperatures with slower ramps and offer no susceptor route to
+non-coupling charges; and bare industrial induction generators are widely
+available but ship without vacuum, optical temperature feedback, or computer
+setpoint control.
 
-This work takes the opposite approach: rather than building or buying a complete
-furnace, we retrofit and modernize a bare RF induction
+This work adds exactly that missing layer: a bare RF induction
 generator~\cite{rudnev2017handbookofinduction,lucia2014inductionheatingtechnology}
-into a full annealing system by adding computer power control, closed-loop optical
-temperature control, a high-vacuum quartz-tube chamber, and a machined
-graphite crucible/susceptor. The emphasis of the contribution is the
-modernization stack itself, which is deliberately
-generator-agnostic: the same control software, vacuum chamber, pyrometer
-feedback, crucible, and work-coil geometry transfer from one induction generator to
-another. The only requirement a reader's generator must satisfy is an analog
-power-control input with a monotonic command$\rightarrow$power response over the
-usable range (e.g. 4--20\,mA, 0--5\,V, or 0--5\,mA); near-linearity is convenient but
-not required, because the pyrometer feedback and PID calibration absorb any
-nonlinearity. That portability is the reproducible result and is what makes the
-design reusable by other labs that already own, or can buy, such an induction
-generator.
+is retrofitted into a full annealing system with computer power control,
+closed-loop optical temperature feedback, a high-vacuum quartz-tube chamber,
+and a machined graphite crucible/susceptor. The stack is deliberately
+generator-agnostic: the only requirement is an analog power-control input
+(e.g. 4--20\,mA or 0--5\,V) with a monotonic command$\rightarrow$power
+response, since the pyrometer feedback and PID calibration absorb any
+nonlinearity. The generator internals are not reproduced; a reader supplies a
+compatible generator and rebuilds the layer described here. Because the
+graphite crucible couples strongly to the RF field and heats its contents
+indirectly, the same furnace also processes non-coupling charges such as YSZ
+ceramic (Sec.~\ref{sec:ysz}).
 
-A second feature that broadens the system's applicability is the machined
-graphite crucible/susceptor: because graphite couples strongly to the RF field and
-heats the charge indirectly by conduction and radiation, the furnace is not limited
-to electrically conductive samples --- it can also process poorly- or non-coupling
-materials such as YSZ ceramic. This makes the same build useful well beyond
-reactive-metal annealing.
-
-The modernization was first prototyped on a $\sim$1970 LEPEL high-frequency
-induction furnace owned by the BYU Mechanical Engineering department --- at the time
-the only departmental machine able to reach the Ni/Fe melting range. A ``remote
-control'' capability was added in August 2019 to drive the generator's power from a
-computer instead of the front-panel knob. The lab subsequently moved the same stack
-onto a current, USA-sourced solid-state generator (CEIA ``Power Cube'' 6\,kW via
-East Coast Induction), whose Power Controller C-V3 Plus accepts a standard analog
-(4--20\,mA) power setpoint. An intermediate, separately-purchased import generator
-(CYSI GP-15A) was evaluated but did not meet the lab's control requirements --- the
-required analog remote-control input was lost across vendor model substitutions ---
-and was retired. The reproducible build documented here therefore targets the
-current USA generator, with the LEPEL retrofit retained as historical context.
-
-Compared with commercial vacuum annealing furnaces, this approach has
-substantially lower capital cost (the generator + heating head +
-controller + chiller package was quoted at $\approx$\$16.5k in 2021, and the
-retrofit components are itemized in the supplementary bill of materials, versus
-\$50k--\$200k+ for turn-key systems), is repairable and modifiable by the user,
-and is broadly reusable: any lab with an induction generator and an analog power
-input can reproduce the control, vacuum, and temperature-sensing additions
-described below. The system is aimed at materials labs needing oxidation-free
-grain-growth anneals of reactive metals (Ni, Fe) near their melting points; at
-labs that own a bare induction generator and want to add computer setpoint
-control, optical feedback, and vacuum integration without buying a turn-key
-furnace; at groups processing poorly- or non-coupling charges (e.g. YSZ ceramic)
-that can be heated indirectly through the graphite susceptor; and at
-teaching/maker contexts wanting a repairable, modifiable high-temperature vacuum
-furnace built from documented, open design files.
-
-All design files, control software, run logs, and characterization data are
-openly available: the development repository is
-\url{https://github.com/vertical-cloud-lab/custom-induction-furnace} and an
-archival snapshot is deposited at Zenodo
-(\href{https://doi.org/10.5281/zenodo.20878017}{10.5281/zenodo.20878017}), with
-hardware design files under the CERN-OHL-S v2 license and control code under the
-MIT license (proposed).
-
-\subsection{Scope and reproducibility boundary}
-
-To be explicit about what this paper does and does not reproduce: this work
-does \emph{not} reproduce the RF generator internals. It reproduces the modernization
-layer built around a compatible generator --- the computer power control, optical
-(pyrometer) feedback, high-vacuum quartz-tube chamber, machined graphite
-crucible/susceptor, work-coil geometry, and the mechanical support fixturing. A
-reader supplies (or already owns) a compatible generator and rebuilds the layer
-described here.
-
-\subsection{Prior art and comparison}
-
-Three classes of alternative exist, and each presents a limitation this design
-addresses. Commercial vacuum induction annealing furnaces are turn-key systems
-costing \$50k--\$200k+; they are closed, difficult to modify or repair in-house,
-and carry vendor lock-in. Openly documented resistively heated tube and box
-furnaces reach lower maximum temperatures with slower ramps than induction
-heating, and offer no RF-susceptor route to heating a non-coupling charge.
-Finally, induction generators themselves are widely available as bare industrial
-units (CEIA, Ambrell, and others), but ship without integrated vacuum, optical
-temperature feedback, or computer setpoint control --- exactly the layer this
-work adds.
+The stack was first prototyped in 2019 on a $\sim$1970 LEPEL high-frequency
+induction furnace and later moved unchanged onto a current, USA-sourced
+solid-state generator (CEIA ``Power Cube'' 6\,kW via East Coast Induction),
+whose controller accepts a standard 4--20\,mA power setpoint; the reproducible
+build documented here targets the CEIA unit. The generator + heating head +
+controller + chiller package was quoted at $\approx$\$16.5k in 2021, with the
+retrofit components itemized in the supplementary bill of materials --- a
+small fraction of turn-key cost, in a form that is repairable and modifiable
+by the user. All design files, control software, run logs, and
+characterization data are openly available (see Data Availability), with
+hardware under CERN-OHL-S v2 and code under MIT (proposed).
 
 %==============================================================
 \section{System design and description}
 %==============================================================
 
-\subsection{Architecture and control signal flow}
-
-The system comprises five subsystems, shown in the labeled overview schematic of
-Fig.~\ref{fig:overview}; Fig.~\ref{fig:furnacephoto} shows the corresponding
-assembled system, with its main components labeled, at operating power.
+The system comprises five subsystems (Fig.~\ref{fig:overview});
+Fig.~\ref{fig:furnacephoto} shows the assembled system at operating power.
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=\linewidth]{fig_system_overview_v2.png}
-\caption{System overview of the computer-controlled, vacuum-integrated induction
-annealing system. The induction generator drives the water-cooled heating
-head/work coil, mounted on its support stand, around the vertically suspended
-quartz-tube vacuum chamber holding the crucible; cooling water flows from the
-recirculating chiller through the heating head and then the generator in series
-before returning to the chiller. The chamber stack is joined by KF40 flanges to
-the pyrometer housing, which hangs from the ceiling by fixturing cables, and the
-pyrometer sights the charge from above through a quartz optical disc. At the
-bottom of the stack, an overpressure relief valve and a flexible bellows lead
-past the pressure sensor to the T-Station~85 turbo pumping station. Generator
-power is commanded, and the pyrometer read back, by the LabVIEW/DAQ control path
-described in the text.}
+\includegraphics[width=0.68\linewidth]{fig_system_overview_v2.png}
+\caption{System overview. The generator drives the water-cooled heating
+head/work coil around the vertically suspended quartz-tube chamber; the
+chamber stack is joined by KF40 flanges to the ceiling-suspended pyrometer
+housing, and an overpressure relief valve and flexible bellows lead past the
+pressure sensor to the turbo pumping station.}
 \label{fig:overview}
 \end{figure}
 
-The heating subsystem is a solid-state induction generator (current build: CEIA
-Power Cube PW3-90/50) driving a water-cooled copper work coil that carries both
-the oscillating current and the cooling water. The coil geometry ($\sim$3\,in
-tall, 2.5\,in ID, $\sim$6.5 turns) was tuned to the sample/crucible
-stack~\cite{vankan2024electromagneticinductionheating,xu2026designandoptimization}.
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.4\linewidth]{fig_furnace_photo.jpg}
+\caption{The assembled, functioning furnace with the main components labeled;
+the quartz chamber glows at the sample-stack position, the pyrometer sights
+down the chamber axis, the vent valve admits the argon backfill, and the
+gauge, turbopump, and separately supported roughing pump complete the vacuum
+path.}
+\label{fig:furnacephoto}
+\end{figure}
 
-The vacuum and gas subsystem starts from the quartz tube that forms the chamber,
-connected through a KF40 flange and flexible bellows to an Edwards T-Station 85
-turbo-molecular pump ($\sim$1$\times$10$^{-6}$--10$^{-8}$\,Torr). A manual vent
-valve fed from an inert-gas regulator --- optionally through a mass flow
-controller, as in this build --- allows controlled venting and backfilling to
-suppress oxidation of reactive
-metals~\cite{kanda2007developmentofhightemperature,inaba1986effectsofthe}. The
-choice of atmosphere matters for graphite-crucible anneals: the best results were
-achieved by pumping the chamber to high vacuum and then backfilling with argon
-through the vent valve --- purging the chamber with the inert gas before settling
-to a steady trickle flow ($\sim$20\,SCCM, metered here by the optional mass flow
-controller) for the anneal. Heating under vacuum alone instead tended to sublime
-graphite from the crucible onto the chamber walls. For the highest-temperature
-work, such as the temperatures needed for ceramic grain growth
-(Sec.~\ref{sec:ysz}), the chamber was evacuated and then continuously filled with
-argon while the turbopump was running, which helped avoid oxidation during
-heating.
+The heating subsystem is a solid-state induction generator (current build:
+CEIA Power Cube PW3-90/50) driving a water-cooled copper work coil
+($\sim$3\,in tall, 2.5\,in ID, $\sim$6.5 turns, tuned to the sample/crucible
+stack~\cite{vankan2024electromagneticinductionheating,xu2026designandoptimization});
+the coil conductors carry both the RF current and the coolant, and cooling
+water flows in series from the chiller through the heating head and generator.
+The vacuum and gas subsystem starts from the 35\,mm-ID fused-quartz tube that
+forms the chamber, connected through a KF40 flange and flexible bellows to an
+Edwards T-Station~85 turbo pumping station
+($\sim$1$\times$10$^{-6}$--10$^{-8}$\,Torr); a manual vent valve fed from an
+inert-gas regulator allows controlled venting and
+backfilling~\cite{kanda2007developmentofhightemperature,inaba1986effectsofthe}.
+The atmosphere matters for graphite-crucible anneals: the best results were
+achieved by pumping to high vacuum and then backfilling with argon through the
+vent valve, purging before settling to a steady trickle ($\sim$20\,SCCM),
+whereas heating under vacuum alone tended to sublime graphite onto the chamber
+walls; for the highest-temperature ceramic work (Sec.~\ref{sec:ysz}), the
+chamber was evacuated and then continuously filled with argon while the
+turbopump was running, avoiding oxidation during heating.
 
 Temperature is sensed optically: a dual-wavelength (ratio)
 pyrometer~\cite{tapetado2016twocolorpyrometerfor,belikov2024fastmultiwavelengthpyrometer}
-(the canonical unit is a LumaSense IMPAC ISR 6, 800--2500\,\celsius; the IMPAC
-brand is LumaSense's) views the sample through a KF40 optical window, providing a
-non-contact temperature signal that is robust to emissivity changes and to the RF
-field that would corrupt
+(LumaSense IMPAC ISR~6, 800--2500\,\celsius) views the sample through a KF40
+optical window, providing a non-contact signal robust to emissivity changes
+and to the RF field that would corrupt
 thermocouples~\cite{ham2016insituspectralemissivity,suleiman2025improvingpyrometryof,usamentiaga2014infraredthermographyfor}.
-
-Control is implemented in LabVIEW: a DAQ analog output sets generator power, and
-the pyrometer signal is read back for closed-loop ramp/soak control, with VIs for
-manual control, automated ramping, PID tuning, and email alerts. The front panel
-exposes editable ramp-up, PID-soak, and cool-down setpoint tables, the PID gains,
-the inert-gas flow setpoint/readback (when the optional mass flow controller is
-installed), and live power-command and pyrometer-temperature traces used to run
-and monitor an anneal. In the CEIA build the DAQ outputs 0--5\,V to a
-voltage-to-current loop conditioner that converts the command to the controller's
-4--20\,mA power-setpoint input (the LEPEL prototype instead took a 0--5\,mA
-command directly), so the closed-loop signal flow runs from the LabVIEW setpoint
-through the DAQ analog output and V$\rightarrow$I conditioner to the generator
-power, and back from the sample/crucible heating through the pyrometer optical
-reading and DAQ analog input (scaled to \celsius) into the PID controller, which
-updates the analog command. The same path runs open-loop (direct command ramp)
-while the temperature is below the pyrometer's $\sim$700\,\celsius{} detection
-floor; once the pyrometer reports a sustained valid reading above that floor,
+Control is implemented in LabVIEW, with VIs for manual control, automated
+ramping, PID tuning, and email alerts: the DAQ's 0--5\,V analog output drives
+a voltage-to-current loop conditioner whose 4--20\,mA output lands on the
+generator's power-setpoint input (the LEPEL prototype took a 0--5\,mA command
+directly), and the pyrometer's analog output returns to a DAQ input, closing
+the PID loop. Below the pyrometer's $\sim$700\,\celsius{} detection floor the
+VI ramps open-loop; once the pyrometer returns a sustained valid reading,
 control hands over to closed-loop PID on the optical
 temperature~\cite{meng2023designofvacuum,rapoport2006optimalcontrolof}.
+Mechanically, a bolted support stand carries the generator's heating head,
+centering the work coil on the crucible position; the vacuum chamber itself
+has no support stand --- the chamber stack is joined by KF40 flanges to the
+pyrometer housing, suspended from the ceiling by cables, so the vertical stack
+hangs from above.
 
-Mechanically, a bolted support stand (8 short + 4 long sections, 12 corner
-braces, 4 floor mounts) carries the generator's heating head, centering the work
-coil on the crucible position. The vacuum chamber itself has no support stand:
-the chamber stack is joined by KF40 flanges to the pyrometer housing, which is
-suspended from the ceiling by cables, so the vertical stack hangs from above. An
-in-house machined graphite crucible holds the sample and acts as the RF
-susceptor.
+Directly coupled metal charges in the graphite crucible reach the Ni/Fe
+grain-growth range ($\sim$1400--1500\,\celsius) with demonstrated soaks from
+minutes to $\sim$40\,h, and the tantalum-susceptor ceramic configuration
+extends the working range to $\sim$2000--2350\,\celsius. The layer transfers
+to any generator that exposes a monotonic analog power input, supports a
+water-cooled head/coil of the documented geometry, delivers enough RF power
+for the target charge, and allows electrical isolation of the DAQ/control
+path; when porting, the command scaling, calibration, PID gains, alignment,
+and interlock behavior are re-established, as the LEPEL$\rightarrow$CEIA port
+demonstrated.
 
-\subsection{Technical specifications}
+\subsection{Graphite crucible / susceptor}
 
-As built, the documented system heats charges inside a 35\,mm-ID fused-quartz
-tube at an operating vacuum level of $\sim$1$\times$10$^{-6}$ to
-1$\times$10$^{-8}$\,Torr, with temperature measured by the dual-wavelength
-ratio pyrometer over its $\sim$800--2500\,\celsius{} detection range (no
-reading below $\sim$700\,\celsius). Directly coupled metal charges in the
-machined graphite crucible reach the Ni/Fe grain-growth range
-($\sim$1400--1500\,\celsius), with demonstrated soaks from minutes up to
-$\sim$40\,h in the archived run logs; exchanging the graphite stack for the
-tantalum-susceptor ceramic configuration extends the working range to
-$\sim$2000--2350\,\celsius{} (Sec.~\ref{sec:ysz}). Power is commanded through
-a 4--20\,mA analog setpoint via the LabVIEW/DAQ output and V$\rightarrow$I
-conditioner (the LEPEL prototype instead took 0--5\,mA directly), and the
-water-cooled copper work coil measures $\sim$3\,in tall, 2.5\,in ID, with
-$\sim$6.5 turns. These are \emph{build-dependent} values: a reader supplies
-their own generator, pump, and pyrometer and re-establishes the corresponding
-values for their build.
-
-\subsection{Generator compatibility and portability}
-\label{sec:portability}
-
-The control/sensing/vacuum layer transfers to any generator that exposes an
-external analog power-control input (e.g. 4--20\,mA or 0--5\,V/0--5\,mA) whose
-command$\rightarrow$delivered-power response is monotonic over the usable range
-(near-linear is convenient but not required, since the pyrometer feedback closes
-the loop); that supports a water-cooled induction head/coil matching the
-documented coil dimensions; that delivers enough RF power to reach the target
-temperature for the documented crucible/sample stack; that allows safe
-electrical isolation between the DAQ/control path and the generator input; and
-for which the required cooling and line power are available.
-
-When porting to a new generator, the following must be re-established:
-analog-command scaling, power-to-temperature calibration, PID gains, coil/sample
-alignment, maximum safe ramp rate, and any generator-specific interlock behavior.
-The port from the $\sim$1970 LEPEL prototype to the current CEIA build is the
-existence proof for this portability claim: the dual-wavelength pyrometer
-feedback, the quartz-tube/KF40 vacuum chamber, the machined graphite
-crucible/susceptor, the bolted support stand, and the LabVIEW/DAQ control VIs
-all transferred unchanged. Only the analog interface itself differed --- the
-LEPEL took a 0--5\,mA command directly, whereas the CEIA Power Controller C-V3
-Plus expects 4--20\,mA, hence the V$\rightarrow$I loop conditioner --- and the
-power--temperature calibration and PID gains were re-established for the new
-generator, as they must be for any port. The generator's internal operating
-frequency ($\sim$200--450\,kHz vacuum-tube LEPEL vs.\ the solid-state CEIA's
-self-set frequency) and maximum power ($\sim$35\,kW vs.\ 6\,kW) sit behind the
-analog interface and required no change to the stack beyond re-tuning power for
-the charge.
-
-\subsection{Custom-machined graphite crucible / susceptor}
-
-Because some charges of interest couple poorly to the RF field (e.g. YSZ ceramic) or
-must be physically contained, the sample is held in a graphite crucible
-machined in-house from 3000\,\celsius-grade graphite stock (Cotronics 56L-3). The
-graphite couples strongly to the induction field and acts as a susceptor,
-transferring heat to the contained charge by conduction/radiation; this makes the
-same furnace usable for conductive metals (direct coupling) and for non/poorly-coupling
-materials (indirect, susceptor-driven heating). Crucibles are machined to fit inside
-the quartz tube and seat on a ceramic-cylinder / Teflon spacer stack. Cracked
-crucibles are repaired with a 3000\,\celsius{} graphite cement (Resbond 931) rather
-than discarded. The two-piece geometry --- a cup body and a lidded cap with a
-central bore --- contains the charge while leaving an optical path for the
-pyrometer to sight the sample (Fig.~\ref{fig:crucible}). The measured dimensions
-of every piece in the stack (crucible body, lid, alumina spacer discs, and
-sapphire pyrometer window) are given in Fig.~\ref{fig:crucible-dims}; fully
-assembled, the crucible stack stands 13\,mm tall. The
-specimen-loading sequence --- specimen sandwiched between two alumina sheets in
-the cup body, lid seated on top, and sapphire window placed over the lid bore
---- is shown step by step in Fig.~\ref{fig:crucible-assembly}. For ceramic
-charges requiring soak temperatures beyond the graphite/alumina stack's service
-range, the crucible stack is exchanged for a tantalum-susceptor
-variant described in Sec.~\ref{sec:ysz}.
+The sample is held in a two-piece graphite crucible machined in-house from
+3000\,\celsius-grade stock (Cotronics 56L-3): a cup body and a lidded cap with
+a central bore that contains the charge while leaving an optical path for the
+pyrometer. The graphite couples strongly to the induction field and acts as a
+susceptor, heating the contained charge by conduction and radiation, so the
+furnace serves conductive metals and non-coupling materials alike. The
+specimen is sandwiched between two alumina discs in the cup, the lid seats on
+top, and a sapphire window closes the lid bore
+(Fig.~\ref{fig:crucible-assembly}); fully assembled the stack stands 13\,mm
+tall, and the measured dimensions of every piece are given in the
+supplementary material. Crucibles seat on a ceramic-cylinder/Teflon spacer
+stack inside the quartz tube and are repaired with graphite cement (Resbond
+931) rather than discarded; for ceramic charges requiring temperatures beyond
+the graphite/alumina service range, the crucible stack is exchanged for the
+tantalum-susceptor variant of Sec.~\ref{sec:ysz}.
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.75\linewidth]{fig_crucible.png}
-\caption{Fully disassembled graphite crucible. Top left is the crucible lid, top
-middle is the bottom of the crucible that acts as the specimen carrier, far right
-is the sapphire window, bottom left and middle are the alumina
-sample-surrounding sheets.
-\label{fig:crucible}}
-\end{figure}
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=\linewidth]{fig_crucible_dimensions.png}
-\caption{Measured dimensions of each part of the graphite crucible/susceptor
-stack, with the coloured measurement lines drawn on the corresponding
-photograph. (a)~Alumina spacer disc, 14\,mm dia. (b)~Sapphire pyrometer window,
-9.5\,mm dia., 0.5\,mm thick. (c)~Crucible body, top: machined sample cavity
-14.55\,mm ID (teal), 20.30\,mm OD (orange); the cup is 6.5\,mm tall with a 2\,mm
-base. (d)~Crucible body, bottom face, 20.30\,mm dia. (e)~Crucible lid, oblique:
-the stepped plug seats into the cavity --- 13.70\,mm upper step (teal),
-14.55\,mm lower shoulder (orange); the upper step is 4\,mm tall (H1, yellow) and
-the lower shoulder 6\,mm tall (H2, green). (f)~Crucible lid, top: four concentric
-steps of 13.70\,mm (outermost), 9.75\,mm, 5\,mm, and a 3.5\,mm central
-pyrometer-sighting bore. (g)~Crucible lid, bottom: 14.55\,mm seating face (green)
-and the 3.5\,mm through-bore (orange). Two alumina discs sandwich the specimen
-inside the cavity, the lid seats on top, and the sapphire window closes the bore
-so the pyrometer sights the sample through the lid; fully assembled the stack
-stands 13\,mm tall.
-\label{fig:crucible-dims}}
-\end{figure}
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=\linewidth]{fig_crucible_assembly.png}
-\caption{Specimen-loading sequence for the graphite crucible/susceptor, in order
-(orange call-outs name the visible parts). (a)~The specimen is placed on an
-alumina sheet in the crucible body and covered with a second alumina sheet, so
-the alumina discs isolate the specimen from the graphite. (b)~The graphite lid is
-seated on top of the alumina/specimen stack. (c)~The sapphire window is placed
-over the lid bore, closing the crucible while leaving an optical path for the
-pyrometer to sight the specimen temperature through the window.
-\label{fig:crucible-assembly}}
+\includegraphics[width=0.94\linewidth]{fig_crucible_assembly.png}
+\caption{Specimen-loading sequence for the graphite crucible/susceptor.
+(a)~The specimen is placed between two alumina sheets in the crucible body.
+(b)~The graphite lid is seated on top. (c)~The sapphire window closes the lid
+bore, leaving an optical path for the pyrometer.}
+\label{fig:crucible-assembly}
 \end{figure}
 
 %==============================================================
 \section{Construction and operation}
 %==============================================================
 
-\subsection{System assembly}
+Following the heating path, the generator's heating head mounts on an
+adjustable platform on the bolted support stand so the coil centers on the
+crucible position of the vertically suspended quartz tube. The vacuum path
+begins at the quartz tube, whose open end terminates in a KF40 flange closed
+by a 55\,mm quartz optical disc; every flanged joint compresses an elastomer
+O-ring carried on a centering ring, so the stack assembles with hand-tightened
+clamps and no tools, and these seals support the
+$\sim$10$^{-6}$--10$^{-8}$\,Torr operating vacuum. From the bottom of the
+stack, a tee carries a 0.5\,psi overpressure relief valve protecting the
+quartz tube during backfilling, and a flexible bellows continues through the
+wide-range vacuum gauge to the turbo pumping station; the roughing pump sits
+on a separate support, mechanically decoupled so its vibration does not reach
+the chamber or the pyrometer sight line (photographs in the supplementary
+material). On the gas path, the argon regulator feeds the manual vent valve; a
+mass flow controller between them is optional (a regulator and needle valve
+suffice). On the control path, electrical isolation is maintained between the
+DAQ/control wiring and the generator interface, and manual control is verified
+before automated ramp/soak is enabled.
 
-This section describes how the subsystems of Fig.~\ref{fig:overview} are
-physically connected, following the heating, vacuum, gas, and control paths in
-turn; the costed part list and the design-file inventory (coil drawing,
-editable schematics, STEP models) are maintained as supplementary material.
-Figure~\ref{fig:furnacephoto} shows the
-assembled system at operating power, and Fig.~\ref{fig:vacuumdetails} details
-the vacuum and gas-handling connections described below.
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=0.8\linewidth]{fig_furnace_photo.jpg}
-\caption{The fully assembled, functioning furnace with the main components
-labeled. The Power Cube generator (left) drives the water-cooled induction
-coil around the vertical quartz vacuum chamber, which glows at the sample-stack
-position; the pyrometer sights down the chamber axis from the top of the
-stack; the vent valve admits the argon backfill; and the wide-range vacuum
-gauge, turbopump, and separately supported roughing pump complete the vacuum
-path at the bottom of the stack.}
-\label{fig:furnacephoto}
-\end{figure}
-
-\paragraph{Heating path.} The generator's heating head, carrying the
-water-cooled copper work coil ($\sim$3\,in tall, 2.5\,in ID, $\sim$6.5 turns;
-Fig.~\ref{fig:coildrawing}), mounts on an adjustable platform on
-the bolted support stand (8 short + 4 long sections, 12 corner braces, 4 floor
-mounts) so the coil can be centered on the crucible position of the vertically
-suspended quartz tube. Cooling water from the recirculating chiller flows first through the heating
-head and work coil, then through the generator, before returning to the
-chiller; the coil conductors carry both the RF current and the coolant.
-Inside the tube, the machined graphite crucible/susceptor
-(Figs.~\ref{fig:crucible}--\ref{fig:crucible-assembly}), machined from
-3000\,\celsius{} graphite stock and repaired with graphite cement when cracked,
-seats at coil height on a ceramic-cylinder/Teflon spacer stack; the pyrometer,
-mounted in its housing at the top of the chamber stack, sights the specimen
-through the optical window and the sapphire disc in the crucible lid.
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=0.72\linewidth,page=1]{../docs/coils-drawing.pdf}
-\caption{Work-coil fabrication drawing used for the CEIA build, showing the
-coil geometry and dimensional callouts used to form and mount the water-cooled
-copper coil around the quartz chamber.}
-\label{fig:coildrawing}
-\end{figure}
-
-\paragraph{Vacuum path.} The chamber is the fused-quartz tube itself. Its open
-end terminates in a KF40 flange whose optical window --- a 55\,mm quartz disc
-seated on the overpressure centering ring and held by a reusable plastic
-quick-clamp (a Torr-Seal'd blank flange is the documented permanent-seal
-alternative) --- closes the top of the stack. Every flanged joint in the
-chamber stack is sealed the same way: the mating KF40 faces compress an
-elastomer O-ring carried on a centering ring, so the stack assembles and opens
-with hand-tightened clamps and no tools, and a worn seal is renewed by swapping
-a single ring. These elastomer O-ring seals support the system's
-$\sim$1$\times$10$^{-6}$--10$^{-8}$\,Torr operating vacuum; all-metal (CF)
-sealing would be required only for ultra-high-vacuum service beyond what the
-annealing application needs. The chamber stack rests on no
-support stand: its components are connected by KF40 flanges to the pyrometer
-housing, which is suspended from the ceiling by cables, so the whole vertical
-stack hangs from above. From the bottom of the chamber
-stack, a tee carries a 0.5\,psi overpressure relief valve
-(Fig.~\ref{fig:vacuumdetails}(b)) that protects the quartz tube from accidental
-overpressure during backfilling, and a flexible stainless bellows continues
-through the wide-range vacuum gauge to the Edwards T-Station~85 turbo pumping
-station. The roughing pump sits on a separate support, mechanically decoupled
-from the vacuum-chamber attachment tubes, so its vibration does not reach the
-chamber and the pyrometer sight line (Fig.~\ref{fig:vacuumdetails}(a)).
-
-\paragraph{Gas path.} The argon cylinder regulator feeds the manual vent valve,
-providing both controlled venting and low-flow inert backfilling of the chamber.
-A digital mass flow controller between the regulator and the vent valve is
-optional but convenient: in this build a Sierra Smart-Trak meters the backfill
-trickle, and its flow setpoint and readback are exposed on the LabVIEW front
-panel. A regulator and needle valve can serve the same role in a minimal build.
-
-\paragraph{Control path.} The DAQ's 0--5\,V analog output drives the
-voltage-to-current loop conditioner, whose 4--20\,mA output lands on the CEIA
-Power Controller's analog power-setpoint input (the LEPEL prototype took a
-0--5\,mA command directly); the pyrometer's analog output returns to a DAQ
-analog input, scaled to \celsius. Electrical isolation is maintained
-between the DAQ/control path and the generator interface throughout. The
-LabVIEW VIs are deployed against these DAQ channels, and
-manual control is verified before automated ramp/soak is enabled.
-
-\begin{figure*}[ht]
-\centering
-\includegraphics[width=0.62\linewidth]{fig_vacuum_details.jpg}
-\caption{Vacuum and gas-handling details of the assembled system.
-(a)~Turbo pumping station with the roughing pump mounted on a separate support,
-coupled to the pumping station only through a flexible hose, so pump vibration
-is not transmitted into the chamber.
-(b)~Overpressure relief valve (0.5\,psi cracking pressure) at the bottom of the
-vacuum chamber stack.}
-\label{fig:vacuumdetails}
-\end{figure*}
-
-\subsection{Operating procedure}
-
-The operating procedure below is condensed from the lab standard operating
-procedure. Before RF power is ever
-applied, the chamber must be at high vacuum
-($\sim$1$\times$10$^{-6}$\,Torr or better) or backfilled to the intended inert
-atmosphere; cooling-water flow at the coil and generator must be confirmed and
-leak-free; the coil, sample, and pyrometer sight line must be aligned; and all
-conductive objects (jewelry, watches, phones, tools) must be at least
-6--12\,in from the coil.
-
-A run begins with the chamber vented to atmosphere --- the vent valve is never
-opened while the turbo pump is spinning. The specimen is loaded into the
-graphite crucible (Fig.~\ref{fig:crucible-assembly}), the crucible/spacer stack
-is inserted into the quartz tube, and the KF40 flange is clamped finger-tight on
-its O-ring. With the vent valve closed, the roughing and turbo pumps are brought
-up and the chamber pumped to high vacuum. The generator is then powered on per
-its own startup sequence and the LabVIEW ramp/soak profile started. Below the
-pyrometer's $\sim$700\,\celsius{} detection floor the VI ramps open-loop on the
-analog command; once the pyrometer returns a sustained valid reading above that
-floor, control hands over to closed-loop PID on the optical temperature, and the
-programmed profile (e.g., $\sim$1200\,\celsius{} for several hours for Ni grain
-growth) runs to completion, with optional email status alerts from the VI. At
-the end of the profile, power ramps down and RF stops; the sample cools under
-vacuum, and the chamber is vented only after the turbo pump has fully stopped.
-
-Off-normal conditions all call for removing RF power first. On loss of cooling
-water or a chiller alarm, the analog command is zeroed immediately and the
-generator not re-energized until flow is restored. On vacuum loss or a
-quartz-tube fracture, RF is stopped immediately and the chamber is never vented
-against a spinning turbo pump. On arcing, smoke, or runaway temperature, the
-command is zeroed, RF is killed at the generator, and the system is locked out
-before inspection.
-
-\subsection{Safety}
-
-The system combines RF power, high vacuum, high temperature, and cooling water,
-and each pairing carries its own hazard. The energized coil can shock or burn
-through direct contact or through currents induced in nearby conductors, so
-conductive objects and electronics are kept at least 6--12\,in away, the
-DAQ/control path is electrically isolated from the generator interface, and any
-service inside the generator follows lockout/tagout. The evacuated quartz tube
-poses a fracture/implosion risk --- operators wear safety glasses --- and
-venting against a spinning turbo pump can destroy the pump, so the turbo must
-spin down fully before the vent valve opens. Because the coil and chiller run
-water immediately next to energized hardware, flow is confirmed and leaks are
-checked before RF is applied, and water lines are routed away from electronics.
-A melted-through specimen or hot graphite oxidizing on a premature vent can
-contaminate the pump line and burn the operator, so samples cool under vacuum
-and vacuum components are handled with clean nitrile gloves. Inert-gas
-backfilling in an enclosed space is an asphyxiation risk and is done only with
-adequate ventilation. Finally, the RF near-field can corrupt or damage nearby
-instruments, which are shielded and kept clear of the coil.
+Operationally, before RF power is applied the chamber must be at high vacuum
+or backfilled, cooling-water flow confirmed and leak-free, the
+coil/sample/pyrometer sight line aligned, and conductive objects kept
+6--12\,in from the coil. A run begins with the chamber vented (never while the
+turbo pump is spinning): the specimen is loaded into the crucible
+(Fig.~\ref{fig:crucible-assembly}), the stack inserted, and the chamber pumped
+down. The LabVIEW profile ramps open-loop below the pyrometer floor, hands
+over to closed-loop PID, and runs the programmed soak; afterwards the sample
+cools under vacuum and the chamber is vented only once the turbo pump has
+stopped.
+Off-normal conditions --- loss of cooling water, vacuum loss, arcing, or
+runaway temperature --- all call for zeroing the command and removing RF power
+first, then locking the system out. The
+main hazards pair RF power with its neighbors: contact or induced-current
+burns (keep conductors clear; lockout/tagout for service), implosion of the
+evacuated quartz tube (safety glasses; never vent against a spinning turbo),
+water next to energized hardware, hot graphite oxidizing on a premature vent,
+inert-gas asphyxiation in enclosed spaces, and RF interference with nearby
+instruments.
 
 %==============================================================
 \section{Performance validation}
 %==============================================================
 
-The archive contains more than one hundred logged runs
-across Ni200, Ni4N5, YSZ, and Pd thermal-evaporation experiments, with temperatures
-of $\sim$900--1400\,\celsius{} and soak durations from minutes to $\sim$40\,h, each
-with raw spreadsheet/text/LabVIEW-measurement traces and some photos. Per-run traces
-were parsed into uniform CSV/PNG files, and the quantitative metrics below were
-computed reproducibly from those traces by scripts archived alongside the data
-(see Data Availability). Individual runs and specimens are identified at the
-run-ID/specimen-ID level only in the supplementary specimen--run cross-reference,
-which links every entry used below to its raw log and image data in the archive.
-Because the archive is a
-retrospective operating record rather than a prospectively balanced design of
-experiments, every comparison is restricted to an internally consistent subset
-(matching material, nominal profile, and operating configuration) and the
-power--temperature relation is reported as an \emph{operational}
-calibration for one fixed geometry, not as a universal transfer function.
+The archive contains more than one hundred logged runs across Ni200, Ni4N5,
+YSZ, and Pd thermal-evaporation experiments, at $\sim$900--1400\,\celsius{}
+with soaks from minutes to $\sim$40\,h; per-run traces were parsed into
+uniform files and the metrics below computed reproducibly by archived scripts.
+Because the archive is a retrospective operating record, every comparison is
+restricted to an internally consistent subset; individual runs are identified
+only in the supplementary specimen--run cross-reference, which links every
+entry to its raw log and image data.
 
-\paragraph{Power-command $\rightarrow$ temperature calibration
-(Fig.~\ref{fig:calibration}).} For one fixed Ni4N5/quartz/graphite/optical
-configuration, four archived steady-state anneals spanning 1200--1400\,\celsius{}
-give a monotonic relation between the soak-mean analog power command and the
-soak-mean pyrometer temperature, well described by
-$T \approx 931 + 632\,I$ (\celsius, $I$ in mA), $R^2 = 0.991$, $n = 4$. This is
-presented as an operational calibration only: the broader archive shows
-configuration-dependent offsets (e.g.\ runs near 1200\,\celsius{} required soak-mean
-commands of $\sim$0.44\,mA vs.\ $\sim$0.66\,mA in a different era/geometry), so the
-fit must not be read as a universal command--temperature law.
+For one fixed Ni4N5/quartz/graphite/optical configuration, four archived
+steady-state anneals spanning 1200--1400\,\celsius{} give a monotonic relation
+between soak-mean analog power command and soak-mean pyrometer temperature,
+well described by $T \approx 931 + 632\,I$ (\celsius, $I$ in mA),
+$R^2 = 0.991$ (supplementary material); the broader archive shows
+configuration-dependent offsets, so this is an operational calibration, not a
+universal command--temperature law. A Ni4N5 anneal at a nominal
+1300\,\celsius{} / 12\,h condition serves as the representative closed-loop
+run (trace in the supplementary material): the soak held
+$1302.1 \pm 3.0$\,\celsius{} over the 12\,h plateau, with a 10--90\,\% rise
+time of $\sim$1135\,s, overshoot of $\sim$12\,\celsius, and near-zero drift
+($-0.02$\,\celsius/h).
 
-\begin{figure}[ht]
-\centering
-\includegraphics[width=0.72\linewidth]{fig_calibration.png}
-\caption{Power-command $\rightarrow$ temperature calibration for one fixed archived
-Ni4N5 configuration. Points are soak-mean values; horizontal bars are the in-soak SD
-of the analog command. The dashed line is the linear operational calibration
-($R^2 = 0.991$, $n = 4$).}
-\label{fig:calibration}
-\end{figure}
-
-\paragraph{Representative ramp/soak with control metrics
-(Fig.~\ref{fig:representative}).} A Ni4N5 anneal at a nominal
-1300\,\celsius{} / 12\,h condition serves as the
-representative closed-loop run. Measured against the 1300\,\celsius{} setpoint, the
-soak held $1302.1 \pm 3.0$\,\celsius{} (mean\,$\pm$\,SD) over the 12\,h plateau, with a
-10--90\,\% rise time of $\sim$1135\,s, an overshoot of $\sim$12\,\celsius, a maximum
-in-soak deviation of $\sim$10\,\celsius, and a near-zero linear drift of
-$-0.02$\,\celsius/h, demonstrating that the pyrometer-feedback loop holds a programmed
-soak over many hours.
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=0.78\linewidth]{fig_representative.png}
-\caption{Representative closed-loop anneal (Ni4N5, nominal
-1300\,\celsius{} / 12\,h): pyrometer temperature with setpoint overlay (top) and analog
-power command (bottom). Soak mean $1302.1 \pm 3.0$\,\celsius, drift $-0.02$\,\celsius/h.}
-\label{fig:representative}
-\end{figure}
-
-\paragraph{Repeatability and long-soak stability
-(Figs.~\ref{fig:repeatability}--\ref{fig:longsoak}).} Run-to-run repeatability was
-assessed on the most internally consistent cohort available: eight Ni4N5 anneals at a
-nominal 1200\,\celsius{} / 12\,h condition, all logged under the same gas-flow
-configuration.
-Across these runs the soak temperature was $1201.2 \pm 1.3$\,\celsius{}
-(range 1199.8--1204.2\,\celsius; coefficient of variation 0.11\,\%; $n = 8$), peak
-temperature $1212.6 \pm 6.7$\,\celsius, and soak duration $766 \pm 15$\,min. Runs from
-other periods or geometries are deliberately \emph{not} pooled into this
-estimate. Long-duration
-stability was demonstrated with two Ni200 anneals at 1325\,\celsius: a 20\,h run
-held $1326.5 \pm 1.5$\,\celsius{} with drift $-0.004$\,\celsius/h,
-and a 40\,h run maintained $\sim$1326--1329\,\celsius{} over
-2400\,min in-band.
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=0.74\linewidth]{fig_repeatability.png}
-\caption{Run-to-run repeatability of the Ni4N5 1200\,\celsius{} / 12\,h cohort
-($n = 8$). Points are per-run soak-mean
-temperatures; the band is mean\,$\pm$\,SD ($1201.2 \pm 1.3$\,\celsius).}
-\label{fig:repeatability}
-\end{figure}
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=0.78\linewidth]{fig_longsoak.png}
-\caption{Long-duration thermal stability: Ni200 anneals at 1325\,\celsius{} held for
-20\,h and 40\,h.}
-\label{fig:longsoak}
-\end{figure}
+Run-to-run repeatability, assessed on the most internally consistent cohort
+--- eight Ni4N5 anneals at a nominal 1200\,\celsius{} / 12\,h condition under
+the same gas-flow configuration --- gave a soak temperature of
+$1201.2 \pm 1.3$\,\celsius{} (coefficient of variation 0.11\,\%); runs from
+other periods or geometries are not pooled. Long-duration stability was
+demonstrated with two Ni200 anneals at 1325\,\celsius, held for 20\,h
+($1326.5 \pm 1.5$\,\celsius, drift $-0.004$\,\celsius/h) and 40\,h (figures in
+the supplementary material). Reported temperatures are closed-loop
+ratio-pyrometer readings in a fixed optical geometry; absolute specimen
+temperature may still depend on emissivity and surface condition not fully
+reconstructable for every archived
+run~\cite{ham2016insituspectralemissivity,giulietti2025spectralemissivitymeasurement,kieruj2016determinationofemissivity}.
 
 %==============================================================
 \section{Microstructural validation}
 %==============================================================
 
-The furnace exists to change microstructure, so the key validation is
-real microstructural data tied to specific thermal histories. The
-archived SEM/EBSD and optical-microscopy datasets are keyed by
-\texttt{Ni4N5\_\#\#\#} / \texttt{Ni200\_\#\#\#} specimen IDs that map directly
-to the run IDs of the anneal logs. This mapping is built reproducibly by a
-script that parses the specimen ID
-out of every characterization folder, joins it to the machine-parsed run summary,
-and writes the per-specimen cross-reference distributed with the supplementary
-material: 35 characterized
-specimens, of which 9 link to a parsed run log, 10 carry archived
-EBSD/OIM data, and one carries EDS. Inverse-pole-figure (IPF) EBSD orientation
-maps of two annealed specimens (Fig.~\ref{fig:ebsd}) resolve hundreds of indexed
-grains. Notably, the anneals leave surfaces that index well with no
-metallographic preparation. Fig.~\ref{fig:kikuchi}(a,b) shows a raw,
-as-collected Kikuchi pattern (electron backscatter pattern) recorded live from
-specimen \texttt{Ni4N5\_028}, with bands and
-zone axes crisply resolved even at coarse $8\times8$ detector binning,
-alongside the SEM live view of the thermally grooved grain boundaries that the
-accompanying EBSD line scans traverse. Nor were such patterns only viewed live:
-during EBSD mapping of two nickel specimens from the early commissioning
-campaign, the acquisition software archived the raw pattern at every scan
-point, and more than 100{,}000 per-point raw patterns survive
-(Fig.~\ref{fig:kikuchi}(c--e)), enabling re-indexing or pattern-quality
-re-analysis with modern indexing approaches without re-mounting the specimens.
-The thermal grooving that delineates the boundaries is itself a record of the
-anneal: edge-on views of specimen \texttt{Ni4N5\_053} (annealed at
-1200\,\celsius{} / 12\,h), imaged after only an ultrasonic ethanol clean, show
-deep grooves --- the equilibrium of grain-boundary energy against surface
-energy at the soak temperature --- and grain boundaries that frequently
-traverse the full sheet thickness, a step toward columnar through-thickness
-grain structures~\cite{zhang2007dynamicsandmechanism}
-(Fig.~\ref{fig:grooving}). The best-correlated specimen, \texttt{Ni4N5\_081}
-(annealed at a nominal 1300\,\celsius{} for 20\,h; logged soak
-$\sim$1301\,\celsius), is documented across length scales --- optical grain map
-with in-image grain-size measurements and high-magnification SEM
-grain-boundary detail (Fig.~\ref{fig:microstructure}). The full multi-gigabyte
-raster/EBSD archive (including \texttt{.oim}, \texttt{.osc}, \texttt{.ang}, and
-DREAM.3D volumes) remains on the lab's institutional share and is inventoried
-per file in the characterization catalogs distributed with the data.
-Grain size is quantified with: number of grains analyzed,
-equivalent-circle-diameter or intercept metric, median + IQR (or mean $\pm$ SD),
-segmentation/cleanup criteria, minimum-grain-area threshold, and whether twins are
-merged or separated, with the specimen/run (not the individual grain) treated as the
-experimental unit~\cite{liu2021studyofgrain,alogab2007theinfluenceof,bramfitt2001metallographersguidepractice}. Where as-received baselines are unavailable for a batch, results are
-framed as final-state comparisons across archived anneals rather than as fully
-parameterized grain-growth kinetics.
+The furnace exists to change microstructure, so the key validation is real
+microstructural data tied to specific thermal histories. The archived SEM/EBSD
+and optical datasets are keyed by specimen IDs that map to the anneal logs; a
+script builds this cross-reference reproducibly (35 characterized specimens,
+of which 9 link to a parsed run log and 10 carry EBSD/OIM data; supplementary
+material). EBSD inverse-pole-figure maps of annealed
+specimens resolve hundreds of indexed grains, and the anneals leave surfaces
+that index well with no metallographic preparation: raw Kikuchi patterns show
+crisply resolved bands and zone axes even at coarse $8\times8$ binning, and
+more than 100{,}000 archived per-scan-point raw patterns permit re-indexing
+without re-mounting (supplementary material). Thermal grooving is itself a
+record of the anneal: edge-on views of a specimen annealed at
+1200\,\celsius{} / 12\,h, cleaned only ultrasonically, show deep grooves and
+boundaries traversing the full sheet thickness, a step toward columnar grain
+structures~\cite{zhang2007dynamicsandmechanism}.
+
+The best-correlated specimen, \texttt{Ni4N5\_081} (annealed at a nominal
+1300\,\celsius{} for 20\,h; logged soak $\sim$1301\,\celsius), is documented
+across length scales in Fig.~\ref{fig:microstructure}. Grain size is
+quantified with stated grain counts, metric, dispersion, and
+segmentation/twin-handling criteria, with the specimen as the experimental
+unit~\cite{alogab2007theinfluenceof,bramfitt2001metallographersguidepractice};
+where as-received baselines are unavailable, results are framed as final-state
+comparisons, and only specimens whose images link unambiguously to a logged
+thermal history are reported.
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.86\linewidth]{fig_ebsd.png}
-\caption{EBSD inverse-pole-figure (IPF) orientation maps of two annealed Ni4N5
-specimens, rendered from the archived EBSD scans.
-(a)~\texttt{Ni4N5\_034} (annealed at 1200\,\celsius{} / 12\,h);
-(b)~\texttt{Ni4N5\_069}. Each indexed color is a crystallographic orientation;
-the maps resolve hundreds of grains for grain-size and texture analysis.}
-\label{fig:ebsd}
-\end{figure}
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=0.98\linewidth]{fig_kikuchi.png}
-\caption{Raw (as-collected) EBSD acquisitions from furnace-annealed nickel,
-with no metallographic preparation.
-(a)~Raw Kikuchi pattern (electron backscatter pattern) of specimen
-\texttt{Ni4N5\_028} as seen live on the
-detector at $8\times8$ binning (30\,ms exposure), with Kikuchi bands and zone
-axes crisply resolved; (b)~the corresponding SEM live view at 70{,}068$\times$,
-where thermal grooving alone delineates the grain boundaries crossed by the
-EBSD line scans (red marks; 1\,\textmu m scale bar). (c--e)~Representative
-per-scan-point raw patterns ($115\times115$\,px at $8\times8$ binning) saved
-automatically during EBSD mapping of the early-campaign specimens
-\texttt{Ni\_003b1a} and \texttt{Ni\_003a1b}; more than 100{,}000 such patterns
-are archived. The pattern quality obtainable straight from the furnace
-reflects the low residual surface damage of the annealed condition.}
-\label{fig:kikuchi}
-\end{figure}
-
-\begin{figure*}[ht]
-\centering
-\includegraphics[width=0.96\linewidth]{fig_grooving.png}
-\caption{Grain-boundary thermal grooving on specimen \texttt{Ni4N5\_053} after
-a 1200\,\celsius{} / 12\,h anneal, imaged edge-on in the as-annealed
-condition (ultrasonic ethanol clean only; no polishing).
-(a)~Edge view at 350$\times$ (200\,\textmu m scale bar): several grain
-boundaries traverse the full sheet thickness. (b)~Edge and top surface at
-800$\times$ (50\,\textmu m scale bar), with grooves outlining the surface grain
-structure. (c)~A single grooved boundary at 12{,}000$\times$ (5\,\textmu m
-scale bar): the deep trench develops as grain-boundary energy equilibrates
-against surface energy at the soak temperature.}
-\label{fig:grooving}
-\end{figure*}
-
-\begin{figure*}[ht]
-\centering
-\includegraphics[width=0.68\linewidth]{fig_microstructure.png}
-\caption{Microstructure of specimen \texttt{Ni4N5\_081} after
-its logged anneal (nominal 1300\,\celsius{} / 20\,h, gas flow), correlating the
-characterization archive with a single logged thermal history.
-(a)~Optical micrograph (grain structure, 200\,\textmu m scale bar, with in-image
-grain-size measurements); (b)~high-magnification SEM
-grain-boundary detail.}
+\includegraphics[width=0.8\linewidth]{fig_microstructure.png}
+\caption{Microstructure of specimen \texttt{Ni4N5\_081} after its logged
+anneal (nominal 1300\,\celsius{} / 20\,h, gas flow). (a)~Optical grain map
+with in-image grain-size measurements (200\,\textmu m scale bar);
+(b)~high-magnification SEM grain-boundary detail.}
 \label{fig:microstructure}
-\end{figure*}
-
-Controls that further isolate the instrument's behavior --- open-loop vs.\
-closed-loop on the same target cycle, vacuum vs.\ inert-gas backfill mode,
-directly-coupled metal vs.\ susceptor-mediated ceramic heating, and multi-hour
-long-soak stability --- are partially represented in the archive and are natural
-extensions for a prospective study.
-
-\paragraph{Specimen $\leftrightarrow$ thermal-history linkage.} Each
-specimen used in the thermal-performance and microstructural validation is
-tied to its exact run --- run ID, nominal and machine-parsed logged soak,
-duration, gas-flow state, and archived SEM/optical/EBSD file counts --- in the
-specimen--run cross-reference table distributed with the supplementary
-material, which also hyperlinks every entry to its raw run log and image data
-in the archive. The complete 35-specimen cross-reference includes
-characterized specimens whose run logs are not in the parsed set.
+\end{figure}
 
 \subsection{Extension to ceramic charges: YSZ}
 \label{sec:ysz}
 
 The same control, vacuum, and sensing stack extends to charges that do not
 couple to the RF field at all, demonstrated with grain growth in
-yttria-stabilized zirconia (YSZ). Ceramic grain growth requires substantially
-higher soak temperatures ($\gtrsim$1700\,\celsius, and usefully
-2000--2500\,\celsius) than the Ni anneals --- beyond the service range of the
-alumina spacers (1787\,\celsius{} rating) and too hot for the graphite
-lid/sapphire-window geometry of Fig.~\ref{fig:crucible-assembly} --- so only
-the charge stack inside the quartz tube is exchanged
-(Fig.~\ref{fig:ysz}(a)). The YSZ specimen is sandwiched between two tantalum
-blocks (25.5\,mm diameter) that replace graphite as the susceptor at these
-temperatures; the pair seats in a ceramic crucible (MgO shown; boron nitride
-was also used, see below) on an alumina support rod that raises
-the stack to coil height inside a fresh $\sim$35\,mm-ID quartz tube. The
-generator, vacuum path, gas handling, pyrometer, and LabVIEW control are
-untouched --- the swap is a specimen-stack change, not a furnace change. For
-these high-temperature runs the chamber was first evacuated and then
-continuously filled with argon while the turbopump was running, which helped
-avoid oxidation during heating.
+yttria-stabilized zirconia (YSZ). Ceramic grain growth requires soak
+temperatures beyond the graphite/alumina stack's service range, so only the
+charge stack is exchanged: the YSZ specimen is sandwiched between two
+25.5\,mm tantalum susceptor blocks seated in a ceramic crucible (MgO or boron
+nitride) on an alumina support rod, while the generator, vacuum path,
+pyrometer, and control are untouched (schematic and micrographs in the
+supplementary material). With a single tantalum block the pyrometer reads
+$\sim$1230\,\celsius{} at a 10\,\% power command, rising monotonically to
+$\sim$2020\,\celsius{} at 31\,\%; two stacked blocks shift the curve upward,
+hold $2000 \pm 3$\,\celsius{} for over an hour at a constant 17\,\% command,
+and reach 2344\,\celsius{} at 33\,\% before the chamber pressure interlock
+ended the ramp --- the practical ceiling so far is outgassing at temperature,
+not available RF power, and the pyrometer reads to 2500\,\celsius.
 
-\paragraph{Tantalum-susceptor heat curve.} Figure~\ref{fig:taheatcurve}
-quantifies the temperature range this stack opens up, from an archived lab
-workbook. With a single tantalum
-block the pyrometer reads $\sim$1230\,\celsius{} at a 10\,\% power command,
-rising monotonically to $\sim$2020\,\celsius{} at 31\,\%; stacking two blocks
-shifts the whole curve upward ($\sim$1790\,\celsius{} at 10\,\%), sustains a
-$\sim$2000\,\celsius{} hold for over an hour at a constant 17\,\% command
-(Fig.~\ref{fig:taheatcurve}(b)), and reaches 2344\,\celsius{} at
-33\,\% before that ramp was terminated by the chamber pressure interlock ---
-i.e., the practical ceiling encountered so far is set by outgassing at
-temperature, not by available RF power. Since the dual-wavelength pyrometer
-reads to 2500\,\celsius, the sensing chain covers the full demonstrated
-range.
-
-\begin{figure*}[ht]
-\centering
-\includegraphics[width=0.9\linewidth]{fig_ta_heatcurve.png}
-\caption{Measured heat curves of the tantalum-susceptor (ceramic) stack.
-(a)~Pyrometer temperature vs.\ generator power
-command for one and two stacked tantalum susceptor blocks (the faint series
-repeats the single-block measurement on the original power controller); the
-two-block ramp reached 2344\,\celsius{} at a 33\,\% command before the chamber
-pressure interlock ended the test. (b)~Timed two-block ramp/soak: a constant
-17\,\% command holds $\sim$2000\,\celsius{} ($2000 \pm 3$\,\celsius{} over the
-final hour) before a stepped ramp-down.}
-\label{fig:taheatcurve}
-\end{figure*}
-
-\paragraph{High-temperature material compatibility.} Operating between
-2000 and 2500\,\celsius{} makes chemical compatibility between the specimen,
-susceptor, and crucible the design constraint, and the archived configuration
-survey maps it empirically. Three stack variants were run, each seated in a
-boron nitride crucible resting on the alumina support rod: a tantalum
-susceptor block placed on top of the YSZ specimen at 2500\,\celsius{} for 8\,h
-(successful grain growth, but Ta vapor deposited on the YSZ); the YSZ specimen
-set into a graphite susceptor block at 2000\,\celsius{} for 168\,h (the YSZ
-reacted with the graphite and was consumed); and a Ta/YSZ/Ta double-block
-sandwich at 2130\,\celsius{} for 80.4\,h (a reaction shell formed around the
-tantalum, attributed to Ta--BN contact). The observed pairwise incompatibilities ---
-alumina--graphite eutectic near 1800\,\celsius; carbon consuming YSZ at
-2000\,\celsius; YSZ--Ta interdiffusion and Ta deposition at 2500\,\celsius;
-Ta--BN and Ta--MgO surface degradation; Ta carburizing to (still-functional)
-gold-colored TaC; and Ta gettering oxygen from any source --- are recorded
-with photographs in the archived survey. Two practical rules emerged: shorter,
-hotter anneals stay clean (a $\sim$90\,\textmu m clean-grained YSZ
-specimen was produced in 45\,min in the double-Ta configuration, while runs
-past $\sim$3\,h contaminated the specimen), and above $\sim$2200\,\celsius{} a
-carbon susceptor that does not touch the YSZ (e.g.\ graphite contained in a BN
-crucible) is the indicated configuration. Archived optical micrographs
-(Fig.~\ref{fig:ysz}(b,c)) show the resulting equiaxed YSZ grain structures,
-including a specimen after a 1700\,\celsius{} / 10\,h anneal. Unlike the
-nickel anneals, most of the YSZ survey anneals were not logged under the
-run-numbered log series, so they are reported from the archived survey record
-(heat-curve workbook, photographs, and notes) rather than from parsed run
-logs.
-
-\begin{figure*}[ht]
-\centering
-\includegraphics[width=0.92\linewidth]{fig_ysz.png}
-\caption{High-temperature ceramic (YSZ) configuration and resulting
-microstructure. (a)~Charge-stack schematic: inside a
-fresh $\sim$35\,mm-ID quartz tube, the YSZ specimen (red) is sandwiched between
-two 25.5\,mm tantalum susceptor blocks, seated in a 28\,mm MgO crucible on an
-alumina support rod that raises the stack to coil height; the coil, vacuum,
-pyrometer, and control paths are unchanged from the metal configuration.
-(b)~Optical micrograph of YSZ after a 1700\,\celsius{} / 10\,h anneal.
-(c)~Optical micrograph of an induction-annealed YSZ specimen,
-showing the equiaxed grain structure.}
-\label{fig:ysz}
-\end{figure*}
-
-\subsection{Limitations of the retrospective validation}
-
-The validation dataset is retrospective rather than prospectively designed, so the
-archived runs are not treated as a balanced factorial experiment and comparisons are
-restricted to internally consistent subsets. Because induction coupling, radiative view
-factors, and pyrometer line-of-sight depend on specimen/crucible geometry and optical
-alignment, the power-command/temperature calibration is reported only for a fixed
-archived configuration and is not a universal transfer function. Reported temperatures
-are closed-loop ratio-pyrometer readings in a fixed optical geometry; absolute specimen
-temperature may still depend on emissivity and surface condition not fully
-reconstructable for every archived run~\cite{ham2016insituspectralemissivity,suleiman2025improvingpyrometryof,giulietti2025spectralemissivitymeasurement,kieruj2016determinationofemissivity}.
-Run-to-run repeatability is evaluated only within the most consistent
-cohort; most other temperature/time conditions are
-singletons, so inference is limited to descriptive summaries. Microstructural
-comparisons are reported only for specimens whose image files link unambiguously to a
-logged thermal history; ambiguously labeled images are excluded rather than inferred.
+At these temperatures, chemical compatibility between specimen, susceptor,
+and crucible becomes the design constraint, and the archived configuration
+survey maps it empirically: a Ta block atop the YSZ at 2500\,\celsius{}/8\,h
+grew grains successfully but deposited Ta vapor; YSZ set into a graphite
+susceptor at 2000\,\celsius{}/168\,h was consumed by the carbon; and a
+Ta/YSZ/Ta sandwich at 2130\,\celsius{}/80.4\,h formed a Ta--BN reaction shell.
+Two practical rules emerged: shorter, hotter anneals stay clean (a
+$\sim$90\,\textmu m clean-grained YSZ specimen was produced in 45\,min, while
+runs past $\sim$3\,h contaminated the specimen), and above
+$\sim$2200\,\celsius{} a carbon susceptor not touching the YSZ is the
+indicated configuration.
 
 %==============================================================
 \section{Conclusions}
 %==============================================================
 
 A bare commercial RF induction generator can be converted into a
-computer-controlled, vacuum-integrated, pyrometer-feedback annealing system with a
-documented, generator-agnostic modernization layer: LabVIEW/DAQ analog power
-control, dual-wavelength optical temperature feedback, a high-vacuum quartz-tube
-chamber, and an in-house machined graphite crucible/susceptor. Ported from a
-$\sim$1970 LEPEL prototype to a current CEIA solid-state generator, the same stack
-demonstrated an operational power--temperature calibration ($R^2 = 0.991$ over
-1200--1400\,\celsius{} in a fixed geometry), run-to-run soak repeatability of
-$1201.2 \pm 1.3$\,\celsius{} across eight nominally identical Ni4N5 anneals, and
-stable closed-loop soaks up to 40\,h at 1325\,\celsius, with annealed-specimen
-microstructures (SEM/EBSD/optical) cross-referenced to their logged thermal
-histories. Exchanging the graphite crucible stack for a
-tantalum-susceptor variant extends the same furnace to non-coupling ceramic
-charges --- sustaining 2000\,\celsius{} holds and reaching 2344\,\celsius{}
-before the chamber pressure interlock --- demonstrated with YSZ grain growth
-and an empirical map of specimen/susceptor/crucible chemical compatibility at
-those temperatures. Because the layer requires only a monotonic analog power-control input
-from the generator, the design is directly reusable by other laboratories at a
-small fraction of the cost of turn-key vacuum induction furnaces; complete design
-files, the costed bill of materials, control software,
-and the full run-log and characterization archives are openly available.
+computer-controlled, vacuum-integrated, pyrometer-feedback annealing system
+with a documented, generator-agnostic modernization layer. Ported from a
+$\sim$1970 LEPEL prototype to a current CEIA solid-state generator, the stack
+demonstrated an operational power--temperature calibration ($R^2 = 0.991$),
+soak repeatability of $1201.2 \pm 1.3$\,\celsius{} across eight nominally
+identical anneals, stable closed-loop soaks up to 40\,h, and annealed-specimen
+microstructures cross-referenced to their logged thermal histories; a
+tantalum-susceptor variant extends the same furnace to non-coupling ceramics
+at up to 2344\,\celsius. Because the layer requires only a monotonic analog
+power-control input, the design is directly reusable by other laboratories at
+a small fraction of turn-key cost.
 
 %==============================================================
 \section*{Supplementary Material}
 %==============================================================
 
-The development repository
-(\url{https://github.com/vertical-cloud-lab/custom-induction-furnace}; archival
-snapshot \href{https://doi.org/10.5281/zenodo.20878017}{10.5281/zenodo.20878017})
-contains the complete supplementary material: the LabVIEW control VIs and MATLAB
-utilities, the system schematics and coil drawing, the standard operating
-procedure, the itemized bill of materials and design-file inventory, the
-100+ raw and machine-parsed anneal logs, the specimen--run cross-reference
-table (Table~S1, with per-entry hyperlinks to the raw run logs and image
-data), the SEM/EBSD
-and optical characterization archives with per-file catalogs,
-the tantalum-susceptor heat-curve
-workbook and high-temperature configuration survey, and
-the scripts that reproduce every figure and metric in this paper.
+The supplementary material contains the figures removed from the main text
+under the length limit (crucible photographs and measured part dimensions,
+work-coil fabrication drawing, vacuum/gas-handling photographs, calibration,
+representative-anneal, repeatability, and long-soak figures, EBSD orientation
+maps, raw Kikuchi patterns, thermal-grooving micrographs, and the tantalum
+heat-curve and YSZ stack/microstructure figures), together with the specimen--run
+cross-reference (Table~S1, hyperlinked to the raw logs and image data), the
+itemized bill of materials, the design-file inventory, and the standard
+operating procedure. The development repository and Zenodo archive (see Data
+Availability) additionally hold the LabVIEW control VIs, editable schematics,
+the 100+ raw and parsed anneal logs, the SEM/EBSD and optical archives with
+per-file catalogs, and the scripts that reproduce every figure and metric in
+this paper.
 
 \begin{acknowledgments}
 The authors thank Kevin Cole for his supervision and support of the original
@@ -962,8 +472,8 @@ The authors have no conflicts to disclose. \todo{confirm with all authors.}
 
 \subsection*{Ethics Approval}
 
-This work did not involve human participants, human data, or animal subjects;
-ethics approval is not applicable.
+This work did not involve human or animal subjects; ethics approval is not
+applicable.
 
 \subsection*{Author Contributions}
 
@@ -984,10 +494,8 @@ Visualization.
 
 The data that support the findings of this study are openly available in the
 development repository
-\texttt{vertical-cloud-lab/custom-induction-furnace}
 (\url{https://github.com/vertical-cloud-lab/custom-induction-furnace}); an
-archival snapshot (design files, run logs, characterization data, and extracted
-context) is deposited at Zenodo,
+archival snapshot is deposited at Zenodo,
 \href{https://doi.org/10.5281/zenodo.20878017}{https://doi.org/10.5281/zenodo.20878017}.
 
 %==============================================================

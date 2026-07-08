@@ -138,6 +138,18 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
     literature-query artifacts in `literature-search/`. (S. Baird, PR #3,
     2026-07-07.)
 
+18. **The paper must be 5 pages or less** (clean `paper.pdf`, including
+    references). (R. Guymon, PR #3, 2026-07-08, citing the AIP author
+    instructions.) The main text carries only the four essential figures
+    (system overview v2, assembled-furnace photo, crucible loading sequence,
+    and the `Ni4N5_081` microstructure panel); all
+    other figures live in `paper/supplementary/supplementary-figures.md`
+    (S1–S13) with their full captions, and the prose states the corresponding
+    metrics and points to the supplementary material. When adding content,
+    keep the clean build at ≤5 pages — cut or move material to supplementary
+    rather than exceeding it. (The draft build with the status box/\todo
+    markers may exceed 5 pages; the clean build is what counts.)
+
 ## Physical-configuration facts (from lab feedback)
 
 - **The vacuum chamber has no support stand.** The chamber stack is joined by KF40
