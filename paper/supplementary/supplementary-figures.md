@@ -2,8 +2,10 @@
 
 Figures moved out of the main manuscript when it was condensed to the 5-page
 limit (R. Guymon, PR #3, 2026-07-08). All image files are rendered
-reproducibly by the `paper/build_*.py` scripts (`make figures`); the main text
-points here wherever a figure was removed. Table S1 (the specimen–run
+reproducibly by the `paper/build_*.py` scripts (`make figures`); the main
+text's data figures are the lab's actual uploaded records, extracted verbatim
+by `paper/extract_uploaded_figures.py`. The main text points here wherever a
+figure was removed. Table S1 (the specimen–run
 cross-reference) is in [`specimen-run-linkage.md`](specimen-run-linkage.md).
 
 ## Hardware

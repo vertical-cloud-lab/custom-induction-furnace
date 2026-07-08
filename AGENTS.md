@@ -140,10 +140,10 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
 
 18. **The paper must be 5 pages or less** (clean `paper.pdf`, including
     references). (R. Guymon, PR #3, 2026-07-08, citing the AIP author
-    instructions.) The main text carries only the five essential figures
+    instructions.) The main text carries only the six essential figures
     (system overview v2, assembled-furnace photo, crucible loading sequence,
-    the `Ni4N5_081` microstructure panel, and the YSZ grain-growth results
-    graph); all
+    the raw Kikuchi pattern, the `Ni4N5_081` microstructure panel, and the
+    as-recorded YSZ 2500 °C/45 min micrograph); all
     other figures live in `paper/supplementary/supplementary-figures.md`
     (S1–S13) with their full captions, and the prose states the corresponding
     metrics and points to the supplementary material. When adding content,
@@ -184,6 +184,32 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
     sentence (zero the command, remove RF power, lock out) — the
     hazard-by-hazard enumeration was removed; the SI section is a single
     compact paragraph. (R. Guymon, PR #3, 2026-07-08.)
+
+24. **Never self-generate a data figure for the main text — use the lab's
+    actual uploaded graphs/datasets, verbatim.** (R. Guymon, PR #3,
+    2026-07-08: "Don't generate your own figures … Fig 5 should be replaced
+    with one of the actual graphs/datasets either I or Sterling Baird
+    uploaded.") The synthesized YSZ grain-growth dumbbell chart was replaced
+    by the as-recorded 2500 °C/45 min YSZ micrograph extracted verbatim from
+    p. 14 of `Grain Growth Summary.pdf` (repo root, S. Baird's upload), and
+    the clearest raw Kikuchi pattern
+    (`boxscan_003a1b_0degRot_x255y268.jpg`) is included byte-for-byte.
+    `paper/extract_uploaded_figures.py` (in `make figures`) only extracts or
+    copies these records — it draws nothing. Other real uploaded records to
+    draw on: `RyanWeber.pdf` (poster), `Grain Growth Summary.pdf` heating
+    profiles, `docs/YSZ/Tantalum-Heat-Curve.xlsx`,
+    `docs/SEM/raw-kikuchi-patterns/`.
+
+25. **Do not describe the data as "archived" or write meta-information about
+    the data — present the data itself and expound on it.** (R. Guymon,
+    PR #3, 2026-07-08.) The reader is someone learning how the furnace
+    retrofit works and understanding the Ni/YSZ grain-growth results, not
+    the researcher who produced the record. Banned patterns: "the archive
+    contains…", "retrospective operating record", dataset counts
+    (specimen/file/pattern tallies), cross-reference script mechanics, and
+    methodology caveats like the "where as-received baselines are
+    unavailable…" sentence (explicitly removed). A single short pointer to
+    the supplementary material for raw-log linkage is fine.
 
 ## Physical-configuration facts (from lab feedback)
 

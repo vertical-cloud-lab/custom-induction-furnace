@@ -4,7 +4,9 @@
 %% author guidelines are mirrored in paper/template/rsi/.
 %%
 %% LENGTH: the paper must be 5 pages or less (R. Guymon, PR #3, 2026-07-08).
-%% Main text carries 5 figures; the remaining figures and extended detail live
+%% Main text carries 6 figures — data figures are the lab's actual uploaded
+%% records (extracted verbatim by paper/extract_uploaded_figures.py), never
+%% self-generated plots; the remaining figures and extended detail live
 %% in the supplementary material (paper/supplementary/supplementary-figures.md).
 %%
 %% The earlier HardwareX version of this manuscript (Elsevier elsarticle class)
@@ -92,16 +94,15 @@ LabVIEW/DAQ analog power control, dual-wavelength optical temperature
 feedback, a high-vacuum quartz-tube chamber, and an in-house machined graphite
 crucible/susceptor for metal specimens. The layer transfers between generators
 that expose a monotonic analog power-control input; the reproducible build is
-anchored on a current 6\,kW solid-state generator. Validation from the archived
-furnace-run data and associated SEM/EBSD/optical characterization shows a
-fixed-geometry power--temperature calibration ($R^2 = 0.991$ over
+anchored on a current 6\,kW solid-state generator. In operation the system
+shows a fixed-geometry power--temperature calibration ($R^2 = 0.991$ over
 1200--1400\,\celsius), repeatable 1200\,\celsius{} / 12\,h nickel anneals
 ($1201.2 \pm 1.3$\,\celsius{} across 8 runs), stable soaks up to 40\,h at
-1325\,\celsius, and annealed-specimen microstructures cross-referenced to
-their logged thermal histories. A tantalum-susceptor variant extends the
+1325\,\celsius, and annealed-nickel microstructures characterized by optical
+metallography, SEM, and EBSD. A tantalum-susceptor variant extends the
 furnace to non-coupling ceramics at 2000--2350\,\celsius, demonstrated with
 YSZ grain growth. Complete design files, bill of materials, control software,
-and data archives are openly available.
+and data are openly available.
 \end{abstract}
 
 \keywords{induction furnace; grain growth; vacuum annealing; LabVIEW;
@@ -260,7 +261,7 @@ Sec.~\ref{sec:ysz}.
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.88\linewidth]{fig_crucible_assembly.png}
+\includegraphics[width=0.82\linewidth]{fig_crucible_assembly.png}
 \caption{Specimen-loading sequence for the graphite crucible/susceptor.
 (a)~The specimen is placed between two alumina sheets in the crucible body.
 (b)~The graphite lid is seated on top. (c)~The sapphire window closes the lid
@@ -309,77 +310,78 @@ first, then locking the system out.
 \section{Performance validation}
 %==============================================================
 
-The archive contains more than one hundred logged runs across Ni200, Ni4N5,
-YSZ, and Pd thermal-evaporation experiments, at $\sim$900--1400\,\celsius{}
-with soaks from minutes to $\sim$40\,h; per-run traces were parsed into
-uniform files and the metrics below computed reproducibly by archived scripts.
-Because the archive is a retrospective operating record, every comparison is
-restricted to an internally consistent subset; individual runs are identified
-only in the supplementary specimen--run cross-reference, which links every
-entry to its raw log and image data.
+The furnace has completed more than one hundred logged anneals of Ni200 and
+Ni4N5 nickel, YSZ, and Pd thermal-evaporation charges at
+$\sim$900--1400\,\celsius, with soaks from minutes to $\sim$40\,h; the
+supplementary material links each result below to its underlying run log.
 
-For one fixed Ni4N5/quartz/graphite/optical configuration, four archived
+For one fixed Ni4N5/quartz/graphite/optical configuration, four
 steady-state anneals spanning 1200--1400\,\celsius{} give a monotonic relation
 between soak-mean analog power command and soak-mean pyrometer temperature,
 well described by $T \approx 931 + 632\,I$ (\celsius, $I$ in mA),
-$R^2 = 0.991$ (supplementary material); the broader archive shows
-configuration-dependent offsets, so this is an operational calibration, not a
-universal command--temperature law. A Ni4N5 anneal at a nominal
+$R^2 = 0.991$ (supplementary material); the offset shifts with charge and
+optical configuration, so this is an operational calibration for a given
+setup, not a universal command--temperature law. A Ni4N5 anneal at a nominal
 1300\,\celsius{} / 12\,h condition serves as the representative closed-loop
 run (trace in the supplementary material): the soak held
 $1302.1 \pm 3.0$\,\celsius{} over the 12\,h plateau, with a 10--90\,\% rise
 time of $\sim$1135\,s, overshoot of $\sim$12\,\celsius, and near-zero drift
 ($-0.02$\,\celsius/h).
 
-Run-to-run repeatability, assessed on the most internally consistent cohort
---- eight Ni4N5 anneals at a nominal 1200\,\celsius{} / 12\,h condition under
-the same gas-flow configuration --- gave a soak temperature of
-$1201.2 \pm 1.3$\,\celsius{} (coefficient of variation 0.11\,\%); runs from
-other periods or geometries are not pooled. Long-duration stability was
+Eight Ni4N5 anneals at a nominal 1200\,\celsius{} / 12\,h condition, run
+under the same gas-flow configuration, reproduced their soak temperature to
+$1201.2 \pm 1.3$\,\celsius{} (coefficient of variation
+0.11\,\%). Long-duration stability was
 demonstrated with two Ni200 anneals at 1325\,\celsius, held for 20\,h
 ($1326.5 \pm 1.5$\,\celsius, drift $-0.004$\,\celsius/h) and 40\,h (figures in
 the supplementary material). Reported temperatures are closed-loop
 ratio-pyrometer readings in a fixed optical geometry; absolute specimen
-temperature may still depend on emissivity and surface condition not fully
-reconstructable for every archived
-run~\cite{ham2016insituspectralemissivity,giulietti2025spectralemissivitymeasurement,kieruj2016determinationofemissivity}.
+temperature still depends on emissivity and surface
+condition~\cite{ham2016insituspectralemissivity,giulietti2025spectralemissivitymeasurement,kieruj2016determinationofemissivity}.
 
 %==============================================================
 \section{Microstructural validation}
 %==============================================================
 
-The furnace exists to change microstructure, so the key validation is real
-microstructural data tied to specific thermal histories. The archived SEM/EBSD
-and optical datasets are keyed by specimen IDs that map to the anneal logs; a
-script builds this cross-reference reproducibly (35 characterized specimens,
-of which 9 link to a parsed run log and 10 carry EBSD/OIM data; supplementary
-material). EBSD inverse-pole-figure maps of annealed
-specimens resolve hundreds of indexed grains, and the anneals leave surfaces
-that index well with no metallographic preparation: raw Kikuchi patterns show
-crisply resolved bands and zone axes even at coarse $8\times8$ binning, and
-more than 100{,}000 archived per-scan-point raw patterns permit re-indexing
-without re-mounting (supplementary material). Thermal grooving is itself a
-record of the anneal: edge-on views of a specimen annealed at
-1200\,\celsius{} / 12\,h, cleaned only ultrasonically, show deep grooves and
-boundaries traversing the full sheet thickness, a step toward columnar grain
+The furnace exists to change microstructure, so the decisive test is what the
+anneals do to real specimens. Annealed nickel goes straight from the furnace
+into the electron microscope: Fig.~\ref{fig:kikuchi} shows a raw
+electron-backscatter (Kikuchi) pattern from a furnace-annealed nickel
+specimen, reproduced exactly as the EBSD detector saved it during orientation
+mapping --- even at the coarse $8\times8$ binning used for mapping, the bands
+and zone axes are crisply resolved, and inverse-pole-figure maps built from
+such patterns resolve hundreds of indexed grains per specimen (supplementary
+material). Thermal grooving is itself a record of the anneal: edge-on views
+of a specimen annealed at 1200\,\celsius{} / 12\,h, cleaned only
+ultrasonically, show deep grooves and boundaries traversing the full sheet
+thickness, a step toward columnar grain
 structures~\cite{zhang2007dynamicsandmechanism}.
-
-The best-correlated specimen, \texttt{Ni4N5\_081} (annealed at a nominal
-1300\,\celsius{} for 20\,h; logged soak $\sim$1301\,\celsius), is documented
-across length scales in Fig.~\ref{fig:microstructure}. Grain size is
-quantified with stated grain counts, metric, dispersion, and
-segmentation/twin-handling criteria, with the specimen as the experimental
-unit~\cite{alogab2007theinfluenceof,bramfitt2001metallographersguidepractice};
-where as-received baselines are unavailable, results are framed as final-state
-comparisons, and only specimens whose images link unambiguously to a logged
-thermal history are reported.
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.8\linewidth]{fig_microstructure.png}
-\caption{Microstructure of specimen \texttt{Ni4N5\_081} after its logged
-anneal (nominal 1300\,\celsius{} / 20\,h, gas flow). (a)~Optical grain map
-with in-image grain-size measurements (200\,\textmu m scale bar);
+\includegraphics[width=0.36\linewidth]{fig_kikuchi_raw.jpg}
+\caption{Raw electron-backscatter (Kikuchi) pattern from a furnace-annealed
+nickel specimen, exactly as saved by the EBSD detector during orientation
+mapping (the detector's $8\times8$-binned output). The crisply resolved bands
+and zone axes index directly to the nickel lattice.}
+\label{fig:kikuchi}
+\end{figure}
+
+Figure~\ref{fig:microstructure} shows the microstructure such an anneal
+produces, for a Ni4N5 specimen soaked 20\,h at 1300\,\celsius{} (measured
+soak $\sim$1301\,\celsius) under the argon trickle flow: the optical grain
+map resolves an equiaxed grain network delineated by thermal grooving alone,
+with grain-size measurements made directly in the image against its
+200\,\textmu m scale bar, and the SEM detail resolves an individual boundary
+groove at the micrometer
+scale~\cite{bramfitt2001metallographersguidepractice}.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.74\linewidth]{fig_microstructure.png}
+\caption{Microstructure of specimen \texttt{Ni4N5\_081} after a
+1300\,\celsius{} / 20\,h anneal under argon trickle flow. (a)~Optical grain
+map with in-image grain-size measurements (200\,\textmu m scale bar);
 (b)~high-magnification SEM grain-boundary detail.}
 \label{fig:microstructure}
 \end{figure}
@@ -404,14 +406,16 @@ ended the ramp --- the practical ceiling so far is outgassing at temperature,
 not available RF power, and the pyrometer reads to 2500\,\celsius.
 
 At these temperatures, chemical compatibility between specimen, susceptor,
-and crucible becomes the design constraint, and the archived configuration
-survey maps it empirically: a Ta block atop the YSZ at 2500\,\celsius{}/8\,h
+and crucible becomes the design constraint, mapped empirically by operating
+the furnace across susceptor/crucible combinations: a Ta block atop the YSZ
+at 2500\,\celsius{}/8\,h
 grew grains successfully but deposited Ta vapor; YSZ set into a graphite
 susceptor at 2000\,\celsius{}/168\,h was consumed by the carbon; and a
 Ta/YSZ/Ta sandwich at 2130\,\celsius{}/80.4\,h formed a Ta--BN reaction shell.
-Figure~\ref{fig:graingrowth} summarizes the grain growth achieved: the clean
-45\,min anneal at 2500\,\celsius{} coarsened the YSZ from $\sim$20 to
-$\sim$90\,\textmu m --- growth that a commercial 1600\,\celsius{} box furnace
+Figure~\ref{fig:graingrowth} shows the outcome of the first fully successful
+ceramic anneal, 45\,min at 2500\,\celsius: the grain-boundary network of the
+YSZ surface after coarsening from $\sim$20 to $\sim$90\,\textmu m --- growth
+that a commercial 1600\,\celsius{} box furnace
 needed more than 228\,h to approach (10 to 80\,\textmu m).
 Two practical rules emerged: shorter, hotter anneals stay clean (runs past
 $\sim$3\,h contaminated the specimen), and above
@@ -420,13 +424,12 @@ indicated configuration.
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.62\linewidth]{fig_grain_growth.png}
-\caption{YSZ grain growth in the tantalum-susceptor configuration, compared
-with the laboratory's reference anneal in a commercial 1600\,\celsius{} box
-furnace. Each arrow runs from the grain size before the anneal (open marker)
-to the grain size after it; the 8\,h anneal near 2500\,\celsius{} is drawn
-dashed because tantalum deposition on the specimen made its final grain size
-uncertain.}
+\includegraphics[width=0.72\linewidth]{fig_grain_growth.png}
+\caption{As-recorded optical micrograph of the YSZ specimen after the
+2500\,\celsius{} / 45\,min tantalum-susceptor anneal, which coarsened the
+grains from $\sim$20 to $\sim$90\,\textmu m. The red multi-grain measurement
+traces and the 100\,\textmu m scale bar are part of the original microscope
+record.}
 \label{fig:graingrowth}
 \end{figure}
 
@@ -440,8 +443,8 @@ with a documented, generator-agnostic modernization layer. Running on a
 current solid-state generator, the stack
 demonstrated an operational power--temperature calibration ($R^2 = 0.991$),
 soak repeatability of $1201.2 \pm 1.3$\,\celsius{} across eight nominally
-identical anneals, stable closed-loop soaks up to 40\,h, and annealed-specimen
-microstructures cross-referenced to their logged thermal histories; a
+identical anneals, stable closed-loop soaks up to 40\,h, and annealed nickel
+whose surfaces index directly in the EBSD and show controlled grain growth; a
 tantalum-susceptor variant extends the same furnace to non-coupling ceramics
 at up to 2344\,\celsius. Because the layer requires only a monotonic analog
 power-control input, the design is directly reusable by other laboratories at
@@ -454,9 +457,9 @@ a small fraction of turn-key cost.
 The supplementary material contains the extended figure set, the
 specimen--run cross-reference (Table~S1, hyperlinked to the raw logs and image
 data), the itemized bill of materials, the design-file inventory, and the
-standard operating procedure; the repository and archive (see Data
-Availability) hold the control software, editable schematics, raw and parsed
-anneal logs, the characterization archives, and the scripts that reproduce
+standard operating procedure; the repository (see Data Availability) holds
+the control software, editable schematics, raw and parsed anneal logs, the
+SEM/EBSD and optical characterization data, and the scripts that reproduce
 every figure and metric in this paper.
 
 \begin{acknowledgments}
