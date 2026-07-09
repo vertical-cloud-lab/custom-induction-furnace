@@ -341,8 +341,7 @@ condition~\cite{ham2016insituspectralemissivity,giulietti2025spectralemissivitym
 %==============================================================
 
 The furnace exists to change microstructure, so the decisive test is what the
-anneals do to real specimens. Annealed nickel goes straight from the furnace
-into the electron microscope: Fig.~\ref{fig:kikuchi} shows a raw
+anneals do to real specimens. Figure~\ref{fig:kikuchi} shows a raw
 electron-backscatter (Kikuchi) pattern from a furnace-annealed nickel
 specimen, reproduced exactly as the EBSD detector saved it during orientation
 mapping --- even at the coarse $8\times8$ binning used for mapping, the bands
@@ -375,7 +374,7 @@ scale~\cite{bramfitt2001metallographersguidepractice}.
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.74\linewidth]{fig_microstructure.png}
+\includegraphics[width=0.68\linewidth]{fig_microstructure.png}
 \caption{Microstructure of a Ni4N5 specimen after a
 1300\,\celsius{} / 20\,h anneal under argon trickle flow. (a)~Optical grain
 map with in-image grain-size measurements (200\,\textmu m scale bar);
@@ -403,8 +402,7 @@ ended the ramp --- the practical ceiling so far is outgassing at temperature,
 not available RF power, and the pyrometer reads to 2500\,\celsius.
 
 At these temperatures, chemical compatibility between specimen, susceptor,
-and crucible becomes the design constraint, mapped empirically by operating
-the furnace across susceptor/crucible combinations: a Ta block atop the YSZ
+and crucible becomes the design constraint: a Ta block atop the YSZ
 at 2500\,\celsius{}/8\,h
 grew grains successfully but deposited Ta vapor; YSZ set into a graphite
 susceptor at 2000\,\celsius{}/168\,h was consumed by the carbon; and a
@@ -414,14 +412,10 @@ ceramic anneal, 45\,min at 2500\,\celsius: the grain-boundary network of the
 YSZ surface after coarsening from $\sim$20 to $\sim$90\,\textmu m --- growth
 that a commercial 1600\,\celsius{} box furnace
 needed more than 228\,h to approach (10 to 80\,\textmu m).
-Two practical rules emerged from the survey: keep the high-temperature soak
-short enough that these contact reactions have no time to act --- the clean
-90\,\textmu m result above came from a 45\,min anneal --- and above
-$\sim$2200\,\celsius{} use a carbon susceptor that does not touch the YSZ.
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.72\linewidth]{fig_grain_growth.png}
+\includegraphics[width=0.66\linewidth]{fig_grain_growth.png}
 \caption{As-recorded optical micrograph of the YSZ specimen after the
 2500\,\celsius{} / 45\,min tantalum-susceptor anneal, which coarsened the
 grains from $\sim$20 to $\sim$90\,\textmu m. The red multi-grain measurement
@@ -436,16 +430,24 @@ record.}
 
 A bare commercial RF induction generator can be converted into a
 computer-controlled, vacuum-integrated, pyrometer-feedback annealing system
-with a documented, generator-agnostic modernization layer. Running on a
-current solid-state generator, the stack
-demonstrated an operational power--temperature calibration ($R^2 = 0.991$),
-soak repeatability of $1201.2 \pm 1.3$\,\celsius{} across eight nominally
-identical anneals, stable closed-loop soaks up to 40\,h, and annealed nickel
-whose surfaces index directly in the EBSD and show controlled grain growth; a
-tantalum-susceptor variant extends the same furnace to non-coupling ceramics
-at up to 2344\,\celsius. Because the layer requires only a monotonic analog
-power-control input, the design is directly reusable by other laboratories at
-a small fraction of turn-key cost.
+with a documented, generator-agnostic modernization layer. On a current
+solid-state generator the stack demonstrated a power--temperature
+calibration with $R^2 = 0.991$, soak repeatability of
+$1201.2 \pm 1.3$\,\celsius{} across eight nominally identical anneals,
+stable closed-loop soaks up to 40\,h, and annealed nickel whose surfaces
+index directly in the EBSD and show controlled grain growth.
+
+The tantalum-susceptor variant shows how far the same furnace stretches
+without redesign: exchanging only the charge stack carries the system from
+metal anneals in the graphite crucible to ceramic grain growth beyond
+2300\,\celsius, and the survey behind that result identified chemistry, not
+power, as the governing constraint at extreme temperature --- every failure
+mode was a contact reaction between charge, susceptor, and crucible, which
+the interchangeable stack lets a user iterate run by run. Because the
+modernization layer requires only a monotonic analog power-control input,
+the design ports across generators and is directly reusable at a small
+fraction of turn-key cost, and the through-thickness boundary grooving
+points to columnar grain-growth studies as a natural next application.
 
 %==============================================================
 \section*{Supplementary Material}
@@ -455,9 +457,8 @@ The supplementary material contains the extended figure set, the
 specimen--run cross-reference (Table~S1, hyperlinked to the raw logs and image
 data), the itemized bill of materials, the design-file inventory, and the
 standard operating procedure; the repository (see Data Availability) holds
-the control software, editable schematics, raw and parsed anneal logs, the
-SEM/EBSD and optical characterization data, and the scripts that reproduce
-every figure and metric in this paper.
+the control software, schematics, anneal logs, characterization data, and
+the scripts that reproduce every figure and metric in this paper.
 
 \begin{acknowledgments}
 The authors thank Kevin Cole for his supervision and support of the original

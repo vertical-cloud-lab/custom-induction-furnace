@@ -15,11 +15,12 @@ Outputs (into ``paper/figures/``):
   measurement traces and the 100 um scale bar are part of the original
   microscope record.
 
-* ``fig_kikuchi_raw.jpg`` — the clearest of the saved raw electron-backscatter
-  (Kikuchi) patterns, copied byte-for-byte from
-  ``docs/SEM/200616_Ni4N5_007,081_Ni_003b2/Ni4N5_007/boxscan_003a1b_0degRot/``
-  (specimen ``Ni_003a1b``; the detector's 8x8-binned 115x115 px output, saved
-  by OIM Data Collection during mapping — see
+* ``fig_kikuchi_raw.jpg`` — the raw electron-backscatter (Kikuchi) pattern
+  R. Guymon selected (PR #3, 2026-07-09: panel (c) of the earlier five-panel
+  survey figure), copied byte-for-byte from
+  ``docs/SEM/raw-kikuchi-patterns/191026_Ni_003b1a/reg1a/`` (specimen
+  ``Ni_003b1a``, scan ``reg1a``; the detector's 8x8-binned 115x115 px output,
+  saved by OIM Data Collection during mapping — see
   ``docs/SEM/raw-kikuchi-patterns/README.md`` for provenance).
 
 Usage::
@@ -43,8 +44,8 @@ GRAIN_GROWTH_PAGE = 13
 
 KIKUCHI_SRC = (
     ROOT
-    / "docs/SEM/200616_Ni4N5_007,081_Ni_003b2/Ni4N5_007"
-    / "boxscan_003a1b_0degRot/boxscan_003a1b_0degRot_x255y268.jpg"
+    / "docs/SEM/raw-kikuchi-patterns/191026_Ni_003b1a/reg1a"
+    / "reg1a_x4100y1628.jpg"
 )
 
 

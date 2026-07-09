@@ -195,8 +195,10 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
     uploaded.") The synthesized YSZ grain-growth dumbbell chart was replaced
     by the as-recorded 2500 °C/45 min YSZ micrograph extracted verbatim from
     p. 14 of `Grain Growth Summary.pdf` (repo root, S. Baird's upload), and
-    the clearest raw Kikuchi pattern
-    (`boxscan_003a1b_0degRot_x255y268.jpg`) is included byte-for-byte.
+    the raw Kikuchi pattern R. Guymon selected
+    (`raw-kikuchi-patterns/191026_Ni_003b1a/reg1a/reg1a_x4100y1628.jpg`,
+    panel (c) of the earlier five-panel survey figure; PR #3, 2026-07-09)
+    is included byte-for-byte.
     `paper/extract_uploaded_figures.py` (in `make figures`) only extracts or
     copies these records — it draws nothing. Other real uploaded records to
     draw on: `RyanWeber.pdf` (poster), `Grain Growth Summary.pdf` heating
@@ -212,7 +214,16 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
     past ~3 h contaminate" phrasing as contradicting other observations
     (PR #3, 2026-07-08). The manuscript states only that the extended-soak
     survey runs gave the contact reactions time to act while the 45 min
-    anneal stayed clean, without a numeric duration rule.
+    anneal stayed clean, without a numeric duration rule. The "two practical
+    rules" sentence was subsequently removed from Sec. V A entirely; do not
+    reintroduce rule-style guidance there — the survey outcomes speak for
+    themselves and the chemistry-as-constraint lesson lives in the
+    Conclusions. (R. Guymon, PR #3, 2026-07-09.)
+
+27. **Do not state that annealed nickel went "straight from the furnace into
+    the microscope" (or similar no-preparation claims) as a general
+    workflow.** That was a detail specific to one instance, not the standard
+    practice. (R. Guymon, PR #3, 2026-07-09.)
 
 26. **Do not describe the data as "archived" or write meta-information about
     the data — present the data itself and expound on it.** (R. Guymon,
