@@ -9,7 +9,7 @@ Sources (all committed):
   chamber-bottom relief valve, the Sierra Smart-Trak mass flow controller, and
   the vibration-isolated roughing-pump support.
 * ``docs/YSZ/ysz-stack-schematic.png`` -- hand schematic of the
-  tantalum-susceptor / MgO-crucible stack used for high-temperature ceramic
+  tantalum-susceptor / BN-stub stack used for high-temperature ceramic
   (YSZ) anneals.
 * ``docs/optical/.../190823_YSZ/YSZ_1700C_10h.JPG`` and
   ``docs/optical/.../190909_YSZ/YSZ_induction1_multiplyScaleBy2_.JPG`` --

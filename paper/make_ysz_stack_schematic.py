@@ -5,9 +5,10 @@ style as the v2 system-overview schematic (make_schematic_v2.py).
 Requested by R. Guymon (PR #3, 2026-07-07) from a hand sketch: the fresh quartz
 tube (~35 mm ID) with the induction coil turns outside it, and inside, top to
 bottom, a tantalum susceptor block / YSZ specimen / tantalum susceptor block
-(25.5 mm) sandwich resting on an MgO crucible (28 mm ID), which sits on the
-alumina support rod that passes down to the KF40 hardware at the bottom of the
-chamber stack.
+(25.5 mm) sandwich resting on a ceramic heat-dissipation stub (28 mm; boron
+nitride for best results, sometimes MgO --- a solid stub, not a crucible, per
+R. Guymon PR #3 2026-07-10), which sits on the alumina support rod that passes
+down to the KF40 hardware at the bottom of the chamber stack.
 
 Deliberately NOT referenced by paper.tex yet ("don't integrate this yet").
 Rendered to paper/figures/fig_ysz_stack.png by build_schematic_figures.py.
@@ -129,13 +130,14 @@ for cy in (1.85, 2.25, 2.65, 3.05):
     oval(2.39, cy - 0.16, 0.32, 0.32)
     oval(3.89, cy - 0.16, 0.32, 0.32)
 
-# ---- MgO crucible (28 mm ID), open at the top: outer body + inner cavity
-box(2.80, 3.09, 1.00, 1.08, line_pt=1.5)          # outer body
-box(2.86, 3.09, 0.88, 1.02, line_pt=1.0)          # cavity (shared top edge = open)
-dimension(2.86, 3.74, 3.95, "28 mm", text_above=True)
+# ---- BN heat-dissipation stub (28 mm): a solid ceramic stub, not a crucible;
+#      the Ta/YSZ/Ta sandwich rests on its flat top (dimensioned below the
+#      stub so the line does not read as a division of the solid block)
+box(2.86, 3.21, 0.88, 0.96, line_pt=1.5)
+dimension(2.86, 3.74, 4.40, "28 mm", text_above=False)
 
 # ---- tantalum / YSZ / tantalum sandwich (25.5 mm blocks); the lower block
-#      seats into the mouth of the crucible
+#      rests on top of the stub
 box(2.90, 1.82, 0.80, 0.60, fill=GRAY)            # upper Ta susceptor block
 ysz = box(2.92, 2.42, 0.76, 0.07, fill=RED, line_pt=0.75)  # YSZ specimen
 ysz.line.color.rgb = RED
@@ -153,8 +155,8 @@ leader(2.14, 2.66, 2.37, 2.66)
 # the YSZ leader threads the gap between the second and third coil turns
 label("YSZ Specimen", 4.72, 2.35, 1.20)
 leader(4.68, 2.455, 3.70, 2.455)
-label("MgO Crucible", 4.72, 3.48, 1.20)
-leader(4.68, 3.60, 3.84, 3.60)
+label("BN Heat-Dissipation Stub", 4.72, 3.48, 2.00)
+leader(4.68, 3.60, 3.78, 3.60)
 label("Alumina Support Rod", 4.72, 5.30, 1.60)
 leader(4.68, 5.42, 3.59, 5.42)
 label("KF40 Fitting", 4.72, 7.40, 1.00)

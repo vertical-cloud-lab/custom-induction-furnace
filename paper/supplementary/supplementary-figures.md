@@ -119,8 +119,9 @@ the final hour) before a stepped ramp-down.
 ![Fig. S13](../figures/fig_ysz.png)
 (a) Charge-stack schematic: inside a fresh ~35 mm-ID quartz tube, the YSZ
 specimen (red) is sandwiched between two 25.5 mm tantalum susceptor blocks,
-seated in a 28 mm MgO crucible on an alumina support rod that raises the
-stack to coil height; the coil, vacuum, pyrometer, and control paths are
-unchanged from the metal configuration. (b) Optical micrograph of YSZ after a
+resting on a 28 mm ceramic heat-dissipation stub (boron nitride for best
+results, sometimes MgO) on an alumina support rod that raises the stack to
+coil height; the coil, vacuum, pyrometer, and control paths are unchanged
+from the metal configuration. (b) Optical micrograph of YSZ after a
 1700 °C / 10 h anneal. (c) Optical micrograph of an induction-annealed YSZ
 specimen, showing the equiaxed grain structure.

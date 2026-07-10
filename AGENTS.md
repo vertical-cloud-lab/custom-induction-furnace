@@ -256,6 +256,12 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
 - **The crucible rests on an alumina support rod** inside the quartz-tube vacuum
   chamber, which positions it at coil height (both the graphite/metal and the
   tantalum/ceramic stacks). (R. Guymon, PR #3, 2026-07-08.)
+- **The ceramic part under the Ta/YSZ/Ta sandwich is a heat-dissipation stub,
+  not a crucible.** It is a solid stub whose job is to dissipate heat; it is
+  boron nitride for best results (sometimes MgO). Never call it an "MgO
+  crucible" (or any crucible) in text, captions, or schematics — the YSZ stack
+  schematic draws it as a solid block labeled "BN Heat-Dissipation Stub".
+  (R. Guymon, PR #3, 2026-07-10.)
 - **Ceiling cables are drawn short.** In the v2 overview schematic the ceiling
   bar sits just above the pyrometer and the two cables are short stubs — the
   full-height run wasted figure space (R. Guymon, PR #3, 2026-07-08). The

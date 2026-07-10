@@ -49,10 +49,11 @@ rejected CYSI import path are documented in the manuscript text, not here.
 | CONS-6 | Torr-Seal high-vacuum epoxy / O-rings | 1 set | $57 | $57 | Varian / McMaster | epoxy / elastomer |
 
 For the high-temperature ceramic (YSZ) configuration, the graphite crucible
-stack is exchanged for tantalum susceptor blocks and a compatible ceramic
-crucible (MgO / BN / alumina, per the compatibility findings in the
-manuscript's YSZ section and `docs/YSZ/`); vendor records for the tantalum
-blocks and BN crucibles are **TODO** (not in the archived parts list).
+stack is exchanged for tantalum susceptor blocks resting on a ceramic
+heat-dissipation stub (BN for best results / sometimes MgO, per the
+compatibility findings in the manuscript's YSZ section and `docs/YSZ/`);
+vendor records for the tantalum blocks and BN stubs are **TODO** (not in
+the archived parts list).
 
 **Co-author (R. Guymon) corrections incorporated in this revision:**
 NI USB-6000 pricing, NI-9265/NI-9203/cDAQ-9174 loop-conditioner component
