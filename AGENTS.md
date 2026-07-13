@@ -113,8 +113,10 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
     plots by nominal condition / chronological run number, not run ID.
 
 13. **The mass flow controller is optional equipment.** Everywhere the MFC is
-    mentioned, describe it as optional (a regulator + needle valve suffices in
-    a minimal build); the MFC photo panel was removed from the vacuum-details
+    mentioned, describe it as optional; the manuscript wording is "helpful
+    when continuous inert gas flow is required" (R. Guymon's PDF edit,
+    2026-07-13, replacing the earlier "a regulator and needle valve
+    suffice"); the MFC photo panel was removed from the vacuum-details
     figure. (S. Baird, PR #3, 2026-07-07.)
 
 14. **Do not reinsert the LabVIEW front-panel screenshot as a figure.** The
@@ -185,7 +187,10 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
     off-normal-conditions sentence (zero the command, remove RF power, lock
     out) was subsequently removed as well — Sec. III now ends at the
     run/shutdown description and contains no dedicated safety sentence; do
-    not add safety prose back. The SI section is a single
+    not add safety prose back. The "Operationally, before RF power is
+    applied…" preflight sentence (high vacuum/backfill, cooling water,
+    sight line, conductive objects 6–12 in) was also removed by R. Guymon's
+    PDF edit (2026-07-13) — do not reintroduce it. The SI section is a single
     compact paragraph. (R. Guymon, PR #3, 2026-07-08.)
 
 24. **Never self-generate a data figure for the main text — use the lab's
@@ -225,6 +230,33 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
     workflow.** That was a detail specific to one instance, not the standard
     practice. (R. Guymon, PR #3, 2026-07-09.)
 
+28. **Prefer short declarative sentences over em-dash/semicolon splices.**
+    R. Guymon's PDF edits (2026-07-13) systematically split "… — …" and
+    "…; …" constructions into separate sentences (e.g. "…bill of
+    materials. This is a small fraction…", "…mapping. Even at the coarse…",
+    "…extreme temperature. Every failure mode…"). Follow that style in new
+    prose.
+
+29. **The Introduction carries no licensing sentence.** The "All design
+    files … openly available … CERN-OHL-S v2 / MIT (proposed)" sentence was
+    deleted by R. Guymon's PDF edit (2026-07-13, resolving his earlier RG1
+    annotation); availability is covered by the back-matter Data
+    Availability section only. The "already demonstrated by moving the
+    layer between two generators of very different designs" clause was
+    likewise removed — portability is stated without that claim.
+
+30. **Current YSZ-section facts (R. Guymon's tracked changes, 2026-07-13).**
+    With two tantalum blocks 2500 °C was reliably reached; the practical
+    temperature ceiling is overheating of the induction coils and susceptor
+    failure due to chemical compatibility, not available RF power (the
+    earlier "outgassing at temperature / pressure-interlock 2344 °C at 33%"
+    account and the single-block 1230→2020 °C curve details were deleted).
+    The Ta-block-atop-YSZ survey anneal is 2500 °C/3.5 h, grew grains to
+    200 µm, and "contaminated the sample with Ta" (not "8 h" / "deposited
+    Ta vapor"). The subsection opens with the Arrhenius time–temperature
+    framing and identifies the specimens as 8 mol% YSZ (from the reframing
+    note attached to the tracked-changes doc).
+
 26. **Do not describe the data as "archived" or write meta-information about
     the data — present the data itself and expound on it.** (R. Guymon,
     PR #3, 2026-07-08.) The reader is someone learning how the furnace
@@ -261,7 +293,9 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
   boron nitride for best results (sometimes MgO). Never call it an "MgO
   crucible" (or any crucible) in text, captions, or schematics — the YSZ stack
   schematic draws it as a solid block labeled "BN Heat-Dissipation Stub".
-  (R. Guymon, PR #3, 2026-07-10.)
+  (R. Guymon, PR #3, 2026-07-10.) In the manuscript prose R. Guymon's
+  2026-07-13 tracked change words it as "a boron nitride ceramic stand which
+  sits on an alumina support rod".
 - **Ceiling cables are drawn short.** In the v2 overview schematic the ceiling
   bar sits just above the pyrometer and the two cables are short stubs — the
   full-height run wasted figure space (R. Guymon, PR #3, 2026-07-08). The
