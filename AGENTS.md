@@ -282,9 +282,14 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
   are drawn — the third attachment sits behind the pyrometer in the flat side view
   and an angled third line read poorly, so it is deliberately omitted for clarity.
   Do not "fix" the schematic back to three. (R. Guymon, PR #3, 2026-07-07.)
-- **Cooling water is a series loop**: chiller → generator → heating head/work coil →
-  back to the chiller. (Order verified by R. Guymon, PR #3, 2026-07-08; this
-  corrects the head-first order stated on 2026-07-07.)
+- **The coolant is ethylene glycol, not water** (R. Guymon, PR #3, 2026-07-13).
+  Do not write "cooling water" (or "water-cooled" where the coolant is named) in
+  the manuscript, captions, or schematic labels — the manuscript says "ethylene
+  glycol coolant" / "liquid-cooled", and the v2 schematic's loop label reads
+  "Ethylene Glycol Coolant" with the chiller box labeled "Recirculating
+  Chiller". The coolant runs in a series loop: chiller → generator → heating
+  head/work coil → back to the chiller. (Order verified by R. Guymon, PR #3,
+  2026-07-08; this corrects the head-first order stated on 2026-07-07.)
 - **The crucible rests on an alumina support rod** inside the quartz-tube vacuum
   chamber, which positions it at coil height (both the graphite/metal and the
   tantalum/ceramic stacks). (R. Guymon, PR #3, 2026-07-08.)
@@ -305,6 +310,10 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
   stack, at the KF40 cross where the bellows connects; every KF40 joint in the stack
   seals on an elastomer O-ring carried on its centering ring. (R. Guymon, PR #3,
   2026-07-07.)
+- **P-Trap between the turbopump and the vacuum chamber** — it protects the
+  turbopump from falling debris. Noted by R. Guymon (PR #3, 2026-07-13) with the
+  explicit instruction **"don't include yet"**: this fact is NOT in the manuscript
+  or schematics, and should not be added until the lab asks for it.
 
 ## Build
 

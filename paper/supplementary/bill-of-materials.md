@@ -24,7 +24,7 @@ rejected CYSI import path are documented in the manuscript text, not here.
 | --- | --- | --- | --- | --- | --- | --- |
 | GEN-1 | CEIA "Power Cube" PW3-90/50 solid-state RF generator (V3000-0070) | 1 | $8,240 | $8,240 | East Coast Induction (USA) | — |
 | GEN-2 | Power Controller C-V3 Plus (V3000-0414) | 1 | $1,670 | $1,670 | East Coast Induction (USA) | — |
-| GEN-3 | Recirculating water chiller (MIL043008 air-cooled closed-loop, V1650-0060) | 1 | $1,575 | $1,575 | East Coast Induction (USA) | — |
+| GEN-3 | Recirculating chiller (MIL043008 air-cooled closed-loop, V1650-0060; vendor-listed as a water chiller, but the loop is charged with ethylene glycol coolant) | 1 | $1,575 | $1,575 | East Coast Induction (USA) | — |
 | GEN-4 | Heating head + 3 m cable and water lines (PWH-13-12-30/50, V3000-0300); 1 coil made to spec at no charge with a complete unit | 1 | $3,337 | $3,337 | East Coast Induction (USA) | copper |
 | GEN-5 | Line auto-transformer, 12 kVA / 3PH / 480×380 V with taps (V049-0508; facility-dependent) | 1 | $1,665 | $1,665 | East Coast Induction (USA) | — |
 | RETRO-1 | LabVIEW-compatible DAQ with analog out + in (0–5 V AO): NI USB-6000 DAQ | 1 | $281.00 | $281.00 | National Instruments | — |

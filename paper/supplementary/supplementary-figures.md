@@ -36,7 +36,7 @@ pyrometer-sighting bore. (g) Crucible lid, bottom: 14.55 mm seating face
 **Figure S3 — Work-coil fabrication drawing.**
 See [`docs/coils-drawing.pdf`](../../docs/coils-drawing.pdf).
 Work-coil fabrication drawing used for the CEIA build, showing the coil
-geometry and dimensional callouts used to form and mount the water-cooled
+geometry and dimensional callouts used to form and mount the liquid-cooled
 copper coil around the quartz chamber.
 
 **Figure S4 — Vacuum and gas-handling details.**

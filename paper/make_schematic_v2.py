@@ -35,6 +35,10 @@ Fourth follow-up (R. Guymon, PR #3, 2026-07-08):
     chiller (reverses the previous head-first order)
   - no specific equipment model names in the drawing ("Turbo Pumping Station"
     instead of "T-Station 85")
+
+Fifth follow-up (R. Guymon, PR #3, 2026-07-13):
+  - the coolant is ethylene glycol, not water: the loop label reads
+    "Ethylene Glycol Coolant" and the chiller box "Recirculating Chiller"
 """
 import copy, os, shutil
 from pptx import Presentation
@@ -146,7 +150,7 @@ lab38.top, lab38.height = Inches(4.30), Inches(0.70)
 #         heating head / pumping station instead of far off at the left edge
 ch = by_id[71]
 ch.left, ch.top, ch.width, ch.height = Inches(3.90), Inches(8.50), Inches(1.50), Inches(0.95)
-set_text(ch, ["Recirculating", "Water Chiller"], 11)
+set_text(ch, ["Recirculating", "Chiller"], 11)
 gen = by_id[72]
 gen.left, gen.top, gen.width, gen.height = Inches(4.00), Inches(6.65), Inches(1.40), Inches(0.90)
 set_text(gen, ["Induction", "Generator"], 11)
@@ -159,10 +163,11 @@ plus, minus = by_id[133], by_id[134]
 plus.left, plus.top = Inches(5.44), Inches(6.53)
 minus.left, minus.top = Inches(5.44), Inches(6.91)
 
-# ---- 5. cooling-water loop: chiller -> generator -> heating head -> chiller
+# ---- 5. coolant loop (ethylene glycol, not water -- R. Guymon, PR #3,
+#         2026-07-13): chiller -> generator -> heating head -> chiller
 #         (order verified by R. Guymon, PR #3, 2026-07-08)
 BLUE = RGBColor(0x1F, 0x6F, 0xC4)
-def water(points):
+def coolant(points):
     fb = shapes.build_freeform(Emu(Inches(points[0][0])), Emu(Inches(points[0][1])), scale=1.0)
     fb.add_line_segments([(Emu(Inches(x)), Emu(Inches(y))) for x, y in points[1:]], close=False)
     sh = fb.convert_to_shape()
@@ -171,10 +176,13 @@ def water(points):
     style_line(sh, 2.0, rgb=BLUE)
     tail_arrow(sh)
     return sh
-water([(4.30, 8.50), (4.30, 7.55)])                                             # chiller -> generator
-water([(4.90, 7.55), (4.90, 7.65), (6.95, 7.65), (6.95, 7.31)])                 # generator -> head
-water([(7.20, 7.31), (7.20, 7.75), (5.57, 7.75), (5.57, 8.70), (5.42, 8.70)])   # head -> chiller
-label("Cooling Water", 4.42, 7.98, 1.10, size=10, rgb=BLUE)
+coolant([(4.30, 8.50), (4.30, 7.55)])                                             # chiller -> generator
+coolant([(4.90, 7.55), (4.90, 7.65), (6.95, 7.65), (6.95, 7.31)])                 # generator -> head
+coolant([(7.20, 7.31), (7.20, 7.75), (5.57, 7.75), (5.57, 8.70), (5.42, 8.70)])   # head -> chiller
+# label sits left of the chiller->generator run (right-aligned so its right
+# edge stops just short of the vertical coolant line at x=4.30)
+label("Ethylene Glycol Coolant", 2.40, 7.98, 1.85, size=10,
+      align=PP_ALIGN.RIGHT, rgb=BLUE)
 
 # ---- 6. heating-head support post standing on its own base bar; the chamber
 #         stack itself has NO stand (it hangs from the ceiling cables), so the
