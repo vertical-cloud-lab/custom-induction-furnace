@@ -247,7 +247,9 @@ susceptor, heating the contained metal specimen by conduction and radiation.
 The
 specimen is sandwiched between two alumina discs in the cup, the lid seats on
 top, and a sapphire window closes the lid bore
-(Fig.~\ref{fig:crucible-assembly}); fully assembled the stack stands 13\,mm
+(Fig.~\ref{fig:crucible-assembly}). Sapphire is used for the window to
+increase transmittance in the wavelength ranges emitted from the sample
+relative to the pyrometry. When fully assembled the stack stands 13\,mm
 tall, and the measured dimensions of every piece are given in the
 supplementary material. Inside the vacuum chamber the crucible rests on an
 alumina support rod that positions it at coil height, and crucibles are
@@ -379,34 +381,32 @@ map with in-image grain-size measurements (200\,\textmu m scale bar);
 \subsection{Extension to ceramic charges: YSZ}
 \label{sec:ysz}
 
-Grain growth in refractory ceramics ideally follows an Arrhenius behavior
-that is sensitive to both time and temperature, so the higher soak
-temperatures this furnace reaches translate directly into far shorter times
-to equivalent grain growth. The same control, vacuum, and sensing stack
-extends to charges that do not couple to the RF field at all, demonstrated
-with grain growth in 8\,mol\% yttria-stabilized zirconia (YSZ). Ceramic grain
-growth requires soak temperatures beyond the graphite/alumina stack's service
-range, so only the charge stack is exchanged: the YSZ specimen is sandwiched
-between two 25.5\,mm tantalum susceptor blocks seated on top of a boron
-nitride ceramic stand which sits on an alumina support rod. The generator,
-vacuum path, pyrometer, and control are untouched (schematic and micrographs
-in the supplementary material). With two tantalum blocks a temperature of
-2500\,\celsius{} was reliably reached. The practical temperature ceiling so
-far is overheating of the induction coils and susceptor failure due to
-chemical compatibility, not available RF power.
+The same induction furnace can also be used to process refractory ceramics
+by modifying only the materials directly in contact with the specimen while
+leaving the generator, vacuum system, pyrometer, cooling system, and control
+software unchanged. Materials that do not couple directly to the RF field
+require a susceptor to absorb RF energy and transfer heat to the specimen.
+At the temperatures required for grains to coarsen on refractory ceramics,
+the primary consideration in selecting a susceptor is its chemical
+compatibility with the specimen and surrounding support materials rather
+than its RF heating performance. Graphite and tantalum both serve
+effectively as susceptors, with the preferred choice depending on the
+operating temperature and the materials in contact with the susceptor.
 
-At these temperatures, chemical compatibility between specimen, susceptor,
-and crucible becomes the design constraint: a Ta block atop the YSZ
-at 2500\,\celsius{}/3.5\,h
-grew grains successfully to 200\,\textmu m but contaminated the sample with
-Ta; YSZ set into a graphite
-susceptor at 2000\,\celsius{}/168\,h was consumed by the carbon; and a
-Ta/YSZ/Ta sandwich at 2130\,\celsius{}/80.4\,h formed a Ta--BN reaction shell.
-Figure~\ref{fig:graingrowth} shows the outcome of the first fully successful
-ceramic anneal, 45\,min at 2500\,\celsius: the grain-boundary network of the
-YSZ surface after coarsening from 20 to 90\,\textmu m, growth
-that a conventional 1600\,\celsius{} box furnace pushed to its limits
-needed more than 228\,h to approach (10 to 80\,\textmu m).
+Grain growth in refractory ceramics follows Arrhenius kinetics and is
+therefore highly sensitive to annealing temperature. For the 8\,mol\% YSZ
+specimens investigated here, grain growth from approximately 10\,\textmu m
+to 90\,\textmu m required 228\,h at 1600\,\celsius{} in a conventional box
+furnace, whereas comparable grain growth was achieved in only 45\,min at
+2500\,\celsius{} using the induction furnace
+(Fig.~\ref{fig:graingrowth}). Achieving these temperatures required only
+minor modifications to the charge stack. For example, direct contact
+between graphite and alumina was eliminated because they undergo a eutectic
+reaction that lowers the interface melting temperature to approximately
+1800\,\celsius. This was accomplished by introducing a boron nitride
+diffusion barrier between the two materials. Alternatively, replacing the
+graphite with tantalum avoids this compatibility issue while still
+providing efficient RF coupling.
 
 \begin{figure}[ht]
 \centering
@@ -442,17 +442,6 @@ modernization layer requires only a monotonic analog power-control input,
 the design ports across generators and is directly reusable at a small
 fraction of turn-key cost, and the through-thickness boundary grooving
 points to columnar grain-growth studies as a natural next application.
-
-%==============================================================
-\section*{Supplementary Material}
-%==============================================================
-
-The supplementary material contains the extended figure set, the
-specimen--run cross-reference (Table~S1, hyperlinked to the raw logs and image
-data), the itemized bill of materials, the design-file inventory, and the
-standard operating procedure; the repository (see Data Availability) holds
-the control software, schematics, anneal logs, characterization data, and
-the scripts that reproduce every figure and metric in this paper.
 
 \begin{acknowledgments}
 The authors thank Kevin Cole for his supervision and support of the original

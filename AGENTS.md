@@ -190,8 +190,11 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
     not add safety prose back. The "Operationally, before RF power is
     applied…" preflight sentence (high vacuum/backfill, cooling water,
     sight line, conductive objects 6–12 in) was also removed by R. Guymon's
-    PDF edit (2026-07-13) — do not reintroduce it. The SI section is a single
-    compact paragraph. (R. Guymon, PR #3, 2026-07-08.)
+    PDF edit (2026-07-13) — do not reintroduce it. The dedicated
+    "Supplementary Material" section was removed entirely by R. Guymon's PDF
+    edit (2026-07-14) — do not reintroduce it; the in-text pointers to "the
+    supplementary material" and the Data Availability section remain.
+    (R. Guymon, PR #3, 2026-07-08.)
 
 24. **Never self-generate a data figure for the main text — use the lab's
     actual uploaded graphs/datasets, verbatim.** (R. Guymon, PR #3,
@@ -245,17 +248,27 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
     layer between two generators of very different designs" clause was
     likewise removed — portability is stated without that claim.
 
-30. **Current YSZ-section facts (R. Guymon's tracked changes, 2026-07-13).**
-    With two tantalum blocks 2500 °C was reliably reached; the practical
-    temperature ceiling is overheating of the induction coils and susceptor
-    failure due to chemical compatibility, not available RF power (the
-    earlier "outgassing at temperature / pressure-interlock 2344 °C at 33%"
-    account and the single-block 1230→2020 °C curve details were deleted).
-    The Ta-block-atop-YSZ survey anneal is 2500 °C/3.5 h, grew grains to
-    200 µm, and "contaminated the sample with Ta" (not "8 h" / "deposited
-    Ta vapor"). The subsection opens with the Arrhenius time–temperature
-    framing and identifies the specimens as 8 mol% YSZ (from the reframing
-    note attached to the tracked-changes doc).
+30. **The "Extension to ceramic charges: YSZ" subsection is R. Guymon's
+    verbatim replacement text (2026-07-14).** The whole subsection prose was
+    replaced wholesale at his request; do not rewrite it. Its content: the
+    furnace processes refractory ceramics by modifying only the materials in
+    direct specimen contact (generator, vacuum system, pyrometer, cooling
+    system, and control software unchanged); non-coupling materials need a
+    susceptor, selected primarily for chemical compatibility with the
+    specimen and support materials rather than RF heating performance;
+    graphite and tantalum both serve as susceptors; grain growth follows
+    Arrhenius kinetics, so for the 8 mol% YSZ specimens growth from ~10 to
+    90 µm took 228 h at 1600 °C in a conventional box furnace vs. 45 min at
+    2500 °C in the induction furnace; graphite–alumina contact is avoided
+    because of a eutectic reaction lowering the interface melting point to
+    ~1800 °C (solved with a boron nitride diffusion barrier, or by replacing
+    graphite with tantalum). The earlier survey-outcome sentences (2500 °C/
+    3.5 h Ta contamination, 2000 °C/168 h carbon consumption, 2130 °C/80.4 h
+    Ta–BN shell, "2500 °C reliably reached", coil-overheating ceiling) are no
+    longer in the manuscript — the Conclusions still carry the
+    chemistry-as-constraint lesson. The only additions to the verbatim text
+    are the LaTeX figure callout "(Fig.~\ref{fig:graingrowth})" and dropping
+    a stray asterisk after "cooling system".
 
 26. **Do not describe the data as "archived" or write meta-information about
     the data — present the data itself and expound on it.** (R. Guymon,
@@ -290,6 +303,10 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
   Chiller". The coolant runs in a series loop: chiller → generator → heating
   head/work coil → back to the chiller. (Order verified by R. Guymon, PR #3,
   2026-07-08; this corrects the head-first order stated on 2026-07-07.)
+- **Why sapphire for the crucible-lid window:** "Sapphire is used for the
+  window to increase transmittance in the wavelength ranges emitted from the
+  sample relative to the pyrometry" (R. Guymon's PDF edit, 2026-07-14, added
+  verbatim to the graphite-crucible section).
 - **The crucible rests on an alumina support rod** inside the quartz-tube vacuum
   chamber, which positions it at coil height (both the graphite/metal and the
   tantalum/ceramic stacks). (R. Guymon, PR #3, 2026-07-08.)
