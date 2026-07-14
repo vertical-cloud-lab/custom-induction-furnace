@@ -338,6 +338,14 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
   bibtex; REVTeX 4.2 class with the `aip,rsi` options); `make draft` builds the
   notes-visible `paper-draft.pdf`. Always rebuild both `paper/paper.pdf` and
   `paper/paper-draft.pdf` after editing `paper/paper.tex`.
+- `paper/real_person_paper.tex` → `make real` → `paper/real_person_paper.pdf` is
+  the "real person" restyled variant requested by R. Guymon (PR #3, 2026-07-14):
+  identical content/figures/references to `paper.tex`, but the prose follows the
+  Extension-to-ceramics section's style — no `$\sim$` approximations (write
+  "approximately" or a plain range) and no em-dash/semicolon/colon splices
+  (short declarative sentences). It intentionally does NOT replace `paper.pdf`.
+  If `paper.tex` content changes are meant to carry over, mirror them here in
+  that style.
 - REVTeX 4.2f predates the 2023+ LaTeX kernel/array table internals; `paper.tex`
   disables REVTeX's begin-document tabular patching (see the commented
   `\switch@tabular` override in the preamble) — do not remove it, and do not use
