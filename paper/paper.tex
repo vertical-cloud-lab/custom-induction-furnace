@@ -99,8 +99,8 @@ shows a fixed-geometry power--temperature calibration ($R^2 = 0.991$ over
 1200--1400\,\celsius), repeatable 1200\,\celsius{} / 12\,h nickel anneals
 ($1201.2 \pm 1.3$\,\celsius{} across 8 runs), stable soaks up to 40\,h at
 1325\,\celsius, and annealed-nickel microstructures characterized by optical
-metallography, SEM, and EBSD. A tantalum-susceptor variant extends the
-furnace to non-coupling ceramics at 2000--2350\,\celsius, demonstrated with
+metallography, SEM, and EBSD. A modified charge stack extends the furnace to
+non-coupling ceramics at temperatures up to 2500\,\celsius, demonstrated with
 YSZ grain growth. Complete design files, bill of materials, control software,
 and data are openly available.
 \end{abstract}
@@ -146,8 +146,9 @@ response, since the pyrometer feedback and PID calibration absorb any
 nonlinearity. The generator internals are not reproduced; a compatible
 generator needs to be supplied. The graphite
 crucible, which couples strongly to the RF field, serves the metal
-grain-growth charges; for non-coupling ceramics such as YSZ, an entirely
-separate tantalum-susceptor charge stack replaces it (Sec.~\ref{sec:ysz}).
+grain-growth charges. Non-coupling ceramics such as YSZ use a modified charge
+stack in which graphite or tantalum serves as the susceptor, chosen for
+chemical compatibility with the specimen (Sec.~\ref{sec:ysz}).
 
 The reproducible build documented here is anchored on a current, USA-sourced
 6\,kW solid-state generator whose controller accepts a standard 4--20\,mA
@@ -230,8 +231,8 @@ hangs from above.
 
 Metal charges in the graphite crucible reach the Ni/Fe
 grain-growth range ($\sim$1400--1500\,\celsius) with demonstrated soaks from
-minutes to $\sim$40\,h, and the separate tantalum-susceptor ceramic
-configuration extends the working range to $\sim$2000--2350\,\celsius. The
+minutes to $\sim$40\,h, and the modified ceramic charge stack
+extends the working range to 2500\,\celsius. The
 layer transfers
 to any generator that exposes a monotonic analog power input, supports a
 liquid-cooled head/coil of the documented geometry, delivers enough RF power
@@ -255,10 +256,11 @@ relative to the pyrometry. When fully assembled the stack stands 13\,mm
 tall, and the measured dimensions of every piece are given in the
 supplementary material. Inside the vacuum chamber the crucible rests on an
 alumina support rod that positions it at coil height, and crucibles are
-repaired with graphite cement rather than discarded. The graphite crucible is
-used exclusively for metal grain growth; ceramic charges are never loaded into
-it, and instead use the entirely separate tantalum-susceptor stack of
-Sec.~\ref{sec:ysz}.
+repaired with graphite cement rather than discarded. The crucible primarily
+serves the metal grain-growth charges. Graphite also works as a susceptor for
+some ceramic charges when the contact chemistry permits, and
+Sec.~\ref{sec:ysz} describes how a compatible susceptor is selected for
+refractory ceramics.
 
 \begin{figure}[ht]
 \centering
@@ -306,7 +308,7 @@ stopped.
 %==============================================================
 
 The furnace has completed more than one hundred logged anneals of Ni200 and
-Ni4N5 nickel, YSZ, and Pd thermal-evaporation charges at
+Ni4N5 nickel and Pd thermal-evaporation charges at
 $\sim$900--1400\,\celsius, with soaks from minutes to $\sim$40\,h. The
 supplementary material links each result below to its underlying run log.
 
@@ -435,13 +437,14 @@ calibration with $R^2 = 0.991$, high soak repeatability,
 stable closed-loop soaks up to 40\,h, and annealed nickel whose surfaces
 index directly in the EBSD and show controlled grain growth.
 
-The tantalum-susceptor variant shows how far the same furnace stretches
-without redesign: exchanging only the charge stack carries the system from
-metal anneals in the graphite crucible to ceramic grain growth beyond
-2300\,\celsius, and the survey behind that result identified chemistry, not
+The ceramic extension shows how far the same furnace stretches
+without redesign: exchanging only the materials in contact with the specimen
+carries the system from metal anneals in the graphite crucible to ceramic
+grain growth at 2500\,\celsius, and the trial-and-error survey behind that
+result identified chemistry, not
 power, as the governing constraint at extreme temperature. Every failure
-mode was a contact reaction between charge, susceptor, and crucible, which
-the interchangeable stack lets a user iterate run by run. Because the
+mode was a contact reaction among the charge, susceptor, and support
+materials, which the interchangeable stack lets a user iterate run by run. Because the
 modernization layer requires only a monotonic analog power-control input,
 the design ports across generators and is directly reusable at a small
 fraction of turn-key cost, and the through-thickness boundary grooving

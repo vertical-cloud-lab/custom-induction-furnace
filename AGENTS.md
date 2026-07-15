@@ -175,12 +175,22 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
     are not "models" and stay. The v2 schematic likewise says "Turbo
     Pumping Station", not "T-Station 85".
 
-22. **Keep the graphite crucible (metals) and the tantalum-susceptor stack
-    (ceramics) strictly separate.** The graphite crucible is used
-    exclusively for metal grain growth; ceramic charges (YSZ) are never
-    loaded into it and use the entirely separate tantalum-susceptor charge
-    stack (Sec. V A). Never write anything implying the graphite crucible
-    holds ceramic samples. (R. Guymon, PR #3, 2026-07-08.)
+22. **Graphite is not "exclusively for metals" — susceptor choice for
+    ceramics is chemical compatibility found by trial and error.**
+    (Updated by R. Guymon, PR #3, 2026-07-15, after C. Nyborg's
+    Extension-to-ceramics text; supersedes the strict-separation rule of
+    2026-07-08.) The graphite crucible *primarily* serves the metal
+    grain-growth charges, but graphite also works as a susceptor for some
+    ceramic charges when the contact chemistry permits — "it really just
+    takes trial and error to find what works." Do not write "used
+    exclusively for metal grain growth", "ceramic charges are never loaded
+    into it", or "entirely separate tantalum-susceptor stack". The
+    demonstrated 2500 °C / 45 min YSZ result did use the tantalum-susceptor
+    stack, so keep that attribution in the grain-growth figure caption. The
+    manuscript's ceramic temperature claims are aligned to the demonstrated
+    2500 °C (abstract, Sec. II working-range sentence, Conclusions) — the
+    older "2000–2350 °C" / "beyond 2300 °C" phrasings are stale; do not
+    reintroduce them.
 
 23. **Keep the Supplementary Material section and the Sec. III safety prose
     short.** The hazard-by-hazard enumeration was removed, and the
