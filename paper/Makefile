@@ -16,14 +16,15 @@
 #   make pdf     # build the clean paper.pdf (no status box / \todo notes)
 #   make draft   # build paper-draft.pdf with the status box + red \todo markers
 #   make real    # build real_person_paper.pdf (restyled variant, same content)
+#   make si      # build SI.pdf (the AIP-required separate supplementary-material PDF)
 #   make clean   # remove the compiled PDFs and LaTeX aux files
 #   make figures # regenerate the validation/characterization/crucible figures
 
 PDFLATEX ?= pdflatex
 SRC := paper.tex
 
-.PHONY: all pdf draft real clean figures
-all: pdf draft real
+.PHONY: all pdf draft real si clean figures
+all: pdf draft real si
 
 # Regenerate the validation + characterization figures from the archived data.
 figures:
@@ -63,7 +64,17 @@ real_person_paper.pdf: real_person_paper.tex references.bib
 	$(PDFLATEX) -interaction=nonstopmode real_person_paper.tex
 	$(PDFLATEX) -interaction=nonstopmode real_person_paper.tex
 
+# Supplementary material: AIP requires SI as a single separate PDF named
+# SI.pdf at initial submission (see template/rsi/aip-author-instructions).
+# SI.tex compiles the content of paper/supplementary/*.md (which remain the
+# editable sources of record) with S-numbered figures/tables and alt text.
+si: SI.pdf
+SI.pdf: SI.tex
+	$(PDFLATEX) -interaction=nonstopmode SI.tex
+	$(PDFLATEX) -interaction=nonstopmode SI.tex
+
 clean:
 	rm -f paper.pdf paper.aux paper.log paper.out paper.toc paper.bbl paper.blg paper.spl paperNotes.bib
+	rm -f SI.pdf SI.aux SI.log SI.out SI.toc
 	rm -f paper-draft.pdf paper-draft.aux paper-draft.log paper-draft.out paper-draft.bbl paper-draft.blg paper-draftNotes.bib
 	rm -f real_person_paper.pdf real_person_paper.aux real_person_paper.log real_person_paper.out real_person_paper.bbl real_person_paper.blg real_person_paperNotes.bib

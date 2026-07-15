@@ -16,7 +16,9 @@ HardwareX version is archived in [`archive/`](archive/).
 | [`template/rsi/`](template/rsi/) | Mirrored REVTeX 4.2 / AIP template files (incl. the `rsi` substyle) and the official author instructions — see the [RSI guide summary](template/rsi/RSI_GUIDE_FOR_AUTHORS.md). |
 | [`archive/`](archive/) | The archived HardwareX version of the manuscript (Elsevier `elsarticle` class); [`template/`](template/) retains the `elsarticle` files it builds against, plus the [HardwareX Guide for Authors summary](template/HARDWAREX_GUIDE_FOR_AUTHORS.md). |
 | [`paper.md`](paper.md) | Migration note — the manuscript moved from Markdown to LaTeX; kept as a pointer. |
-| [`Makefile`](Makefile) | Builds `paper.pdf` (clean) and `paper-draft.pdf` (with notes) from `paper.tex`. |
+| [`SI.tex`](SI.tex) / [`SI.pdf`](SI.pdf) | The supplementary material, compiled per the AIP author instructions (a single separate PDF named `SI.pdf` at initial submission, S-numbered figures/tables, alt text under each caption). Typesets the content of [`supplementary/`](supplementary/) — figures S1–S13, the specimen–run linkage (Table S1, run IDs hyperlinked to the raw logs), the bill of materials (Table S2), and the design-file inventory (Table S3). Build with `make si`; the `supplementary/*.md` files remain the editable sources of record. |
+| [`supplementary/`](supplementary/) | Editable Markdown sources for the supplementary material (figures, specimen–run linkage, BOM, design-file inventory). |
+| [`Makefile`](Makefile) | Builds `paper.pdf` (clean), `paper-draft.pdf` (with notes), and `SI.pdf` (supplementary) from their `.tex` sources. |
 | [`PLAN.md`](PLAN.md) | The manuscript plan: the RSI migration plan (top), contribution framing, section-by-section mapping to the repository files that feed the manuscript, and a pre-submission gap checklist. |
 | [`run_edison_review.py`](run_edison_review.py) | Submits the draft + context to an Edison Scientific Analysis review job and saves the feedback. |
 | [`edison-feedback/`](edison-feedback/) | Reviewer feedback on the draft (and the analysis notebook) returned by the Edison Analysis job. |

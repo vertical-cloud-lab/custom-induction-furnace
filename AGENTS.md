@@ -369,3 +369,15 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
   REVTeX's `ruledtabular` environment (use booktabs, as the manuscript already does).
 - Regenerate figures with `make figures` in `paper/` (validation + characterization +
   schematic/photo figures).
+- `paper/SI.tex` → `make si` → `paper/SI.pdf` is the supplementary-material PDF.
+  The AIP author instructions (mirrored in `paper/template/rsi/`, "Using
+  Supplementary Material in Your Manuscript") require SI as a **single separate
+  PDF named `SI.pdf`** at initial submission, with alt text under each SI
+  figure/table caption; after acceptance AIP deposits it in Figshare with its
+  own DOI. `SI.tex` typesets the content of `paper/supplementary/*.md`
+  (supplementary figures S1–S13, Table S1 specimen–run linkage with hyperlinked
+  raw logs, Table S2 bill of materials, Table S3 design-file inventory) —
+  the `.md` files remain the editable sources of record, so when they change,
+  mirror the change in `SI.tex` and rebuild. Run-ID/specimen-ID detail and
+  exact equipment models are allowed here (they are deliberately kept out of
+  the main text); the no-LEPEL rule still applies.
