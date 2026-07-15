@@ -327,6 +327,13 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
   stack, at the KF40 cross where the bellows connects; every KF40 joint in the stack
   seals on an elastomer O-ring carried on its centering ring. (R. Guymon, PR #3,
   2026-07-07.)
+- **The continuous argon flow is not ceramics-only.** The nickel grain-growth
+  anneals also ran under a constant 20 SCCM argon flow (high vacuum → argon
+  backfill → purge → constant 20 SCCM for the duration of the anneal). Do not
+  word the atmosphere passage so that "continuous argon flow" reads as unique
+  to the high-temperature ceramic work; what distinguishes the ceramic practice
+  is only that the argon flowed while the turbopump was running. (R. Guymon,
+  PR #3, 2026-07-15.)
 - **P-Trap between the turbopump and the vacuum chamber** — it protects the
   turbopump from falling debris. Noted by R. Guymon (PR #3, 2026-07-13) with the
   explicit instruction **"don't include yet"**: this fact is NOT in the manuscript
