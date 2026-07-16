@@ -290,11 +290,29 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
     reader may not know — e.g. "soak" — get a compact parenthetical
     definition the first time they appear, and are used bare afterwards.
     Demonstrated in the abstract: "reproduced their soak temperature (the
-    constant temperature held for the duration of the anneal)". So far only
-    "soak" has been treated (the requester asked to see the approach on that
-    word first); a full-manuscript pass over other candidates (susceptor,
-    charge stack, EBSD/Kikuchi, backfill, RF coupling, etc.) is pending his
-    go-ahead.
+    constant temperature held for the duration of the anneal)". Treated so
+    far (R. Guymon, PR #3, 2026-07-16): "soak" (abstract gloss above, plus
+    "(constant-temperature holds)" at first body use), "susceptor" (abstract
+    parenthetical, plus a one-sentence definition at first body use in the
+    Introduction — the YSZ subsection's own susceptor sentence is part of the
+    protected verbatim text of convention 30 and stays), and each distinct
+    sense of "stack": the modernization stack (abstract + Introduction), the
+    charge stack (abstract + Introduction), and the chamber stack (Sec. II).
+    The abstract must stand alone, so a term glossed there is glossed again
+    at its first body use.
+
+32. **Define abbreviations at first use — in the abstract and again in the
+    body.** (R. Guymon, PR #3, 2026-07-16: "make sure to define
+    abbreviations, such as RF, PID, and DAQ.") Defined: radio-frequency
+    (RF), data-acquisition (DAQ) device, proportional--integral--derivative
+    (PID), scanning electron microscopy (SEM), electron backscatter
+    diffraction (EBSD), yttria-stabilized zirconia (YSZ), virtual
+    instruments (VIs), standard cubic centimeters per minute (SCCM),
+    palladium (Pd); KF40 gets a gloss ("a standard clamp-sealed vacuum
+    flange") since the expansion (Klein Flansch) would not help a reader.
+    The title keeps "RF" unexpanded per common RSI usage. Material grade
+    designations (Ni200, Ni4N5, 8 mol% YSZ) are not abbreviations to
+    expand.
 
 26. **Do not describe the data as "archived" or write meta-information about
     the data — present the data itself and expound on it.** (R. Guymon,
