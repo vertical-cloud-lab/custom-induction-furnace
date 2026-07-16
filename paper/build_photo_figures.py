@@ -133,30 +133,24 @@ def build_vacuum_details() -> str:
 
 
 def build_ysz() -> str:
-    """YSZ high-temperature stack schematic + optical micrographs."""
-    fig = plt.figure(figsize=(9.0, 4.6))
-    gs = fig.add_gridspec(2, 2, width_ratios=[0.9, 1.5], hspace=0.16,
-                          wspace=0.05)
+    """YSZ optical micrographs (two panels).
 
-    ax_schem = fig.add_subplot(gs[:, 0])
-    # Panel (a) uses the redrawn stack schematic (make_ysz_stack_schematic.py ->
-    # build_schematic_figures.py), not the original hand sketch.
-    ax_schem.imshow(_load(os.path.join(FIGURES, "fig_ysz_stack.png"), max_px=2000))
-    ax_schem.axis("off")
-    ax_schem.set_title("(a)", fontsize=10, fontweight="bold", loc="left",
-                       pad=4)
+    The charge-stack schematic that used to be panel (a) was promoted into
+    the main text as its own figure (fill-the-5-pages request, R. Guymon,
+    PR #3, 2026-07-16), so the SI figure keeps only the micrographs.
+    """
+    fig, (ax_a, ax_b) = plt.subplots(1, 2, figsize=(7.6, 3.0))
 
-    ax_b = fig.add_subplot(gs[0, 1])
-    ax_b.imshow(_load(YSZ_1700))
+    ax_a.imshow(_load(YSZ_1700))
+    ax_a.axis("off")
+    ax_a.set_title("(a)", fontsize=10, fontweight="bold", loc="left", pad=4)
+
+    ax_b.imshow(_load(YSZ_INDUCTION))
     ax_b.axis("off")
     ax_b.set_title("(b)", fontsize=10, fontweight="bold", loc="left", pad=4)
 
-    ax_c = fig.add_subplot(gs[1, 1])
-    ax_c.imshow(_load(YSZ_INDUCTION))
-    ax_c.axis("off")
-    ax_c.set_title("(c)", fontsize=10, fontweight="bold", loc="left", pad=4)
-
-    fig.subplots_adjust(left=0.01, right=0.99, top=0.95, bottom=0.02)
+    fig.subplots_adjust(left=0.01, right=0.99, top=0.95, bottom=0.02,
+                        wspace=0.05)
     out = os.path.join(FIGURES, "fig_ysz.png")
     fig.savefig(out, dpi=DPI, bbox_inches="tight", pad_inches=0.03)
     plt.close(fig)

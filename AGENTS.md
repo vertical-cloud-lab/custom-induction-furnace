@@ -141,19 +141,23 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
     literature-query artifacts in `literature-search/`. (S. Baird, PR #3,
     2026-07-07.)
 
-18. **The paper must be 5 pages or less** (clean `paper.pdf`, including
-    references). (R. Guymon, PR #3, 2026-07-08, citing the AIP author
-    instructions.) The main text carries only the seven essential figures
-    (system overview v2, assembled-furnace photo, crucible loading sequence,
-    the raw Kikuchi pattern, the thermal-grooving panel — moved up from the
-    SI at R. Guymon's request, PR #3, 2026-07-15 — the Ni4N5 microstructure
-    panel, and the as-recorded YSZ 2500 °C/45 min micrograph); all
-    other figures live in `paper/supplementary/supplementary-figures.md`
-    (S1–S12) with their full captions, and the prose states the corresponding
-    metrics and points to the supplementary material. When adding content,
-    keep the clean build at ≤5 pages — cut or move material to supplementary
-    rather than exceeding it. (The draft build with the status box/\todo
-    markers may exceed 5 pages; the clean build is what counts.)
+18. **The paper must be 5 pages or less — and those 5 pages should be
+    full.** (R. Guymon, PR #3, 2026-07-08, citing the AIP author
+    instructions; and 2026-07-16: "make additions so all 5 pages of our
+    page limit are filled with relevant information.") The main text
+    carries eleven figures: system overview v2, assembled-furnace photo,
+    disassembled-crucible photo, crucible loading sequence,
+    vacuum/gas-handling photos, the raw Kikuchi pattern, the EBSD IPF maps
+    (panel titles carry anneal conditions only, no specimen IDs), the
+    thermal-grooving panel, the Ni4N5 microstructure panel, the
+    as-recorded YSZ 2500 °C/45 min micrograph, and the YSZ charge-stack
+    schematic. The disassembled-crucible, vacuum-details, EBSD, and
+    YSZ-stack figures were promoted from the SI on 2026-07-16 to fill the
+    page budget and were removed from the SI at the same time (a figure
+    lives in the main text or the SI, never both); the SI now carries
+    Figs. S1–S9. When adding content, keep body content within five
+    pages' worth and fill the pages — move material between main text and
+    SI rather than leaving page 5 half-empty or exceeding the limit.
 
 19. **No LEPEL mentions anywhere in the manuscript.** (R. Guymon, PR #3,
     2026-07-08: "do not include anything about the LEPEL furnace, it is not
@@ -365,9 +369,14 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
   edits there. `paper.tex` / `paper.pdf` / `paper-draft.pdf` are frozen as the
   pre-restyle record; do not edit or rebuild them** (R. Guymon, PR #3,
   2026-07-15/16). Content differences from the frozen `paper.tex`: the
-  thermal-grooving panel is main-text Fig. 5 (so the microstructure panel is
-  Fig. 6), and the AIP-required "Supplementary Material" section follows the
-  Conclusions. On length: AIP's RSI rule caps contributed Conference Articles
+  thermal-grooving panel is a main-text figure, the AIP-required
+  "Supplementary Material" section follows the Conclusions, and four figures
+  were promoted from the SI on 2026-07-16 to fill the 5-page budget
+  (disassembled crucible photo, vacuum/gas-handling photos, EBSD IPF maps,
+  YSZ charge-stack schematic — main-text figure order: 1 overview, 2 furnace
+  photo, 3 crucible parts, 4 loading sequence, 5 vacuum details, 6 Kikuchi,
+  7 EBSD, 8 grooving, 9 microstructure, 10 YSZ grain growth, 11 YSZ stack).
+  On length: AIP's RSI rule caps contributed Conference Articles
   at five pages, and its word-count method **excludes the abstract, author
   list, acknowledgments, and references** — so body content should stay
   within five pages' worth, but the reference list spilling onto a further
@@ -385,7 +394,8 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
   figure/table caption; after acceptance AIP deposits it in Figshare with its
   own DOI. **`SI.tex` is the editable source of record for the SI**; the files
   in `paper/supplementary/` are earlier working notes and are no longer
-  mirrored. Contents: supplementary figures S1–S12, Table S1 specimen–run
+  mirrored. Contents: supplementary figures S1–S9 (four former SI figures
+  moved to the main text on 2026-07-16), Table S1 specimen–run
   linkage with hyperlinked raw logs, Table S2 bill of materials, and a prose
   design-file inventory section (the Table S3 path listing was removed).
   Run-ID/specimen-ID detail and exact equipment models are allowed here (they

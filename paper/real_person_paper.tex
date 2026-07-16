@@ -4,9 +4,14 @@
 %% section — no "~" (\sim) approximations (spelled out as "approximately" or
 %% written as plain ranges) and no complicated run-on sentences (em-dash /
 %% semicolon / colon splices split into short declarative sentences).
-%% Content, structure, figures, and references are identical to paper.tex;
-%% this file builds real_person_paper.pdf (`make real`) and does NOT replace
-%% paper.pdf.
+%% This is the live manuscript; paper.tex/paper.pdf are the frozen
+%% pre-restyle record. Content differences from paper.tex: the
+%% thermal-grooving panel is a main-text figure, the "Supplementary
+%% Material" section follows the Conclusions, and four figures were
+%% promoted from the SI to fill the 5-page limit (disassembled crucible,
+%% vacuum/gas-handling photos, EBSD IPF maps, YSZ charge-stack schematic;
+%% R. Guymon, PR #3, 2026-07-16). This file builds real_person_paper.pdf
+%% (`make real`).
 %%
 %% Built on REVTeX 4.2 with the AIP substyles (`rsi` journal option) — the class
 %% behind the official AIP Publishing template. Template files and the RSI/AIP
@@ -246,7 +251,8 @@ alignment, and interlock behavior are re-established.
 Metal specimens are held in a two-piece graphite crucible machined in-house
 from 3000\,\celsius-grade graphite stock. It consists of a cup body and a
 lidded cap with a central bore, which contains the charge while leaving an
-optical path for the pyrometer. The graphite couples strongly to the
+optical path for the pyrometer. Figure~\ref{fig:crucible-parts} shows the
+disassembled parts. The graphite couples strongly to the
 induction field and acts as a susceptor, heating the contained metal
 specimen by conduction and radiation. The specimen is sandwiched between two
 alumina discs in the cup, the lid seats on top, and a sapphire window closes
@@ -261,6 +267,16 @@ the metal grain-growth charges. Graphite also works as a susceptor for some
 ceramic charges when the contact chemistry permits.
 Sec.~\ref{sec:ysz} describes how a compatible susceptor is selected for
 refractory ceramics.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.62\linewidth]{fig_crucible.png}
+\caption{Fully disassembled graphite crucible. Top left is the crucible lid,
+top middle is the bottom of the crucible that acts as the specimen carrier,
+far right is the sapphire window, bottom left and middle are the alumina
+sample-surrounding sheets.}
+\label{fig:crucible-parts}
+\end{figure}
 
 \begin{figure}[ht]
 \centering
@@ -288,11 +304,24 @@ carries a 0.5\,psi overpressure relief valve that protects the quartz tube
 during backfilling. A flexible bellows continues through the wide-range
 vacuum gauge to the turbo pumping station. The roughing pump sits on a
 separate support, mechanically decoupled so its vibration does not reach the
-chamber or the pyrometer sight line. On the gas path, the argon regulator
+chamber or the pyrometer sight line. Figure~\ref{fig:vacuum-details} shows
+the pumping station as installed, together with the relief valve at the
+base of the stack. On the gas path, the argon regulator
 feeds the manual vent valve. A mass flow controller between them is helpful
 when continuous inert gas flow is required. On the control path, electrical
 isolation is maintained between the DAQ wiring and the generator interface.
 Manual control is verified before automated ramping and soaking are enabled.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.92\linewidth]{fig_vacuum_details.jpg}
+\caption{Vacuum and gas-handling details. (a)~Turbo pumping station with the
+roughing pump mounted on a separate support. The pump couples to the pumping
+station only through a flexible hose, so its vibration is not transmitted
+into the chamber. (b)~Overpressure relief valve (0.5\,psi cracking pressure)
+at the bottom of the vacuum chamber stack.}
+\label{fig:vacuum-details}
+\end{figure}
 
 A run begins with the chamber vented, which is done only after the turbo
 pump has stopped spinning. The specimen is loaded into the crucible
@@ -347,7 +376,10 @@ electron-backscatter (Kikuchi) pattern from a furnace-annealed nickel
 specimen, reproduced exactly as the EBSD detector saved it during
 orientation mapping. Even at the coarse $8\times8$ binning used for mapping,
 the bands and zone axes are crisply resolved. Inverse-pole-figure maps built
-from such patterns resolve hundreds of indexed grains per specimen. Thermal
+from such patterns resolve hundreds of indexed grains per specimen
+(Fig.~\ref{fig:ebsd}). Each indexed color in the map is a crystallographic
+orientation, so a single map records both the grain sizes and the texture of
+the annealed specimen. Thermal
 grooving is itself a record of the anneal. Figure~\ref{fig:grooving} shows
 edge-on views of a Ni4N5 specimen annealed at 1200\,\celsius{} for 12\,h and
 cleaned only ultrasonically. The grooves are deep, and several boundaries
@@ -362,6 +394,17 @@ nickel specimen, exactly as saved by the EBSD detector during orientation
 mapping (the detector's $8\times8$-binned output). The crisply resolved bands
 and zone axes index directly to the nickel lattice.}
 \label{fig:kikuchi}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\linewidth]{fig_ebsd.png}
+\caption{EBSD inverse-pole-figure (IPF) orientation maps of two
+furnace-annealed Ni4N5 specimens, rendered from the recorded EBSD scans.
+(a)~A specimen annealed at 1200\,\celsius{} for 12\,h (100\,\textmu m scale
+bar). (b)~A second annealed specimen (800\,\textmu m scale bar). The maps
+resolve hundreds of grains for grain-size and texture analysis.}
+\label{fig:ebsd}
 \end{figure}
 
 \begin{figure}[ht]
@@ -422,7 +465,8 @@ to 90\,\textmu m required 228\,h at 1600\,\celsius{} in a conventional box
 furnace, whereas comparable grain growth was achieved in only 45\,min at
 2500\,\celsius{} using the induction furnace
 (Fig.~\ref{fig:graingrowth}). Achieving these temperatures required only
-minor modifications to the charge stack. For example, direct contact
+minor modifications to the charge stack
+(Fig.~\ref{fig:ysz-stack}). For example, direct contact
 between graphite and alumina was eliminated because they undergo a eutectic
 reaction that lowers the interface melting temperature to approximately
 1800\,\celsius. This was accomplished by introducing a boron nitride
@@ -439,6 +483,18 @@ grains from approximately 20 to 90\,\textmu m. The red multi-grain
 measurement traces and the 100\,\textmu m scale bar are part of the original
 microscope record.}
 \label{fig:graingrowth}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.46\linewidth]{fig_ysz_stack.png}
+\caption{Charge-stack configuration for the high-temperature ceramic
+anneals. The YSZ specimen is sandwiched between two 25.5\,mm tantalum
+susceptor blocks inside the quartz tube. The blocks rest on a boron nitride
+heat-dissipation stub, which sits on the alumina support rod that raises the
+stack to coil height. The coil, vacuum, pyrometer, and control paths are
+unchanged from the metal configuration.}
+\label{fig:ysz-stack}
 \end{figure}
 
 %==============================================================
@@ -474,11 +530,10 @@ as a natural next application.
 % the Conclusions" (template/rsi/aip-author-instructions-2026-07-02.txt).
 
 See the supplementary material for the measured crucible part dimensions,
-the work-coil drawing, the vacuum and gas-handling photographs, the
-power--temperature calibration and the representative-soak, repeatability,
-and long-soak traces, the EBSD orientation maps and the raw Kikuchi-pattern
-survey, the tantalum-susceptor heat curves, the YSZ charge-stack schematic
-and micrographs, the specimen--thermal-history linkage table with links to
+the work-coil drawing, the power--temperature calibration and the
+representative-soak, repeatability, and long-soak traces, the raw
+Kikuchi-pattern survey, the tantalum-susceptor heat curves, the YSZ
+micrographs, the specimen--thermal-history linkage table with links to
 every raw run log, the itemized bill of materials, and the design-file
 inventory.
 

@@ -295,14 +295,17 @@ def show(ax, rel: str, title: str):
 
 def fig_ebsd():
     """EBSD inverse-pole-figure orientation maps of two annealed specimens."""
+    # The figure appears in the main text, where specimen IDs are not named
+    # (AGENTS.md convention 12) -- panel titles carry the anneal condition
+    # only; Table S1 in the SI links the panels to their specimens/runs.
     panels = [
         (
             "docs/SEM/200303_Ni4N5_034_specialHolder1stTry/reg1_IPF.bmp",
-            "(a) Ni4N5_034 IPF map\n(annealed 1200 °C / 12 h)",
+            "(a) IPF map\n(annealed 1200 °C / 12 h)",
         ),
         (
             "docs/SEM/200423_Ni4N5_069/IPF.png",
-            "(b) Ni4N5_069 IPF map\n(annealed, EBSD)",
+            "(b) IPF map\n(annealed specimen)",
         ),
     ]
     fig, axes = plt.subplots(1, 2, figsize=(7.2, 3.8))
