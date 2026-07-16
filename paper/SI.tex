@@ -12,10 +12,13 @@
 %%   - alt text is included under each figure/table caption in the SI file;
 %%   - after acceptance AIP deposits the file in Figshare with its own DOI.
 %%
-%% Content is compiled from the version-controlled sources in
-%% paper/supplementary/ (supplementary-figures.md, specimen-run-linkage.md,
-%% bill-of-materials.md, design-file-inventory.md); those files remain the
-%% editable sources of record. Build: `make si` (pdflatex x2).
+%% SI.tex is the editable source of record for the supplementary material
+%% (R. Guymon, PR #3, 2026-07-16). The SI is written as self-contained prose:
+%% no repository file paths appear in the body or captions. The repository is
+%% mentioned once (GitHub + Zenodo DOI) in the opening paragraph, and the run
+%% IDs in Table S1 hyperlink to the raw run logs (URLs hidden behind the run-ID
+%% text). The files in paper/supplementary/ are earlier working notes, not
+%% sources of record. Build: `make si` (pdflatex x2).
 %%
 \documentclass[10pt,letterpaper]{article}
 
@@ -62,17 +65,14 @@ Provo, Utah 84602, USA}
 \noindent This document collects the supplementary figures
 (Figs.~S1--S12), the specimen--thermal-history linkage
 (Table~\ref{tab:linkage}), the itemized bill of materials
-(Table~\ref{tab:bom}), and the design-file inventory
-(Table~\ref{tab:designfiles}) that support the main text. File paths are
-relative to the root of the openly available data and design repository
-(\url{https://github.com/vertical-cloud-lab/custom-induction-furnace}); an
-archival snapshot is deposited at Zenodo,
-\href{https://doi.org/10.5281/zenodo.20878017}{10.5281/zenodo.20878017}. All
-plotted figures are rendered reproducibly from the raw logs by the
-\texttt{paper/build\_*.py} scripts (\texttt{make figures}); the data figures
-in the main text are the laboratory's actual recorded images, extracted
-verbatim. Alt text is provided under each figure and table caption per the
-AIP Publishing accessibility instructions.
+(Table~\ref{tab:bom}), and an inventory of the openly available design
+files (Sec.~\ref{sec:designfiles}) that support the main text. The complete
+raw data and design package is openly available at
+\url{https://github.com/vertical-cloud-lab/custom-induction-furnace}, with
+an archival snapshot deposited at Zenodo,
+\href{https://doi.org/10.5281/zenodo.20878017}{10.5281/zenodo.20878017}.
+Each run ID in Table~\ref{tab:linkage} links directly to the corresponding
+raw run log. Alt text accompanies each figure and table caption.
 
 %==============================================================
 \section{Hardware}
@@ -118,8 +118,7 @@ heights, and the central pyrometer bore dimensions.}
 \includegraphics[width=0.62\linewidth]{../docs/coils-drawing.pdf}
 \caption{Work-coil fabrication drawing used for the current build, showing
 the coil geometry and dimensional callouts used to form and mount the
-liquid-cooled copper coil around the quartz chamber. (Source file:
-\texttt{docs/coils-drawing.pdf}.)}
+liquid-cooled copper coil around the quartz chamber.}
 \label{fig:s-coil}
 \alttext{Engineering drawing of the liquid-cooled copper work coil with
 dimensional callouts for the coil height, inner diameter, number of turns,
@@ -225,9 +224,8 @@ where thermal grooving alone delineates the grain boundaries crossed by the
 EBSD line scans (red marks; 1\um{} scale bar). (c--e)~Representative
 per-scan-point raw patterns ($115\times115$\,px at $8\times8$ binning) saved
 automatically during EBSD mapping of the early-campaign specimens
-Ni\_003b1a and Ni\_003a1b; more than 100{,}000 such patterns are preserved
-in the repository's raw-pattern archives
-(\texttt{docs/SEM/raw-kikuchi-patterns/}).}
+Ni\_003b1a and Ni\_003a1b. More than 100{,}000 such patterns are preserved
+with the openly available data.}
 \label{fig:s-kikuchi}
 \alttext{Five grayscale panels: a raw Kikuchi diffraction pattern of
 intersecting bright bands, an electron micrograph with grooved grain
@@ -248,8 +246,8 @@ stacked tantalum susceptor blocks (the faint series repeats the single-block
 measurement on the original power controller); the two-block ramp reached
 2344\dC{} at a 33\,\% command before the chamber pressure interlock ended
 the test. (b)~Timed two-block ramp/soak: a constant 17\,\% command holds
-$\sim$2000\dC{} ($2000 \pm 3$\dC{} over the final hour) before a stepped
-ramp-down.}
+approximately 2000\dC{} ($2000 \pm 3$\dC{} over the final hour) before a
+stepped ramp-down.}
 \label{fig:s-heatcurve}
 \alttext{Two plots: temperature versus power command curves for one and two
 tantalum blocks reaching 2344 degrees Celsius, and a timed ramp holding a
@@ -260,7 +258,8 @@ steady 2000 degrees Celsius for over an hour.}
 \centering
 \includegraphics[width=0.85\linewidth]{figures/fig_ysz.png}
 \caption{YSZ charge stack and resulting microstructure. (a)~Charge-stack
-schematic: inside a fresh $\sim$35\,mm-ID quartz tube, the YSZ specimen
+schematic: inside a fresh quartz tube of approximately 35\,mm inner
+diameter, the YSZ specimen
 (red) is sandwiched between two 25.5\,mm tantalum susceptor blocks, resting
 on a 28\,mm ceramic heat-dissipation stub (boron nitride for best results,
 sometimes MgO) on an alumina support rod that raises the stack to coil
@@ -280,26 +279,17 @@ structures.}
 \section{Specimen--thermal-history linkage}
 %==============================================================
 
-Table~\ref{tab:linkage} links each characterized specimen to its furnace run
-and carries the run-ID-level detail deliberately kept out of the main text.
-Each run ID hyperlinks to the raw run log in the data repository. ``Nominal
-soak'' is the target parsed from the run filename; ``Logged soak T'' is the
-machine-parsed soak-mean from the trace
-(\texttt{docs/data\_log/processed/run\_summary.csv}); ``Atmos.''\ indicates
-whether active gas flow was present in the parsed log summary, not a fully
-reconstructed gas chemistry; ``Characterization'' gives recorded SEM/optical
-file counts and flags recorded EBSD/OIM data. Machine-parsed per-run CSV
-traces and PNG plots for every linked run are in
-\texttt{docs/data\_log/processed/}. The complete 35-specimen
-cross-reference, including characterized specimens whose run logs are not in
-the parsed set, is \texttt{paper/characterization-crossref.csv} /
-\texttt{.md}. Additional raw-pattern context for the Kikuchi figures (main
-text Fig.~4 and Fig.~\ref{fig:s-kikuchi}): the live-pattern screenshot of
-Ni4N5\_028 is
-\texttt{docs/SEM/raw-kikuchi-patterns/200203\_Ni4N5\_028\_s1/Scan3.JPG}, and
-the $>$100{,}000 preserved per-scan-point raw patterns of the early-campaign
-Ni\_003-series specimens are inventoried in
-\texttt{docs/SEM/raw-kikuchi-patterns/README.md}.
+Table~\ref{tab:linkage} links each characterized specimen to the furnace
+run that produced it. Each run ID hyperlinks to the raw run log. ``Nominal
+soak'' is the target temperature for the run. ``Logged soak T'' is the mean
+pyrometer reading over the soak, taken from the recorded trace.
+``Atmos.''\ indicates whether the log records active argon flow during the
+anneal. ``Characterization'' counts the recorded SEM and optical
+micrographs and notes where EBSD/OIM orientation data exist. The
+live-capture Kikuchi pattern of Fig.~\ref{fig:s-kikuchi}(a) was recorded on
+specimen Ni4N5\_028. The per-scan-point patterns of
+Figs.~\ref{fig:s-kikuchi}(c)--(e) were saved during orientation mapping of
+the early-campaign specimens Ni\_003b1a and Ni\_003a1b.
 
 \begin{landscape}
 \begin{table}[htbp]
@@ -350,22 +340,19 @@ its role or figure in the manuscript.}
 %==============================================================
 
 Table~\ref{tab:bom} is the itemized bill of materials for the reproducible
-build; the main text's Construction section cites the package-level cost and
-points here. Groupings by designator prefix: GEN = induction generator
-package (generator, controller, chiller, heating head, line transformer),
-RETRO = the reproducible retrofit (control / vacuum / sensing) parts, CONS =
-consumables. Full vendor/price detail for the RETRO and CONS parts is in
-\texttt{paper/extracted-context/parts\_list.md} (extracted from
-\texttt{docs/induction\_parts\_list.xlsx}). All costs are in USD; prices are
-the laboratory's purchase records (quote years 2019--2021), several from
-used/surplus sources as noted; shipping and tax are excluded unless stated.
-The GEN line items are from a single vendor quote (generator, heating head,
-controller, chiller, and line transformer totaling \$16{,}487). For the
-high-temperature ceramic (YSZ) configuration, the graphite crucible stack is
-exchanged for tantalum susceptor blocks resting on a ceramic
-heat-dissipation stub (boron nitride for best results, sometimes MgO);
-vendor records for the tantalum blocks and BN stubs are not in the archived
-parts list.
+build. Designator prefixes group the parts: GEN is the induction generator
+package (generator, controller, chiller, heating head, and line
+transformer), RETRO is the reproducible retrofit (the control, vacuum, and
+sensing parts), and CONS is consumables. All costs are in USD and reflect
+the laboratory's purchase records. Several parts came from used or surplus
+sources as noted. Shipping and tax are excluded unless stated. The GEN line
+items came from a single vendor quote, with the generator, heating head,
+controller, chiller, and line transformer totaling \$16{,}487. For the
+high-temperature ceramic (YSZ) configuration, the graphite crucible stack
+is exchanged for tantalum susceptor blocks resting on a ceramic
+heat-dissipation stub (boron nitride for best results, sometimes MgO).
+Vendor records for the tantalum blocks and boron nitride stubs were not
+retained.
 
 \begin{table}[htbp]
 \centering
@@ -383,7 +370,7 @@ GEN-3 & Recirculating chiller (MIL043008 air-cooled closed-loop, V1650-0060; ven
 GEN-4 & Heating head + 3\,m cable and coolant lines (PWH-13-12-30/50, V3000-0300); 1 coil made to spec at no charge with a complete unit & 1 & \$3{,}337 & \$3{,}337 & East Coast Induction (USA) & copper \\
 GEN-5 & Line auto-transformer, 12\,kVA / 3PH / 480$\times$380\,V with taps (V049-0508; facility-dependent) & 1 & \$1{,}665 & \$1{,}665 & East Coast Induction (USA) & --- \\
 RETRO-1 & LabVIEW-compatible DAQ with analog out + in (0--5\,V AO): NI USB-6000 DAQ & 1 & \$281.00 & \$281.00 & National Instruments & --- \\
-RETRO-2 & Dual-wavelength ratio pyrometer (LumaSense IMPAC ISR~6, 800--2500\dC), used & 1 & \$385.00 (used) & \$385.00 & eBay --- used listing (new list $\sim$\$5{,}500, LumaSense quote 00161403) & --- \\
+RETRO-2 & Dual-wavelength ratio pyrometer (LumaSense IMPAC ISR~6, 800--2500\dC), used & 1 & \$385.00 (used) & \$385.00 & eBay --- used listing (new list about \$5{,}500, LumaSense quote 00161403) & --- \\
 RETRO-3 & 24\,V linear power supply for pyrometer (International Power) & 1 & \$51 & \$51 & Mouser & --- \\
 RETRO-4 & Voltage-to-current (0--5\,V $\rightarrow$ 4--20\,mA) loop conditioner set for generator power-setpoint input (NI-9265 input module + NI-9203 output module + NI cDAQ-9174 chassis) & 1 set & \$3{,}755.00 & \$3{,}755.00 & National Instruments & --- \\
 RETRO-5 & Edwards nEXT T-Station 85H Dry turbo pumping station (1Ph 100--120\,V, 50/60\,Hz, DN 40 ISO-KF) & 1 & \$13{,}573.65 & \$13{,}573.65 & Edwards Vacuum & --- \\
@@ -395,7 +382,7 @@ RETRO-8 & KF40 overpressure centering ring & 1 & \$19 & \$19 & IdealVac & alumin
 RETRO-9 & KF40 plastic quick vacuum clamp & 1 & \$23 & \$23 & IdealVac & polymer \\
 RETRO-10 & Optical window, custom quartz disc 55\,mm $\times$ 1.5\,mm (1 used; buy 3 for spares) & 3 & \$18 (est.) & \$54 & Custom-cut metric disc --- vendor not recorded in parts list; price approximate (McMaster stocks only imperial sizes) & fused quartz \\
 RETRO-11 & Ultra-high-temperature quartz disc 2\,in $\times$ 1/16\,in (McMaster 1357T12) & 1 & \$19 & \$19 & McMaster-Carr & fused quartz \\
-RETRO-12 & Inert-gas plumbing (BSPT/KF adapters, barbs, tee, 10\,psi relief valve McMaster 4772K4) & 1 set & see parts list & $\sim$\$66 & McMaster-Carr / BMotionTech & brass / steel \\
+RETRO-12 & Inert-gas plumbing (BSPT/KF adapters, barbs, tee, 10\,psi relief valve McMaster 4772K4) & 1 set & --- & about \$66 & McMaster-Carr / BMotionTech & brass / steel \\
 CONS-1 & Quartz tube, 4\,ft $\times$ 35\,mm ID, cut to length & 2 & \$67 & \$134 & QSI Quartz & fused quartz \\
 CONS-2 & Graphite stock for machined crucible/susceptor (56L-3, 3000\dC, 1$\times$6$\times$6\,in) & 1 & \$99 & \$99 & Cotronics & graphite \\
 CONS-3 & Graphite repair cement (Resbond 931-1, 3000\dC) & 1 & \$108 & \$108 & Cotronics & graphite \\
@@ -413,37 +400,23 @@ generator, retrofit, and consumable part.}
 
 %==============================================================
 \section{Design-file inventory}
+\label{sec:designfiles}
 %==============================================================
 
-Table~\ref{tab:designfiles} lists the open design files in the repository
-(paths relative to the repository root; the archival snapshot is the Zenodo
-deposit above). The graphite crucible/susceptor machining drawing is
-pending; its measured dimensions are given in
-Fig.~\ref{fig:s-crucible-dims}. Exports of the LabVIEW block diagrams to
-PDF/PNG for non-LabVIEW readers are likewise pending.
-
-\begin{table}[htbp]
-\centering
-\caption{Open design files in the repository.}
-\label{tab:designfiles}
-\footnotesize
-\begin{tabular}{L{5.6cm}L{2.6cm}L{2.6cm}L{4.6cm}}
-\toprule
-Design file & File type & License & Location \\
-\midrule
-LabVIEW control VIs (furnace control, manual control, PID tuning v1/v2, email alert) & LabVIEW \texttt{.vi} & MIT (proposed) & \path{code/induction-furnace-control-code/} \\
-Manual ramping v5 VIs & LabVIEW \texttt{.vi} & MIT (proposed) & \texttt{code/manual-ramping-v5/} \\
-\texttt{plotheatcurve.m} (heat-curve plotter) & MATLAB & MIT (proposed) & \texttt{code/plotheatcurve.m} \\
-Work-coil drawing & PDF / OXPS & CERN-OHL-S (proposed) & \texttt{docs/coils-drawing.pdf}, \texttt{docs/coils.oxps} \\
-System schematics & PPTX (+ extracted text/figures) & CERN-OHL-S (proposed) & \texttt{docs/*.pptx}, \path{paper/extracted-context/} \\
-Temperature-control wiring & PNG & CERN-OHL-S (proposed) & \path{docs/temp-control-modification/} \\
-KF40 overpressure centering ring & STEP & CERN-OHL-S (proposed) & \texttt{docs/KF Supplies/} \\
-YSZ / tantalum-susceptor stack: schematic, heat-curve workbook, configuration survey, compatibility notes & PNG / XLSX / PDF / DOCX & CERN-OHL-S (proposed) & \texttt{docs/YSZ/} \\
-Graphite crucible/susceptor machining drawing & pending & CERN-OHL-S (proposed) & pending (dimensions in Fig.~\ref{fig:s-crucible-dims}) \\
-\bottomrule
-\end{tabular}
-\alttext{Table listing each open design file, its file type, proposed
-license, and its location in the repository.}
-\end{table}
+The complete design package accompanies the raw data in the repository and
+the Zenodo deposit named above. It comprises the LabVIEW control programs
+(furnace control, manual control, PID tuning, and an email status alert,
+along with the standalone manual-ramping variant), a MATLAB heat-curve
+plotting script, the work-coil fabrication drawing
+(Fig.~\ref{fig:s-coil}), the editable system schematics, the
+temperature-control wiring diagram, a STEP model of the KF40 overpressure
+centering ring, and the YSZ high-temperature documentation (the charge-stack
+schematic, the tantalum heat-curve workbook, the configuration survey, and
+the chemical-compatibility notes). The control and analysis code carries an
+MIT license and the hardware design files carry a CERN-OHL-S license, both
+proposed pending final adoption. A machining drawing for the graphite
+crucible/susceptor is not yet part of the package. Its measured dimensions
+are given in Fig.~\ref{fig:s-crucible-dims}. Exports of the LabVIEW block
+diagrams to PDF for readers without LabVIEW are likewise pending.
 
 \end{document}

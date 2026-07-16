@@ -383,10 +383,22 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
   Supplementary Material in Your Manuscript") require SI as a **single separate
   PDF named `SI.pdf`** at initial submission, with alt text under each SI
   figure/table caption; after acceptance AIP deposits it in Figshare with its
-  own DOI. `SI.tex` typesets the content of `paper/supplementary/*.md`
-  (supplementary figures S1–S12, Table S1 specimen–run linkage with hyperlinked
-  raw logs, Table S2 bill of materials, Table S3 design-file inventory) —
-  the `.md` files remain the editable sources of record, so when they change,
-  mirror the change in `SI.tex` and rebuild. Run-ID/specimen-ID detail and
-  exact equipment models are allowed here (they are deliberately kept out of
-  the main text); the no-LEPEL rule still applies.
+  own DOI. **`SI.tex` is the editable source of record for the SI**; the files
+  in `paper/supplementary/` are earlier working notes and are no longer
+  mirrored. Contents: supplementary figures S1–S12, Table S1 specimen–run
+  linkage with hyperlinked raw logs, Table S2 bill of materials, and a prose
+  design-file inventory section (the Table S3 path listing was removed).
+  Run-ID/specimen-ID detail and exact equipment models are allowed here (they
+  are deliberately kept out of the main text); the no-LEPEL rule still applies.
+- **No repository file paths in the SI body or captions.** (R. Guymon, PR #3,
+  2026-07-16: "Rewrite it as though a real person wrote it, and just include
+  the necessary information instead of redirecting a reader to a specific
+  file.") Published SI reads as self-contained prose. The only repository
+  mentions are (a) one availability sentence in the SI's opening paragraph
+  (GitHub URL + Zenodo DOI) and (b) the Table S1 run IDs, which hyperlink to
+  the raw run logs with the URL hidden behind the run-ID text (that linkage
+  was S. Baird's explicit request). Do not reintroduce `\texttt{}`/`\path{}`
+  repo paths, build-script/`make figures` narration, or "the complete
+  cross-reference is <file>"-style redirections. The SI prose also follows
+  the real-person style: no `$\sim$` (write "approximately"/"about") and
+  short declarative sentences.
