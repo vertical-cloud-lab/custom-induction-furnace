@@ -285,6 +285,17 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
     are the LaTeX figure callout "(Fig.~\ref{fig:graingrowth})" and dropping
     a stray asterisk after "cooling system".
 
+31. **Define repeated jargon at first use with a brief reader-facing gloss.**
+    (R. Guymon, PR #3, 2026-07-16.) Terms the paper repeats that a general
+    reader may not know — e.g. "soak" — get a compact parenthetical
+    definition the first time they appear, and are used bare afterwards.
+    Demonstrated in the abstract: "reproduced their soak temperature (the
+    constant temperature held for the duration of the anneal)". So far only
+    "soak" has been treated (the requester asked to see the approach on that
+    word first); a full-manuscript pass over other candidates (susceptor,
+    charge stack, EBSD/Kikuchi, backfill, RF coupling, etc.) is pending his
+    go-ahead.
+
 26. **Do not describe the data as "archived" or write meta-information about
     the data — present the data itself and expound on it.** (R. Guymon,
     PR #3, 2026-07-08.) The reader is someone learning how the furnace
