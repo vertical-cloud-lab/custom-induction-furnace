@@ -143,12 +143,13 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
 
 18. **The paper must be 5 pages or less** (clean `paper.pdf`, including
     references). (R. Guymon, PR #3, 2026-07-08, citing the AIP author
-    instructions.) The main text carries only the six essential figures
+    instructions.) The main text carries only the seven essential figures
     (system overview v2, assembled-furnace photo, crucible loading sequence,
-    the raw Kikuchi pattern, the Ni4N5 microstructure panel, and the
-    as-recorded YSZ 2500 °C/45 min micrograph); all
+    the raw Kikuchi pattern, the thermal-grooving panel — moved up from the
+    SI at R. Guymon's request, PR #3, 2026-07-15 — the Ni4N5 microstructure
+    panel, and the as-recorded YSZ 2500 °C/45 min micrograph); all
     other figures live in `paper/supplementary/supplementary-figures.md`
-    (S1–S13) with their full captions, and the prose states the corresponding
+    (S1–S12) with their full captions, and the prose states the corresponding
     metrics and points to the supplementary material. When adding content,
     keep the clean build at ≤5 pages — cut or move material to supplementary
     rather than exceeding it. (The draft build with the status box/\todo
@@ -357,12 +358,20 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
   `paper/paper-draft.pdf` after editing `paper/paper.tex`.
 - `paper/real_person_paper.tex` → `make real` → `paper/real_person_paper.pdf` is
   the "real person" restyled variant requested by R. Guymon (PR #3, 2026-07-14):
-  identical content/figures/references to `paper.tex`, but the prose follows the
-  Extension-to-ceramics section's style — no `$\sim$` approximations (write
-  "approximately" or a plain range) and no em-dash/semicolon/colon splices
-  (short declarative sentences). It intentionally does NOT replace `paper.pdf`.
-  If `paper.tex` content changes are meant to carry over, mirror them here in
-  that style.
+  the prose follows the Extension-to-ceramics section's style — no `$\sim$`
+  approximations (write "approximately" or a plain range) and no
+  em-dash/semicolon/colon splices (short declarative sentences).
+  **`real_person_paper.tex` is now the live manuscript — make all content
+  edits there. `paper.tex` / `paper.pdf` / `paper-draft.pdf` are frozen as the
+  pre-restyle record; do not edit or rebuild them** (R. Guymon, PR #3,
+  2026-07-15/16). Content differences from the frozen `paper.tex`: the
+  thermal-grooving panel is main-text Fig. 5 (so the microstructure panel is
+  Fig. 6), and the AIP-required "Supplementary Material" section follows the
+  Conclusions. On length: AIP's RSI rule caps contributed Conference Articles
+  at five pages, and its word-count method **excludes the abstract, author
+  list, acknowledgments, and references** — so body content should stay
+  within five pages' worth, but the reference list spilling onto a further
+  page does not violate the limit.
 - REVTeX 4.2f predates the 2023+ LaTeX kernel/array table internals; `paper.tex`
   disables REVTeX's begin-document tabular patching (see the commented
   `\switch@tabular` override in the preamble) — do not remove it, and do not use
@@ -375,7 +384,7 @@ These apply to the **whole manuscript**, not just the line a reviewer happened t
   PDF named `SI.pdf`** at initial submission, with alt text under each SI
   figure/table caption; after acceptance AIP deposits it in Figshare with its
   own DOI. `SI.tex` typesets the content of `paper/supplementary/*.md`
-  (supplementary figures S1–S13, Table S1 specimen–run linkage with hyperlinked
+  (supplementary figures S1–S12, Table S1 specimen–run linkage with hyperlinked
   raw logs, Table S2 bill of materials, Table S3 design-file inventory) —
   the `.md` files remain the editable sources of record, so when they change,
   mirror the change in `SI.tex` and rebuild. Run-ID/specimen-ID detail and

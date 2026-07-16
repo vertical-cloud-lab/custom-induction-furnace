@@ -1,4 +1,4 @@
-# Supplementary figures (S1–S13)
+# Supplementary figures (S1–S12)
 
 Figures moved out of the main manuscript when it was condensed to the 5-page
 limit (R. Guymon, PR #3, 2026-07-08). All image files are rendered
@@ -92,21 +92,14 @@ at 8×8 binning) saved automatically during EBSD mapping of the early-campaign
 specimens `Ni_003b1a` and `Ni_003a1b`; more than 100,000 such patterns are
 archived.
 
-**Figure S11 — Grain-boundary thermal grooving.**
-![Fig. S11](../figures/fig_grooving.png)
-Grain-boundary thermal grooving on specimen `Ni4N5_053` after a
-1200 °C / 12 h anneal, imaged edge-on in the as-annealed condition (ultrasonic
-ethanol clean only; no polishing). (a) Edge view at 350× (200 µm scale bar):
-several grain boundaries traverse the full sheet thickness. (b) Edge and top
-surface at 800× (50 µm scale bar), with grooves outlining the surface grain
-structure. (c) A single grooved boundary at 12,000× (5 µm scale bar): the
-deep trench develops as grain-boundary energy equilibrates against surface
-energy at the soak temperature.
+(The grain-boundary thermal-grooving panel, `fig_grooving.png`, formerly
+Figure S11 here, was moved into the main text as Fig. 5 on 2026-07-16; the
+specimen is `Ni4N5_053`, run IFrun059.)
 
 ## YSZ / high-temperature extension
 
-**Figure S12 — Tantalum-susceptor heat curves.**
-![Fig. S12](../figures/fig_ta_heatcurve.png)
+**Figure S11 — Tantalum-susceptor heat curves.**
+![Fig. S11](../figures/fig_ta_heatcurve.png)
 Measured heat curves of the tantalum-susceptor (ceramic) stack. (a) Pyrometer
 temperature vs. generator power command for one and two stacked tantalum
 susceptor blocks (the faint series repeats the single-block measurement on
@@ -115,8 +108,8 @@ command before the chamber pressure interlock ended the test. (b) Timed
 two-block ramp/soak: a constant 17 % command holds ~2000 °C (2000 ± 3 °C over
 the final hour) before a stepped ramp-down.
 
-**Figure S13 — YSZ charge stack and resulting microstructure.**
-![Fig. S13](../figures/fig_ysz.png)
+**Figure S12 — YSZ charge stack and resulting microstructure.**
+![Fig. S12](../figures/fig_ysz.png)
 (a) Charge-stack schematic: inside a fresh ~35 mm-ID quartz tube, the YSZ
 specimen (red) is sandwiched between two 25.5 mm tantalum susceptor blocks,
 resting on a 28 mm ceramic heat-dissipation stub (boron nitride for best
