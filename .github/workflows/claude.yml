@@ -18,6 +18,8 @@ jobs:
       (github.event_name == 'pull_request_review' && contains(github.event.review.body, '@claude')) ||
       (github.event_name == 'issues' && (contains(github.event.issue.body, '@claude') || contains(github.event.issue.title, '@claude')))
     runs-on: ubuntu-latest
+    # Allow long waits (e.g., Edison polling) without hitting a job-level limit
+    timeout-minutes: 180
     permissions:
       contents: read
       pull-requests: read
@@ -36,8 +38,17 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           EDISON_PLATFORM_API_KEY: ${{ secrets.EDISON_PLATFORM_API_KEY }}
+          # Allow long-blocking foreground commands (e.g., Edison polling)
+          BASH_DEFAULT_TIMEOUT_MS: "900000" # 15 min default per Bash call
+          BASH_MAX_TIMEOUT_MS: "3600000" # 60 min ceiling per Bash call
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+
+          # # Optional (riskier): Print the full turn-by-turn JSON execution log in the step output
+          # show_full_output: true
+
+          # # Optional (riskier): Render a human-readable "Claude Code Report" in the job's Step Summary
+          # display_report: true
 
           # This is an optional setting that allows Claude to read CI results on PRs
           additional_permissions: |
@@ -53,3 +64,11 @@ jobs:
           claude_args: |
             --model claude-fable-5
             --permission-mode bypassPermissions
+
+      # # Optional, recommended if you set show_full_output=True
+      # - name: Upload Claude execution log
+      #   if: always() && steps.claude.outputs.execution_file != ''
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: claude-execution-log
+      #     path: ${{ steps.claude.outputs.execution_file }}
