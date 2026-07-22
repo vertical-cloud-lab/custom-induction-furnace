@@ -67,6 +67,19 @@
 %% dissipation; grooving figure/caption describe multiple grooved boundaries
 %% and triple junctions; the microstructure figure is the cropped optical
 %% panel only; and the Conclusions are rewritten around no-preparation EBSD.
+%% Wording pass 3 (S. Baird, PR #12, 2026-07-22): crucible-repair sentence
+%% deleted; Sec. III describes the pyrometer connection (both-ends-open
+%% quartz tube, custom 3D-printed housing with a KF40-sized termination,
+%% quartz disc sealed against an O-ring); the vent valve's soft-vent /
+%% turbopump-protection role stated; Pd / "thermal-evaporation" dropped from
+%% the logged-anneal sentence; the calibration paragraph split and framed
+%% around linearity-for-a-fixed-setup; the representative-soak paragraph
+%% keeps only the soak statistic and notes the profile is user-programmed;
+%% SI traces cited by figure number (S4--S7); the reported-temperature
+%% caveat reworded ("specific to our setup"); Sec. V opens with
+%% straight-from-furnace no-prep EBSD; the grooving sentence reworded; the
+%% columnar-structures aside moved to the Conclusions (with its citation);
+%% the grain-size-measurement sentence removed.
 %%
 %% Built on REVTeX 4.2 with the AIP substyles (`rsi` journal option) — the class
 %% behind the official AIP Publishing template. Template files and the RSI/AIP
@@ -370,8 +383,7 @@ end seats in a teflon tube at the KF40 fitting below.
 % the sample assembly rests on a retaining ring of a KF40 flange (Sec. II);
 % both statements are kept -- confirm the exact load path (does the teflon
 % tube sit on that retaining ring?) with C. Nyborg.
-Crucibles are repaired
-with graphite cement rather than discarded. The crucible is used primarily
+The crucible is used primarily
 for the metal grain-growth anneals. Graphite also works as a susceptor for some
 ceramic charges when the contact chemistry permits.
 Sec.~\ref{sec:ysz} describes how a compatible susceptor is selected for
@@ -398,8 +410,12 @@ bore, leaving an optical path for the pyrometer.}
 Following the heating path, the generator's heating head mounts on an
 adjustable platform on the bolted support stand so the coil centers on the
 crucible position of the vertically suspended quartz tube. The vacuum path
-begins at the quartz tube, whose open end terminates in a KF40 flange closed
-by a 55\,mm quartz optical disc. Every flanged joint compresses an elastomer
+begins at the quartz tube, which is open at both ends. Its lower end joins
+the vacuum hardware below through a KF40 flange. Its upper end mates to the
+pyrometer housing, a custom 3D-printed part that terminates in a KF40-sized
+fitting. At that joint the chamber is sealed not by the printed part but by
+a 55\,mm quartz optical disc pressed against an O-ring, and the pyrometer
+sights through this disc down the chamber axis. Every flanged joint compresses an elastomer
 O-ring carried on a centering ring, so the vacuum hardware assembles with
 hand-tightened clamps and no tools. These seals support the 10$^{-6}$ to
 10$^{-8}$\,Torr operating vacuum. From the bottom of the vacuum column, a tee
@@ -410,7 +426,10 @@ separate support, mechanically decoupled so its vibration does not reach the
 chamber or the pyrometer sight line. Photographs of the pumping station as
 installed, together with the relief valve at the base of the vacuum column,
 are given in the supplementary material. On the gas path, the argon regulator
-feeds the automated vent valve. A mass flow controller between them is helpful
+feeds the automated, electrically triggered vent valve. This is a
+specialized commercial component that admits gas in a controlled way rather
+than dumping atmospheric pressure into the chamber, which could damage the
+spinning turbopump. A mass flow controller between them is helpful
 when continuous inert gas flow is required. On the control path, electrical
 isolation is maintained between the DAQ wiring and the generator interface.
 Manual control is verified before automated ramping and soaking are enabled.
@@ -428,34 +447,41 @@ once the turbo pump has stopped.
 %==============================================================
 
 The furnace has completed more than one hundred logged anneals of Ni200 and
-Ni (4N5, i.e., 99.995\,\% purity) nickel charges, and of palladium
-thermal-evaporation charges, at 900 to
+Ni (4N5, i.e., 99.995\,\% purity) nickel charges at 900 to
 1400\,\celsius, with soaks from minutes to 40\,h. The supplementary material
 links each result below to its underlying run log.
 
-For one fixed configuration of Ni (4N5) specimen, quartz tube, graphite
-crucible, and optics, four steady-state anneals spanning 1200 to
-1400\,\celsius{} give a monotonic relation between the soak-mean analog
-power command and the soak-mean pyrometer temperature. The relation is well
-described by $T = 931 + 632\,I$, with $T$ in \celsius{} and $I$ in mA, and
-$R^2 = 0.991$. The offset shifts with charge and optical configuration, so
-this is an operational calibration for a given setup, not a universal
-command--temperature law. A Ni (4N5) anneal at a nominal 1300\,\celsius{} and
-12\,h condition serves as the representative closed-loop run, and its trace
-is given in the supplementary material. The soak held
-$1302.1 \pm 3.0$\,\celsius{} over the 12\,h plateau. The 10--90\,\% rise
-time was approximately 1135\,s, the overshoot was approximately
-12\,\celsius, and the drift was a negligible $-0.02$\,\celsius{} per hour.
+Four steady-state anneals spanning 1200 to 1400\,\celsius{} were run with
+one fixed configuration of Ni (4N5) specimen, quartz tube, graphite
+crucible, and optics. Across these anneals, the soak-mean pyrometer
+temperature follows the soak-mean analog power command monotonically and
+approximately linearly. The relation is well described by
+$T = 931 + 632\,I$, with $T$ in \celsius{} and $I$ in mA, and $R^2 = 0.991$
+(Fig.~S4 of the supplementary material). The fit is specific to this fixed
+setup. Its coefficients shift with the charge, crucible, and optical
+configuration, so any modification to the system calls for recalibration.
+The point is that a fairly linear operational calibration exists for a
+given setup, not that there is a universal command--temperature law. A
+Ni (4N5) anneal at a nominal 1300\,\celsius{} and 12\,h condition serves as
+the representative closed-loop run. The full annealing curve, including the
+ramp to temperature, is specified by the user in the control software in
+advance. The recorded trace is given in Fig.~S5 of the supplementary
+material. The soak held $1302.1 \pm 3.0$\,\celsius{} over the 12\,h
+plateau.
 
 Eight Ni (4N5) anneals at a nominal 1200\,\celsius{} and 12\,h condition were
 run under the same gas-flow configuration. They reproduced their soak
 temperature to $1201.2 \pm 1.3$\,\celsius, a coefficient of variation of
-0.11\,\%. Long-duration stability was demonstrated with two Ni200 anneals at
+0.11\,\% (Fig.~S6 of the supplementary material). Long-duration stability
+was demonstrated with two Ni200 anneals at
 1325\,\celsius. The first held for 20\,h at $1326.5 \pm 1.5$\,\celsius{}
 with a drift of $-0.004$\,\celsius{} per hour, and the second held for
-40\,h. Figures for both are in the supplementary material. Reported
-temperatures are closed-loop ratio-pyrometer readings in a fixed optical
-geometry. Absolute specimen temperature still depends on emissivity and
+40\,h. Both traces are shown in Fig.~S7 of the supplementary material.
+% SI figure numbers (S4 calibration, S5 representative, S6 repeatability,
+% S7 long soak) are hard-coded here; keep in sync with SI.tex figure order.
+Reported temperatures are specific to our setup. Slight variations to the
+optical pathway or other conditions can affect the temperature readings. By
+extension, absolute specimen temperature still depends on emissivity and
 surface
 condition~\cite{ham2016insituspectralemissivity,giulietti2025spectralemissivitymeasurement,kieruj2016determinationofemissivity}.
 
@@ -466,10 +492,13 @@ condition~\cite{ham2016insituspectralemissivity,giulietti2025spectralemissivitym
 The furnace exists to change microstructure, so the decisive test is what
 the anneals do to real specimens. A striking feature of that test is that it
 required no metallographic sample preparation at all. The EBSD specimens
-shown here were never ground, polished, or etched. Each was pulled directly
-from the furnace chamber and placed directly into the EBSD chamber.
-Figure~\ref{fig:kikuchi} shows a raw EBSD pattern, also called a Kikuchi
-pattern, from such an unprepared furnace-annealed nickel specimen,
+shown here were never ground, polished, or etched. Each went straight from
+the furnace to the SEM, pulled directly from the furnace chamber and placed
+directly into the EBSD chamber, and each still returned high-quality
+diffraction patterns.
+Figure~\ref{fig:kikuchi} shows such a high-quality raw EBSD pattern, also
+called a Kikuchi
+pattern, from an unprepared furnace-annealed nickel specimen,
 reproduced exactly as the EBSD detector saved it during orientation mapping.
 Even at the coarse $8\times8$ binning used for mapping, the bands and zone
 axes are crisply resolved. Preparation-free EBSD works here for two reasons.
@@ -499,8 +528,7 @@ grooving is itself a record of the anneal. Figure~\ref{fig:grooving} shows
 edge-on views of a Ni (4N5) specimen annealed at 1200\,\celsius{} for 12\,h and
 cleaned only ultrasonically. The grooves have deepened enough that they
 delineate the grain structure on their own, with no etching. Several grain
-boundaries traverse the full sheet thickness. This is a step toward columnar
-grain structures~\cite{zhang2007dynamicsandmechanism}.
+boundaries traverse the full sheet thickness.
 
 \begin{figure}[tb]
 \centering
@@ -557,9 +585,8 @@ Figure~\ref{fig:microstructure} shows the microstructure such an anneal
 produces for a Ni (4N5) specimen soaked 20\,h at 1300\,\celsius{} under the
 constant 20\,SCCM argon flow, with a measured soak of approximately
 1301\,\celsius.
-The optical grain map resolves an equiaxed grain network delineated by
-thermal grooving alone. Grain sizes were measured directly in the calibrated
-microscope image~\cite{bramfitt2001metallographersguidepractice}.
+The grains are equiaxed, and thermal grooving allows for the full grain
+boundary network to be observed under an optical microscope.
 
 \begin{figure}[tb]
 \centering
@@ -664,7 +691,8 @@ only a monotonic analog power-control input, the design transfers across
 generators and is directly reusable at a small fraction of turn-key cost.
 In the annealed nickel, grains and their boundaries span the full sheet
 thickness, and the deep thermal grooves that mark those boundaries point to
-columnar grain-growth studies as a natural next application.
+columnar grain-growth studies as a natural next
+application~\cite{zhang2007dynamicsandmechanism}.
 
 %==============================================================
 \section*{Supplementary Material}
