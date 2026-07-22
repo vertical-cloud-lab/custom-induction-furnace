@@ -1,0 +1,399 @@
+%% Supplementary material (SI.pdf) for the Review of Scientific Instruments
+%% manuscript (real_person_paper.tex — the live manuscript; paper.tex/paper.pdf
+%% are the frozen pre-restyle record). "Main text Fig. N" mentions below track
+%% real_person_paper.tex figure numbering.
+%%
+%% Format follows the AIP Publishing author instructions ("Using Supplementary
+%% Material in Your Manuscript", mirrored in
+%% template/rsi/aip-author-instructions-2026-07-02.txt):
+%%   - at initial submission, supplementary material is uploaded as a single
+%%     separate PDF named SI.pdf;
+%%   - supplementary figures/tables carry S-prefixed numbers (Fig. S1, Table S1);
+%%   - alt text is included under each figure/table caption in the SI file;
+%%   - after acceptance AIP deposits the file in Figshare with its own DOI.
+%%
+%% Figure pass (S. Baird, PR #12, 2026-07-22): the vacuum/gas-handling
+%% photos moved here from the main text (Fig. S3); Table S1 gains the row
+%% for the unlinked EBSD specimen Ni4N5_069 (main-text Fig. 4b); "main text
+%% Fig. N" mentions updated for the merged main-text figures (overview+photo
+%% = Fig. 1, crucible = Fig. 2); material naming follows the main text's
+%% "Ni (4N5)" convention (specimen IDs keep their literal Ni4N5_### form).
+%%
+%% SI.tex is the editable source of record for the supplementary material
+%% (R. Guymon, PR #3, 2026-07-16). The SI is written as self-contained prose:
+%% no repository file paths appear in the body or captions. The repository is
+%% mentioned once (GitHub + Zenodo DOI) in the opening paragraph, and the run
+%% IDs in Table S1 hyperlink to the raw run logs (URLs hidden behind the run-ID
+%% text). The files in paper/supplementary/ are earlier working notes, not
+%% sources of record. Build: `make si` (pdflatex x2).
+%%
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{pdflscape}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+\usepackage[htt]{hyphenat} % allow long \texttt{} paths to break across lines
+\sloppy
+
+% S-prefixed numbering per AIP supplementary-material convention.
+\renewcommand{\thefigure}{S\arabic{figure}}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\thesection}{S\Roman{section}}
+\renewcommand{\thesubsection}{\thesection.\Alph{subsection}}
+
+\newcommand{\dC}{\,$^{\circ}$C}
+\newcommand{\um}{\,\textmu m}
+% Alt text under each caption (AIP accessibility instructions for SI files).
+\newcommand{\alttext}[1]{\par\smallskip{\footnotesize\emph{Alt text:} #1\par}}
+% Hyperlink a run ID to its raw log in the data repository.
+\newcommand{\runlog}[2]{\href{https://github.com/vertical-cloud-lab/custom-induction-furnace/blob/main/docs/data_log/#1}{#2}}
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\begin{document}
+
+\begin{center}
+{\Large\bfseries Supplementary material for:\\[2pt]
+Retrofitting a commercial RF induction generator into a computer-controlled,
+vacuum-integrated annealing system for reactive-metal grain growth}\\[10pt]
+Sterling G. Baird, Ryan Weber, Christopher Nyborg, Ronnie Guymon,
+Gage Erickson, and Oliver Johnson\\[2pt]
+{\itshape Department of Mechanical Engineering, Brigham Young University,
+Provo, Utah 84602, USA}
+\end{center}
+
+\medskip
+\noindent This document collects the supplementary figures
+(Figs.~S1--S10), the specimen--thermal-history linkage
+(Table~\ref{tab:linkage}), the itemized bill of materials
+(Table~\ref{tab:bom}), and an inventory of the openly available design
+files (Sec.~\ref{sec:designfiles}) that support the main text. The complete
+raw data and design package is openly available at
+\url{https://github.com/vertical-cloud-lab/custom-induction-furnace}, with
+an archival snapshot deposited at Zenodo,
+\href{https://doi.org/10.5281/zenodo.20878017}{10.5281/zenodo.20878017}.
+Each run ID in Table~\ref{tab:linkage} links directly to the corresponding
+raw run log. Alt text accompanies each figure and table caption.
+
+%==============================================================
+\section{Hardware}
+%==============================================================
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\linewidth]{figures/fig_crucible_dimensions.png}
+\caption{Measured dimensions of each part of the graphite crucible/susceptor
+assembly, with the coloured measurement lines drawn on the corresponding
+photograph. (a)~Alumina spacer disc, 14\,mm dia. (b)~Sapphire pyrometer
+window, 9.5\,mm dia., 0.5\,mm thick. (c)~Crucible body, top: machined sample
+cavity 14.55\,mm ID (teal), 20.30\,mm OD (orange); the cup is 6.5\,mm tall
+with a 2\,mm base. (d)~Crucible body, bottom face, 20.30\,mm dia.
+(e)~Crucible lid, oblique: the stepped plug seats into the cavity ---
+13.70\,mm upper step (teal), 14.55\,mm lower shoulder (orange); the upper
+step is 4\,mm tall (H1, yellow) and the lower shoulder 6\,mm tall (H2,
+green). (f)~Crucible lid, top: four concentric steps of 13.70\,mm
+(outermost), 9.75\,mm, 5\,mm, and a 3.5\,mm central pyrometer-sighting bore.
+(g)~Crucible lid, bottom: 14.55\,mm seating face (green) and the 3.5\,mm
+through-bore (orange). Fully assembled the crucible stands 13\,mm tall.}
+\label{fig:s-crucible-dims}
+\alttext{Seven labeled photographs of the crucible parts, each overlaid with
+colored measurement lines and numeric callouts giving the diameters, step
+heights, and the central pyrometer bore dimensions.}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.62\linewidth]{../docs/coils-drawing.pdf}
+\caption{Work-coil fabrication drawing used for this build, showing
+the coil geometry and dimensional callouts used to form and mount the
+liquid-cooled copper coil around the quartz chamber.}
+\label{fig:s-coil}
+\alttext{Engineering drawing of the liquid-cooled copper work coil with
+dimensional callouts for the coil height, inner diameter, number of turns,
+and lead routing.}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.75\linewidth]{figures/fig_vacuum_details.jpg}
+\caption{Vacuum and gas-handling details. (a)~Turbo pumping station with the
+roughing pump mounted on a separate support. The pump couples to the pumping
+station only through a flexible hose, so its vibration is not transmitted
+into the chamber. (b)~Overpressure relief valve (0.5\,psi cracking pressure)
+at the bottom of the vacuum column, below the chamber.}
+\label{fig:s-vacuum-details}
+\alttext{Two labeled photographs: the turbo pumping station with its
+separately supported roughing pump connected by a flexible hose, and the
+overpressure relief valve mounted at the bottom of the vacuum column.}
+\end{figure}
+
+\clearpage
+%==============================================================
+\section{Thermal performance}
+%==============================================================
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.6\linewidth]{figures/fig_calibration.png}
+\caption{Power-command\,$\rightarrow$\,temperature calibration for one fixed
+Ni (4N5, i.e., 99.995\,\% purity) configuration. Points are soak-mean values; horizontal bars are the
+in-soak standard deviation of the analog command. The dashed line is the
+linear operational calibration ($R^2 = 0.991$, $n = 4$).}
+\label{fig:s-calibration}
+\alttext{Scatter plot of soak-mean temperature against analog power command
+with four points between 1200 and 1400 degrees Celsius and a dashed straight
+fit line through them.}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.6\linewidth]{figures/fig_representative.png}
+\caption{Representative closed-loop anneal (Ni (4N5), nominal
+1300\dC{} / 12\,h): pyrometer temperature with setpoint overlay (top) and
+analog power command (bottom). Soak mean $1302.1 \pm 3.0$\dC, drift
+$-0.02$\dC/h.}
+\label{fig:s-representative}
+\alttext{Two stacked line plots over twelve hours: the pyrometer temperature
+rising to and holding near 1300 degrees Celsius on its setpoint, and the
+analog power command settling to a steady value below.}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.6\linewidth]{figures/fig_repeatability.png}
+\caption{Repeatability of the Ni (4N5) 1200\dC{} / 12\,h cohort ($n = 8$).
+Points are per-run soak-mean temperatures; the band is
+mean\,$\pm$\,SD ($1201.2 \pm 1.3$\dC).}
+\label{fig:s-repeatability}
+\alttext{Plot of eight per-run soak-mean temperatures clustered near 1200
+degrees Celsius inside a shaded band marking the mean plus or minus one
+standard deviation.}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.6\linewidth]{figures/fig_longsoak.png}
+\caption{Long-duration thermal stability: Ni200 anneals at 1325\dC{} held
+for 20\,h and 40\,h.}
+\label{fig:s-longsoak}
+\alttext{Line plot of two anneal temperature traces at 1325 degrees Celsius,
+one held twenty hours and one held forty hours, both essentially flat across
+the soak.}
+\end{figure}
+
+\clearpage
+%==============================================================
+\section{Microstructure}
+%==============================================================
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\linewidth]{figures/fig_kikuchi.png}
+\caption{Raw (as-collected) EBSD acquisitions from furnace-annealed nickel,
+with no metallographic preparation of any kind (no grinding, polishing, or
+etching): each specimen was pulled directly from the furnace chamber and
+placed directly into the EBSD chamber. (a)~Raw Kikuchi pattern (electron
+backscatter pattern) of specimen Ni4N5\_028 as seen live on the detector at
+$8\times8$ binning (30\,ms exposure), with Kikuchi bands and zone axes
+crisply resolved; (b)~the corresponding SEM live view at 70{,}068$\times$,
+where thermal grooving alone delineates the grain boundaries crossed by the
+EBSD line scans (red marks; 1\um{} scale bar). (c--e)~Representative
+per-scan-point raw patterns ($115\times115$\,px at $8\times8$ binning) saved
+automatically during EBSD mapping of the early-campaign specimens
+Ni\_003b1a and Ni\_003a1b. More than 100{,}000 such patterns are preserved
+with the openly available data.}
+\label{fig:s-kikuchi}
+\alttext{Five grayscale panels: a raw Kikuchi diffraction pattern of
+intersecting bright bands, an electron micrograph with grooved grain
+boundaries and line-scan marks, and three small saved detector patterns.}
+\end{figure}
+
+\clearpage
+%==============================================================
+\section{YSZ / high-temperature extension}
+%==============================================================
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.78\linewidth]{figures/fig_ta_heatcurve.png}
+\caption{Measured heat curves of the tantalum-susceptor (ceramic) sample
+assembly.
+(a)~Pyrometer temperature vs.\ generator power command for one and two
+stacked tantalum susceptor blocks (the faint series repeats the single-block
+measurement on the original power controller); the two-block ramp reached
+2344\dC{} at a 33\,\% command before the chamber pressure interlock ended
+the test. (b)~Timed two-block ramp/soak: a constant 17\,\% command holds
+approximately 2000\dC{} ($2000 \pm 3$\dC{} over the final hour) before a
+stepped ramp-down.}
+\label{fig:s-heatcurve}
+\alttext{Two plots: temperature versus power command curves for one and two
+tantalum blocks reaching 2344 degrees Celsius, and a timed ramp holding a
+steady 2000 degrees Celsius for over an hour.}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\linewidth]{figures/fig_ysz.png}
+\caption{YSZ optical micrographs. (a)~YSZ after a 1700\dC{} / 10\,h anneal.
+(b)~An induction-annealed YSZ specimen, showing the equiaxed grain
+structure. The tantalum-susceptor sample assembly used for these anneals is
+drawn in the main text (Fig.~8).}
+\label{fig:s-ysz}
+\alttext{Two optical micrographs of equiaxed YSZ grain structures.}
+\end{figure}
+
+\clearpage
+
+%==============================================================
+\section{Specimen--thermal-history linkage}
+%==============================================================
+
+Table~\ref{tab:linkage} links each characterized specimen to the furnace
+run that produced it. Each run ID hyperlinks to the raw run log. ``Nominal
+soak'' is the target temperature for the run. ``Logged soak T'' is the mean
+pyrometer reading over the soak, taken from the recorded trace.
+``Atmos.''\ indicates whether the log records active argon flow during the
+anneal. ``Characterization'' counts the recorded SEM and optical
+micrographs and notes where EBSD/OIM orientation data exist. The
+live-capture Kikuchi pattern of Fig.~\ref{fig:s-kikuchi}(a) was recorded on
+specimen Ni4N5\_028. The per-scan-point patterns of
+Figs.~\ref{fig:s-kikuchi}(c)--(e) were saved during orientation mapping of
+the early-campaign specimens Ni\_003b1a and Ni\_003a1b.
+
+\begin{landscape}
+\begin{table}[htbp]
+\centering
+\caption{Specimen\,$\leftrightarrow$\,thermal-history linkage for the runs
+used in the manuscript's validation sections. Run IDs link to the raw run
+logs in the data repository.}
+\label{tab:linkage}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llllllll>{\raggedright\arraybackslash}p{3.9cm}}
+\toprule
+Specimen & Material & Run (raw log) & Nominal soak & Logged soak T & Soak time & Atmos. & Characterization & Role / figure \\
+\midrule
+Ni4N5\_026 & Ni (4N5) & \runlog{IFrun021-040/IFrun039_Ni4N5_026_1200C_6h.xlsx}{IFrun039} & 1200\dC & 1200.4\dC & 6\,h & no-flow & --- & Calibration (Fig.~\ref{fig:s-calibration}) \\
+Ni4N5\_027 & Ni (4N5) & \runlog{IFrun021-040/IFrun040_Ni4N5_027_1250C_6h.xlsx}{IFrun040} & 1250\dC & 1250.0\dC & 6\,h & no-flow & --- & Calibration \\
+Ni4N5\_025 & Ni (4N5) & \runlog{IFrun021-040/IFrun038_Ni4N5_025_1300C_1h.xlsx}{IFrun038} & 1300\dC & 1299.9\dC & 1\,h & no-flow & --- & Calibration \\
+Ni4N5\_022 & Ni (4N5) & \runlog{IFrun021-040/IFrun032_Ni4N5_022_1400C_10min.xlsx}{IFrun032} & 1400\dC & 1399.6\dC & 10\,min & no-flow & --- & Calibration \\
+Ni4N5\_084 & Ni (4N5) & \runlog{IFrun061-080/IFrun079_Ni4N5_084_1300C_12h.xlsx}{IFrun079} & 1300\dC & 1302.1\dC & 12\,h & flow & --- & Representative soak (Fig.~\ref{fig:s-representative}) \\
+Ni4N5\_040 & Ni (4N5) & \runlog{IFrun041-060/IFrun052_Ni4N5_040_1200C_12h.xlsx}{IFrun052} & 1200\dC & 1199.8\dC & 12\,h & flow & --- & Repeatability run 1 (Fig.~\ref{fig:s-repeatability}) \\
+Ni4N5\_042,044 & Ni (4N5) & \runlog{IFrun041-060/IFrun054_Ni4N5_042,044_1200C_12h.xlsx}{IFrun054} & 1200\dC & 1201.5\dC & 12\,h & flow & --- & Repeatability run 2 \\
+Ni4N5\_045,046 & Ni (4N5) & \runlog{IFrun041-060/IFrun055_Ni4N5_045,046_1200C_12h.xlsx}{IFrun055} & 1200\dC & 1204.2\dC & 12\,h & flow & --- & Repeatability run 3 \\
+Ni4N5\_047,048 & Ni (4N5) & \runlog{IFrun041-060/IFrun056_Ni4N5_047,048_1200C_12h.xlsx}{IFrun056} & 1200\dC & 1200.6\dC & 12\,h & flow & --- & Repeatability run 4 \\
+Ni4N5\_049,050 & Ni (4N5) & \runlog{IFrun041-060/IFrun057_Ni4N5_049,050_1200C_12h.xlsx}{IFrun057} & 1200\dC & 1201.2\dC & 12\,h & flow & --- & Repeatability run 5 \\
+Ni4N5\_051,052 & Ni (4N5) & \runlog{IFrun041-060/IFrun058_Ni4N5_051,052_1200C_12h.xlsx}{IFrun058} & 1200\dC & 1201.0\dC & 12\,h & flow & --- & Repeatability run 6 \\
+Ni4N5\_053,054 & Ni (4N5) & \runlog{IFrun041-060/IFrun059_Ni4N5_053,054_1200C_12h.xlsx}{IFrun059} & 1200\dC & 1200.3\dC & 12\,h & flow & 4 SEM, 3 opt.\ (Ni4N5\_053) & Repeatability run 7; grooving (main text Fig.~5) \\
+Ni4N5\_056,057 & Ni (4N5) & \runlog{IFrun041-060/IFrun060_Ni4N5_056,057_1200C_12h.xlsx}{IFrun060} & 1200\dC & 1200.9\dC & 12\,h & flow & --- & Repeatability run 8 \\
+Ni200\_015 & Ni200 & \runlog{IFrun081-100/IFrun081_Ni200_015_1325C_20h.xlsx}{IFrun081} & 1325\dC & 1326.5\dC & 20\,h & flow & 3 opt. & Long soak, 20\,h (Fig.~\ref{fig:s-longsoak}) \\
+Ni200\_017 & Ni200 & \runlog{IFrun061-080/IFrun080_Ni200_017_1325C_40h.xlsx}{IFrun080} & 1325\dC & 1326.3\dC & 40\,h & flow & 2 opt. & Long soak, 40\,h (Fig.~\ref{fig:s-longsoak}) \\
+Ni4N5\_079,080 & Ni (4N5) & \runlog{IFrun061-080/IFrun072_Ni4N5_079,080_1400C_12h.xlsx}{IFrun072} & 1400\dC & --- & 12\,h & flow & --- & Process-window specimen \\
+Ni4N5\_034 & Ni (4N5) & \runlog{IFrun041-060/IFrun049_Ni4N5_034_1200C_12h.xlsx}{IFrun049} & 1200\dC & 1200.0\dC & 12\,h & no-flow & 4 SEM, EBSD & EBSD IPF map (main text Fig.~4a) \\
+Ni4N5\_069 & Ni (4N5) & --- (log not in parsed set) & --- & --- & --- & --- & 16 SEM, EBSD & EBSD IPF map (main text Fig.~4b; masked specimen) \\
+Ni4N5\_081 & Ni (4N5) & \runlog{IFrun081-100/IFrun082_Ni4N5_081_1300C_20h.xlsx}{IFrun082} & 1300\dC & 1301.4\dC & 20\,h & flow & 10 SEM, 10 opt., EBSD & Microstructure (main text Fig.~6) \\
+Ni4N5\_010 & Ni (4N5) & \runlog{IFrun001-020/IFrun016_Ni4N5_010.xlsx}{IFrun016} & 1200\dC & 1199.9\dC & --- & no-flow & 4 opt. & Characterization only \\
+Ni4N5\_012 & Ni (4N5) & \runlog{IFrun001-020/IFrun019_Ni4N5_012.xlsx}{IFrun019} & 1200\dC & 1199.6\dC & --- & no-flow & 1 opt. & Characterization only \\
+Ni200\_001 & Ni200 & \runlog{IFrun001-020/Ni200_001_IFrun004.lvm}{IFrun004}/\runlog{IFrun001-020/Ni200_001_IFrun005.lvm}{IFrun005} & --- & --- & --- & no-flow & 3 opt. & Characterization only \\
+Ni4N5\_001b & Ni (4N5) & IFrun006 (log not in parsed set) & --- & --- & --- & no-flow & 2 opt. & Characterization only \\
+\bottomrule
+\end{tabular}
+\alttext{Table linking each specimen to its furnace run, nominal and logged
+soak temperature, soak time, atmosphere, characterization file counts, and
+its role or figure in the manuscript.}
+\end{table}
+\end{landscape}
+
+\clearpage
+%==============================================================
+\section{Bill of materials}
+%==============================================================
+
+Table~\ref{tab:bom} is the itemized bill of materials for the reproducible
+build. Designator prefixes group the parts: GEN is the induction generator
+package (generator, controller, chiller, heating head, and line
+transformer), RETRO is the reproducible retrofit (the control, vacuum, and
+sensing parts), and CONS is consumables. All costs are in USD and reflect
+the laboratory's purchase records. Several parts came from used or surplus
+sources as noted. Shipping and tax are excluded unless stated. The GEN line
+items came from a single vendor quote, with the generator, heating head,
+controller, chiller, and line transformer totaling \$16{,}487. For the
+high-temperature ceramic (YSZ) configuration, the graphite crucible assembly
+is exchanged for tantalum susceptor blocks resting on a ceramic stub that
+acts as a diffusion barrier (boron nitride for best results, sometimes MgO).
+Vendor records for the tantalum blocks and boron nitride stubs were not
+retained.
+
+\begin{table}[htbp]
+\centering
+\caption{Itemized bill of materials for the reproducible build (USD).}
+\label{tab:bom}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lL{5.4cm}cL{1.8cm}L{1.4cm}L{3.1cm}L{1.3cm}}
+\toprule
+Desig. & Component & No. & Unit \$ & Total & Source & Material \\
+\midrule
+GEN-1 & CEIA ``Power Cube'' PW3-90/50 solid-state RF generator (V3000-0070) & 1 & \$8{,}240 & \$8{,}240 & East Coast Induction (USA) & --- \\
+GEN-2 & Power Controller C-V3 Plus (V3000-0414) & 1 & \$1{,}670 & \$1{,}670 & East Coast Induction (USA) & --- \\
+GEN-3 & Recirculating chiller (MIL043008 air-cooled closed-loop, V1650-0060; vendor-listed as a water chiller, but the loop is charged with ethylene glycol coolant) & 1 & \$1{,}575 & \$1{,}575 & East Coast Induction (USA) & --- \\
+GEN-4 & Heating head + 3\,m cable and coolant lines (PWH-13-12-30/50, V3000-0300); 1 coil made to spec at no charge with a complete unit & 1 & \$3{,}337 & \$3{,}337 & East Coast Induction (USA) & copper \\
+GEN-5 & Line auto-transformer, 12\,kVA / 3PH / 480$\times$380\,V with taps (V049-0508; facility-dependent) & 1 & \$1{,}665 & \$1{,}665 & East Coast Induction (USA) & --- \\
+RETRO-1 & LabVIEW-compatible DAQ with analog out + in (0--5\,V AO): NI USB-6000 DAQ & 1 & \$281.00 & \$281.00 & National Instruments & --- \\
+RETRO-2 & Dual-wavelength ratio pyrometer (LumaSense IMPAC ISR~6, 800--2500\dC), used & 1 & \$385.00 (used) & \$385.00 & eBay --- used listing (new list about \$5{,}500, LumaSense quote 00161403) & --- \\
+RETRO-3 & 24\,V linear power supply for pyrometer (International Power) & 1 & \$51 & \$51 & Mouser & --- \\
+RETRO-4 & Voltage-to-current (0--5\,V $\rightarrow$ 4--20\,mA) loop conditioner set for generator power-setpoint input (NI-9265 input module + NI-9203 output module + NI cDAQ-9174 chassis) & 1 set & \$3{,}755.00 & \$3{,}755.00 & National Instruments & --- \\
+RETRO-5 & Edwards nEXT T-Station 85H Dry turbo pumping station (1Ph 100--120\,V, 50/60\,Hz, DN 40 ISO-KF) & 1 & \$13{,}573.65 & \$13{,}573.65 & Edwards Vacuum & --- \\
+RETRO-5A & Wide-range vacuum gauge D14701000 (36\,V, 2\,W); discontinued, replaced by D3G0021100 & 1 & \$1{,}543.29 & \$1{,}543.29 & Chemtech Scientific & --- \\
+RETRO-6 & Edwards TAV5 vent valve (new) & 1 & \$652.80 & \$652.80 & Edwards Vacuum & --- \\
+RETRO-6A & Sierra SmartTrak 100L mass flow controller (optional; helpful when continuous inert gas flow is required) & 1 & \$550--\$1{,}000 (quote range) & \$550--\$1{,}000 & Sierra / distributor quote & --- \\
+RETRO-7 & Inert-gas regulator (Fisher FS-50) & 1 & \$38 & \$38 & Fisher Scientific & --- \\
+RETRO-8 & KF40 overpressure centering ring & 1 & \$19 & \$19 & IdealVac & aluminum \\
+RETRO-9 & KF40 plastic quick vacuum clamp & 1 & \$23 & \$23 & IdealVac & polymer \\
+RETRO-10 & Optical window, custom quartz disc 55\,mm $\times$ 1.5\,mm (1 used; buy 3 for spares) & 3 & \$18 (est.) & \$54 & Custom-cut metric disc --- vendor not recorded in parts list; price approximate (McMaster stocks only imperial sizes) & fused quartz \\
+RETRO-11 & Ultra-high-temperature quartz disc 2\,in $\times$ 1/16\,in (McMaster 1357T12) & 1 & \$19 & \$19 & McMaster-Carr & fused quartz \\
+RETRO-12 & Inert-gas plumbing (BSPT/KF adapters, barbs, tee, 10\,psi relief valve McMaster 4772K4) & 1 set & --- & about \$66 & McMaster-Carr / BMotionTech & brass / steel \\
+CONS-1 & Quartz tube, 4\,ft $\times$ 35\,mm ID, cut to length & 2 & \$67 & \$134 & QSI Quartz & fused quartz \\
+CONS-2 & Graphite stock for machined crucible/susceptor (56L-3, 3000\dC, 1$\times$6$\times$6\,in) & 1 & \$99 & \$99 & Cotronics & graphite \\
+CONS-3 & Graphite repair cement (Resbond 931-1, 3000\dC) & 1 & \$108 & \$108 & Cotronics & graphite \\
+CONS-4 & Alumina crucible stock (RTC-60-2, 1787\dC, 10\,lb) & 1 & \$91 & \$91 & Cotronics & alumina \\
+CONS-5 & Zirconia crucible stock (760-1, 2204\dC, 10\,lb) & 1 & \$124 & \$124 & Cotronics & zirconia \\
+CONS-6 & Torr-Seal high-vacuum epoxy / O-rings & 1 set & \$57 & \$57 & Varian / McMaster & epoxy / elastomer \\
+\bottomrule
+\end{tabular}
+\alttext{Itemized bill of materials with designator, component description,
+quantity, unit and total cost in US dollars, source, and material for each
+generator, retrofit, and consumable part.}
+\end{table}
+
+\clearpage
+
+%==============================================================
+\section{Design-file inventory}
+\label{sec:designfiles}
+%==============================================================
+
+The complete design package accompanies the raw data in the repository and
+the Zenodo deposit named above. It comprises the LabVIEW control programs
+(furnace control, manual control, PID tuning, and an email status alert,
+along with the standalone manual-ramping variant), a MATLAB heat-curve
+plotting script, the work-coil fabrication drawing
+(Fig.~\ref{fig:s-coil}), the editable system schematics, the
+temperature-control wiring diagram, a STEP model of the KF40 overpressure
+centering ring, and the YSZ high-temperature documentation (the
+sample-assembly schematic, the tantalum heat-curve workbook, the
+configuration survey, and
+the chemical-compatibility notes). The control and analysis code carries an
+MIT license and the hardware design files carry a CERN-OHL-S license, both
+proposed pending final adoption. A machining drawing for the graphite
+crucible/susceptor is not yet part of the package. Its measured dimensions
+are given in Fig.~\ref{fig:s-crucible-dims}. Exports of the LabVIEW block
+diagrams to PDF for readers without LabVIEW are likewise pending.
+
+\end{document}

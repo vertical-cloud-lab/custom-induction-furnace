@@ -1,0 +1,10 @@
+session,pattern,indexed_phase,bands_matched,mean_band_fit_deg,confidence_metric,phi1_deg,Phi_deg,phi2_deg
+"191026_Ni_003b1a (scans reg1a, rega1a1)",docs/SEM/raw-kikuchi-patterns/191026_Ni_003b1a/reg1a/reg1a_x0y1039.jpg,FCC (Ni),6/9,0.4,0.54,309.0,61.2,58.3
+"191026_Ni_003b1a (scans reg1a, rega1a1)",docs/SEM/raw-kikuchi-patterns/191026_Ni_003b1a/reg1a/reg1a_x4100y1628.jpg,FCC (Ni),8/9,0.48,0.741,180.2,85.5,99.1
+"191026_Ni_003b1a (scans reg1a, rega1a1)",docs/SEM/raw-kikuchi-patterns/191026_Ni_003b1a/reg1a/reg1a_x4560y4434.jpg,FCC (Ni),8/9,0.35,0.757,323.5,87.7,128.6
+"191026_Ni_003b1a (scans reg1a, rega1a1)",docs/SEM/raw-kikuchi-patterns/191026_Ni_003b1a/rega1a1/rega1a1_x2700y12730.jpg,FCC (Ni),8/9,0.23,0.732,357.4,129.0,70.7
+"191026_Ni_003b1a (scans reg1a, rega1a1)",docs/SEM/raw-kikuchi-patterns/191026_Ni_003b1a/rega1a1/rega1a1_x550y12817.jpg,FCC (Ni),7/9,0.22,0.658,279.9,75.1,139.4
+191031_Ni_003b1a (scan reg2),docs/SEM/raw-kikuchi-patterns/191031_Ni_003b1a/reg2/reg2_x0y1000.jpg,FCC (Ni),8/9,0.62,0.768,228.4,86.2,183.3
+"200616 Ni_003a1b (boxscan, background-corrected)","docs/SEM/200616_Ni4N5_007,081_Ni_003b2/Ni4N5_007/boxscan_003a1b_0degRot/boxscan_003a1b_0degRot_x0y103.jpg",FCC (Ni),3/9,0.37,0.297,151.8,83.5,349.6
+"200616 Ni_003a1b (boxscan, background-corrected)","docs/SEM/200616_Ni4N5_007,081_Ni_003b2/Ni4N5_007/boxscan_003a1b_0degRot/boxscan_003a1b_0degRot_x255y268.jpg",FCC (Ni),3/9,0.35,0.19,321.5,23.6,255.2
+"200616 Ni_003a1b (boxscan, background-corrected)","docs/SEM/200616_Ni4N5_007,081_Ni_003b2/Ni4N5_007/boxscan_003a1b_0degRot/boxscan_003a1b_0degRot_x360y415.jpg",FCC (Ni),3/9,0.4,0.176,321.5,23.6,255.1
