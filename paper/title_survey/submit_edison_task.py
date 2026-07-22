@@ -1,13 +1,19 @@
 """Submit an Edison Scientific analysis task: feedback on the manuscript title
 against 5 years of Review of Scientific Instruments titles/abstracts.
 
+Per https://docs.edisonscientific.com/edison-client/file-management, Analysis
+tasks receive files by (1) uploading with store_file_content and (2) passing
+"data_entry:<data_storage_id>" in runtime_config.environment_config
+.data_storage_uris. (A first attempt that passed files= to create_task
+directly, task 47ac3e82-ba06-4702-9955-49118e8ef6f9, failed immediately.)
+
 Run from paper/title_survey/:  python3 submit_edison_task.py
 Writes the created task id to edison_task_id.txt.
 """
 import os
 
 from edison_client import EdisonClient, JobNames
-from edison_client.models import TaskRequest
+from edison_client.models import RuntimeConfig, TaskRequest
 
 CURRENT_TITLE = (
     "Retrofitting a commercial RF induction generator into a "
@@ -84,10 +90,31 @@ titles with DOIs) from the corpus for your claims.\
 
 def main():
     client = EdisonClient(api_key=os.environ["EDISON_PLATFORM_API_KEY"])
-    task_data = TaskRequest(name=JobNames.ANALYSIS, query=QUERY)
-    responses = client.create_task(
-        task_data, files=["rsi_titles_abstracts_2021-2026.jsonl"]
+    upload = client.store_file_content(
+        name="rsi_titles_abstracts_2021-2026.jsonl",
+        file_path="rsi_titles_abstracts_2021-2026.jsonl",
+        description=(
+            "Titles and abstracts of all 4,408 Review of Scientific "
+            "Instruments journal articles published 2021-07-22 to "
+            "2026-07-22, from Crossref. JSONL with keys doi, year, title, "
+            "abstract."
+        ),
     )
+    storage_id = upload.data_storage.id
+    print("uploaded data storage entry:", storage_id)
+
+    task_data = TaskRequest(
+        name=JobNames.ANALYSIS,
+        query=QUERY,
+        runtime_config=RuntimeConfig(
+            max_steps=30,
+            environment_config={
+                "language": "PYTHON",
+                "data_storage_uris": [f"data_entry:{storage_id}"],
+            },
+        ),
+    )
+    responses = client.create_task(task_data)
     task_id = responses if isinstance(responses, str) else str(responses)
     with open("edison_task_id.txt", "w") as f:
         f.write(task_id + "\n")
