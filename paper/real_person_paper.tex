@@ -39,6 +39,18 @@
 %% is named in the Introduction; the five subsystems are enumerated inline;
 %% "2.5 in in inner" fixed; the coil is described as modular and sized to
 %% the sample geometry (not "tuned to the sample stack").
+%% Wording pass 2 (S. Baird, PR #12, 2026-07-22): the vent valve is automated
+%% (electrically triggered), not manual; the vacuum/backfill operating modes
+%% (low or high vacuum, controlled-SCCM or purge backfill, turbopump running
+%% or stopped) are stated in Sec. II; "KF40 optical window" -> "quartz
+%% optical window"; the generator setpoint is described as either 0--5 V or
+%% 4--20 mA per the generator's configuration; the pyrometer detection floor
+%% is 800 C (matching the stated 800--2500 C sensing range; "700 C" removed);
+%% PID handover reworded ("switches to closed-loop PID control based on the
+%% optically-measured temperature"); the no-support-stand sentence removed;
+%% the sample stack rests on a retaining ring of a KF40 flange; "porting"
+%% reworded; "the lid sits on top"; "relative to the pyrometer"; the
+%% crucible section no longer implies a single fixed assembly height.
 %% Terminology pass (R. Guymon, PR #12, 2026-07-22): one name per stack.
 %% "modernization stack" = the retrofit (control, vacuum, temperature
 %% feedback); formerly drifted to "layer", "modernization layer", and bare
@@ -263,13 +275,19 @@ The vacuum and gas subsystem starts from the 35\,mm inner-diameter
 fused-quartz tube that forms the chamber. The tube connects through a KF40
 flange (a standard clamp-sealed vacuum flange) and a flexible bellows to a
 compact turbo pumping station that
-reaches 10$^{-6}$ to 10$^{-8}$\,Torr. A manual vent valve fed from an
-inert-gas regulator allows controlled venting and
+reaches 10$^{-6}$ to 10$^{-8}$\,Torr. An automated, electrically triggered
+vent valve fed from an inert-gas regulator allows controlled venting and
 backfilling~\cite{kanda2007developmentofhightemperature,inaba1986effectsofthe}.
+These components support a range of operating atmospheres. The furnace can
+run at low or high vacuum, and the chamber can instead be backfilled with
+inert gas and continuously supplied either at a precisely controlled rate,
+for example 20 standard cubic centimeters per minute (SCCM), or as a large
+purge flow. The turbopump can be left running during backfilled operation or
+stopped.
 The atmosphere matters for graphite-crucible anneals. The best results were
 achieved by pumping to high vacuum and then backfilling with argon through
 the vent valve. The chamber was purged first, and a constant argon flow of
-20 standard cubic centimeters per minute (SCCM) was then maintained for the
+20\,SCCM was then maintained for the
 duration of the anneal. The nickel
 grain-growth anneals reported below all ran under this continuous flow.
 Heating under vacuum alone tended to sublime graphite onto the chamber
@@ -281,27 +299,30 @@ during heating.
 Temperature is sensed optically. A dual-wavelength ratio
 pyrometer~\cite{tapetado2016twocolorpyrometerfor,belikov2024fastmultiwavelengthpyrometer}
 with an 800 to 2500\,\celsius{} sensing range views the sample through a
-KF40 optical window. This provides a non-contact signal that is robust to
+quartz optical window. This provides a non-contact signal that is robust to
 emissivity changes and to the RF field that would corrupt
 thermocouples~\cite{ham2016insituspectralemissivity,suleiman2025improvingpyrometryof,usamentiaga2014infraredthermographyfor}.
 Control is implemented in LabVIEW, with virtual instruments (VIs) for
 manual control, automated
-ramping, PID tuning, and email alerts. The DAQ device's
-0--5\,V analog output
+ramping, PID tuning, and email alerts. The generator's power setpoint can be
+commanded either by a 0--5\,V voltage signal or by a 4--20\,mA current-loop
+signal. Which input is used depends on user preference and on how the
+manufacturer configures the generator, which is typically customizable. In
+this build, the DAQ device's 0--5\,V analog output
 drives a voltage-to-current loop conditioner, and the conditioner's
-4--20\,mA output lands on the generator's power-setpoint input. The
+4--20\,mA output drives the generator's power-setpoint input. The
 pyrometer's analog output returns to a DAQ input, which closes the PID loop.
-Below the pyrometer's detection floor of approximately 700\,\celsius, the VI
-ramps open-loop. Once the pyrometer returns a sustained valid reading,
-control hands over to closed-loop PID on the optical
+Below the pyrometer's 800\,\celsius{} detection floor, the VI
+ramps open-loop. Once the pyrometer returns a sustained valid reading, the
+VI switches to closed-loop PID control based on the optically-measured
 temperature~\cite{meng2023designofvacuum,rapoport2006optimalcontrolof}.
 Mechanically, a bolted support stand carries the generator's heating head
-and centers the work coil on the crucible position. The vacuum chamber
-itself has no support stand. The quartz tube and the vacuum hardware below
+and centers the work coil on the crucible position. The quartz tube and the vacuum hardware below
 it are joined by KF40 flanges to the pyrometer housing, which is suspended
 from the ceiling by cables, so the vertical column of vacuum hardware hangs
 from above. The sample stack is not attached to any of these flanges. It
-simply sits inside the quartz tube.
+simply sits inside the quartz tube, resting on a retaining ring of a KF40
+flange.
 
 Metal charges in the graphite crucible reach the nickel and iron
 grain-growth range of 1400 to 1500\,\celsius, with demonstrated soaks
@@ -310,8 +331,9 @@ range to 2500\,\celsius. The modernization stack transfers to
 any generator that exposes a monotonic analog power input, supports a
 liquid-cooled head and coil of the documented geometry, delivers enough RF
 power for the target charge, and allows electrical isolation of the DAQ and
-control path. When porting, the command scaling, calibration, PID gains,
-alignment, and interlock behavior are re-established.
+control path. When the modernization stack is moved to a different
+generator, the command scaling, calibration, PID gains, alignment, and
+interlock behavior are re-established.
 
 \subsection{Graphite crucible / susceptor}
 
@@ -322,15 +344,15 @@ optical path for the pyrometer. Figure~\ref{fig:crucible}(a) shows the
 disassembled parts. The graphite couples strongly to the
 induction field and acts as a susceptor, heating the contained metal
 specimen by conduction and radiation. The specimen is sandwiched between two
-alumina discs in the cup, the lid seats on top, and a sapphire window closes
+alumina discs in the cup, the lid sits on top, and a sapphire window closes
 the lid bore (Fig.~\ref{fig:crucible}(b--d)). Sapphire is used for the
 window to increase transmittance in the wavelength ranges emitted from the
-sample relative to the pyrometry. When fully assembled the crucible stands
-13\,mm tall, and the measured dimensions of every piece are given in the
+sample relative to the pyrometer. The measured dimensions of every piece are
+given in the
 supplementary material. Inside the vacuum chamber the crucible rests on an
 alumina support rod that positions it at coil height.
-% TODO (ask Chris): what does the alumina support rod itself rest on at its
-% lower end -- just the metal vacuum tubes/fittings below the quartz tube? Crucibles are repaired
+% Resolved (S. Baird, PR #12, 2026-07-22): the sample stack rests on a
+% retaining ring of a KF40 flange (now stated in Sec. II). Crucibles are repaired
 with graphite cement rather than discarded. The crucible is used primarily
 for the metal grain-growth anneals. Graphite also works as a susceptor for some
 ceramic charges when the contact chemistry permits.
@@ -370,7 +392,7 @@ separate support, mechanically decoupled so its vibration does not reach the
 chamber or the pyrometer sight line. Photographs of the pumping station as
 installed, together with the relief valve at the base of the vacuum column,
 are given in the supplementary material. On the gas path, the argon regulator
-feeds the manual vent valve. A mass flow controller between them is helpful
+feeds the automated vent valve. A mass flow controller between them is helpful
 when continuous inert gas flow is required. On the control path, electrical
 isolation is maintained between the DAQ wiring and the generator interface.
 Manual control is verified before automated ramping and soaking are enabled.
@@ -379,7 +401,7 @@ A run begins with the chamber vented, which is done only after the turbo
 pump has stopped spinning. The specimen is loaded into the crucible
 (Fig.~\ref{fig:crucible}(b--d)), the sample stack is lowered into the
 quartz tube, and the chamber is pumped down. The LabVIEW profile ramps open-loop below the pyrometer
-floor, hands over to closed-loop PID, and runs the programmed soak.
+floor, switches to closed-loop PID, and runs the programmed soak.
 Afterwards the sample cools under vacuum, and the chamber is vented only
 once the turbo pump has stopped.
 
@@ -609,7 +631,7 @@ mode was a contact reaction among the charge, the susceptor, and the
 support materials. The interchangeable sample stack lets a user iterate on
 those material choices run by run. Because the modernization stack requires
 only a
-monotonic analog power-control input, the design ports across generators and
+monotonic analog power-control input, the design transfers across generators and
 is directly reusable at a small fraction of turn-key cost. The
 through-thickness boundary grooving points to columnar grain-growth studies
 as a natural next application.
