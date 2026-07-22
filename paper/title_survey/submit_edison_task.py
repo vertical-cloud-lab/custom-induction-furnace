@@ -4,8 +4,10 @@ against 5 years of Review of Scientific Instruments titles/abstracts.
 Per https://docs.edisonscientific.com/edison-client/file-management, Analysis
 tasks receive files by (1) uploading with store_file_content and (2) passing
 "data_entry:<data_storage_id>" in runtime_config.environment_config
-.data_storage_uris. (A first attempt that passed files= to create_task
-directly, task 47ac3e82-ba06-4702-9955-49118e8ef6f9, failed immediately.)
+.data_storage_uris. The environment_config must contain ONLY
+data_storage_uris: adding extra keys ("language", max_steps) made the task
+fail instantly with no failure_reason (tasks 47ac3e82... and e4fc2b98...);
+the minimal config succeeded (verified with smoke task 0dd79754...).
 
 Run from paper/title_survey/:  python3 submit_edison_task.py
 Writes the created task id to edison_task_id.txt.
@@ -107,9 +109,7 @@ def main():
         name=JobNames.ANALYSIS,
         query=QUERY,
         runtime_config=RuntimeConfig(
-            max_steps=30,
             environment_config={
-                "language": "PYTHON",
                 "data_storage_uris": [f"data_entry:{storage_id}"],
             },
         ),
