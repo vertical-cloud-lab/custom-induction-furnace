@@ -21,6 +21,12 @@
 %% quartz tube (the vacuum chamber) to the pyrometer housing and the vacuum
 %% hardware; the charge stack is NOT flange-mounted -- it just sits inside
 %% the chamber. The former "chamber stack" term was dropped accordingly.
+%% Terminology pass (R. Guymon, PR #12, 2026-07-22): one name per stack.
+%% "modernization stack" = the retrofit (control, vacuum, temperature
+%% feedback); formerly drifted to "layer", "modernization layer", and bare
+%% "stack". "sample stack" = specimen + susceptor + supports inside the
+%% chamber; formerly "charge stack" and bare "stack". Every mention now uses
+%% its concept's full name.
 %%
 %% Built on REVTeX 4.2 with the AIP substyles (`rsi` journal option) — the class
 %% behind the official AIP Publishing template. Template files and the RSI/AIP
@@ -99,16 +105,17 @@ Provo, Utah 84602, USA}
 High-temperature vacuum annealing near a metal's melting point drives
 controlled grain growth, but it normally requires an expensive turn-key
 vacuum induction furnace. We describe an open modernization stack (the
-added layer of control, vacuum, and temperature-feedback hardware and
+added control, vacuum, and temperature-feedback hardware and
 software) that converts a bare commercial radio-frequency (RF) induction
 generator into a computer-controlled,
-vacuum-integrated annealing system with pyrometer feedback. The stack
-consists of analog power control through LabVIEW and a data-acquisition
+vacuum-integrated annealing system with pyrometer feedback. The
+modernization stack consists of analog power control through LabVIEW and a data-acquisition
 (DAQ) device, dual-wavelength optical
 temperature feedback, a high-vacuum quartz-tube chamber, and an in-house
 machined graphite crucible that serves as a susceptor (an RF-absorbing
 element that heats the charge it encloses) for metal specimens.
-The stack transfers between generators because its only requirement is a
+The modernization stack transfers between generators because its only
+requirement is a
 monotonic analog power-control input. The reproducible build is anchored on
 a current 6\,kW solid-state generator. In operation, the system produced a
 fixed-geometry power--temperature calibration with $R^2 = 0.991$ over
@@ -118,7 +125,7 @@ duration of the anneal) to $1201.2 \pm 1.3$\,\celsius, and soaks up to
 40\,h at 1325\,\celsius{} remained stable. The annealed nickel
 microstructures were characterized by optical metallography, scanning
 electron microscopy (SEM), and electron backscatter diffraction (EBSD).
-A modified charge stack (the stacked specimen, susceptor, and supports
+A modified sample stack (the stacked specimen, susceptor, and supports
 inside the chamber) extends the furnace to non-coupling
 ceramics at temperatures up to 2500\,\celsius, demonstrated with
 yttria-stabilized zirconia (YSZ) grain growth.
@@ -157,12 +164,12 @@ susceptor route to charges that do not couple to the RF field. Bare
 industrial induction generators are widely available, but they ship without
 vacuum, optical temperature feedback, or computer setpoint control.
 
-This work adds that missing layer. A bare RF induction
+This work adds that missing modernization stack. A bare RF induction
 generator~\cite{rudnev2017handbookofinduction,lucia2014inductionheatingtechnology}
 is retrofitted into a full annealing system with computer power control,
 closed-loop optical temperature feedback, a high-vacuum quartz-tube chamber,
-and a machined graphite crucible that doubles as a susceptor. The stack is
-deliberately generator-agnostic. Its only requirement is an analog
+and a machined graphite crucible that doubles as a susceptor. The
+modernization stack is deliberately generator-agnostic. Its only requirement is an analog
 power-control input, such as 4--20\,mA or 0--5\,V, with a monotonic
 command-to-power response. The pyrometer feedback and
 proportional--integral--derivative (PID) calibration absorb
@@ -170,7 +177,7 @@ any nonlinearity in that response. The generator internals are not
 reproduced, so a compatible generator needs to be supplied. The graphite
 crucible couples strongly to the RF field and serves the metal grain-growth
 charges. Non-coupling ceramics such as YSZ
-use a modified charge stack in
+use a modified sample stack in
 which graphite or tantalum serves as the susceptor, chosen for chemical
 compatibility with the specimen (Sec.~\ref{sec:ysz}).
 
@@ -204,7 +211,7 @@ station.}
 \centering
 \includegraphics[width=0.4\linewidth]{fig_furnace_photo.jpg}
 \caption{The assembled, functioning furnace with the main components
-labeled. The quartz chamber glows at the charge-stack position. The
+labeled. The quartz chamber glows at the sample-stack position. The
 pyrometer sights down the chamber axis, and the vent valve admits the argon
 backfill. The gauge, turbopump, and separately supported roughing pump
 complete the vacuum path.}
@@ -213,7 +220,7 @@ complete the vacuum path.}
 
 The heating subsystem is a 6\,kW solid-state induction generator driving a
 liquid-cooled copper work coil. The coil is approximately 3\,in tall and
-2.5\,in in inner diameter, with 6.5 turns tuned to the sample and crucible
+2.5\,in in inner diameter, with 6.5 turns tuned to the sample
 stack~\cite{vankan2024electromagneticinductionheating,xu2026designandoptimization}.
 The coil conductors carry both the RF current and the coolant. Ethylene
 glycol coolant flows in series from the chiller through the generator and
@@ -259,13 +266,13 @@ and centers the work coil on the crucible position. The vacuum chamber
 itself has no support stand. The quartz tube and the vacuum hardware below
 it are joined by KF40 flanges to the pyrometer housing, which is suspended
 from the ceiling by cables, so the vertical column of vacuum hardware hangs
-from above. The charge stack is not attached to any of these flanges. It
+from above. The sample stack is not attached to any of these flanges. It
 simply sits inside the quartz tube.
 
 Metal charges in the graphite crucible reach the nickel and iron
 grain-growth range of 1400 to 1500\,\celsius, with demonstrated soaks
-from minutes to 40\,h. The modified ceramic charge stack extends the working
-range to 2500\,\celsius. The layer transfers to
+from minutes to 40\,h. The modified ceramic sample stack extends the working
+range to 2500\,\celsius. The modernization stack transfers to
 any generator that exposes a monotonic analog power input, supports a
 liquid-cooled head and coil of the documented geometry, delivers enough RF
 power for the target charge, and allows electrical isolation of the DAQ and
@@ -353,7 +360,7 @@ at the bottom of the vacuum column, below the chamber.}
 
 A run begins with the chamber vented, which is done only after the turbo
 pump has stopped spinning. The specimen is loaded into the crucible
-(Fig.~\ref{fig:crucible-assembly}), the charge stack is lowered into the
+(Fig.~\ref{fig:crucible-assembly}), the sample stack is lowered into the
 quartz tube, and the chamber is pumped down. The LabVIEW profile ramps open-loop below the pyrometer
 floor, hands over to closed-loop PID, and runs the programmed soak.
 Afterwards the sample cools under vacuum, and the chamber is vented only
@@ -496,7 +503,7 @@ to 90\,\textmu m required 228\,h at 1600\,\celsius{} in a conventional box
 furnace, whereas comparable grain growth was achieved in only 45\,min at
 2500\,\celsius{} using the induction furnace
 (Fig.~\ref{fig:graingrowth}). Achieving these temperatures required only
-minor modifications to the charge stack
+minor modifications to the sample stack
 (Fig.~\ref{fig:ysz-stack}). For example, direct contact
 between graphite and alumina was eliminated because they undergo a eutectic
 reaction that lowers the interface melting temperature to approximately
@@ -519,11 +526,11 @@ microscope record.}
 \begin{figure}[tb]
 \centering
 \includegraphics[width=0.46\linewidth]{fig_ysz_stack.png}
-\caption{Charge-stack configuration for the high-temperature ceramic
+\caption{Sample-stack configuration for the high-temperature ceramic
 anneals. The YSZ specimen is sandwiched between two 25.5\,mm tantalum
 susceptor blocks inside the quartz tube. The blocks rest on a boron nitride
 heat-dissipation stub, which sits on the alumina support rod that raises the
-stack to coil height. The coil, vacuum, pyrometer, and control paths are
+sample stack to coil height. The coil, vacuum, pyrometer, and control paths are
 unchanged from the metal configuration.}
 \label{fig:ysz-stack}
 \end{figure}
@@ -534,8 +541,9 @@ unchanged from the metal configuration.}
 
 A bare commercial RF induction generator can be converted into a
 computer-controlled, vacuum-integrated, pyrometer-feedback annealing system
-with a documented, generator-agnostic modernization layer. On a current
-solid-state generator the stack demonstrated a power--temperature
+with a documented, generator-agnostic modernization stack. On a current
+solid-state generator the modernization stack demonstrated a
+power--temperature
 calibration with $R^2 = 0.991$, high soak repeatability, stable closed-loop
 soaks up to 40\,h, and annealed nickel whose surfaces index directly in the
 EBSD and show controlled grain growth.
@@ -547,8 +555,9 @@ grain growth at 2500\,\celsius. The trial-and-error survey behind that
 result identified chemistry, not
 power, as the governing constraint at extreme temperature. Every failure
 mode was a contact reaction among the charge, the susceptor, and the
-support materials. The interchangeable stack lets a user iterate on those
-material choices run by run. Because the modernization layer requires only a
+support materials. The interchangeable sample stack lets a user iterate on
+those material choices run by run. Because the modernization stack requires
+only a
 monotonic analog power-control input, the design ports across generators and
 is directly reusable at a small fraction of turn-key cost. The
 through-thickness boundary grooving points to columnar grain-growth studies
