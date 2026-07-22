@@ -17,6 +17,10 @@
 %% defined only at first appearance, and figures use [tb] float placement
 %% (not [ht]) so they sit at column tops/bottoms instead of interrupting
 %% sentences or splitting paragraphs.
+%% Correction (R. Guymon, PR #12, 2026-07-22): the KF40 flanges join the
+%% quartz tube (the vacuum chamber) to the pyrometer housing and the vacuum
+%% hardware; the charge stack is NOT flange-mounted -- it just sits inside
+%% the chamber. The former "chamber stack" term was dropped accordingly.
 %%
 %% Built on REVTeX 4.2 with the AIP substyles (`rsi` journal option) — the class
 %% behind the official AIP Publishing template. Template files and the RSI/AIP
@@ -189,9 +193,10 @@ Figure~\ref{fig:furnacephoto} shows the assembled system at operating power.
 \includegraphics[width=0.70\linewidth]{fig_system_overview_v2.png}
 \caption{System overview. The generator drives the liquid-cooled heating
 head and work coil around the vertically suspended quartz-tube chamber. The
-chamber stack is joined by KF40 flanges to the ceiling-suspended pyrometer
-housing. An overpressure relief valve and a flexible bellows lead past the
-pressure sensor to the turbo pumping station.}
+quartz tube is joined by KF40 flanges to the ceiling-suspended pyrometer
+housing above and to the vacuum hardware below. An overpressure relief valve
+and a flexible bellows lead past the pressure sensor to the turbo pumping
+station.}
 \label{fig:overview}
 \end{figure}
 
@@ -199,7 +204,7 @@ pressure sensor to the turbo pumping station.}
 \centering
 \includegraphics[width=0.4\linewidth]{fig_furnace_photo.jpg}
 \caption{The assembled, functioning furnace with the main components
-labeled. The quartz chamber glows at the sample-stack position. The
+labeled. The quartz chamber glows at the charge-stack position. The
 pyrometer sights down the chamber axis, and the vent valve admits the argon
 backfill. The gauge, turbopump, and separately supported roughing pump
 complete the vacuum path.}
@@ -251,10 +256,11 @@ control hands over to closed-loop PID on the optical
 temperature~\cite{meng2023designofvacuum,rapoport2006optimalcontrolof}.
 Mechanically, a bolted support stand carries the generator's heating head
 and centers the work coil on the crucible position. The vacuum chamber
-itself has no support stand. The chamber stack (the vertical column of
-vacuum hardware) is joined by KF40 flanges to
-the pyrometer housing, which is suspended from the ceiling by cables, so the
-vertical stack hangs from above.
+itself has no support stand. The quartz tube and the vacuum hardware below
+it are joined by KF40 flanges to the pyrometer housing, which is suspended
+from the ceiling by cables, so the vertical column of vacuum hardware hangs
+from above. The charge stack is not attached to any of these flanges. It
+simply sits inside the quartz tube.
 
 Metal charges in the graphite crucible reach the nickel and iron
 grain-growth range of 1400 to 1500\,\celsius, with demonstrated soaks
@@ -278,10 +284,12 @@ specimen by conduction and radiation. The specimen is sandwiched between two
 alumina discs in the cup, the lid seats on top, and a sapphire window closes
 the lid bore (Fig.~\ref{fig:crucible-assembly}). Sapphire is used for the
 window to increase transmittance in the wavelength ranges emitted from the
-sample relative to the pyrometry. When fully assembled the stack stands
+sample relative to the pyrometry. When fully assembled the crucible stands
 13\,mm tall, and the measured dimensions of every piece are given in the
 supplementary material. Inside the vacuum chamber the crucible rests on an
-alumina support rod that positions it at coil height. Crucibles are repaired
+alumina support rod that positions it at coil height.
+% TODO (ask Chris): what does the alumina support rod itself rest on at its
+% lower end -- just the metal vacuum tubes/fittings below the quartz tube? Crucibles are repaired
 with graphite cement rather than discarded. The crucible primarily serves
 the metal grain-growth charges. Graphite also works as a susceptor for some
 ceramic charges when the contact chemistry permits.
@@ -317,16 +325,16 @@ adjustable platform on the bolted support stand so the coil centers on the
 crucible position of the vertically suspended quartz tube. The vacuum path
 begins at the quartz tube, whose open end terminates in a KF40 flange closed
 by a 55\,mm quartz optical disc. Every flanged joint compresses an elastomer
-O-ring carried on a centering ring, so the stack assembles with
+O-ring carried on a centering ring, so the vacuum hardware assembles with
 hand-tightened clamps and no tools. These seals support the 10$^{-6}$ to
-10$^{-8}$\,Torr operating vacuum. From the bottom of the stack, a tee
+10$^{-8}$\,Torr operating vacuum. From the bottom of the vacuum column, a tee
 carries a 0.5\,psi overpressure relief valve that protects the quartz tube
 during backfilling. A flexible bellows continues through the wide-range
 vacuum gauge to the turbo pumping station. The roughing pump sits on a
 separate support, mechanically decoupled so its vibration does not reach the
 chamber or the pyrometer sight line. Figure~\ref{fig:vacuum-details} shows
 the pumping station as installed, together with the relief valve at the
-base of the stack. On the gas path, the argon regulator
+base of the vacuum column. On the gas path, the argon regulator
 feeds the manual vent valve. A mass flow controller between them is helpful
 when continuous inert gas flow is required. On the control path, electrical
 isolation is maintained between the DAQ wiring and the generator interface.
@@ -339,14 +347,14 @@ Manual control is verified before automated ramping and soaking are enabled.
 roughing pump mounted on a separate support. The pump couples to the pumping
 station only through a flexible hose, so its vibration is not transmitted
 into the chamber. (b)~Overpressure relief valve (0.5\,psi cracking pressure)
-at the bottom of the vacuum chamber stack.}
+at the bottom of the vacuum column, below the chamber.}
 \label{fig:vacuum-details}
 \end{figure}
 
 A run begins with the chamber vented, which is done only after the turbo
 pump has stopped spinning. The specimen is loaded into the crucible
-(Fig.~\ref{fig:crucible-assembly}), the stack is inserted, and the chamber
-is pumped down. The LabVIEW profile ramps open-loop below the pyrometer
+(Fig.~\ref{fig:crucible-assembly}), the charge stack is lowered into the
+quartz tube, and the chamber is pumped down. The LabVIEW profile ramps open-loop below the pyrometer
 floor, hands over to closed-loop PID, and runs the programmed soak.
 Afterwards the sample cools under vacuum, and the chamber is vented only
 once the turbo pump has stopped.
