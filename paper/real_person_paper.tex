@@ -31,6 +31,14 @@
 %% (b)'s run is unrecorded; the no-preparation EBSD observation is emphasized
 %% in Sec. V; and "Ni4N5" is written "Ni (4N5)" with a 99.995 % gloss at
 %% first use (text and figure caption).
+%% Wording pass (S. Baird, PR #12, 2026-07-22): resistive-furnace sentence
+%% now states the radiative heat-transfer limitation (no susceptor framing);
+%% "serves the metal grain-growth charges" reworded; the 4--20 mA / 0--5 V
+%% signal ranges appear once only (in the control-path description); the
+%% generator brand/model (CEIA Power Cube PW3-90/50, already in the SI BOM)
+%% is named in the Introduction; the five subsystems are enumerated inline;
+%% "2.5 in in inner" fixed; the coil is described as modular and sized to
+%% the sample geometry (not "tuned to the sample stack").
 %% Terminology pass (R. Guymon, PR #12, 2026-07-22): one name per stack.
 %% "modernization stack" = the retrofit (control, vacuum, temperature
 %% feedback); formerly drifted to "layer", "modernization layer", and bare
@@ -170,8 +178,9 @@ Growing grains without oxidizing the sample requires temperatures of 1400 to
 atmosphere~\cite{zhornyak1982reductionanddecarburization,muramatsu2005gascontaminationdue}.
 Commercial vacuum induction furnaces that meet these requirements are
 closed, turn-key systems costing \$50k to \$200k or more. Resistive tube and
-box furnaces reach lower temperatures with slower ramps, and they offer no
-susceptor route to charges that do not couple to the RF field. Bare
+box furnaces do not heat the charge directly. They heat only by radiation
+from the furnace elements, so heat transfer into the charge is limited, and
+they reach lower temperatures with slower ramps. Bare
 industrial induction generators are widely available, but they ship without
 vacuum, optical temperature feedback, or computer setpoint control.
 
@@ -181,21 +190,22 @@ is retrofitted into a full annealing system with computer power control,
 closed-loop optical temperature feedback, a high-vacuum quartz-tube chamber,
 and a machined graphite crucible that doubles as a susceptor. The
 modernization stack is deliberately generator-agnostic. Its only requirement is an analog
-power-control input, such as 4--20\,mA or 0--5\,V, with a monotonic
-command-to-power response. The pyrometer feedback and
+power-control input with a monotonic command-to-power response. The pyrometer feedback and
 proportional--integral--derivative (PID) calibration absorb
 any nonlinearity in that response. The generator internals are not
 reproduced, so a compatible generator needs to be supplied. The graphite
-crucible couples strongly to the RF field and serves the metal grain-growth
-charges. Non-coupling ceramics such as YSZ
+crucible couples strongly to the RF field and is used for the metal
+grain-growth anneals. Non-coupling ceramics such as YSZ
 use a modified sample stack in
 which graphite or tantalum serves as the susceptor, chosen for chemical
 compatibility with the specimen (Sec.~\ref{sec:ysz}).
 
 The reproducible build documented here is anchored on a current, USA-sourced
-6\,kW solid-state generator whose controller accepts a standard 4--20\,mA
-power setpoint. The package of generator, heating head, controller, and
-chiller was quoted at approximately \$16.5k. The retrofit components are
+6\,kW solid-state generator whose controller accepts a standard analog
+power setpoint. The reference generator is a CEIA ``Power Cube'' PW3-90/50
+with its matching controller, heating head, and chiller, itemized in the
+supplementary material. That package
+was quoted at approximately \$16.5k. The retrofit components are
 itemized in the bill of materials in the supplementary material. This is a
 small fraction of turn-key cost, in a form the user can repair and modify.
 
@@ -203,7 +213,9 @@ small fraction of turn-key cost, in a form the user can repair and modify.
 \section{System design and description}
 %==============================================================
 
-The system comprises five subsystems (Fig.~\ref{fig:overview}(a)).
+The system comprises five subsystems: heating, vacuum and gas handling,
+optical temperature sensing, computer control, and mechanical support
+(Fig.~\ref{fig:overview}(a)).
 Figure~\ref{fig:overview}(b) shows the assembled system at operating power.
 
 % TODO (R. Guymon): make the label text in the schematic (a) and the photo
@@ -239,9 +251,11 @@ chamber to high vacuum and then backfilling with flowing argon.}
 \end{figure*}
 
 The heating subsystem is a 6\,kW solid-state induction generator driving a
-liquid-cooled copper work coil. The coil is approximately 3\,in tall and
-2.5\,in in inner diameter, with 6.5 turns tuned to the sample
-stack~\cite{vankan2024electromagneticinductionheating,xu2026designandoptimization}.
+liquid-cooled copper work coil. The coil is approximately 3\,in tall with a
+2.5\,in inner diameter and 6.5
+turns~\cite{vankan2024electromagneticinductionheating,xu2026designandoptimization}.
+The coil is modular, and this geometry was chosen to fit our sample
+geometry.
 The coil conductors carry both the RF current and the coolant. Ethylene
 glycol coolant flows in series from the chiller through the generator and
 then through the heating head and work coil before returning to the chiller.
@@ -317,8 +331,8 @@ supplementary material. Inside the vacuum chamber the crucible rests on an
 alumina support rod that positions it at coil height.
 % TODO (ask Chris): what does the alumina support rod itself rest on at its
 % lower end -- just the metal vacuum tubes/fittings below the quartz tube? Crucibles are repaired
-with graphite cement rather than discarded. The crucible primarily serves
-the metal grain-growth charges. Graphite also works as a susceptor for some
+with graphite cement rather than discarded. The crucible is used primarily
+for the metal grain-growth anneals. Graphite also works as a susceptor for some
 ceramic charges when the contact chemistry permits.
 Sec.~\ref{sec:ysz} describes how a compatible susceptor is selected for
 refractory ceramics.
