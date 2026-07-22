@@ -80,6 +80,22 @@
 %% straight-from-furnace no-prep EBSD; the grooving sentence reworded; the
 %% columnar-structures aside moved to the Conclusions (with its citation);
 %% the grain-size-measurement sentence removed.
+%% Wording pass 4 (S. Baird, PR #12, 2026-07-22): references added (via an
+%% Edison Scientific literature task, paper/ysz_refs_query/) for the
+%% Arrhenius grain-growth-kinetics sentence (Tekeli & Demir 2005; Matsui
+%% et al. 2010); the graphite-alumina sentence reworded to carbothermal
+%% reduction with references (Cox & Pidgeon 1963; Kruesi et al. 2011;
+%% Walker & Fruehan 2013) because Edison found the former "eutectic at
+%% ~1800 C" claim unsupported; "the YSZ specimen" -> "a YSZ specimen" in
+%% both YSZ figure captions; the Conclusions rewritten around four points
+%% (high-purity environment enabling straight-from-furnace no-prep EBSD;
+%% modular/open/customizable; nickel + YSZ workflows with material-
+%% compatibility challenges at extreme temperature; YSZ grain growth in
+%% under 1 h at 2500 C vs 228 h in a 1600 C box furnace, at relatively low
+%% cost); the Supplementary Material paragraph split into short sentences
+%% citing the SI sections (SI-SVII); "links to every raw run log" ->
+%% "links to raw run logs"; Ethics Approval kept (required by the AIP
+%% manuscript order) with AIP's "Ethics approval not required." wording.
 %%
 %% Built on REVTeX 4.2 with the AIP substyles (`rsi` journal option) — the class
 %% behind the official AIP Publishing template. Template files and the RSI/AIP
@@ -619,8 +635,11 @@ than its RF heating performance. Graphite and tantalum both serve
 effectively as susceptors, with the preferred choice depending on the
 operating temperature and the materials in contact with the susceptor.
 
-Grain growth in refractory ceramics follows Arrhenius kinetics and is
-therefore highly sensitive to annealing temperature. For the 8\,mol\% YSZ
+Grain growth in refractory ceramics is thermally activated. The rate
+constant of the grain-growth law follows an Arrhenius temperature
+dependence, so grain coarsening is highly sensitive to annealing
+temperature~\cite{tekeli2005colloidalprocessingsintering,matsui2010phasetransformationandgrain}.
+For the 8\,mol\% YSZ
 specimens investigated here, grain growth from approximately 10\,\textmu m
 to 90\,\textmu m required 228\,h at 1600\,\celsius{} in a conventional box
 furnace, whereas comparable grain growth was achieved in only 45\,min at
@@ -628,9 +647,20 @@ furnace, whereas comparable grain growth was achieved in only 45\,min at
 (Fig.~\ref{fig:graingrowth}). Achieving these temperatures required only
 minor modifications to the sample assembly
 (Fig.~\ref{fig:ysz-stack}). For example, direct contact
-between graphite and alumina was eliminated because they undergo a eutectic
-reaction that lowers the interface melting temperature to approximately
-1800\,\celsius. This was accomplished by introducing a boron nitride
+between graphite and alumina was eliminated because alumina is not inert
+to carbon at these temperatures. Under vacuum or low oxygen potential,
+carbon carbothermally reduces alumina at the interface. This evolves
+carbon monoxide and forms aluminum carbides and oxycarbides that degrade
+the
+interface~\cite{cox1963aninvestigationof,kruesi2011solaraluminumproduction,walker2013experimentalverificationof}.
+% The previous wording ("they undergo a eutectic reaction that lowers the
+% interface melting temperature to approximately 1800 C") is not supported
+% by the Al2O3-C literature per the Edison Scientific check requested by
+% S. Baird (PR #12, 2026-07-22; paper/ysz_refs_query/
+% edison_ysz_refs_report.md): the degradation is reactive carbothermal
+% reduction in the Al-O-C system, not a simple binary eutectic, and no
+% assessed ~1800 C Al2O3-graphite eutectic exists.
+The contact was eliminated by introducing a boron nitride
 diffusion barrier between the two materials. Alternatively, replacing the
 graphite with tantalum avoids this compatibility issue while still
 providing efficient RF coupling.
@@ -641,7 +671,7 @@ providing efficient RF coupling.
 % TODO (R. Guymon): replace this image with a micrograph of the same
 % specimen that has no measurement lines but still carries the scale bar
 % (S. Baird, PR #12, 2026-07-22).
-\caption{As-recorded optical micrograph of the YSZ specimen after the
+\caption{As-recorded optical micrograph of a YSZ specimen after the
 2500\,\celsius{} / 45\,min tantalum-susceptor anneal, which coarsened the
 grains from approximately 20 to 90\,\textmu m. The red traces are the
 microscope software's multi-grain size measurements (100\,\textmu m scale
@@ -653,7 +683,7 @@ bar).}
 \centering
 \includegraphics[width=0.46\linewidth]{fig_ysz_stack.png}
 \caption{Sample-assembly configuration for the high-temperature ceramic
-anneals. The YSZ specimen is sandwiched between two 25.5\,mm tantalum
+anneals. A YSZ specimen is sandwiched between two 25.5\,mm tantalum
 susceptor blocks inside the quartz tube. The blocks rest on a boron nitride
 stub that acts as a diffusion barrier. It prevents reaction between the
 tantalum and the alumina support tube below, which raises the sample
@@ -670,28 +700,37 @@ unchanged from the metal configuration.}
 
 A bare commercial RF induction generator can be converted into a
 computer-controlled, vacuum-integrated, pyrometer-feedback annealing system
-with a documented, generator-agnostic retrofit. On a modern solid-state
-generator, the system demonstrated a power--temperature calibration with
-$R^2 = 0.991$, soak temperatures reproducible to 0.11\,\%, and stable
-closed-loop soaks up to 40\,h. The anneals it delivers are clean enough
-that the nickel specimens needed no metallographic preparation at all. They
-went straight from the furnace chamber into the EBSD chamber and returned
-high-quality orientation maps with no grinding, polishing, or etching,
-while showing the controlled grain growth the system was built to produce.
+with a documented retrofit. The resulting system is modular, open, and
+customizable. The vacuum hardware assembles with hand-tightened clamps, the
+sample assembly is interchangeable, and the LabVIEW control software and
+design files are open. Because the retrofit requires only a monotonic
+analog power-control input, the design transfers across generators and is
+directly reusable at a small fraction of turn-key cost.
 
-The same furnace also reaches refractory ceramics without redesign.
-Exchanging only the materials in contact with the specimen carries the
-system from metal anneals in the graphite crucible to YSZ grain growth at
-2500\,\celsius. The trial-and-error survey behind that result identified
-chemistry, not power, as the governing constraint at extreme temperature.
-Every failure mode was a contact reaction among the charge, the susceptor,
-and the support materials. The interchangeable sample assembly lets a user
-iterate on those material choices run by run. Because the retrofit requires
-only a monotonic analog power-control input, the design transfers across
-generators and is directly reusable at a small fraction of turn-key cost.
-In the annealed nickel, grains and their boundaries span the full sheet
-thickness, and the deep thermal grooves that mark those boundaries point to
-columnar grain-growth studies as a natural next
+The full system and workflow deliver a high-purity annealing environment.
+The strongest evidence is that the annealed nickel specimens needed no
+metallographic preparation at all. Specimens were annealed, removed from
+the furnace, and placed directly into the SEM, and they returned
+high-quality EBSD patterns and orientation maps with no grinding,
+polishing, or etching.
+
+Complete annealing workflows were demonstrated on both nickel and YSZ. On
+a modern solid-state generator, the nickel campaign produced a
+power--temperature calibration with $R^2 = 0.991$, soak temperatures
+reproducible to 0.11\,\%, stable closed-loop soaks up to 40\,h, and the
+controlled grain growth the system was built to produce. The YSZ campaign
+highlighted the challenges of material compatibility at extreme
+temperature. Every failure mode was a contact reaction among the charge,
+the susceptor, and the support materials, and the interchangeable sample
+assembly lets a user iterate on those material choices run by run.
+
+High-temperature grain growth was achieved for YSZ in under an hour at
+2500\,\celsius{} in this system, whereas comparable coarsening required
+228\,h in a standard 1600\,\celsius{} box furnace. The system is also
+relatively low-cost compared with commercial systems that reach
+2500\,\celsius. In the annealed nickel, grains and their boundaries span
+the full sheet thickness, and the deep thermal grooves that mark those
+boundaries point to columnar grain-growth studies as a natural next
 application~\cite{zhang2007dynamicsandmechanism}.
 
 %==============================================================
@@ -700,13 +739,18 @@ application~\cite{zhang2007dynamicsandmechanism}.
 % AIP: "Please create a 'Supplementary Material' section in your paper after
 % the Conclusions" (template/rsi/aip-author-instructions-2026-07-02.txt).
 
-See the supplementary material for the measured crucible part dimensions,
-the work-coil drawing, the power--temperature calibration and the
-representative-soak, repeatability, and long-soak traces, the raw
-Kikuchi-pattern survey, the tantalum-susceptor heat curves, the YSZ
-micrographs, the specimen--thermal-history linkage table with links to
-every raw run log, the itemized bill of materials, and the design-file
-inventory.
+The supplementary material is organized in seven sections.
+% SI section numbers are hard-coded here; keep in sync with SI.tex order.
+Sec.~SI (hardware) gives the measured crucible part dimensions, the
+work-coil drawing, and photographs of the vacuum and gas-handling
+hardware. Sec.~SII (thermal performance) collects the power--temperature
+calibration and the representative-soak, repeatability, and long-soak
+traces. Sec.~SIII (microstructure) presents the raw Kikuchi-pattern
+survey. Sec.~SIV covers the high-temperature extension, with the
+tantalum-susceptor heat curves and the YSZ micrographs. Sec.~SV holds the
+specimen--thermal-history linkage table, with links to raw run logs.
+Sec.~SVI is the itemized bill of materials, and Sec.~SVII is the
+design-file inventory.
 
 \begin{acknowledgments}
 The authors thank Kevin Cole for his supervision and support of the original
@@ -730,8 +774,14 @@ The authors have no conflicts to disclose. \todo{confirm with all authors.}
 
 \subsection*{Ethics Approval}
 
-This work did not involve human or animal subjects; ethics approval is not
-applicable.
+% Kept per the AIP author instructions (template/rsi/aip-author-instructions
+% -2026-07-02.txt): the required manuscript order includes an "author
+% declarations section (conflict of interest, ethics approval, and author
+% contributions)". A detailed statement is mandated only for human/animal
+% research; for not-applicable work, AIP's prescribed wording (stated
+% explicitly for its APB/BPR journals) is "Ethics approval not required."
+Ethics approval not required. This work did not involve human or animal
+subjects.
 
 \subsection*{Author Contributions}
 
