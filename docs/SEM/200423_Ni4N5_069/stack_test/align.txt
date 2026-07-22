@@ -1,0 +1,2 @@
+#Slice_A,Slice_B,New X Shift,New Y Shift,X Shift, Y Shift, X Centroid, Y Centroid
+0,1,0,0,0,0,1397.59,1329.78

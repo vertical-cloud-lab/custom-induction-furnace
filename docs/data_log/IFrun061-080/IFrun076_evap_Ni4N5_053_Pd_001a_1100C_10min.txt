@@ -1,0 +1,16 @@
+Roughing backfill then high vac. ~3E-4 torr when starting test. Took out the main crucible, only using crucible plug and what was connected to it.
+
+Just noticed that the sample fell off..
+
+Just going to re-do this and consider it the same run.
+
+Just going up to 0.5 mA instead of having it switch to the pyrometer. Granted, if the PID control triggers, then that works too.
+
+I realized an issue with focusing it too short, so I put it at the max focus instead.
+
+Looks like that worked (and since the sample is somewhat off-center), since it switched to PID control. The color of the graphite plug seems about on par with what I'd expect for 900 C also.
+
+Going to 1100 for 10 min after 900 for 10 min.
+
+
+There is definitely the violet sheen that was described in a different paper. This tells me that it's pretty likely the palladium did deposit, although not very uniformly - there was a whole region of the sample that almost seemed "shielded", but this may have also been from a temperature gradient of the palladium. Moving the sample even higher with respect to the coils might help with this, as the graphite crucible is likely to have a more uniform heating in this case.

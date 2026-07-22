@@ -1,0 +1,3 @@
+Using the mini-clamp, there seems to be some kind of deflection or drift occuring. See GB.tif and GB_repeat.tif.
+Switching to using the vertical stub holder.
+

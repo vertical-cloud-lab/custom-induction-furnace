@@ -1,0 +1,1 @@
+s1 and s2 do not necessarily correspond to previous allocations of s1 or s2. I will want to have a consistent way to name these in the future, probably based on making fiducial marks of some kind on two corners (e.g. square cut and triangular cut on adjacent corners) and always have the one of the fiducials (e.g. triangular cut) at the top-right mean s1.

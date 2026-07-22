@@ -1,0 +1,12 @@
+It looks like I may have missed even making a Ni4N5_055. Woops. At any rate, Ni4N5_056 on bottom, Ni4N5_057 on top. Doing two backfills this time to see if that helps with the oxidation.
+
+I'd rather use the 20 sccm flow rate instead of the purge rate, but it may turn out purging is my only viable option. If doing forming gas (5% H2, 95% Ar) instead of pure Ar helps, this could suggest that high-purity argon would also help. If I did forming gas, I don't necessarily have a way to ensure it goes directly to the ventilation, unless I used a fan, some kind of really large tubing around the exhaust of the roughing pump, or bought another vent valve and a high-vac tee valve or gate valve to direct the flow after the backfill steps are complete.
+
+First pump started: ~9:44 pm
+Backfill: 10:03 pm
+Pump: 10:06 pm
+Backfill: 10:13 pm
+MFC started: 10:14 pm
+Ball valve closed: 10:15 pm
+
+Soon, I would like to move to doing 3 or 4 samples at a time. In order to do this, I think I will need to machine some more crucibles and make some more Al2O3 disks.

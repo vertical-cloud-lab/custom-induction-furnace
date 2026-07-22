@@ -1,0 +1,6 @@
+Yellow auxilliary cable:
+
+O V return -> brown
+Aux output 1 -> white
+Aux output 2 -> blue
+Chassis -> black

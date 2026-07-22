@@ -1,0 +1,38 @@
+2274 scans, from 135.92 um to 106.36 um in steps of 13 nm.
+
+Field of view is ~2500 um x ~2500 um, which is 39 rows x 30 cols = 1170 FOVs
+
+First scan took 4 min 42 sec.
+
+Also, remember to bring a jacket next time..
+
+
+
+To finish this scan will take at least ~4 days.
+
+Ways to speed up the scan:
+
+1. Reduce z-resolution step size
+2. Reduce magnification (50x might work at 100 nm step size)
+3. Flatten sample and reduce z range
+4. Reduce exposed area
+
+1., 2., and 3. are probably more viable than 4, seeing as I may want to increase resolution.
+
+
+
+I think I'll need to get a pretty good set of parameters going.
+
+In this case I'm using 100x with 0.5x coupler, 11.37% light.
+
+I probably need to reduce the data collection time by ~100 x, to reduce a scan for 1 side to be ~ 1 hr, similar to EBSD.
+
+Also, since this is probably going to be a lot of data either way, I may want to periodically zip or offload the data to a TB drive.
+
+
+
+
+Checking back to my preliminary results, it seems that reducing the z-step size resolution may not be so viable. The changes seem to be occuring over ~500 nm.
+
+
+If I didn't polish the samples before doing the diffusivity tests or EBSD, then the samples could all be left over for someone to process, with the exposure area there as well. I wonder if something similar could be accomplished in the SEM together with the EBSD data collection.. This would make image registration a cinch.

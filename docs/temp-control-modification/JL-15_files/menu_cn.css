@@ -1,0 +1,56 @@
+@charset "utf-8";
+/*menu*/
+#menu{ position:absolute; right:0px; top:60px; display:block; height:38px;}
+#nav { list-style:none; margin:0; padding:0;}
+#nav .mainlevel { float:left; position:relative; z-index:9999; padding: 0px; background:none;}
+#nav .mainlevel .title { float:left;}
+#nav .mainlevel a { font-weight:bold; text-decoration:none; font-size:18px; height:38px; line-height:38px; display:block; text-align:center; padding:0 18px; overflow:hidden; color:#fff;white-space:nowrap; color:#222;}
+#nav .mainlevel a:hover { text-decoration:none; color:#b4241d;}
+#nav .mainlevel ul { display:none;}
+#nav .mainlevel ul { position:absolute; list-style:none; padding-bottom:20px; background: #CCC; top:38px;}
+#nav .mainlevel li { text-align:left; position:relative; }
+#nav .mainlevel li a{ color:#fff; padding-right:50px; font-weight:normal; line-height:30px; font-size:12px; text-align:left; padding-left:25px;}
+#nav .mainlevel li a:hover{ color:#222;}
+
+#nav li.mainlevel li.mainlevel2 ul { position:absolute; list-style:none; left:auto; padding-bottom:20px; background:#555; top:0px;}
+#nav li.mainlevel li.mainlevel2 ul li ul { background:#777; right:180px; _right:180px;}
+#nav li.mainlevel li.mainlevel2 ul li ul  li ul { background:#555; left:180px; _left:180px;}
+.monnn_yes { background:#666;}
+
+
+.point1 { border:#F30 solid 0px; padding:8px 8px 15px 8px; background:url(../images/dr/left_k_03.gif) center bottom no-repeat;}
+.point1 li {}
+.point1 li {display:block; clear:both; padding:4px 0;  background:url(../images/img/Arrow_05.gif) 5px 13px no-repeat;}
+.point1 li A { padding-left:20px;}
+.point1 A { display:block; color:#666; line-height:150%; padding-top:6px; padding-bottom:6px;} 
+.point1 A:hover { display:block; color:#F90;} 
+.point1 li ul { display:none;}
+.point1 li ul { margin-left:10px; border-left:1px #CCC dotted; border-bottom:1px #CCC dotted; background:#f2f2f2;}
+.point1 li ul li { border:0px; background:url(../images/img/Arrow_13.gif) -5px 11px no-repeat; padding:2px 0; } 
+.point1 li ul li ul { background:#e5e5e5; display:block;}
+
+.point2 { border:#F30 solid 0px; padding:8px 8px 15px 8px; background:url(../images/dr/left_k_03.gif) center bottom no-repeat;}
+.point2 li { position:relative; z-index:56;}
+.point2 li {display:block; clear:both; padding:4px 0;  background:url(../images/img/Arrow_03.gif) 5px 14px no-repeat;}
+.point2 li A { padding-left:20px;}
+.point2 A { display:block; color:#666; line-height:150%; padding-top:6px; padding-bottom:6px;} 
+.point2 A:hover { display:block; color:#F90;} 
+.point2 li ul { display:none; position:absolute; width:auto; top:0px; padding-right:15px; z-index:55;}
+.point2 li ul A {white-space:nowrap; color:#FFF;}
+.point2 li ul { margin-left:10px;  background:#0e7dbf;}
+.point2 li ul li { border:0px; background:url(../images/img/Arrow_12.gif) 5px 13px no-repeat; padding:2px 0; } 
+.point2 li ul li ul {  display:block;}
+.point2 li.monnn_yes22 { background:#1690d8;}
+.point2 li.monnn_yes22 A { color:#FFF;}
+
+/*.point1 { border:#F30 solid 0px; padding:8px 8px 15px 8px; background:url(../images/dr/left_k_03.gif) center bottom no-repeat;}
+.point1 li {}
+.point1 li {display:block; clear:both; border-bottom:1px #999 dotted; padding:4px 0;  background:url(../images/img/Arrow_05.gif) 5px 10px no-repeat;}
+.point1 li A { padding-left:20px;}
+.point1 A { display:block; color:#666;} 
+.point1 A:hover { display:block; color:#F90;} 
+.point1 li ul { display:none;}
+.point1 li ul { margin-left:10px; border-left:1px #CCC dotted; border-bottom:1px #CCC dotted; background:#f2f2f2;}
+.point1 li ul li { border:0px; background:url(../images/img/Arrow_13.gif) -5px 8px no-repeat; padding:2px 0; } 
+.point1 li ul li ul { background:#e5e5e5; display:block;}
+*/

@@ -1,0 +1,1 @@
+Summarize literature on induction-heating process parameters (frequency, power ramp rate, coil coupling, dwell profile) and their effects on temperature uniformity and resulting microstructure/grain growth during annealing. Provide references with bibtex.

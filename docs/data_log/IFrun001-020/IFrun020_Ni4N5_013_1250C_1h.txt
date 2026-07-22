@@ -1,0 +1,2 @@
+~30 min ramping either way to/from 1250 C for 1h.
+Sample didn't melt. Some surface topology possibly. Could be fixed by using a polished Al2O3 plate instead of the powder. Consider purchasing either the easy to machine Al2O3 or the regular Al2O3 in its thinnest form.

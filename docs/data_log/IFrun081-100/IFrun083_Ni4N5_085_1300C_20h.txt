@@ -1,0 +1,13 @@
+Contactless annealing, rather large crucible. Not sure if it's going to be able to maintain the temperature. Also, vacuum pathway is definitely more restricted than normal because of how large the crucible is towards the bottom. I may consider removing that portion. I should really consider the possiblity of there being micro-fractures in the quartz tube. I may want to go to a higher purity gas as well..
+
+The pressure seems to be much higher with the restricted space due to the large crucible - only reaching ~1E-3 torr at 100%. May want to let the turbo pump run for a while longer before backfilling. Also did a roughing backfill to start out with, but the gas flow seemed restricted in that case as well.
+
+Backfilling at 1E-3 torr
+
+Also, I forgot to ultrasonically clean the sample beforehand. 
+
+Also, I should really automate the "clear chart" function when I hit start.
+
+It seems like the hottest piece was what was directly contacting the alumina rod, near the top. The grain sizes of the two sides were not as high as I would have expected. The grains did, however, seem fairly equi-axed (just not necessarily the same size). A decent distribution of grain sizes. I think annealing for longer and moving the crucible up such that it's sitting directly centered in the coils would prove interesting.
+
+I think I'll start with a fresh sample, this time ultrasonically cleaned.

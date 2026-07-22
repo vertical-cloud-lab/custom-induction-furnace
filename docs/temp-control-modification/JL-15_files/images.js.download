@@ -1,0 +1,236 @@
+<!--
+$(document).ready(function(){
+	var a=4000;
+	var x=920; //浣嶇Щ鍍忔暟
+	var t;
+    var y=0;	
+	function sfs(){
+	u=$(".prod_l").width();
+		if (u+y-x>0){ 
+		t=y-x;
+			  if (u+t<690){
+			  t=920-u
+			  $(".prod_l").animate({left:t});
+			  y=0-u
+			  }else{
+			  $(".prod_l").animate({left:t});
+			  y=t;
+			  }
+		}
+		else{
+		$(".prod_l").animate({left:0});
+		y=0;
+		}	
+	}
+  $(".case_left").click(function(){
+	clearInterval(q);
+	u=$(".prod_l").width();
+	if (y<0){ 
+	t=y+x;
+	if (t<x&&t>0){t=0};
+   $(".prod_l").animate({left:t});
+    y=t;
+	}else{
+	z=0-u+x
+   $(".prod_l").animate({left:z});
+    y=z;
+	}
+	q=setInterval(sfs,a);
+  });
+  $(".case_right").click(function(){
+	clearInterval(q);
+	sfs();
+	q=setInterval(sfs,a);
+  });
+	q=setInterval(sfs,a);
+	$(".prod_l").mouseover(function(){
+	clearInterval(q);
+	});
+	$(".prod_l").mouseout(function(){
+	q=setInterval(sfs,a);
+	});
+});
+//下拉菜单
+//===================================================================
+
+$(document).ready(function(){
+  //siblings
+  
+  	var times;
+    $('.nav').find('li').hover(
+  	function(){
+		var o=$(this);
+		var z=$(this).width();
+		o.addClass("monnn_yes");
+		o.siblings('li').children('ul').slideUp("fast");
+		var x=o.children('ul').width();
+		c=o.offset().left+x+z;
+		d=$(window).width()
+		if (d<c)
+		{
+		o.children('ul').css("right",z);
+		}else
+		{
+		o.children('ul').css("left",z);
+		}
+		o.children('ul#top').css("left","0px");
+		o.children('ul').slideDown("slow");
+		clearTimeout(times);
+	},
+	function(){
+	var o=$(this);
+		o.removeClass("monnn_yes");
+		times=setTimeout(function(){
+	  	o.children('ul').slideUp("fast")
+		},4000);
+	}
+	);
+
+
+  	var times2;
+    $('.point1').children('li').hover(
+  	function(){
+		var o=$(this);
+		o.addClass("monnn_yes");
+		o.siblings('li').children('ul').slideUp("slow");
+		o.children('ul').slideDown("slow");
+		clearTimeout(times2);
+	},
+	function(){
+	var o=$(this);
+		o.removeClass("monnn_yes");
+		times2=setTimeout(function(){
+	  	o.children('ul').slideUp("slow")
+		},1000);
+	}
+	);
+
+  	var times3;
+    $('.point2').children('li').hover(
+  	function(){
+		var o=$(this);
+		var z=$(this).width()-12;
+		o.addClass("monnn_yes22");
+		o.children('ul').css("left",z);
+		o.siblings('li').children('ul').slideUp("slow");
+		o.children('ul').slideDown("slow");
+		clearTimeout(times2);
+	},
+	function(){
+	var o=$(this);
+		o.removeClass("monnn_yes22");
+		times3=setTimeout(function(){
+	  	o.children('ul').slideUp("slow")
+		},1000);
+	}
+	);
+   
+//  $('.point1').children('li').mousemove(function(){
+//  $(this).find('ul').slideDown("slow");//you can give it a speed
+//  });
+//  $('.point1').children('li').mouseleave(function(){
+//  $(this).find('ul').slideUp("slow");
+//  });
+
+});
+
+
+//下拉菜单
+//===================================================================
+stuHover = function() {
+	var cssRule;
+	var newSelector;
+	for (var i = 0; i < document.styleSheets.length; i++)
+		for (var x = 0; x < document.styleSheets[i].rules.length ; x++)
+			{
+			cssRule = document.styleSheets[i].rules[x];
+			if (cssRule.selectorText.indexOf("LI:hover") != -1)
+			{
+				 newSelector = cssRule.selectorText.replace(/LI:hover/gi, "LI.iehover");
+				document.styleSheets[i].addRule(newSelector , cssRule.style.cssText);
+			}
+		}
+	var getElm = document.getElementById("nav").getElementsByTagName("LI");
+	for (var i=0; i<getElm.length; i++) {
+		getElm[i].onmouseover=function() {
+			this.className+=" iehover";
+		}
+		getElm[i].onmouseout=function() {
+			this.className=this.className.replace(new RegExp(" iehover\\b"), "");
+		}
+	}
+}
+if (window.attachEvent) window.attachEvent("onload", stuHover);
+
+
+//************选择语言版本的跳转
+function closeErrors() { 
+return true; 
+} 
+window.onerror=closeErrors; 
+function MM_jumpMenu(targ,selObj,restore){ //v3.0
+  eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
+  if (restore) selObj.selectedIndex=0;
+}
+
+
+//************屏蔽IE左下角JS错误提示
+function closeErrors() { 
+return true; 
+} 
+window.onerror=closeErrors; 
+
+//****************************** flash 调用
+function fla(ur,w,h,uxml){
+document.write('<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="'+w+'" height="'+h+'"> ');
+document.write('<param name="movie" value="' + ur + '">');
+document.write('<param name="quality" value="high"> ');
+document.write('<param name="menu" value="false"> ');
+document.write('<param name="wmode" value="transparent"> ');
+//document.write('<param name="SCALE" value="exactfit"> ');
+document.write('<param name="FlashVars" value="' + uxml + '"> ');
+document.write('<embed wmode="transparent" FlashVars=' + uxml + ' src="' + ur + '" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="'+w+'" height="'+h+'"></embed> ');
+document.write('</object> ');
+}
+
+//****************************** 图片规则
+var flag=false;
+function DrawImage(ImgD,imgW,imgH){
+var image=new Image();
+var iwidth = imgW; //定义允许图片宽度
+var iheight = imgH; //定义允许图片高度
+image.src=ImgD.src;
+if(image.width>0 && image.height>0){
+flag=true;
+if(image.width/image.height>= iwidth/iheight){
+if(image.width>iwidth){
+ImgD.width=iwidth;
+ImgD.height=(image.height*iwidth)/image.width;
+}else{
+ImgD.width=image.width;
+ImgD.height=image.height;
+}
+//ImgD.alt=image.width+"×"+image.height;
+}
+else{
+if(image.height>iheight){
+ImgD.height=iheight;
+ImgD.width=(image.width*iheight)/image.height;
+}else{
+ImgD.width=image.width;
+ImgD.height=image.height;
+}
+//ImgD.alt=image.width+"×"+image.height;
+}
+}
+}
+//调用：<img src="图片" onload="javascript: DrawImage(this,200,200)">
+
+//****************************** 跳转
+function MM_openBrWindow(theURL,winName,features) { 
+  window.open(theURL,winName,features);
+}
+
+
+
+-->

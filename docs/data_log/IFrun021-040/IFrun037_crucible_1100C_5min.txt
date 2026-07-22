@@ -1,0 +1,5 @@
+Crucible is upside down. Running with blank flange. Pressure doesn't seem to be dropping significantly (at 2.6E-3 a few minutes into the test). 1204 deg C powder is inside on top, in middle, and on bottom.
+
+After running, the pressure decreased to 6.9E-5. Could this be some kind of bake-out?
+
+Top powder seemed relatively unmelted. Middle powder seemed more so melted. Bottom powder was most melted. Possibly because crucible was too high up. Going with open crucible for next one.

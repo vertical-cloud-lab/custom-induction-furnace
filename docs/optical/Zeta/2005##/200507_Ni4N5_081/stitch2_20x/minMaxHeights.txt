@@ -1,0 +1,66 @@
+Zeta Analysis Report
+Image Name:	Zeta Image15	File Name:	
+Date Acquired:	Thu May 07 14:50:47 2020	Today:	Thu May 07 14:56:06 2020
+Z Range:	80µm	No. of Steps:	80	Step Size:	1.013µm	Field of View:	1756µm x 1636µm
+	Area Cursor 1			Area Cursor 2			Area Cursor 3			AC 1-2	AC 2-3	AC 1-3	
+	Avg Ht	L	W	Avg Ht	L	W	Avg Ht	L	W	Step	Step	Step	
+	32.9601	438.9	407.903	41.8663	438.9	407.903	0	0	0	-8.9062	41.8663	32.9601	
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													

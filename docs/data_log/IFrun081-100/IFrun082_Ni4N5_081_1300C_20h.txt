@@ -1,0 +1,13 @@
+Moving down to 1300 C to try to prevent too much surface melting from occurring. Really I'd like to try the contactless annealing approach. If I had access to the machine shop, really wouldn't be too hard..
+
+It's possible that by having the sample vertically suspended, I'll run into more of a thermal gradient than I would normally.
+
+Anneal only lasted about 20 h... furnace was still on, but seems that the RF power, plate, and filament shut off. Unless it automatically switched off and somebody turned it back on.
+
+It seems to be an issue with the water flow. Perhaps someone turned the water off..
+
+I should probably change out the LED indicators, since they've all gone out it would seem.
+
+Min grain size: 45, max: 334, mean: ~150 um
+
+Sample wasn't too difficult to remove, but still left smoe deposit and I had to peel certain parts off.

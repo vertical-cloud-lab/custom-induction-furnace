@@ -1,0 +1,11 @@
+Going to try the open crucible idea. No lid. Alumina plate on bottom, nickel sample on top of plate. There will be thermal evaporation. If I take a video while it's heating up, I should be able to see when the sample melts. I probably want to get the pyrometer even more centered on the middle of the sample.
+
+Thickness before anneal: 53 um
+
+The pressure is pretty low to begin with: 6.1E-5 while it's heating up towards the beginning.
+
+Sample melted sometime during the soak temperature of 1300 C. Maybe a few minutes after it reached it, and probably corresponded with a sudden dip in the temperature reading. Possibly due to a difference between reading the alumi na and reading the nickel sample. The nickel sample was pushed off to the edge of the interior of the crucible, probably due to vibrations, and so while the pyrometer was positioned dead-center in the crucible, it was only mostly focused on the nickel sample. A smaller hole in the crucible would fix this.
+
+It's pretty much a given I need to machine a new crucible. It would seem that shorter is better, and minimizing the space inside the crucible as well. Making a tight plug as the lid may help. One question is whether or not thinner wall edges is better or not. Regardless of how the heat distribution plays out, having a smaller diameter crucible would probably help with the vacuum, but would be more difficult to center. I think I'd prefer a large diameter, short crucible with a tight-fitting lid and a through hole that extends nearly down to the sample. There's also the possiblity of a levitating induction coil setup via a custom order with Ultra Flex Power Technologies.
+
+Perhaps 2 mm for the main crucible height, with an inset of 1 mm. Then a lid with a total height of 1.5 mm, with a top height of 1 mm and a plug height of 0.5 mm with a tight fit. Diameter the same as the other crucible. 0.5" endmill instead of 0.75" perhaps. Perhaps I should dial in the piece that I work with as well tomorrow..

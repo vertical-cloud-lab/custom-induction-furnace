@@ -1,0 +1,7 @@
+Roughing backfill, high vac. Since the deposit seemed a bit non-uniform with the other one, and the coverage didn't spread across the entire region, trying again at 1200 C instead of 1100 C. After this, I think it's pretty likely it could be ready to use in a diffusivity test.
+
+I could also try coating the other side as well, but it's probably better to try one thing at a time.
+
+Might have caused an issue with the data by opening the file (IFrun077 file) while it was running. Pressed continue when an error popped up.
+
+Seems like the coating may have been thicker, but didn't seem more uniform (still an area that doesn't have the purple luster). Also, some parts where the purple luster were had a shiny silver luster (seemed like particles). If this is due to the sample being too hot, I will probably need to cut a larger section off of the alumina tube. I also may want to make the inset deeper, but the prototyping lab is closed now.

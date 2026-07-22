@@ -1,0 +1,22 @@
+Ni4N5_045 on bottom. Trying with 20 sccm flow during run to observe if oxidation is increased. Doing 3 backfills with the ball valve open as normal.
+
+Accidentally did the first backfill with the tank closed off. Going to re-do that one. I thought something was weird because it showed that it went up to 7.5E2 torr, which hasn't happened when I've backfilled with argon.
+
+1st pump-down:
+2nd pump-down: 6:55 pm
+3rd pump-down: 7:03 pm
+
+
+It's also possible that I may only need 1 or 2 backfills. The issue I saw before may have been from the sample having contact with the graphite.
+
+In this case, it's crucible->Al2O3 plate->Ni4N5_045->Al2O3 plate->Ni4N5_046->Al2O3 powder->lid&sapphire window.
+
+I checked back to IFrun052_Ni4N5_040_1200C_12h.txt, and took a look at Ni4N5_040. If I remember correctly, this was the sample that had the graphite directly contacting it. Thus, after this run, I may try doing only 1 backfill instead of 3 to see if there is the same level of oxidation.
+
+It seems to be overshooting more frequently with PID = 1 1 0.2.
+
+There may have been a little bit more oxidation on the sample. It's also possible that it's because the sample actually got hotter because of how the decreased flow-rate affected the temperature distribution.
+
+Ni4N5_045 which was on the bottom seems to have a more noticeable texture. Again, not sure if that's from oxidation or a heat difference between the two samples. It would be plausible for it to be oxidation since the crucible no longer has a tight fit, and it might be easier for gas to make its way in from the sides.
+
+Also, I was able to wipe off some oxidation from the Al2O3 plates where the sample was contacting. I will probably want to incorporate this into the SOP. Do I want to have ultrasonic cleaning as part of the procedure prior to annealing? Perhaps that is something else that I will test later.

@@ -1,0 +1,50 @@
+Ni4N5_081 is out for now because the exposed area is shadowed, and the rest of the sample has an Au/Pd coating. Ni_003b2 seems to also be Au/Pd coated.. So that left Ni_007.
+
+
+7:13 pm
+Leaving at 0 degree tilt, -45 deg rotation.
+
+When going through the files for Ni_007, it will probably be useful to sort by date modified, and step through the files sequentially, noting the naming schemes and looking at images when available. This should give a pretty good trend of the flow of the data collection process.
+
+Data analysis:
+1. Drift speed test
+Compare the following three datasets:
+boxscan_002a_linescan_001_vertical_23degRot
+boxscan_002a_linescan_001_vertical_23degRot_10nmStep_driftSpeedTest
+boxscan_002a_linescan_001_vertical_23degRot_100nmStep_driftSpeedTest
+
+How well do they line up (i.e. what is the offset between scans, e.g. how far apart in "x" are the scans when you look at y = 0.5)? As the scan speed (i.e. step size) increases, is there a stretch or shrink to the 10 and 100 nm curves relative to the 1 nm step size? If so, what is the scaling factor?
+
+2. Twin location comparison
+
+Compare the following three datasets:
+boxscan_003a1a_twin2_low_-45degRot
+boxscan_003a1a_twin2_mid_-45degRot
+boxscan_003a1a_twin2_high_-45degRot
+
+Each of these fit inside the higher resolution boxscan_003a1a1
+
+Each boxscan contains 3 stacked, horizontal linescans across the grain boundary. You can compare the three curves from each set stacked on top of one another, or shift the curves so that they fall on top of one another to see the local differences.
+
+Compare the average of the three linescans in each boxscan or just a single curve from each of the box scans to see how the curves change globally across the same twin boundary. Are the linescans qualitatively the same at different locations on the same twin boundary? If not, how are they different? Can this be explained by visually analyzing the locations of the boxscans (i.e. boxscan_003a1a1 or SEM image).
+
+3. Rotation comparison
+two twins were observed at different rotation angles
+Twin 1:
+Contained in boxscan_002 files (possibly boxscan_001 as well?)
+
+Twin2:
+Contained in boxscan_003 files
+
+Typically both vertical and horizontal line scans were taken.
+
+4. Trenching
+Look at:
+boxscan_003a1a_ETD_-45degRot.tif (70 degree tilt)
+boxscan_003a2_ETD_0degTilt_-45degRot_twin2_5kV_800pA_5mmStgHt_002.tif
+boxscan_003a2_ETD_0degTilt_-45degRot_twin2_5kV_800pA_5mmStgHt_001.tif
+boxscan_003a2_ETD_0degTilt_-45degRot_twin2_5kV_800pA_5mmStgHt.tif
+boxscan_003a2_ETD_0degTilt_-45degRot_twin2_5kV_800pA_5mmStgHt_100kx.tif
+
+There seems to be no noticeable trenching at the twin boundary.
+
