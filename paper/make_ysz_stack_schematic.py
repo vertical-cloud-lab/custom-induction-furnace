@@ -16,6 +16,10 @@ dissipation; the alumina support is a tube, not a rod, with holes bored
 laterally along its outer perimeter to aid evacuation; and a teflon tube sits
 between the alumina tube and the KF40 fitting.
 
+Correction (R. Guymon, PR #12, 2026-07-23): the teflon tube is underneath the
+alumina tube -- the alumina tube rests on top of the teflon tube, it does not
+sit inside it.
+
 If LibreOffice (soffice) and pdftoppm are available, this script also renders
 the slide to paper/figures/fig_ysz_stack.png (300 dpi, autocropped) the same
 way build_schematic_figures.py does on PR #3's branch.
@@ -124,21 +128,21 @@ def dimension(x1, x2, y, text, text_above=True, size=9):
 
 
 # ---- KF40 hardware at the bottom of the vacuum column (drawn first so the
-#      teflon and alumina tubes render on top of it, visibly seated inside)
+#      teflon tube renders on top of it, visibly seated inside)
 box(2.60, 7.35, 1.40, 0.35, line_pt=1.5)          # KF40 fitting at the tube base
 box(2.55, 7.75, 1.50, 0.55, line_pt=1.5)          # KF40 cross below it
 
-# ---- teflon tube seated in the KF40 fitting; it receives the lower end of
-#      the alumina support tube (S. Baird, PR #12, 2026-07-22)
+# ---- teflon tube seated in the KF40 fitting; the alumina support tube rests
+#      on its top rim (R. Guymon, PR #12, 2026-07-23)
 box(2.95, 7.15, 0.70, 1.00, line_pt=1.25)
 
-# ---- alumina support tube (below the susceptor blocks, down into the teflon
-#      tube). Drawn over the teflon tube so the nesting reads left/right.
-box(3.05, 4.17, 0.50, 3.38)
+# ---- alumina support tube (below the susceptor blocks, resting ON TOP of
+#      the teflon tube -- its bottom edge coincides with the teflon top rim)
+box(3.05, 4.17, 0.50, 2.98)
 # hollow bore, shown as hidden (dashed) lines
 for bx in (3.19, 3.41):
     c = shapes.add_connector(MSO_CONNECTOR.STRAIGHT,
-                             Inches(bx), Inches(4.22), Inches(bx), Inches(7.50))
+                             Inches(bx), Inches(4.22), Inches(bx), Inches(7.10))
     style_line(c, 0.75, dash='dash')
     c.shadow.inherit = False
 # lateral evacuation holes bored along the outer perimeter (side view: one
@@ -189,7 +193,7 @@ label("Alumina Support Tube", 4.72, 5.22, 1.70)
 label("(lateral evacuation holes)", 4.72, 5.44, 1.90, size=9)
 leader(4.68, 5.34, 3.59, 5.34)
 label("Teflon Tube", 4.72, 6.95, 1.00)
-leader(4.68, 7.07, 3.67, 7.25)
+leader(4.68, 7.07, 3.62, 7.28)
 label("KF40 Fitting", 4.72, 7.40, 1.00)
 leader(4.68, 7.52, 4.04, 7.52)
 label("KF40 Cross", 4.72, 7.92, 1.00)
