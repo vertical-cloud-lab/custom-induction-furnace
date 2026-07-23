@@ -6,10 +6,13 @@ out of necessity): binary uploads via store_file_content route through the
 platform's multipart-upload endpoint, which currently 500s server-side (the
 initiate call builds a malformed storage URL with no bucket; reproduced 3x on
 2026-07-23 for both PDFs). Text-type files (.md/.txt) upload fine via the
-text-content path. So the two PDFs are passed as store_link entries pointing
-at the public GitHub raw URLs (verified anonymously fetchable), pdftotext
-extractions of both PDFs are uploaded as .txt fallbacks, and the two markdown
-files are uploaded directly. All storage ids go into
+text-content path. First attempt (task 72fcebdc...) passed the two PDFs as
+store_link entries in data_storage_uris; the task failed instantly with no
+failure_reason, matching the known signature of unsupported environment
+config, so link entries evidently cannot be used there. This version uploads
+only text files (pdftotext extractions of both PDFs, the findings report, and
+the prompt) and puts the public PDF URLs in the query text as an optional
+download for the agent. All storage ids go into
 runtime_config.environment_config.data_storage_uris, which must contain ONLY
 data_storage_uris.
 
@@ -24,30 +27,8 @@ from edison_client.models import RuntimeConfig, TaskRequest
 COMMIT = "c149c59"
 RAW = f"https://github.com/vertical-cloud-lab/custom-induction-furnace/raw/{COMMIT}"
 
-LINKS = [
-    (
-        "real_person_paper.pdf",
-        f"{RAW}/real_person_paper.pdf",
-        "Compiled manuscript PDF (8 pages, REVTeX/AIP style) describing a "
-        "computer-controlled vacuum RF induction annealing furnace retrofit, "
-        "for submission to Review of Scientific Instruments.",
-    ),
-    (
-        "SI.pdf",
-        f"{RAW}/paper/SI.pdf",
-        "Compiled supplementary information PDF (13 pages) for the "
-        "manuscript: crucible dimensions, coil drawing, calibration/"
-        "repeatability/long-soak traces, Kikuchi-pattern survey, YSZ "
-        "extension, specimen-run linkage table (Table S1), bill of materials "
-        "(Table S2), design-file inventory.",
-    ),
-]
-LINK_INSTRUCTIONS = (
-    "Public GitHub raw-file URL; no authentication needed. Download it with "
-    "e.g. `curl -L -o <name> <url>` or requests (follow redirects), then "
-    "read the PDF. If the download fails, use the corresponding uploaded "
-    "*_text.txt pdftotext extraction instead (text only, no figures)."
-)
+PAPER_URL = f"{RAW}/real_person_paper.pdf"
+SI_URL = f"{RAW}/paper/SI.pdf"
 
 FILES = [
     (
@@ -66,43 +47,53 @@ FILES = [
     (
         "real_person_paper_text.txt",
         "real_person_paper_text.txt",
-        "Fallback pdftotext -layout extraction of real_person_paper.pdf, in "
-        "case the PDF link cannot be downloaded. Text only; figures absent.",
+        "pdftotext -layout extraction of the compiled manuscript "
+        "real_person_paper.pdf (8 pages, Review of Scientific Instruments "
+        "submission on a computer-controlled vacuum RF induction annealing "
+        "furnace retrofit). Text only; figures absent.",
     ),
     (
         "SI_text.txt",
         "SI_text.txt",
-        "Fallback pdftotext -layout extraction of SI.pdf, in case the PDF "
-        "link cannot be downloaded. Text only; figures absent.",
+        "pdftotext -layout extraction of the compiled supplementary "
+        "information SI.pdf (13 pages): crucible dimensions, coil drawing, "
+        "calibration/repeatability/long-soak traces, Kikuchi-pattern survey, "
+        "YSZ extension, specimen-run linkage table (Table S1), bill of "
+        "materials (Table S2), design-file inventory. Text only; figures "
+        "absent.",
     ),
 ]
 
-QUERY = """\
+QUERY = f"""\
 We are finalizing a manuscript for Review of Scientific Instruments (AIP). An
 AI reviewing pass was run over the LaTeX sources using the uploaded prompt
 (ai_edit_review_prompt.md) and produced the uploaded findings report
-(ai_edit_review_findings.md, 43 findings). The compiled documents are uploaded
-as real_person_paper.pdf (main text) and SI.pdf (supplementary information);
-each is provided as a public GitHub link entry to download (no auth needed),
-with pdftotext extractions (real_person_paper_text.txt, SI_text.txt) uploaded
-as fallbacks in case the downloads fail.
+(ai_edit_review_findings.md, 43 findings). The manuscript and supplementary
+information are provided as pdftotext extractions of the compiled PDFs
+(real_person_paper_text.txt = main text, 8 pages; SI_text.txt = supplementary
+information, 13 pages). If your environment has internet access, you may also
+download the compiled PDFs themselves (public GitHub raw URLs, no auth,
+follow redirects): main text {PAPER_URL} and SI {SI_URL} - the PDFs include
+the figures, which the text extractions lack. If you cannot download them,
+work from the text extractions and mark figure-dependent checks as not
+checkable.
 
-Please act as an independent spot check of that review, working from the two
-PDFs. Note: line numbers in the findings report refer to the LaTeX sources you
-do not have; locate each finding in the PDFs by its verbatim quotes instead.
+Please act as an independent spot check of that review. Note: line numbers in
+the findings report refer to the LaTeX sources you do not have; locate each
+finding by its verbatim quotes instead.
 
 Task 1 - Verify the findings. For each of the 43 findings (prioritize the
 referee-flag items No. 1-11, 20, 21), classify it as: CONFIRMED (the quoted
-text and the claimed contradiction/defect are really present in the PDFs),
-NOT CONFIRMED (the quote is absent, misquoted, or the claimed defect does not
-hold), OVERSTATED/MISJUDGED (present but the severity or interpretation is
-wrong), or NOT CHECKABLE FROM THE PDFS (say what would be needed). Where you
+text and the claimed contradiction/defect are really present in the
+documents), NOT CONFIRMED (the quote is absent, misquoted, or the claimed
+defect does not hold), OVERSTATED/MISJUDGED (present but the severity or
+interpretation is wrong), or NOT CHECKABLE (say what would be needed). Where you
 can bring domain knowledge (e.g., NI USB-6000 / NI-9265 / NI-9203 device
 specifications, 4-20 mA current loops, Al2O3-C chemistry, EBSD practice,
 pyrometry), use it and say what you relied on.
 
-Task 2 - Find what the review missed. Independently sweep both PDFs for the
-same defect classes the prompt targets (garbled sentences, internal numeric
+Task 2 - Find what the review missed. Independently sweep both documents for
+the same defect classes the prompt targets (garbled sentences, internal numeric
 contradictions, claimed-vs-demonstrated gaps, terminology drift, broken or
 vague cross-references, physically implausible statements, figure captions
 that do not match what the figure shows). Report any defect NOT already in the
@@ -130,16 +121,6 @@ verbatim throughout; do not paraphrase quotes.
 def main():
     client = EdisonClient(api_key=os.environ["EDISON_PLATFORM_API_KEY"])
     uris = []
-    for name, url, description in LINKS:
-        entry = client.store_link(
-            name=name,
-            url=url,
-            description=description,
-            instructions=LINK_INSTRUCTIONS,
-        )
-        storage_id = entry.data_storage.id
-        uris.append(f"data_entry:{storage_id}")
-        print("stored link", name, "->", storage_id)
     for name, path, description in FILES:
         upload = client.store_file_content(
             name=name, file_path=path, description=description

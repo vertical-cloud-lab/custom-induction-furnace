@@ -1,0 +1,19 @@
+{
+ "status": "fail",
+ "query": "We are finalizing a manuscript for Review of Scientific Instruments (AIP). An\nAI reviewing pass was run over the LaTeX sources using the uploaded prompt\n(ai_edit_review_prompt.md) and produced the uploaded findings report\n(ai_edit_review_findings.md, 43 findings). The compiled documents are uploaded\nas real_person_paper.pdf (main text) and SI.pdf (supplementary information);\neach is provided as a public GitHub link entry to download (no auth needed),\nwith pdftotext extractions (real_person_paper_text.txt, SI_text.txt) uploaded\nas fallbacks in case the downloads fail.\n\nPlease act as an independent spot check of that review, working from the two\nPDFs. Note: line numbers in the findings report refer to the LaTeX sources you\ndo not have; locate each finding in the PDFs by its verbatim quotes instead.\n\nTask 1 - Verify the findings. For each of the 43 findings (prioritize the\nreferee-flag items No. 1-11, 20, 21), classify it as: CONFIRMED (the quoted\ntext and the claimed contradiction/defect are really present in the PDFs),\nNOT CONFIRMED (the quote is absent, misquoted, or the claimed defect does not\nhold), OVERSTATED/MISJUDGED (present but the severity or interpretation is\nwrong), or NOT CHECKABLE FROM THE PDFS (say what would be needed). Where you\ncan bring domain knowledge (e.g., NI USB-6000 / NI-9265 / NI-9203 device\nspecifications, 4-20 mA current loops, Al2O3-C chemistry, EBSD practice,\npyrometry), use it and say what you relied on.\n\nTask 2 - Find what the review missed. Independently sweep both PDFs for the\nsame defect classes the prompt targets (garbled sentences, internal numeric\ncontradictions, claimed-vs-demonstrated gaps, terminology drift, broken or\nvague cross-references, physically implausible statements, figure captions\nthat do not match what the figure shows). Report any defect NOT already in the\nfindings report, with verbatim quotes and locations (page numbers). This is\nthe most valuable output: the review is being used as the basis for final\nedits, so misses matter more than confirmations.\n\nTask 3 - Critique the prompt. Give concrete feedback on ai_edit_review_prompt.md\nas a reusable instrument for catching AI-introduced defects in scientific\nmanuscripts: (a) what it does well; (b) blind spots - defect classes it does\nnot ask for, revealed by anything you found in Task 2 or by your own\nexperience; (c) instructions that are ambiguous, redundant, or likely to cause\nfalse positives; (d) whether the embedded few-shot examples help or overfit it\nto this one paper; (e) 3-6 specific, wording-level suggested edits to the\nprompt (give the replacement text).\n\nOutput format: three sections matching the tasks. In Task 1, a compact table\nof finding number -> verdict -> one-line justification, followed by longer\nnotes only for verdicts other than CONFIRMED. In Task 2, one entry per missed\ndefect with quote, page, and why it matters. Please be specific and quote\nverbatim throughout; do not paraphrase quotes.\n",
+ "user": null,
+ "created_at": "2026-07-23T02:59:49.629224Z",
+ "job_name": "job-futurehouse-data-analysis-crow-high",
+ "share_status": "private",
+ "permitted_accessors": {
+  "users": [],
+  "organizations": []
+ },
+ "build_owner": "FutureHouse",
+ "environment_name": null,
+ "agent_name": null,
+ "task_id": "72fcebdc-aba1-4716-8c02-9e17ae7e1b6e",
+ "project_id": null,
+ "answer": null,
+ "notebook": null
+}
