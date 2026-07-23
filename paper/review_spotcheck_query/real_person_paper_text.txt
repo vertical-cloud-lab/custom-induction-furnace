@@ -1,0 +1,462 @@
+Retrofitting a commercial RF induction generator into a computer-controlled,
+vacuum-integrated annealing system for reactive-metal grain growth
+        Sterling G. Baird, Ryan Weber, Christopher Nyborg, Ronnie Guymon, Gage Erickson, and Oliver Johnson
+        Department of Mechanical Engineering, Brigham Young University, Provo, Utah 84602,
+        USA
+        (Dated: 22 July 2026)
+        High-temperature vacuum annealing near a metal’s melting point drives controlled grain growth, but it
+        normally requires an expensive turn-key vacuum induction furnace. We describe an open retrofit (the added
+        control, vacuum, and temperature-feedback hardware and software) that converts a bare commercial radio-
+        frequency (RF) induction generator into a computer-controlled, vacuum-integrated annealing system with
+        pyrometer feedback. The retrofit consists of analog power control through LabVIEW and a data-acquisition
+        (DAQ) device, dual-wavelength optical temperature feedback, a high-vacuum quartz-tube chamber, and an
+        in-house machined graphite crucible that serves as a susceptor (an RF-absorbing element that heats the
+        charge it encloses) for metal specimens. Because its only requirement is a monotonic analog power-control
+        input, the retrofit transfers between generators; the reference build uses a 6 kW solid-state generator. The
+        system produced a fixed-geometry power–temperature calibration with R2 = 0.991 over 1200–1400 ◦ C. Eight
+        nickel anneals at 1200 ◦ C for 12 h reproduced their soak temperature (the constant-temperature hold) to
+        1201.2±1.3 ◦ C, and soaks up to 40 h at 1325 ◦ C remained stable. In the annealed nickel, optical metallography
+        and scanning electron microscopy (SEM) resolve equiaxed grains and deep thermal grooves, several spanning
+        the full sheet thickness; electron backscatter diffraction (EBSD) maps index hundreds of grains, quantifying
+        grain size and texture. A modified sample assembly (the specimen, susceptor, and supports inside the
+        chamber) extends the furnace to non-coupling ceramics, demonstrated by coarsening yttria-stabilized zirconia
+        (YSZ) grains in 45 min at 2500 ◦ C. Complete design files, bill of materials, control software, and data are
+        openly available.
+        Keywords: induction furnace; grain growth; vacuum annealing; LabVIEW; pyrometer; open-source hardware
+
+
+I.   INTRODUCTION                                            ator internals are not reproduced, so a compatible gener-
+                                                             ator needs to be supplied. The graphite crucible couples
+                                                             strongly to the RF field and is used for the metal grain-
+   High-temperature annealing near a metal’s melting         growth anneals. Non-coupling ceramics such as YSZ use
+point drives controlled grain growth. This is central to     a modified sample assembly in which graphite or tanta-
+studying microstructure–property relationships in met-       lum serves as the susceptor, chosen for chemical compat-
+als such as nickel and iron1–5 . Growing grains with-        ibility with the specimen (Sec. V A).
+out oxidizing the sample requires temperatures of 1400
+                                                                The reproducible build documented here is anchored
+to 1500 ◦ C along with high vacuum or an inert atmo-
+                                                             on a modern, USA-sourced 6 kW solid-state generator
+sphere6,7 . Commercial vacuum induction furnaces that
+                                                             whose controller accepts a standard analog power set-
+meet these requirements are closed, turn-key systems
+                                                             point. The reference generator is a CEIA “Power Cube”
+costing $50k to $200k or more. Resistive tube and box
+                                                             PW3-90/50 with its matching controller, heating head,
+furnaces do not heat the charge directly. They heat only
+                                                             and chiller, itemized in the supplementary material.
+by radiation from the furnace elements, so heat trans-
+                                                             That package was quoted at approximately $16.5k. The
+fer into the charge is limited, and they reach lower tem-
+                                                             retrofit components are itemized in the bill of materials
+peratures with slower ramps. Bare industrial induction
+                                                             in the supplementary material. This is a small fraction of
+generators are widely available, but they ship without
+                                                             turn-key cost, in a form the user can repair and modify.
+vacuum, optical temperature feedback, or computer set-
+point control.
+   This work adds those missing subsystems as an open,
+                                                             II.   SYSTEM DESIGN AND DESCRIPTION
+documented retrofit. A bare RF induction generator8,9
+is retrofitted into a full annealing system with computer
+power control, closed-loop optical temperature feedback,        The system comprises five subsystems: heating, vac-
+a high-vacuum quartz-tube chamber, and a machined            uum and gas handling, optical temperature sensing, com-
+graphite crucible that doubles as a susceptor. The           puter control, and mechanical support (Fig. 1(a)). Fig-
+retrofit is deliberately generator-agnostic. Its only re-    ure 1(b) shows the assembled system at operating power.
+quirement is an analog power-control input with a mono-         The heating subsystem is a 6 kW solid-state induc-
+tonic command-to-power response. The pyrometer feed-         tion generator driving a liquid-cooled copper work coil.
+back and proportional–integral–derivative (PID) calibra-     The coil is approximately 3 in tall with a 2.5 in inner
+tion absorb any nonlinearity in that response. The gener-    diameter and 6.5 turns10,11 . The coil is modular, and
+                                                                                                                           2
+
+                                                                               (b)
+(a)
+
+
+
+
+FIG. 1. The annealing system. (a) System overview. The generator drives the liquid-cooled heating head and work coil around
+the vertically suspended quartz-tube chamber. The quartz tube is joined by KF40 flanges to the ceiling-suspended pyrometer
+housing above and to the vacuum hardware below. An overpressure relief valve and a flexible bellows lead past the pressure
+sensor to the turbo pumping station. (b) The assembled, functioning furnace with the main components labeled. This shows
+the quartz chamber glowing at the sample-assembly position. The pyrometer sights down the chamber axis, and the vent
+valve admits the argon backfill. The gauge, turbopump, and separately supported roughing pump complete the vacuum path.
+Relative to closed turn-key vacuum induction furnaces, this design costs far less, is modular (hand-clamped KF-flanged vacuum
+hardware and an interchangeable sample assembly), and is transparent (open LabVIEW control software and design files), and
+it reaches a high-purity annealing environment by pumping the chamber to high vacuum and then backfilling with flowing
+argon.
+
+
+this geometry was chosen to fit our sample geometry.            maintained for the duration of the anneal. The nickel
+The coil conductors carry both the RF current and the           grain-growth anneals reported below all ran under this
+coolant. Ethylene glycol coolant flows in series from the       continuous flow. Heating under vacuum alone tended to
+chiller through the generator and then through the heat-        sublime graphite onto the chamber walls. The highest-
+ing head and work coil before returning to the chiller.         temperature ceramic work (Sec. V A) used the same con-
+The vacuum and gas subsystem starts from the 35 mm              tinuous argon supply, with the chamber evacuated and
+inner-diameter fused-quartz tube that forms the cham-           then filled with argon while the turbopump was running.
+ber. The tube connects through a KF40 flange (a stan-           This helped avoid oxidation during heating.
+dard clamp-sealed vacuum flange) and a flexible bellows            Temperature is sensed optically. A dual-wavelength ra-
+to a compact turbo pumping station that reaches 10−6            tio pyrometer14,15 with an 800 to 2500 ◦ C sensing range
+to 10−8 Torr. An automated, electrically triggered vent         views the sample through a quartz optical window. This
+valve fed from an inert-gas regulator allows controlled         provides a non-contact signal that is robust to emissivity
+venting and backfilling12,13 . These components support         changes and to the RF field that would corrupt ther-
+a range of operating atmospheres. The furnace can run           mocouples16–18 . Control is implemented in LabVIEW,
+at low or high vacuum, and the chamber can instead be           with virtual instruments (VIs) for manual control, au-
+backfilled with inert gas and continuously supplied either      tomated ramping, PID tuning, and email alerts. The
+at a precisely controlled rate, for example 20 standard cu-     generator’s power setpoint can be commanded either by
+bic centimeters per minute (SCCM), or as a large purge          a 0–5 V voltage signal or by a 4–20 mA current-loop sig-
+flow. The turbopump can be left running during back-            nal. Which input is used depends on user preference and
+filled operation or stopped. The atmosphere matters for         on how the manufacturer configures the generator, which
+graphite-crucible anneals. The best results were achieved       is typically customizable. In this build, the DAQ device’s
+by pumping to high vacuum and then backfilling with             0–5 V analog output drives a voltage-to-current loop con-
+argon through the vent valve. The chamber was purged            ditioner, and the conditioner’s 4–20 mA output drives
+first, and a constant argon flow of 20 SCCM was then            the generator’s power-setpoint input. The pyrometer’s
+                                                                                                                         3
+
+analog output returns to a DAQ input, which closes the
+PID loop. Below the pyrometer’s 800 ◦ C detection floor,
+the VI ramps open-loop. Once the pyrometer returns a
+sustained valid reading, the VI switches to closed-loop
+PID control based on the optically-measured tempera-
+ture19,20 . Mechanically, a bolted support stand carries
+the generator’s heating head and centers the work coil
+on the crucible position. The quartz tube and the vac-
+uum hardware below it are joined by KF40 flanges to the
+pyrometer housing, which is suspended from the ceiling
+by cables, so the vertical column of vacuum hardware
+hangs from above. The sample assembly is not attached
+to any of these flanges. It simply sits inside the quartz
+tube, resting on a retaining ring of a KF40 flange.
+   Metal charges in the graphite crucible reach the nickel
+and iron grain-growth range of 1400 to 1500 ◦ C, with
+demonstrated soaks from minutes to 40 h. The modified        FIG. 2. The two-piece graphite crucible/susceptor used for
+ceramic sample assembly extends the working range to         the nickel anneals reported in this work. (a) Fully disassem-
+2500 ◦ C. The retrofit transfers to any generator that ex-   bled. Top left is the crucible lid, top middle is the bottom
+poses a monotonic analog power input, supports a liquid-     of the crucible that acts as the specimen carrier, far right
+cooled head and coil of the documented geometry, deliv-      is the sapphire window, bottom left and middle are the alu-
+                                                             mina sample-surrounding sheets. (b–d) Specimen-loading se-
+ers enough RF power for the target charge, and allows
+                                                             quence. (b) The specimen is placed between two alumina
+electrical isolation of the DAQ and control path. When       sheets in the crucible body. (c) The graphite lid is seated on
+the retrofit is moved to a different generator, the com-     top. (d) The sapphire window closes the lid bore, leaving an
+mand scaling, calibration, PID gains, alignment, and in-     optical path for the pyrometer.
+terlock behavior are re-established.
+
+                                                             III.   CONSTRUCTION AND OPERATION
+
+
+                                                                Following the heating path, the generator’s heating
+A.   Graphite crucible / susceptor                           head mounts on an adjustable platform on the bolted
+                                                             support stand so the coil centers on the crucible position
+                                                             of the vertically suspended quartz tube. The vacuum
+   Metal specimens are held in a two-piece graphite cru-     path begins at the quartz tube, which is open at both
+cible machined in-house from 3000 ◦ C-grade graphite         ends. Its lower end joins the vacuum hardware below
+stock. It consists of a cup body and a lidded cap with       through a KF40 flange. Its upper end mates to the py-
+a central bore, which contains the charge while leaving      rometer housing, a custom 3D-printed part that termi-
+an optical path for the pyrometer. Figure 2(a) shows         nates in a KF40-sized fitting. At that joint the chamber
+the disassembled parts. The graphite couples strongly to     is sealed not by the printed part but by a 55 mm quartz
+the induction field and acts as a susceptor, heating the     optical disc pressed against an O-ring, and the pyrome-
+contained metal specimen by conduction and radiation.        ter sights through this disc down the chamber axis. Ev-
+The specimen is sandwiched between two alumina discs         ery flanged joint compresses an elastomer O-ring carried
+in the cup, the lid sits on top, and a sapphire window       on a centering ring, so the vacuum hardware assembles
+closes the lid bore (Fig. 2(b–d)). Sapphire is used for      with hand-tightened clamps and no tools. These seals
+the window to increase transmittance in the wavelength       support the 10−6 to 10−8 Torr operating vacuum. From
+ranges emitted from the sample relative to the pyrome-       the bottom of the vacuum column, a tee carries a 0.5 psi
+ter. The measured dimensions of every piece are given        overpressure relief valve that protects the quartz tube
+in the supplementary material. Inside the vacuum cham-       during backfilling. A flexible bellows continues through
+ber the crucible rests on an alumina support tube that       the wide-range vacuum gauge to the turbo pumping sta-
+positions it at coil height. The tube has holes bored lat-   tion. The roughing pump sits on a separate support,
+erally along its outer perimeter to aid evacuation, and      mechanically decoupled so its vibration does not reach
+its lower end seats in a teflon tube at the KF40 fitting     the chamber or the pyrometer sight line. Photographs of
+below. The crucible is used primarily for the metal grain-   the pumping station as installed, together with the re-
+growth anneals. Graphite also works as a susceptor for       lief valve at the base of the vacuum column, are given
+some ceramic charges when the contact chemistry per-         in the supplementary material. On the gas path, the ar-
+mits. Sec. V A describes how a compatible susceptor is       gon regulator feeds the automated, electrically triggered
+selected for refractory ceramics.                            vent valve. This is a specialized commercial component
+                                                                                                                           4
+
+that admits gas in a controlled way rather than dump-           terial. Reported temperatures are specific to our setup.
+ing atmospheric pressure into the chamber, which could          Slight variations to the optical pathway or other condi-
+damage the spinning turbopump. A mass flow controller           tions can affect the temperature readings. By extension,
+between them is helpful when continuous inert gas flow          absolute specimen temperature still depends on emissiv-
+is required. On the control path, electrical isolation is       ity and surface condition16,21,22 .
+maintained between the DAQ wiring and the generator
+interface. Manual control is verified before automated
+ramping and soaking are enabled.                                V.   MICROSTRUCTURAL VALIDATION
+   A run begins with the chamber vented, which is done
+only after the turbo pump has stopped spinning. The                The furnace exists to change microstructure, so the de-
+specimen is loaded into the crucible (Fig. 2(b–d)), the         cisive test is what the anneals do to real specimens. A
+sample assembly is lowered into the quartz tube, and            striking feature of that test is that it required no metallo-
+the chamber is pumped down. The LabVIEW profile                 graphic sample preparation at all. The EBSD specimens
+ramps open-loop below the pyrometer floor, switches to          shown here were never ground, polished, or etched. Each
+closed-loop PID, and runs the programmed soak. After-           went straight from the furnace to the SEM, pulled di-
+wards the sample cools under vacuum, and the chamber            rectly from the furnace chamber and placed directly into
+is vented only once the turbo pump has stopped.                 the EBSD chamber, and each still returned high-quality
+                                                                diffraction patterns. Figure 3 shows such a high-quality
+                                                                raw EBSD pattern, also called a Kikuchi pattern, from
+IV.   PERFORMANCE VALIDATION                                    an unprepared furnace-annealed nickel specimen, repro-
+                                                                duced exactly as the EBSD detector saved it during ori-
+   The furnace has completed more than one hundred              entation mapping. Even at the coarse 8 × 8 binning
+logged anneals of Ni200 (the standard commercially pure         used for mapping, the bands and zone axes are crisply
+wrought nickel grade, UNS N02200, minimum 99.0 % Ni,            resolved. Preparation-free EBSD works here for two rea-
+analogous to a stainless-steel designation such as SS316)       sons. EBSD diffracts from only the top tens of nanome-
+and Ni (4N5, i.e., 99.995 % purity) nickel charges at 900       ters of the surface, and the long near-solidus anneal re-
+to 1400 ◦ C, with soaks from minutes to 40 h. The supple-       moves the deformed near-surface layer that polishing nor-
+mentary material links each result below to its underlying      mally exists to remove23 . In addition, the evacuated,
+run log.                                                        argon-flowing, graphite-enclosed environment holds the
+   Four steady-state anneals spanning 1200 to 1400 ◦ C          oxygen potential low, which plausibly keeps the surface
+were run with one fixed configuration of Ni (4N5) speci-        free of an EBSD-obscuring nickel oxide scale24 . Rapid
+men, quartz tube, graphite crucible, and optics. Across         nickel surface diffusion at these temperatures can further
+these anneals, the soak-mean pyrometer temperature fol-         smooth the surface25,26 . The same surface transport pro-
+lows the soak-mean analog power command monotoni-               duces the deep boundary grooves described below, which
+cally and approximately linearly. The relation is well          can locally reduce indexing right at the boundaries27 .
+described by T = 931 + 632 I, with T in ◦ C and I in            Inverse-pole-figure maps built from such patterns resolve
+mA, and R2 = 0.991 (Fig. S4 of the supplementary ma-            hundreds of indexed grains per specimen (Fig. 4). Each
+terial). The fit is specific to this fixed setup. Its coef-     indexed color in the map is a crystallographic orienta-
+ficients shift with the charge, crucible, and optical con-      tion, so a single map records both the grain sizes and
+figuration, so any modification to the system calls for         the texture of the annealed specimen. Thermal grooving
+recalibration. The point is that a fairly linear opera-         is itself a record of the anneal. Figure 5 shows edge-on
+tional calibration exists for a given setup, not that there     views of a Ni (4N5) specimen annealed at 1200 ◦ C for
+is a universal command–temperature law. A Ni (4N5)              12 h and cleaned only ultrasonically. The grooves have
+anneal at a nominal 1300 ◦ C and 12 h condition serves          deepened enough that they delineate the grain structure
+as the representative closed-loop run. The full annealing       on their own, with no etching. Several grain boundaries
+curve, including the ramp to temperature, is specified by       traverse the full sheet thickness.
+the user in the control software in advance. The recorded          Figure 6 shows the microstructure such an anneal pro-
+trace is given in Fig. S5 of the supplementary material.        duces for a Ni (4N5) specimen soaked 20 h at 1300 ◦ C un-
+The soak held 1302.1 ± 3.0 ◦ C over the 12 h plateau.           der the constant 20 SCCM argon flow, with a measured
+   Eight Ni (4N5) anneals at a nominal 1200 ◦ C and             soak of approximately 1301 ◦ C. The grains are equiaxed,
+12 h condition were run under the same gas-flow con-            and thermal grooving allows for the full grain boundary
+figuration. They reproduced their soak temperature to           network to be observed under an optical microscope.
+1201.2±1.3 ◦ C, a coefficient of variation of 0.11 % (Fig. S6
+of the supplementary material). Long-duration stability
+was demonstrated with two Ni200 anneals at 1325 ◦ C.            A.   Extension to ceramic charges: YSZ
+The first held for 20 h at 1326.5 ± 1.5 ◦ C with a drift of
+−0.004 ◦ C per hour, and the second held for 40 h. Both           The same induction furnace can also be used to pro-
+traces are shown in Fig. S7 of the supplementary ma-            cess refractory ceramics by modifying only the materials
+                                                                                                                                5
+
+
+
+
+                                                                 FIG. 5. Grain-boundary thermal grooving on a Ni (4N5) spec-
+                                                                 imen after a 1200 ◦ C / 12 h anneal, imaged edge-on in the as-
+                                                                 annealed condition after only an ultrasonic ethanol clean. The
+FIG. 3. Raw EBSD Kikuchi pattern from a furnace-annealed
+                                                                 grooves have deepened enough that they delineate the grain
+nickel specimen that received no sample preparation whatso-
+                                                                 structure on their own. (a) Edge view at 350× (200 µm scale
+ever — no grinding, polishing, or etching. The specimen was
+                                                                 bar). Several grain boundaries traverse the full sheet thick-
+pulled directly from the furnace chamber and placed directly
+                                                                 ness. (b) Edge and top surface at 800× (50 µm scale bar).
+into the EBSD chamber. The pattern is reproduced exactly as
+                                                                 The grooves outline the surface grain structure. (c) Grooved
+saved by the EBSD detector during orientation mapping (the
+                                                                 boundaries at 12,000× (5 µm scale bar). Multiple boundaries
+detector’s 8 × 8-binned output). Even so, the crisply resolved
+                                                                 are grooved, and grooving is visible at several triple junctions.
+bands and zone axes index directly to the nickel lattice.
+                                                                 The trenches deepen as grain-boundary energy equilibrates
+                                                                 against surface energy at the soak temperature.
+
+
+
+
+FIG. 4. EBSD inverse-pole-figure (IPF) orientation maps of
+two furnace-annealed Ni (4N5, 99.995 % purity) specimens,
+rendered from the recorded EBSD scans. Neither specimen re-
+ceived any sample preparation. (a) A furnace-annealed speci-
+men (100 µm scale bar). (b) A second furnace-annealed spec-
+imen (800 µm scale bar). This specimen was masked, which
+is why indexed points fill only the circular unmasked region
+                                                                 FIG. 6. Optical grain map of a Ni (4N5) specimen after a
+against the black surround. The maps resolve hundreds of
+                                                                 1300 ◦ C / 20 h anneal under a constant 20 SCCM argon flow
+grains for grain-size and texture analysis. The supplemen-
+                                                                 (200 µm scale bar). The equiaxed grain network is delineated
+tary material links each specimen to its furnace run.
+                                                                 by thermal grooving alone.
+
+
+directly in contact with the specimen while leaving the
+generator, vacuum system, pyrometer, cooling system,
+and control software unchanged. Materials that do not
+couple directly to the RF field require a susceptor. At          228 h at 1600 ◦ C in a conventional box furnace, whereas
+the temperatures required for grains to coarsen on re-           comparable grain growth was achieved in only 45 min at
+fractory ceramics, the primary consideration in selecting        2500 ◦ C using the induction furnace (Fig. 7). Achieving
+a susceptor is its chemical compatibility with the speci-        these temperatures required only minor modifications to
+men and surrounding support materials rather than its            the sample assembly (Fig. 8). For example, direct contact
+RF heating performance. Graphite and tantalum both               between graphite and alumina was eliminated because
+serve effectively as susceptors, with the preferred choice       alumina is not inert to carbon at these temperatures.
+depending on the operating temperature and the mate-             Under vacuum or low oxygen potential, carbon carboth-
+rials in contact with the susceptor.                             ermally reduces alumina at the interface. This evolves
+   Grain growth in refractory ceramics is thermally acti-        carbon monoxide and forms aluminum carbides and oxy-
+vated. The rate constant of the grain-growth law follows         carbides that degrade the interface30–32 . The contact was
+an Arrhenius temperature dependence, so grain coars-             eliminated by introducing a boron nitride diffusion bar-
+ening is highly sensitive to annealing temperature28,29 .        rier between the two materials. Alternatively, replacing
+For the 8 mol% YSZ specimens investigated here, grain            the graphite with tantalum avoids this compatibility is-
+growth from approximately 10 µm to 90 µm required                sue while still providing efficient RF coupling.
+                                                                                                                         6
+
+                                                                 the annealed nickel specimens needed no metallographic
+                                                                 preparation at all. Specimens were annealed, removed
+                                                                 from the furnace, and placed directly into the SEM, and
+                                                                 they returned high-quality EBSD patterns and orienta-
+                                                                 tion maps with no grinding, polishing, or etching.
+                                                                    Complete annealing workflows were demonstrated on
+                                                                 both nickel and YSZ. On a modern solid-state genera-
+                                                                 tor, the nickel campaign produced a power–temperature
+                                                                 calibration with R2 = 0.991, soak temperatures repro-
+                                                                 ducible to 0.11 %, stable closed-loop soaks up to 40 h,
+                                                                 and the controlled grain growth the system was built to
+FIG. 7. As-recorded optical micrograph of a YSZ specimen         produce. The YSZ campaign highlighted the challenges
+after the 2500 ◦ C / 45 min tantalum-susceptor anneal, which     of material compatibility at extreme temperature. Every
+coarsened the grains from approximately 20 to 90 µm. The         failure mode was a contact reaction among the charge,
+red traces are the microscope software’s multi-grain size mea-   the susceptor, and the support materials, and the inter-
+surements (100 µm scale bar).                                    changeable sample assembly lets a user iterate on those
+                                                                 material choices run by run.
+                                                                    High-temperature grain growth was achieved for YSZ
+                                                                 in under an hour at 2500 ◦ C in this system, whereas com-
+                                                                 parable coarsening required 228 h in a standard 1600 ◦ C
+                                                                 box furnace. The system is also relatively low-cost com-
+                                                                 pared with commercial systems that reach 2500 ◦ C. In the
+                                                                 annealed nickel, grains and their boundaries span the full
+                                                                 sheet thickness, and the deep thermal grooves that mark
+                                                                 those boundaries point to columnar grain-growth studies
+                                                                 as a natural next application33 .
+
+
+
+
+FIG. 8.      Sample-assembly configuration for the high-         SUPPLEMENTARY MATERIAL
+temperature ceramic anneals. A YSZ specimen is sandwiched
+between two 25.5 mm tantalum susceptor blocks inside the
+                                                                    The supplementary material is organized in seven sec-
+quartz tube. The blocks rest on a boron nitride stub that
+acts as a diffusion barrier. It prevents reaction between the
+                                                                 tions. Sec. SI (hardware) gives the measured crucible
+tantalum and the alumina support tube below, which raises        part dimensions, the work-coil drawing, and photographs
+the sample assembly to coil height. The alumina tube has         of the vacuum and gas-handling hardware. Sec. SII (ther-
+holes bored laterally along its outer perimeter to aid evacu-    mal performance) collects the power–temperature cali-
+ation, and a teflon tube couples its lower end to the KF40       bration and the representative-soak, repeatability, and
+fitting. The coil, vacuum, pyrometer, and control paths are      long-soak traces. Sec. SIII (microstructure) presents the
+unchanged from the metal configuration.                          raw Kikuchi-pattern survey. Sec. SIV covers the high-
+                                                                 temperature extension, with the tantalum-susceptor heat
+                                                                 curves and the YSZ micrographs. Sec. SV holds the
+VI.   CONCLUSIONS                                                specimen–thermal-history linkage table, with links to raw
+                                                                 run logs. Sec. SVI is the itemized bill of materials, and
+   A bare commercial RF induction generator can be con-          Sec. SVII is the design-file inventory.
+verted into a computer-controlled, vacuum-integrated,
+pyrometer-feedback annealing system with a documented
+retrofit. The resulting system is modular, open, and cus-
+tomizable. The vacuum hardware assembles with hand-
+                                                                 ACKNOWLEDGMENTS
+tightened clamps, the sample assembly is interchange-
+able, and the LabVIEW control software and design files
+are open. Because the retrofit requires only a monotonic           The authors thank Kevin Cole for his supervision and
+analog power-control input, the design transfers across          support of the original retrofit, and acknowledge the
+generators and is directly reusable at a small fraction of       Johnson group and the Brigham Young University De-
+turn-key cost.                                                   partment of Mechanical Engineering, which funded the
+   The full system and workflow deliver a high-purity            capital equipment cost. This work was supported by the
+annealing environment. The strongest evidence is that            National Science Foundation under Grant No. 1610077.
+                                                                                                                                           7
+
+AUTHOR DECLARATIONS                                                      9 O. Lucia, P. Maussion, E. J. Dede, and J. M. Burdio, “Induction
+
+                                                                           heating technology and its applications: Past developments, cur-
+                                                                           rent technology, and future challenges,” IEEE Transactions on
+Conflict of Interest                                                       Industrial Electronics 61, 2509–2520 (2014).
+                                                                        10 W. Vankan, N. van Hoorn, A. de Wit, and T. Koenis, “Electro-
+
+  The authors have no conflicts to disclose.                               magnetic induction heating of TP-CFRP laminates: FEM mod-
+                                                                           elling and validation,” in Proceedings of the 34th Congress of
+                                                                           the International Council of the Aeronautical Sciences (ICAS)
+                                                                           (The International Council of the Aeronautical Sciences (ICAS),
+Ethics Approval                                                            2024).
+                                                                        11 Y. Xu, A. Leonhardt, P. Birnbaum, J. Gruner, A. Kunke, and
+
+                                                                           T. Clausmeyer, “Design and optimization of induction coil for
+  Ethics approval not required. This work did not in-                      improved temperature uniformity in fast heating of sheet metal,”
+volve human or animal subjects.                                            Discover Mechanical Engineering 5 (2026), 10.1007/s44245-026-
+                                                                           00228-5.
+                                                                        12 K. KANDA and H. HASHIMOTO, “Development of high-
+
+                                                                           temperature and low-oxygen atmosphere controlled furnace and
+Author Contributions                                                       its application to metal jointing technology,” Journal of Ad-
+                                                                           vanced Mechanical Design Systems and Manufacturing 1, 763–
+                                                                           774 (2007).
+   — provisional: Sterling G. Baird: Conceptualiza-                     13 M. Inaba, Y. Honma, T. Hatanaka, and Y. Otake, “Effects of the
+tion, Software, Investigation, Writing – original draft.                   annealing conditions on the oxidation behavior of fe-36ni alloys,”
+Ryan Weber: Investigation, Methodology, Data cura-                         Applied Surface Science 27, 164–179 (1986).
+                                                                        14 A. Tapetado, J. Diaz-Alvarez, M. H. Miguelez, and C. Vazquez,
+tion, Visualization. Christopher Nyborg: Investiga-
+tion, Methodology, Data curation, Visualization. Ron-                      “Two-color pyrometer for process temperature measurement dur-
+                                                                           ing machining,” Journal of Lightwave Technology 34, 1380–1386
+nie Guymon: Visualization, Writing – review & edit-                        (2016).
+ing. Gage Erickson: Visualization, Writing – review &                   15 R. Belikov, D. Merges, D. Varentsov, Z. Major, P. Neu-
+editing. Oliver Johnson: Supervision, Project admin-                       mayer, P. Hesselbach, M. Schanz, and B. Winkler, “Fast multi-
+istration.                                                                 wavelength pyrometer for dynamic temperature measurements,”
+                                                                           International Journal of Thermophysics 45, 1–12 (2024).
+                                                                        16 S. H. Ham, M. Ferte, G. Fricout, L. Depalo, and C. Carteret, “In-
+
+                                                                           situ spectral emissivity measurement of alloy steels during an-
+DATA AVAILABILITY                                                          nealing in controlled atmosphere,” Quantitative InfraRed Ther-
+                                                                           mography (2016), 10.21611/qirt.2016.041.
+                                                                        17 F. Suleiman, “Improving pyrometry of advanced high strength
+  The    data    that    support   the   findings of                       steels during intercritical annealing,” Unknown journal (2025).
+this study are openly available in the de-                              18 R. Usamentiaga, P. Venegas, J. Guerediaga, L. Vega, J. Molleda,
+velopment       repository     (https://github.com/                        and F. Bulnes, “Infrared thermography for temperature mea-
+vertical-cloud-lab/custom-induction-furnace);                              surement and non-destructive testing,” Sensors 14, 12305–12348
+an archival snapshot is deposited at Zenodo,                               (2014).
+                                                                        19 J. Meng, H. Gao, M. Ruan, H. Guo, X. Zhou, and D. Zhang,
+https://doi.org/10.5281/zenodo.20878017.                                   “Design of vacuum annealing furnace temperature control sys-
+1 Y.-X. Liu, Z.-J. Ke, R.-H. Li, J.-Q. Song, and J.-J. Ruan, “Study
+                                                                           tem based on ga-fuzzy-pid algorithm,” PLOS ONE 18, e0293823
+                                                                           (2023).
+  of grain growth in a ni-based superalloy by experiments and cel-      20 E. Rapoport and Y. Pleshivtseva, “Optimal control of induction
+  lular automaton model,” Materials 14, 6922 (2021).                       heating processes,” ArXiv (2006), 10.1201/9781420019490.
+2 H. Mohrbacher, “Application of microalloying for controlling re-      21 N. Giulietti, G. Cosoli, R. Napolitano, G. Pandarese, G. M.
+  crystallization and grain growth during downstream steel pro-            Revel, and P. Chiariotti, “Spectral emissivity measurement
+  cessing,” Metallurgical and Materials Transactions A 57, 2548–           for high-temperature applications: a systematic review,” Acta
+  2571 (2026).                                                             IMEKO 14, 1–17 (2025).
+3 K. Alogab, D. Matlock, J. Speer, and H. Kleebe, “The influence of     22 P. Kieruj, D. Przestacki, and T. Chwalczuk, “Determination of
+  niobium microalloying on austenite grain coarsening behavior of          emissivity coefficient of heat-resistant super alloys and cemented
+  ti-modified sae 8620 steel,” Isij International 47, 307–316 (2007).      carbide,” Archives of Mechanical Technology and Materials 36,
+4 G. Tian, C. Jia, J. Liu, and B. Hu, “Experimental and simulation
+                                                                           30–34 (2016).
+  on the grain growth of p/m nickel-base superalloy during the heat     23 J. I. Goldstein, D. E. Newbury, J. R. Michael, N. W. M. Ritchie,
+  treatment process,” Materials & Design 30, 433–439 (2009).               J. H. J. Scott, and D. C. Joy, “Characterizing crystalline mate-
+5 I. Moore, J. Taylor, M. Tracy, M. Burke, and E. Palmiere, “Grain
+                                                                           rials in the SEM,” in Scanning Electron Microscopy and X-Ray
+  coarsening behaviour of solution annealed alloy 625 between              Microanalysis (Springer New York, 2018) pp. 491–515.
+  600–800 °c,” Materials Science and Engineering A-structural Ma-       24 M. Wolf, “Thermodynamic assessment of the stability of bulk
+  terials Properties Microstructure and Processing 682, 402–409            and nanoparticulate cobalt and nickel during dry and steam re-
+  (2017).                                                                  forming of methane,” RSC Advances 11, 18187–18197 (2021).
+6 A. F. Zhornyak and V. E. Oliker, “Reduction and decarburization
+                                                                        25 P. S. Maiya and J. M. Blakely, “Surface self-diffusion and surface
+  during the annealing of atomized iron-carbon alloy powders,”             energy of nickel,” Journal of Applied Physics 38, 698–704 (1967).
+  Soviet Powder Metallurgy and Metal Ceramics 21, 84–93 (1982).         26 C. V. Thompson, “Solid-state dewetting of thin films,” Annual
+7 Y. Muramatsu, S. Wanikawa, M. Ohtaguchi, H. Okada, and
+                                                                           Review of Materials Research 42, 399–434 (2012).
+  F. Abe, “Gas contamination due to milling atmospheres of me-          27 T. A. Gladstone, J. C. Moore, A. J. Wilkinson, and C. R. M.
+  chanical alloying and its effect on impact strength,” Materials          Grovenor, “Grain boundary misorientation and thermal groov-
+  Transactions 46, 681–686 (2005).                                         ing in cube-textured Ni and Ni–Cr tape,” IEEE Transactions on
+8 V. Rudnev, D. Loveless, R. L. Cook, and M. Black, “Handbook
+                                                                           Applied Superconductivity 11, 2923–2926 (2001).
+  of induction heating,” ArXiv (2017), 10.1201/9781420028904.
+                                                                                                                                           8
+
+28 S. Tekeli and U. Demir, “Colloidal processing, sintering and static      alumina—thermodynamic and experimental analyses,” Metallur-
+   grain growth behaviour of alumina-doped cubic zirconia,” Ce-             gical and Materials Transactions B 42, 254–260 (2011).
+   ramics International 31, 973–980 (2005).                              32 M. S. Walker and R. J. Fruehan, “Experimental verification of the
+29 K. Matsui, H. Yoshida, and Y. Ikuhara, “Phase-transformation             thermodynamics of critical aspects of the carbothermic reduction
+   and grain-growth kinetics in yttria-stabilized tetragonal zirconia       of alumina. Part 1: Experimental result of reacting Al2 O3 –C
+   polycrystal doped with a small amount of alumina,” Journal of            mixtures,” Metallurgical and Materials Transactions B 44, 853–
+   the European Ceramic Society 30, 1679–1690 (2010).                       861 (2013).
+30 J. H. Cox and L. M. Pidgeon, “An investigation of the aluminum–       33 Z. Zhang, G. Chen, and G. Chen, “Dynamics and mechanism of
+
+   oxygen–carbon system,” Canadian Journal of Chemistry 41,                 columnar grain growth of pure iron under directional annealing,”
+   671–683 (1963).                                                          Acta Materialia 55, 5988–5998 (2007).
+31 M. Kruesi, M. E. Galvez, M. Halmann, and A. Steinfeld, “So-
+
+   lar aluminum production by vacuum carbothermal reduction of
+
