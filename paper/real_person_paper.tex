@@ -112,6 +112,19 @@
 %% 2026-07-24: keep if within the page limit; RSI regular articles have no
 %% length limit).
 %%
+%% 2026-07-24 (second pass, from the re-attached "real_person_paper
+%% edited.pdf"): "(the added" -> "(added" in the abstract; "USA-sourced"
+%% removed; the $16.5k quote and "small fraction of turn-key cost"
+%% sentences removed and the cost sentence shortened to "about $38.75k";
+%% "and is transparent" -> "transparent" in the Fig. 1 caption; the
+%% four-requirements "transfers to any generator that exposes..." sentence
+%% removed; "sample-surrounding discs" -> "discs"; "lidded cap" -> "lid";
+%% "A run begins with the specimen being loaded..."; the Ni200 gloss
+%% trimmed to "(the standard commercially pure wrought nickel grade)"; the
+%% long-soak drift clause removed; and the YSZ starting-grain-size
+%% inconsistency resolved from the lab records (box 10->80 um, induction
+%% 20->90 um).
+%%
 %% Built on REVTeX 4.2 with the AIP substyles (`rsi` journal option) — the class
 %% behind the official AIP Publishing template. Template files and the RSI/AIP
 %% author guidelines are mirrored in paper/template/rsi/.
@@ -188,8 +201,8 @@ Provo, Utah 84602, USA}
 \begin{abstract}
 High-temperature vacuum annealing near a metal's melting point drives
 controlled grain growth, but it normally requires an expensive turn-key
-vacuum induction furnace. We describe an open retrofit (the
-added control, vacuum, and temperature-feedback hardware and
+vacuum induction furnace. We describe an open retrofit (added
+control, vacuum, and temperature-feedback hardware and
 software) that converts a bare commercial radiofrequency (RF) induction
 % "radio-frequency" -> "radiofrequency" per R. Guymon's edited PDF
 % (PR #12, 2026-07-23/24).
@@ -269,22 +282,18 @@ use a modified sample assembly in
 which graphite or tantalum serves as the susceptor, chosen for chemical
 compatibility with the specimen (Sec.~\ref{sec:ysz}).
 
-The reproducible build documented here is anchored on a modern, USA-sourced
+The reproducible build documented here is anchored on a modern
 6\,kW solid-state generator whose controller accepts a standard analog
 power setpoint. The reference generator is a CEIA ``Power Cube'' PW3-90/50
 with its matching controller, heating head, and chiller, itemized in the
-supplementary material. That package
-was quoted at approximately \$16.5k. The retrofit components are
-itemized in the bill of materials in the supplementary material. This is a
-small fraction of turn-key cost, in a form the user can repair and modify.
-The cost of the entire system totals to around \$38.75k (including
-retrofitting, consumables, and generator package).
-% Cost sentence added per R. Guymon's edited PDF (PR #12, 2026-07-23/24).
+supplementary material. The retrofit components are
+itemized in the bill of materials in the supplementary material.
+The cost of the entire system totals to about \$38.75k.
+% Cost paragraph per R. Guymon's edited PDF (PR #12, 2026-07-24): the
+% $16.5k generator-package quote, the "small fraction of turn-key cost"
+% sentence, "USA-sourced", and the cost parenthetical were all removed.
 % $38.75k = Table S2 total including the optional MFC's upper quote;
-% required rows alone sum to ~$37.7k. Note the adjacent "small fraction of
-% turn-key cost" comparison: $38.75k is ~77% of the quoted $50k turn-key
-% low end -- the gap is real only against systems that reach 2500 C
-% (flagged in the Edison spot-check; authors elected to keep the wording).
+% required rows alone sum to ~$37.7k.
 
 %==============================================================
 \section{System design and description}
@@ -327,7 +336,7 @@ the vent valve admits the argon backfill. The gauge, turbopump, and
 separately supported roughing pump complete the vacuum path. Relative to
 closed turn-key vacuum induction furnaces, this design costs far less, is
 modular (hand-clamped KF-flanged vacuum hardware and an interchangeable
-sample assembly), and is transparent (open LabVIEW control software and design
+sample assembly), transparent (open LabVIEW control software and design
 files), and it reaches a high-purity annealing environment by pumping the
 chamber to high vacuum and then backfilling with flowing argon.}
 \label{fig:overview}
@@ -412,11 +421,7 @@ flange.
 Metal charges in the graphite crucible reach the nickel and iron
 grain-growth range of 1400 to 1500\,\celsius, with demonstrated soaks
 from minutes to 40\,h. The modified ceramic sample assembly extends the working
-range to 2500\,\celsius. The retrofit transfers to
-any generator that exposes a monotonic analog power input, supports a
-liquid-cooled head and coil of the documented geometry, delivers enough RF
-power for the target charge, and allows electrical isolation of the DAQ and
-control path. When the retrofit is moved to a different
+range to 2500\,\celsius. When the retrofit is moved to a different
 generator, the command scaling, calibration, PID gains, alignment, and
 interlock behavior are re-established.
 
@@ -424,7 +429,7 @@ interlock behavior are re-established.
 
 Metal specimens are held in a two-piece graphite crucible machined in-house
 from 3000\,\celsius-grade graphite stock. It consists of a cup body and a
-lidded cap with a central bore, which contains the charge while leaving an
+lid with a central bore, which contains the charge while leaving an
 optical path for the pyrometer. Figure~\ref{fig:crucible}(a) shows the
 disassembled parts. The graphite couples strongly to the
 induction field and acts as a susceptor, heating the contained metal
@@ -459,7 +464,7 @@ refractory ceramics.
 anneals reported in this work. (a)~Fully disassembled. Top left is the
 crucible lid, top middle is the bottom of the crucible that acts as the
 specimen carrier, far right is the sapphire window, bottom left and middle
-are the alumina sample-surrounding discs. (b--d)~Specimen-loading sequence.
+are the alumina discs. (b--d)~Specimen-loading sequence.
 (b)~The specimen is placed between two alumina discs in the crucible body.
 (c)~The graphite lid is seated on top. (d)~The sapphire window closes the lid
 bore, leaving an optical path for the pyrometer.}
@@ -501,9 +506,9 @@ Manual control is verified before automated ramping and soaking are enabled.
 % (PR #12, 2026-07-23/24): the chamber is not held under vacuum between
 % samples, and the turbopump-protection detail survives at the end of this
 % paragraph.
-The specimen is loaded into the crucible
-(Fig.~\ref{fig:crucible}(b--d)), the sample assembly is lowered into the
-quartz tube, and the chamber is pumped down. The LabVIEW profile ramps open-loop below the pyrometer
+A run begins with the specimen being loaded into the crucible
+(Fig.~\ref{fig:crucible}(b--d)), the sample assembly lowered into the
+quartz tube, and the chamber pumped down. The LabVIEW profile ramps open-loop below the pyrometer
 floor, switches to closed-loop PID, and runs the programmed soak.
 Afterwards the sample cools under vacuum, and the chamber is vented only
 once the turbopump has stopped.
@@ -513,8 +518,7 @@ once the turbopump has stopped.
 %==============================================================
 
 The furnace has completed more than one hundred logged anneals of Ni200
-(the standard commercially pure wrought nickel grade, UNS N02200, minimum
-99.0\,\% Ni, analogous to a stainless-steel designation such as SS316) and
+(the standard commercially pure wrought nickel grade) and
 Ni (4N5, i.e., 99.995\,\% purity) nickel charges at 900 to
 1400\,\celsius, with soaks from minutes to 40\,h. The supplementary material
 links each result below to its underlying run log.
@@ -544,9 +548,8 @@ run under the same gas-flow configuration. They reproduced their soak
 temperature to $1201.2 \pm 1.3$\,\celsius, a coefficient of variation of
 0.11\,\% (Fig.~S6 of the supplementary material). Long-duration stability
 was demonstrated with two Ni200 anneals at
-1325\,\celsius. The first held for 20\,h at $1326.5 \pm 1.5$\,\celsius{}
-with a drift of $-0.004$\,\celsius{} per hour, and the second held for
-40\,h. Both traces are shown in Fig.~S7 of the supplementary material.
+1325\,\celsius. The first held for 20\,h at $1326.5 \pm 1.5$\,\celsius,
+and the second held for 40\,h. Both traces are shown in Fig.~S7 of the supplementary material.
 % SI figure numbers (S4 calibration, S5 representative, S6 repeatability,
 % S7 long soak) are hard-coded here; keep in sync with SI.tex figure order.
 Reported temperatures are specific to our setup. Slight variations to the
@@ -695,10 +698,16 @@ dependence, so grain coarsening is highly sensitive to annealing
 temperature~\cite{tekeli2005colloidalprocessingsintering,matsui2010phasetransformationandgrain}.
 For the 8\,mol\% YSZ
 specimens investigated here, grain growth from approximately 10\,\textmu m
-to 90\,\textmu m required 228\,h at 1600\,\celsius{} in a conventional box
-furnace, whereas comparable grain growth was achieved in only 45\,min at
-2500\,\celsius{} using the induction furnace
-(Fig.~\ref{fig:graingrowth}). Achieving these temperatures required only
+to 80\,\textmu m required over 228\,h at 1600\,\celsius{} in a conventional
+box furnace, whereas the induction furnace coarsened grains from
+approximately 20\,\textmu m to 90\,\textmu m in only 45\,min at
+2500\,\celsius{}
+(Fig.~\ref{fig:graingrowth}).
+% Starting/ending grain sizes reconciled against the lab records
+% (RyanWeber.pdf poster: box furnace 10 -> 80 um over 228 h; Grain Growth
+% Summary p.13, run of 2024-03-11: induction 20 -> 90 um in 45 min at
+% 2500 C). This resolves the long-open 10-vs-20 um inconsistency with the
+% Fig. 7 caption: the two furnaces' specimens started at different sizes. Achieving these temperatures required only
 minor modifications to the sample assembly
 (Fig.~\ref{fig:ysz-stack}). For example, direct contact
 between graphite and alumina was eliminated because alumina is not inert
