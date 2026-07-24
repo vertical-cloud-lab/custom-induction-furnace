@@ -216,7 +216,7 @@ element that heats the charge it encloses) for metal specimens.
 Because its only requirement is a monotonic analog power-control input,
 the retrofit transfers between generators; the reference build
 uses a 6\,kW solid-state generator. The system produced a
-fixed-geometry power--temperature calibration with $R^2 = 0.991$ over
+fixed-configuration power--temperature calibration with $R^2 = 0.991$ over
 1200--1400\,\celsius. Eight nickel anneals at 1200\,\celsius{} for 12\,h
 reproduced their soak temperature (the constant-temperature hold) to
 $1201.2 \pm 1.3$\,\celsius, and soaks up to
@@ -288,7 +288,7 @@ power setpoint. The reference generator is a CEIA ``Power Cube'' PW3-90/50
 with its matching controller, heating head, and chiller, itemized in the
 supplementary material. The retrofit components are
 itemized in the bill of materials in the supplementary material.
-The cost of the entire system totals to about \$38.75k.
+The cost of the entire system comes to about \$38.75k.
 % Cost paragraph per R. Guymon's edited PDF (PR #12, 2026-07-24): the
 % $16.5k generator-package quote, the "small fraction of turn-key cost"
 % sentence, "USA-sourced", and the cost parenthetical were all removed.
@@ -357,14 +357,22 @@ flange (a standard clamp-sealed vacuum flange) and a flexible bellows to a
 compact turbopumping station that
 reaches 10$^{-6}$ to 10$^{-8}$\,Torr. An automated, electrically triggered
 vent valve fed from an inert-gas regulator allows controlled venting and
-backfilling~\cite{kanda2007developmentofhightemperature,inaba1986effectsofthe}.
+backfilling.
 These components support a range of operating atmospheres. The furnace can
 run at low or high vacuum, and the chamber can instead be backfilled with
 inert gas and continuously supplied either at a precisely controlled rate,
 for example 20 standard cubic centimeters per minute (SCCM), or as a large
 purge flow. The turbopump can be left running during backfilled operation or
 stopped.
-The atmosphere matters for graphite-crucible anneals. The best results were
+The atmosphere matters for
+graphite-crucible anneals~\cite{kanda2007developmentofhightemperature,inaba1986effectsofthe}.
+% Citations moved here from the vent-valve hardware sentence (R. Guymon,
+% PR #12, 2026-07-24): Kanda 2007 documents a low-oxygen
+% atmosphere-controlled furnace for high-temperature processing, and
+% Inaba 1986 shows annealing-atmosphere conditions govern oxidation of a
+% Ni alloy -- both support the atmosphere-matters claim, not the valve
+% hardware they were previously attached to.
+The best results were
 achieved by pumping to high vacuum and then backfilling with argon through
 the vent valve. The chamber was purged first, and a constant argon flow of
 20\,SCCM was then maintained for the
@@ -707,9 +715,13 @@ approximately 20\,\textmu m to 90\,\textmu m in only 45\,min at
 % (RyanWeber.pdf poster: box furnace 10 -> 80 um over 228 h; Grain Growth
 % Summary p.13, run of 2024-03-11: induction 20 -> 90 um in 45 min at
 % 2500 C). This resolves the long-open 10-vs-20 um inconsistency with the
-% Fig. 7 caption: the two furnaces' specimens started at different sizes. Achieving these temperatures required only
+% Fig. 7 caption: the two furnaces' specimens started at different sizes.
+Reaching this temperature range required only
 minor modifications to the sample assembly
-(Fig.~\ref{fig:ysz-stack}). For example, direct contact
+(Fig.~\ref{fig:ysz-stack}).
+% Splice fragment fixed per R. Guymon's edited PDF (PR #12, 2026-07-24):
+% the sentence's first half had been swallowed into the comment above,
+% leaving "minor modifications..." as a fragment in the compiled text. For example, direct contact
 between graphite and alumina was eliminated because alumina is not inert
 to carbon at these temperatures. Under vacuum or low oxygen potential,
 carbon carbothermally reduces alumina at the interface. This evolves
