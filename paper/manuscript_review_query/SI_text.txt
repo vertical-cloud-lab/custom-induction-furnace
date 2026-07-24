@@ -1,0 +1,484 @@
+                        Supplementary material for:
+         Retrofitting a commercial RF induction generator into a
+       computer-controlled, vacuum-integrated annealing system for
+                        reactive-metal grain growth
+  Sterling G. Baird, Ryan Weber, Christopher Nyborg, Ronnie Guymon, Gage Erickson, and Oliver Johnson
+         Department of Mechanical Engineering, Brigham Young University, Provo, Utah 84602, USA
+
+This document collects the supplementary figures (Figs. S1–S10), the specimen–thermal-history linkage (Ta-
+ble S1), the itemized bill of materials (Table S2), and an inventory of the openly available design files
+(Sec. SVII) that support the main text. The complete raw data and design package is openly available at
+https://github.com/vertical-cloud-lab/custom-induction-furnace, with an archival snapshot deposited
+at Zenodo, 10.5281/zenodo.20878017. Each run ID in Table S1 links directly to the corresponding raw run log.
+Alt text accompanies each figure and table caption.
+
+
+SI      Hardware
+
+
+
+
+Figure S1: Measured dimensions of each part of the graphite crucible/susceptor assembly, with the coloured
+measurement lines drawn on the corresponding photograph. (a) Alumina spacer disc, 14 mm dia. (b) Sapphire
+pyrometer window, 9.5 mm dia., 0.5 mm thick. (c) Crucible body, top: machined sample cavity 14.55 mm ID
+(teal), 20.30 mm OD (orange); the cup is 6.5 mm tall with a 2 mm base. (d) Crucible body, bottom face, 20.30 mm
+dia. (e) Crucible lid, oblique: the stepped plug seats into the cavity — 13.70 mm upper step (teal), 14.55 mm
+lower shoulder (orange); the upper step is 4 mm tall (H1, yellow) and the lower shoulder 6 mm tall (H2, green).
+(f) Crucible lid, top: four concentric steps of 13.70 mm (outermost), 9.75 mm, 5 mm, and a 3.5 mm central
+pyrometer-sighting bore. (g) Crucible lid, bottom: 14.55 mm seating face (green) and the 3.5 mm through-bore
+(orange). Fully assembled the crucible stands 13 mm tall.
+Alt text: Seven labeled photographs of the crucible parts, each overlaid with colored measurement lines and numeric callouts giving
+                             the diameters, step heights, and the central pyrometer bore dimensions.
+
+
+
+
+                                                                1
+                                                                                                                                                      D
+
+
+
+
+                                                                                                                                                               C
+                                                                                                                                           E
+
+
+
+
+                                                                                                                                                                   B
+
+
+
+
+                                                                                                                                                                                       A
+                                                     F
+                          1
+
+
+
+
+                                                                                                                                                                                           1
+                          2
+
+
+
+
+                                                                                                                                                                                           2
+                          3
+
+
+
+
+                                                                                                                                                                                           3
+                                                                                                                                                                                Ø7 9
+                          4
+
+
+
+
+                                                                                                                                                                                           4
+                                                                                                                                                                       Ø59.85
+
+
+                                                                                                                                                                                 .85
+                                                                                                                                                          10
+                                                                                                                     Dept.
+
+
+
+
+                                                                                                                                                                                           5
+                          5
+
+
+
+
+                                                                                                                     Technical reference
+                                                                      Units: mm
+                                                    coils
+
+
+                                                                                                    Sterling Baird
+                          6
+
+
+
+
+                                                            Title
+
+
+
+                                                                                  Document type
+
+
+
+                                                                                                                     Created by
+
+
+
+
+                                                                                                                                                                                           6
+                                                                                                    2021-01-22
+                          7
+
+
+
+
+                                                                                                                                                                                           7
+                                    Rev.
+
+
+
+
+                                                            DWG No.
+
+
+
+                                                                                  Document status
+
+
+
+                                                                                                                     Approved by
+
+
+
+
+                                                                                                                                               86.2
+                                    Date of issue
+
+
+
+
+                                                                                                                                                                                           8
+                          8
+
+
+                                    Sheet
+                              1/1
+
+
+
+
+                                                                                                                                                      D
+
+
+
+
+                                                                                                                                                               C
+                                                                                                                                           E
+
+
+
+
+                                                                                                                                                                   B
+
+
+
+
+                                                                                                                                                                                       A
+                                                     F
+
+
+
+
+Figure S2: Work-coil fabrication drawing used for this build, showing the coil geometry and dimensional callouts
+used to form and mount the liquid-cooled copper coil around the quartz chamber.
+ Alt text: Engineering drawing of the liquid-cooled copper work coil with dimensional callouts for the coil height, inner diameter,
+                                                number of turns, and lead routing.
+
+
+
+
+                                                                                                                                                          2
+Figure S3: Vacuum and gas-handling details. (a) Turbo pumping station with the roughing pump mounted on
+a separate support. The pump couples to the pumping station only through a flexible hose, so its vibration is
+not transmitted into the chamber. (b) Overpressure relief valve (0.5 psi cracking pressure) at the bottom of the
+vacuum column, below the chamber.
+  Alt text: Two labeled photographs: the turbo pumping station with its separately supported roughing pump connected by a
+                 flexible hose, and the overpressure relief valve mounted at the bottom of the vacuum column.
+
+
+
+
+                                                            3
+SII      Thermal performance
+
+
+
+
+Figure S4: Power-command → temperature calibration for one fixed Ni (4N5, i.e., 99.995 % purity) configuration.
+Points are soak-mean values; horizontal bars are the in-soak standard deviation of the analog command. The
+dashed line is the linear operational calibration (R2 = 0.991, n = 4).
+ Alt text: Scatter plot of soak-mean temperature against analog power command with four points between 1200 and 1400 degrees
+                                       Celsius and a dashed straight fit line through them.
+
+
+
+
+                                                             4
+Figure S5: Representative closed-loop anneal (Ni (4N5), nominal 1300 ◦ C / 12 h): pyrometer temperature with
+setpoint overlay (top) and analog power command (bottom). Soak mean 1302.1 ± 3.0 ◦ C, drift −0.02 ◦ C/h.
+Alt text: Two stacked line plots over twelve hours: the pyrometer temperature rising to and holding near 1300 degrees Celsius on
+                          its setpoint, and the analog power command settling to a steady value below.
+
+
+
+
+Figure S6: Repeatability of the Ni (4N5) 1200 ◦ C / 12 h cohort (n = 8). Points are per-run soak-mean tempera-
+tures; the band is mean ± SD (1201.2 ± 1.3 ◦ C).
+Alt text: Plot of eight per-run soak-mean temperatures clustered near 1200 degrees Celsius inside a shaded band marking the mean
+                                              plus or minus one standard deviation.
+
+
+
+
+                                                               5
+Figure S7: Long-duration thermal stability: Ni200 (commercially pure wrought nickel, UNS N02200) anneals at
+1325 ◦ C held for 20 h and 40 h.
+Alt text: Line plot of two anneal temperature traces at 1325 degrees Celsius, one held twenty hours and one held forty hours, both
+                                                  essentially flat across the soak.
+
+
+
+
+                                                                6
+SIII       Microstructure
+
+
+
+
+Figure S8: Raw (as-collected) EBSD acquisitions from furnace-annealed nickel, with no metallographic prepara-
+tion of any kind (no grinding, polishing, or etching): each specimen was pulled directly from the furnace chamber
+and placed directly into the EBSD chamber. (a) Raw Kikuchi pattern (electron backscatter pattern) of specimen
+Ni4N5 028 as seen live on the detector at 8 × 8 binning (30 ms exposure), with Kikuchi bands and zone axes
+crisply resolved; (b) the corresponding SEM live view at 70,068×, where thermal grooving alone delineates the
+grain boundaries crossed by the EBSD line scans (red marks; 1 µm scale bar). (c–e) Representative per-scan-point
+raw patterns (115 × 115 px at 8 × 8 binning) saved automatically during EBSD mapping of the early-campaign
+specimens Ni 003b1a and Ni 003a1b. More than 100,000 such patterns are preserved with the openly available
+data.
+Alt text: Five grayscale panels: a raw Kikuchi diffraction pattern of intersecting bright bands, an electron micrograph with grooved
+                           grain boundaries and line-scan marks, and three small saved detector patterns.
+
+
+
+
+                                                                 7
+SIV       YSZ / high-temperature extension
+
+
+
+
+Figure S9: Measured heat curves of the tantalum-susceptor (ceramic) sample assembly. (a) Pyrometer temper-
+ature vs. generator power command for one and two stacked tantalum susceptor blocks (the faint series repeats
+the single-block measurement on the original power controller); the two-block ramp reached 2344 ◦ C at a 33 %
+command before the chamber pressure interlock ended the test. (b) Timed two-block ramp/soak: a constant
+17 % command holds approximately 2000 ◦ C (2000 ± 3 ◦ C over the final hour) before a stepped ramp-down.
+ Alt text: Two plots: temperature versus power command curves for one and two tantalum blocks reaching 2344 degrees Celsius,
+                           and a timed ramp holding a steady 2000 degrees Celsius for over an hour.
+
+
+
+
+Figure S10: YSZ optical micrographs. (a) YSZ after a 1700 ◦ C / 10 h anneal. (b) An induction-annealed YSZ
+specimen, showing the equiaxed grain structure. The tantalum-susceptor sample assembly used for these anneals
+is drawn in the main text (Fig. 8).
+                             Alt text: Two optical micrographs of equiaxed YSZ grain structures.
+
+
+
+
+                                                             8
+SV      Specimen–thermal-history linkage
+Table S1 links each characterized specimen to the furnace run that produced it. Each run ID hyperlinks to the raw
+run log. “Nominal soak” is the target temperature for the run. “Logged soak T” is the mean pyrometer reading
+over the soak, taken from the recorded trace. “Atmos.” indicates whether the log records active argon flow during
+the anneal. “Characterization” counts the recorded SEM and optical micrographs and notes where EBSD/OIM
+orientation data exist. The live-capture Kikuchi pattern of Fig. S8(a) was recorded on specimen Ni4N5 028.
+The per-scan-point patterns of Figs. S8(c)–(e) were saved during orientation mapping of the early-campaign
+specimens Ni 003b1a and Ni 003a1b.
+
+
+
+
+                                                       9
+     Table S1: Specimen ↔ thermal-history linkage for the runs used in the manuscript’s validation sections. Run IDs link to the raw run logs in the data
+     repository.
+       Specimen        Material   Run (raw log)                     Nominal soak    Logged soak T    Soak time   Atmos.    Characterization             Role / figure
+       Ni4N5 026       Ni (4N5)   IFrun039                          1200 ◦ C        1200.4 ◦ C       6h          no-flow   —                            Calibration (Fig. S4)
+       Ni4N5 027       Ni (4N5)   IFrun040                          1250 ◦ C        1250.0 ◦ C       6h          no-flow   —                            Calibration
+       Ni4N5 025       Ni (4N5)   IFrun038                          1300 ◦ C        1299.9 ◦ C       1h          no-flow   —                            Calibration
+       Ni4N5 022       Ni (4N5)   IFrun032                          1400 ◦ C        1399.6 ◦ C       10 min      no-flow   —                            Calibration
+       Ni4N5 084       Ni (4N5)   IFrun079                          1300 ◦ C        1302.1 ◦ C       12 h        flow      —                            Representative soak (Fig. S5)
+       Ni4N5 040       Ni (4N5)   IFrun052                          1200 ◦ C        1199.8 ◦ C       12 h        flow      —                            Repeatability run 1 (Fig. S6)
+       Ni4N5 042,044   Ni (4N5)   IFrun054                          1200 ◦ C        1201.5 ◦ C       12 h        flow      —                            Repeatability run 2
+       Ni4N5 045,046   Ni (4N5)   IFrun055                          1200 ◦ C        1204.2 ◦ C       12 h        flow      —                            Repeatability run 3
+       Ni4N5 047,048   Ni (4N5)   IFrun056                          1200 ◦ C        1200.6 ◦ C       12 h        flow      —                            Repeatability run 4
+       Ni4N5 049,050   Ni (4N5)   IFrun057                          1200 ◦ C        1201.2 ◦ C       12 h        flow      —                            Repeatability run 5
+       Ni4N5 051,052   Ni (4N5)   IFrun058                          1200 ◦ C        1201.0 ◦ C       12 h        flow      —                            Repeatability run 6
+       Ni4N5 053,054   Ni (4N5)   IFrun059                          1200 ◦ C        1200.3 ◦ C       12 h        flow      4 SEM, 3 opt. (Ni4N5 053)    Repeatability run 7; grooving
+                                                                                                                                                        (main text Fig. 5)
+       Ni4N5 056,057 Ni (4N5)     IFrun060                          1200 ◦ C        1200.9 ◦ C       12 h        flow      —                            Repeatability run 8
+       Ni200 015     Ni200        IFrun081                          1325 ◦ C        1326.5 ◦ C       20 h        flow      3 opt.                       Long soak, 20 h (Fig. S7)
+       Ni200 017     Ni200        IFrun080                          1325 ◦ C        1326.3 ◦ C       40 h        flow      2 opt.                       Long soak, 40 h (Fig. S7)
+       Ni4N5 079,080 Ni (4N5)     IFrun072                          1400 ◦ C        —                12 h        flow      —                            Process-window specimen
+       Ni4N5 034     Ni (4N5)     IFrun049                          1200 ◦ C        1200.0 ◦ C       12 h        no-flow   4 SEM, EBSD                  EBSD IPF map (main text
+                                                                                                                                                        Fig. 4a)
+       Ni4N5 069       Ni (4N5) — (log not in parsed set)           —               —                —           —         16 SEM, EBSD                 EBSD IPF map (main text
+10
+
+
+
+
+                                                                                                                                                        Fig. 4b; masked specimen)
+       Ni4N5 081       Ni (4N5) IFrun082                            1300 ◦ C        1301.4 ◦ C       20 h        flow      10 SEM, 10 opt., EBSD        Microstructure (main text
+                                                                                                                                                        Fig. 6)
+       Ni4N5 010       Ni (4N5)   IFrun016                         1200 ◦ C         1199.9 ◦ C       —           no-flow   4 opt.                       Characterization only
+       Ni4N5 012       Ni (4N5)   IFrun019                         1200 ◦ C         1199.6 ◦ C       —           no-flow   1 opt.                       Characterization only
+       Ni200 001       Ni200      IFrun004/IFrun005                —                —                —           no-flow   3 opt.                       Characterization only
+       Ni4N5 001b      Ni (4N5)   IFrun006 (log not in parsed set) —                —                —           no-flow   2 opt.                       Characterization only
+      Alt text: Table linking each specimen to its furnace run, nominal and logged soak temperature, soak time, atmosphere, characterization file counts, and its role or figure in the
+                                                                                       manuscript.
+SVI        Bill of materials
+Table S2 is the itemized bill of materials for the reproducible build. Designator prefixes group the parts: GEN is
+the induction generator package (generator, controller, chiller, heating head, and line transformer), RETRO is the
+reproducible retrofit (the control, vacuum, and sensing parts), and CONS is consumables. All costs are in USD
+and reflect the laboratory’s purchase records. Several parts came from used or surplus sources as noted. Shipping
+and tax are excluded unless stated. The KF25 and KF40 centering-ring, clamp, and elbow counts follow the
+parts accounting assembled for the companion open-hardware build documentation. The GEN line items came
+from a single vendor quote, with the generator, heating head, controller, chiller, and line transformer totaling
+$16,487. For the high-temperature ceramic (YSZ) configuration, the graphite crucible assembly is exchanged for
+tantalum susceptor blocks resting on a ceramic stub that acts as a diffusion barrier (boron nitride for best results,
+sometimes MgO). Vendor records for the tantalum blocks and boron nitride stubs were not retained.
+
+                            Table S2: Itemized bill of materials for the reproducible build (USD).
+
+ Desig.      Component                                   No.     Unit $          Total        Source                    Material
+ GEN-1       CEIA “Power Cube” PW3-90/50                  1      $8,240          $8,240       East Coast Induction      —
+             solid-state RF generator (V3000-0070)                                            (USA)
+ GEN-2       Power Controller C-V3 Plus                   1      $1,670          $1,670       East Coast Induction      —
+             (V3000-0414)                                                                     (USA)
+ GEN-3       Recirculating chiller (MIL043008             1      $1,575          $1,575       East Coast Induction      —
+             air-cooled closed-loop, V1650-0060;                                              (USA)
+             vendor-listed as a water chiller, but the
+             loop is charged with ethylene glycol
+             coolant)
+ GEN-4       Heating head + 3 m cable and coolant         1      $3,337          $3,337       East Coast Induction      copper
+             lines (PWH-13-12-30/50, V3000-0300); 1                                           (USA)
+             coil made to spec at no charge with a
+             complete unit
+ GEN-5       Line auto-transformer, 12 kVA / 3PH /        1      $1,665          $1,665       East Coast Induction      —
+             480×380 V with taps (V049-0508;                                                  (USA)
+             facility-dependent)
+ RETRO-1     LabVIEW-compatible DAQ with analog           1      $281.00         $281.00      National Instruments      —
+             out + in (0–5 V AO): NI USB-6000 DAQ
+ RETRO-2     Dual-wavelength ratio pyrometer              1      $385.00         $385.00      eBay — used listing       —
+             (LumaSense IMPAC ISR 6,                             (used)                       (new list about $5,500,
+             800–2500 ◦ C), used                                                              LumaSense quote
+                                                                                              00161403)
+ RETRO-3  24 V linear power supply for pyrometer          1      $51             $51          Mouser                    —
+          (International Power)
+ RETRO-4  Voltage-to-current (0–5 V → 4–20 mA)           1 set   $3,755.00       $3,755.00    National Instruments      —
+          loop conditioner set for generator
+          power-setpoint input (NI-9265 input
+          module + NI-9203 output module + NI
+          cDAQ-9174 chassis)
+ RETRO-5  Edwards nEXT T-Station 85H Dry                  1      $13,573.65      $13,573.65   Edwards Vacuum            —
+          turbo pumping station (1Ph 100–120 V,
+          50/60 Hz, DN 40 ISO-KF)
+ RETRO-5A Wide-range vacuum gauge D14701000               1      $1,543.29       $1,543.29    Chemtech Scientific       —
+          (36 V, 2 W); discontinued, replaced by
+          D3G0021100
+ RETRO-6  Edwards TAV5 vent valve (new)                   1      $652.80         $652.80      Edwards Vacuum            —
+ RETRO-6A Sierra SmartTrak 100L mass flow                 1      $550–$1,000     $550–        Sierra / distributor      —
+          controller (optional; helpful when                     (quote range)   $1,000       quote
+          continuous inert gas flow is required)
+ RETRO-7  Inert-gas regulator (Fisher FS-50)              1      $38             $38          Fisher Scientific         —
+ RETRO-8  KF40 overpressure centering ring (STEP          1      $19             $19          IdealVac                  aluminum
+          model in the design-file inventory,
+          Sec. SVII)
+ RETRO-8A KF40 centering rings                            8      $6.03           $48.24       Kurt J. Lesker            polymer
+                                                                                                                        / metal
+ RETRO-8B    KF25 centering rings                         3      $3.75           $11.25       Kurt J. Lesker            polymer
+                                                                                                                        / metal
+                                                                                                          Continued on next page
+
+
+
+
+                                                                 11
+ Table S2 (continued).
+ Desig.        Component                                   No.     Unit $        Total        Source                     Material
+ RETRO-9       KF40 vacuum clamps (one plastic quick        7      $6.09–$23     about $60    Kurt J. Lesker /           aluminum
+               clamp, IdealVac, $23; remainder                                                IdealVac                   / polymer
+               standard clamps)
+ RETRO-9A      KF25 vacuum clamps                           3      $5.28         $15.84       Kurt J. Lesker             aluminum
+ RETRO-9B      KF40 vacuum elbows (one 180◦ , one 90◦ )     2      $39.98–       $129.78      Kurt J. Lesker             stainless
+                                                                   $89.80                                                steel
+ RETRO-10      Optical window, custom quartz disc           3      $18 (est.)    $54          Custom-cut metric disc     fused
+               55 mm × 1.5 mm (1 used; buy 3 for                                              — vendor not recorded      quartz
+               spares)                                                                        in parts list; price
+                                                                                              approximate
+                                                                                              (McMaster stocks only
+                                                                                              imperial sizes)
+ RETRO-11      Ultra-high-temperature quartz disc 2 in      1      $19           $19          McMaster-Carr              fused
+               × 1/16 in (McMaster 1357T12)                                                                              quartz
+ RETRO-12      Inert-gas plumbing (BSPT/KF adapters,       1 set   —             about $66    McMaster-Carr /            brass /
+               barbs, tee, overpressure relief valve)                                         BMotionTech; the relief    steel
+                                                                                              valve used in this build
+                                                                                              was supplied by the
+                                                                                              BYU project support
+                                                                                              center
+ CONS-1        Quartz tube, 4 ft × 35 mm ID, cut to         1      $67           $67          QSI Quartz                 fused
+               length (a second tube as a spare is                                                                       quartz
+               prudent but not required)
+ CONS-2        Graphite stock for machined                  1      $99           $99          Cotronics                  graphite
+               crucible/susceptor (56L-3, 3000 ◦ C,
+               1×6×6 in)
+ CONS-3        Graphite repair cement (Resbond 931-1,       1      $108          $108         Cotronics                  graphite
+               3000 ◦ C)
+ CONS-4        Alumina crucible stock (RTC-60-2,            1      $91           $91          Cotronics                  alumina
+               1787 ◦ C, 10 lb)
+ CONS-5        Zirconia crucible stock (760-1, 2204 ◦ C,    1      $124          $124         Cotronics                  zirconia
+               10 lb)
+ CONS-6        Torr-Seal high-vacuum epoxy / O-rings       1 set   $57           $57          Varian / McMaster          epoxy /
+                                                                                                                         elastomer
+
+
+   Alt text: Itemized bill of materials with designator, component description, quantity, unit and total cost in US dollars, source,
+and material for each generator, retrofit, and consumable part.
+
+
+
+
+                                                                   12
+SVII       Design-file inventory
+The complete design package accompanies the raw data in the repository and the Zenodo deposit named above.
+The links below point directly to the files in the GitHub repository. The package comprises:
+    the LabVIEW control programs — furnace control, manual control, PID tuning, and an email status alert in
+     code/induction-furnace-control-code/, with the standalone manual-ramping variant in code/manual-
+     ramping-v5/;
+    the MATLAB heat-curve plotting script, code/plotheatcurve.m;
+
+    the work-coil fabrication drawing (Fig. S2), docs/coils-drawing.pdf, with its editable source
+     docs/coils.oxps;
+
+    the editable system schematics, docs/induction-furnace-schematic.pptx and docs/induction-
+     furnace-schematic-v2.pptx;
+    the temperature-control     wiring   diagram,   docs/temp-control-modification/0-5V PLC wire de-
+     sign.png;
+    a STEP model of the KF40 overpressure centering ring, docs/KF Supplies/KF40 overpressureCenter-
+     ingRing.step;
+    the YSZ high-temperature documentation:       the sample-assembly schematic docs/ysz-stack-
+     schematic.pptx, the tantalum heat-curve workbook docs/YSZ/Tantalum-Heat-Curve.xlsx, the config-
+     uration survey docs/YSZ/Induction-Furnace-Key-Takeaways.pdf, and the chemical-compatibility notes
+     docs/YSZ/Observed-Adverse-Chemical-Reactions.docx.
+
+The control and analysis code carries an MIT license and the hardware design files carry a CERN-OHL-S license,
+both proposed pending final adoption. The measured dimensions of the graphite crucible/susceptor are given in
+Fig. S1.
+
+
+
+
+                                                     13
+

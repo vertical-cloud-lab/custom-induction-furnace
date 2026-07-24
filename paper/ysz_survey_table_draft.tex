@@ -1,0 +1,128 @@
+%% DRAFT — extreme-temperature YSZ configuration-survey table, for author
+%% review before insertion into the supplementary material (R. Guymon,
+%% PR #12, 2026-07-24: "create the YSZ grain growth table you were talking
+%% about"). Compiles standalone (`pdflatex ysz_survey_table_draft.tex`).
+%%
+%% Source of every row: the laboratory records committed at the repo root —
+%% "Grain Growth Summary.pdf" (per-run pages with setup, dates, grain sizes,
+%% named trace files, and observations) and "Induction Furnace Key
+%% Takeaways (1).pdf" (the four-configuration summary slide). Nothing here
+%% is inferred beyond those two documents; blank cells mean the record is
+%% blank.
+%%
+%% Intended destination: SI Sec. SIV (high-temperature extension), as
+%% \begin{landscape}...\end{landscape} like Table S1. CAUTION on insertion:
+%% Sec. SIV precedes the linkage table, so this would become Table S1 and
+%% renumber linkage -> S2 and BOM -> S3; the main text's hard-coded
+%% "Table S1" mentions must be updated in the same commit.
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage[margin=2.0cm]{geometry}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{pdflscape}
+\usepackage{textcomp}
+
+\newcommand{\dC}{\,$^{\circ}$C}
+\newcommand{\um}{\,\textmu m}
+\newcommand{\alttext}[1]{\par\smallskip{\footnotesize\emph{Alt text:} #1\par}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\pagestyle{empty}
+
+\begin{document}
+
+\begin{landscape}
+\begin{table}[htbp]
+\centering
+\caption{Survey of the extreme-temperature YSZ grain-growth configurations
+attempted in the induction furnace, in chronological order. Configurations
+list the sample assembly top to bottom as loaded in the chamber.
+Temperatures are ratio-pyrometer readings and are nominal for the run;
+durations are time at temperature. Grain sizes are from optical micrographs
+of the recovered specimens. Trace files name the raw heating-profile logs
+retained in the laboratory archive; runs without an entry predate
+systematic trace retention. The 2500\dC{} / 45\,min row is the successful
+anneal reported in the main text (Fig.~7).}
+\label{tab:ysz-survey}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{L{1.9cm}L{1.5cm}L{1.3cm}L{4.0cm}L{2.3cm}L{6.6cm}L{2.7cm}}
+\toprule
+Date & Nominal T & Duration & Configuration (top\,$\rightarrow$\,bottom) &
+YSZ grain growth & Outcome & Trace file(s) \\
+\midrule
+2023-07-04 & 2000\dC & 80\,h &
+BN / YSZ / Ta &
+--- &
+Specimen not usable for grain-size measurement. &
+\texttt{2000forWeek.fig}, \texttt{fullTime.xlsx} \\
+
+2024-01-31 & 2000\dC & 24\,h &
+Ta (20\,mm) / YSZ / Ta (20\,mm) / alumina rod / Teflon rod &
+10\um{} $\rightarrow$ 20\um &
+Growth too slow at 2000\dC{}; motivated moving subsequent runs to
+2500\dC{}. &
+--- \\
+
+2024-03-11 & 2500\dC & 45\,min &
+Ta (20\,mm) / YSZ / Ta (20\,mm) / BN crucible / alumina rod / Teflon rod &
+20\um{} $\rightarrow$ 90\um &
+First successful 2500\dC{} run; clean specimen. Quartz tube softened,
+deformed onto the Ta, and was punctured; the interlock stopped the run.
+Lesson adopted: fixture the quartz with no-slack pyrometer cables. &
+--- \\
+
+2024-04-29 & 2475\dC & 8\,h &
+Ta / YSZ / BN &
+$\sim$10\um{} $\rightarrow$ $\sim$400\um{} (tentative) &
+Stable for the full 8\,h. Ta vapor deposited on the YSZ; the specimen was
+polished and thermally etched before grains could be measured, so the
+final size is uncertain. Quartz near the Ta softened slightly. &
+\texttt{Ta on top.xlsx}, \texttt{2500for8hr.xlsx} \\
+
+2024-05-23 --27 & 2130\dC & 80.4\,h &
+Ta (large) / YSZ / Ta (thin) / BN / alumina / Teflon &
+--- (specimen unsalvageable) &
+Susceptor degraded mid-run (a shell, possibly silica--BN--Ta, formed
+around the Ta); temperature fell $\sim$500\dC{} over $\sim$5\,h. Quartz
+and BN required replacement. &
+\texttt{23May2024.lvm}, \texttt{weekLongHeat.fig} \\
+
+2024-07-22 & 1750\dC & 168\,h &
+Graphite crucible with YSZ inside, on BN &
+--- (specimen consumed) &
+YSZ reacted with the graphite and disappeared (carbothermal attack). The
+pyrometer likely under-read this run (the susceptor sat partially outside
+its view); the true temperature was probably closer to 2000\dC{}. &
+\texttt{22July2024.lvm} \\
+
+2024-08-07/08 & $>$2500\dC & 2\,h &
+Graphite crucible &
+--- &
+Pyrometer misaligned; the rise/drop interlock shut the furnace down.
+Graphite demanded excessive generator power above 2500\dC{}, motivating
+the switch to a large tantalum susceptor block. &
+--- \\
+
+2024-08 & 1800\dC & 115\,h &
+Ta susceptor (configuration not recorded) &
+--- &
+Quartz--Ta reaction products formed (``geode'' growths; no contact
+required). &
+--- \\
+\bottomrule
+\end{tabular}
+\alttext{Table of eight extreme-temperature YSZ runs listing date, nominal
+temperature from 1750 to over 2500 degrees Celsius, duration from 45
+minutes to 168 hours, the stacked sample-assembly configuration, measured
+grain growth where a specimen survived, the outcome or failure mode, and
+the retained raw trace files. Only the 45-minute run at 2500 degrees
+Celsius produced a clean specimen with measured growth from 20 to 90
+micrometers; longer runs failed by contact reactions between the
+susceptor, specimen, and surrounding materials.}
+\end{table}
+\end{landscape}
+
+\end{document}
