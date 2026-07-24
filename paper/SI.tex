@@ -149,15 +149,21 @@ overpressure relief valve mounted at the bottom of the vacuum column.}
 \centering
 \includegraphics[width=0.6\linewidth]{figures/fig_calibration.png}
 \caption{Power-command\,$\rightarrow$\,temperature calibration for one fixed
-Ni (4N5, i.e., 99.995\,\% purity) configuration. Points are soak-mean values; horizontal bars are the
-in-soak standard deviation of the analog command. The dashed line is the
-linear operational calibration ($R^2 = 0.991$, $n = 4$).}
+Ni (4N5, i.e., 99.995\,\% purity) configuration. The command is expressed as
+a percentage of the generator's full scale. Points are soak-mean values;
+horizontal bars are the in-soak standard deviation of the command. The
+dashed line is the linear operational calibration ($R^2 = 0.991$, $n = 4$).}
 \label{fig:s-calibration}
-\alttext{Scatter plot of soak-mean temperature against analog power command
-with four points between 1200 and 1400 degrees Celsius and a dashed straight
-fit line through them.}
+\alttext{Scatter plot of soak-mean temperature against power command in
+percent of full scale, with four points between 1200 and 1400 degrees
+Celsius and a dashed straight fit line through them.}
 \end{figure}
 
+% NOTE (2026-07-24): Fig. S4 above now plots the command in percent of full
+% scale (logged fractional command x 100; see build_power_figures_percent.py).
+% Fig. S5 below is NOT converted: its run (IFrun079) logs soak values around
+% 1.5 in the same column, which cannot be a 0-1 fraction either, so that
+% run's logging scale is still an open question for the authors.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.6\linewidth]{figures/fig_representative.png}
