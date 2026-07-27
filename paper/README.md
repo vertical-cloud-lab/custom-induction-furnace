@@ -27,6 +27,7 @@ under `figures/`.
 | [`figures/`](figures/) | Manuscript and SI figures. Regenerable ones are rebuilt by the scripts below; the rest are pre-built on PR #3's branch. |
 | [`build_power_figures_volts.py`](build_power_figures_volts.py) | Rebuilds `fig_calibration.png` and `fig_representative.png` from the per-run CSV traces in [`../docs/data_log/processed/csv/`](../docs/data_log/processed/csv/), with the power command in volts on the DAQ's 0–5 V scale. |
 | [`build_crucible_combined_figure.py`](build_crucible_combined_figure.py) | Composes `fig_crucible_combined.png` from the crucible photos in `../docs/graphite-crucible/`. |
+| [`build_crucible_dimensions_figure.py`](build_crucible_dimensions_figure.py) | Composes the SI's `fig_crucible_dimensions.png` from the dimensioned crops in `../docs/graphite-crucible/callout-crops/` (bare panel letters; descriptions live in the SI caption). |
 | [`build_ebsd_figure.py`](build_ebsd_figure.py) | Composes `fig_ebsd.png` from the committed EBSD maps in `../docs/SEM/`. |
 | [`build_microstructure_figure.py`](build_microstructure_figure.py) | Crops `fig_microstructure.png` from the committed optical micrograph in `../docs/optical/`. |
 | [`build_grooving_figure.py`](build_grooving_figure.py) | Rebuilds `fig_grooving.png` — requires `../docs/student-work/W2020_Sprint6.pptx` and SEM images that exist only on PR #3's branch. |

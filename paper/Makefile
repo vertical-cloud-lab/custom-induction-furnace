@@ -31,6 +31,7 @@ all: real si
 figures:
 	python3 build_power_figures_volts.py
 	python3 build_crucible_combined_figure.py
+	python3 build_crucible_dimensions_figure.py
 	python3 build_ebsd_figure.py
 	python3 build_microstructure_figure.py
 
