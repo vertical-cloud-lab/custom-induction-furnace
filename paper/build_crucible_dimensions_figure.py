@@ -15,11 +15,12 @@ PyMuPDF (``fitz``) is installed the crops are regenerated from the committed PDF
 so the figure is fully reproducible from source; otherwise the committed crops
 are used directly (so ``make figures`` works without PyMuPDF).
 
-Output: ``paper/figures/fig_crucible_dimensions.png`` --- a seven-panel figure
-with each part's diameters printed beneath it, colour-matched to the call-out
-lines in the photograph. Panels carry bare letters (a)--(g) only; the part
-descriptions live in the SI caption (the ``title`` field in ``PANELS`` records
-what each panel shows).
+Output: ``paper/figures/fig_crucible_dimensions.png`` --- a seven-panel figure.
+Panels carry bare letters (a)--(g) only; the part descriptions AND the
+measurements live in the SI caption, keyed to the colour of each call-out line
+(R. Guymon, PR #12, 2026-07-27). The ``title``/measurement fields in ``PANELS``
+are retained as a provenance record of what each panel shows and which colour
+marks which dimension --- they are no longer rendered into the figure.
 
 Usage::
 
@@ -71,6 +72,11 @@ CROPS = [
 ]
 
 # Panel definitions: (crop stem, label, title, [(text, colour), ...] measurements).
+# The title and measurement entries are documentation only (they must agree with
+# the SI caption); the figure renders just the crop and its bare panel letter.
+# Note the lid heights per the source slide legend: yellow = Height 1 = 4 mm
+# (drawn on the lower shoulder), green = Height 2 = 6 mm (drawn on the upper
+# step).
 PANELS = [
     ("01_alumina", "(a)", "Alumina disc",
      [("14 mm dia.", GREY)]),
@@ -83,7 +89,7 @@ PANELS = [
      [("20.30 mm dia.", GREY)]),
     ("05_lid_oblique", "(e)", "Crucible lid, oblique",
      [("upper 13.70 mm", TEAL), ("lower 14.55 mm", ORANGE),
-      ("H1 4 mm", YELLOW), ("H2 6 mm", GREEN)]),
+      ("lower H 4 mm", YELLOW), ("upper H 6 mm", GREEN)]),
     ("06_lid_top", "(f)", "Crucible lid, top",
      [("outer 13.70 mm", YELLOW), ("2nd 9.75 mm", TEAL),
       ("3rd 5 mm", RED), ("bore 3.5 mm", GREEN)]),
@@ -147,33 +153,27 @@ def main() -> int:
         images.append((_pad_to_canvas(Image.open(path)), label, title, meas))
 
     # 7 panels on a 4-wide x 2-tall grid; the last cell is left blank.
+    # Figure height sized so each cell just fits its 1.4-aspect letterboxed
+    # panel plus the letter title — no under-panel text any more.
     ncols, nrows = 4, 2
-    fig, axes = plt.subplots(nrows, ncols, figsize=(9.0, 5.6))
+    fig, axes = plt.subplots(nrows, ncols, figsize=(9.0, 3.9))
     flat = axes.ravel()
 
     for ax, (img, label, title, meas) in zip(flat, images):
         ax.imshow(img)
         ax.axis("off")
-        # Bare panel letters only; the part descriptions live in the SI caption
-        # (R. Guymon, PR #12, 2026-07-27 — match the main text's Fig. 2 style).
+        # Bare panel letters only; the part descriptions and colour-keyed
+        # measurements live in the SI caption (R. Guymon, PR #12, 2026-07-27 —
+        # match the main text's Fig. 2 style).
         ax.set_title(label, fontsize=8.5, fontweight="bold", pad=3)
-        # Colour-matched measurement tokens beneath the photo (two per line).
-        if len(meas) == 1:
-            ax.text(0.5, -0.05, meas[0][0], transform=ax.transAxes,
-                    fontsize=8.0, color=meas[0][1], ha="center", va="top")
-        else:
-            positions = [(0.27, -0.05), (0.73, -0.05),
-                         (0.27, -0.17), (0.73, -0.17)]
-            for (t, c), (x, y) in zip(meas, positions):
-                ax.text(x, y, t, transform=ax.transAxes, fontsize=7.5,
-                        color=c, ha="center", va="top")
 
     # Hide any unused cells (the 8th).
     for ax in flat[len(images):]:
         ax.axis("off")
 
+    # No under-panel text any more, so the rows can sit close together.
     fig.subplots_adjust(left=0.01, right=0.99, top=0.95, bottom=0.02,
-                        wspace=0.05, hspace=0.45)
+                        wspace=0.05, hspace=0.16)
     os.makedirs(FIGURES, exist_ok=True)
     out = os.path.join(FIGURES, "fig_crucible_dimensions.png")
     fig.savefig(out, dpi=DPI, bbox_inches="tight", pad_inches=0.03)
