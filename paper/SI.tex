@@ -33,6 +33,7 @@
 
 \usepackage[margin=2.2cm]{geometry}
 \usepackage{graphicx}
+\graphicspath{{figures/}{../docs/}}
 \usepackage{booktabs}
 \usepackage{array}
 \usepackage{tabularx}
@@ -86,17 +87,15 @@ raw data and design package is openly available at
 an archival snapshot deposited at Zenodo,
 \href{https://doi.org/10.5281/zenodo.20878017}{10.5281/zenodo.20878017}.
 Each run ID in Table~\ref{tab:linkage} links directly to the corresponding
-raw run log. Alt text accompanies each figure and table caption.
+raw run log. % Alt text accompanies each figure and table caption.
 
 %==============================================================
 \section{Hardware}
 %==============================================================
 
-% Panel (e) height assignment (upper step 6 mm green, lower shoulder 4 mm
-% yellow) confirmed against the physical part by R. Guymon, 2026-07-27.
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.9\linewidth]{figures/fig_crucible_dimensions.png}
+\includegraphics[width=0.9\linewidth]{fig_crucible_dimensions.png}
 \caption{Measured dimensions of each part of the graphite crucible/susceptor
 assembly; each dimension is keyed to the color of the measurement line drawn
 on the photograph. (a)~Alumina spacer disc, 14\,mm dia. (b)~Sapphire
@@ -112,36 +111,29 @@ outermost diameter (yellow), 9.75\,mm second step (teal), 5\,mm third step
 (g)~Crucible lid, bottom: 14.55\,mm seating face (green) and the 3.5\,mm
 through-bore (orange). Fully assembled the crucible stands 13\,mm tall.}
 \label{fig:s-crucible-dims}
-\alttext{Seven photographs of the crucible parts, labeled (a) through (g).
-Colored measurement lines overlay the photographs of the crucible body and
-lid; the caption gives every diameter and step height keyed to the color of
-its line.}
+% \alttext{Seven labeled photographs of the crucible parts, each overlaid with colored measurement lines and numeric callouts giving the diameters, step heights, and the central pyrometer bore dimensions.}
 \end{figure}
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.62\linewidth]{../docs/coils-drawing.pdf}
+\includegraphics[width=0.62\linewidth]{coils-drawing.pdf}
 \caption{Work-coil fabrication drawing used for this build, showing
 the coil geometry and dimensional callouts used to form and mount the
 liquid-cooled copper coil around the quartz chamber.}
 \label{fig:s-coil}
-\alttext{Engineering drawing of the liquid-cooled copper work coil with
-dimensional callouts for the coil height, inner diameter, number of turns,
-and lead routing.}
+% \alttext{Engineering drawing of the liquid-cooled copper work coil with dimensional callouts for the coil height, inner diameter, number of turns, and lead routing.}
 \end{figure}
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.75\linewidth]{figures/fig_vacuum_details.jpg}
+\includegraphics[width=0.75\linewidth]{fig_vacuum_details.jpg}
 \caption{Vacuum and gas-handling details. (a)~Turbo pumping station with the
 roughing pump mounted on a separate support. The pump couples to the pumping
 station only through a flexible hose, so its vibration is not transmitted
 into the chamber. (b)~Overpressure relief valve (0.5\,psi cracking pressure)
 at the bottom of the vacuum column, below the chamber.}
 \label{fig:s-vacuum-details}
-\alttext{Two labeled photographs: the turbo pumping station with its
-separately supported roughing pump connected by a flexible hose, and the
-overpressure relief valve mounted at the bottom of the vacuum column.}
+% \alttext{Two labeled photographs: the turbo pumping station with its separately supported roughing pump connected by a flexible hose, and the overpressure relief valve mounted at the bottom of the vacuum column.}
 \end{figure}
 
 \clearpage
@@ -151,7 +143,7 @@ overpressure relief valve mounted at the bottom of the vacuum column.}
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.6\linewidth]{figures/fig_calibration.png}
+\includegraphics[width=0.6\linewidth]{fig_calibration.png}
 \caption{Power-command\,$\rightarrow$\,temperature calibration for one fixed
 Ni (4N5, i.e., 99.995\,\% purity) configuration. The command is expressed in
 volts on the DAQ's 0--5\,V analog-output scale (top axis: the equivalent
@@ -159,55 +151,39 @@ percent of full scale). Points are soak-mean values;
 horizontal bars are the in-soak standard deviation of the command. The
 dashed line is the linear operational calibration ($R^2 = 0.991$, $n = 4$).}
 \label{fig:s-calibration}
-\alttext{Scatter plot of soak-mean temperature against power command in
-volts on a zero to five volt scale, with four points between 1200 and 1400
-degrees Celsius and a dashed straight fit line through them. A secondary
-top axis gives the equivalent percent of full scale, about nine to fifteen
-percent.}
+% \alttext{Scatter plot of soak-mean temperature against power command in volts on a zero to five volt scale, with four points between 1200 and 1400 degrees Celsius and a dashed straight fit line through them. A secondary top axis gives the equivalent percent of full scale, about nine to fifteen percent.}
 \end{figure}
 
-% NOTE (2026-07-24): the power-command scale is resolved -- per the
-% operators (R. Weber, C. Nyborg, relayed by R. Guymon, PR #12) the
-% command was generated on the DAQ's 0-5 V output scale, so the logged
-% values are volts: 0.43-0.74 V for the calibration cohort and ~1.6 V
-% (32% of full scale) for IFrun079 below. Both figures regenerated by
-% build_power_figures_volts.py; the raw logs' "mA" column header is a
-% VI mislabel.
+
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.6\linewidth]{figures/fig_representative.png}
+\includegraphics[width=0.6\linewidth]{fig_representative.png}
 \caption{Representative closed-loop anneal (Ni (4N5), nominal
 1300\dC{} / 12\,h): pyrometer temperature with setpoint overlay (top) and
 power command in volts on the DAQ's 0--5\,V scale (bottom; the soak-mean
 command of 1.6\,V corresponds to approximately 32\,\% of full scale).
 Soak mean $1302.1 \pm 3.0$\dC, drift $-0.02$\dC/h.}
 \label{fig:s-representative}
-\alttext{Two stacked line plots over twelve hours: the pyrometer temperature
-rising to and holding near 1300 degrees Celsius on its setpoint, and the
-power command in volts settling to a steady value near 1.6 volts below.}
+% \alttext{Two stacked line plots over twelve hours: the pyrometer temperature rising to and holding near 1300 degrees Celsius on its setpoint, and the power command in volts settling to a steady value near 1.6 volts below.}
 \end{figure}
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.6\linewidth]{figures/fig_repeatability.png}
+\includegraphics[width=0.6\linewidth]{fig_repeatability.png}
 \caption{Repeatability of the Ni (4N5) 1200\dC{} / 12\,h cohort ($n = 8$).
 Points are per-run soak-mean temperatures; the band is
 mean\,$\pm$\,SD ($1201.2 \pm 1.3$\dC).}
 \label{fig:s-repeatability}
-\alttext{Plot of eight per-run soak-mean temperatures clustered near 1200
-degrees Celsius inside a shaded band marking the mean plus or minus one
-standard deviation.}
+% \alttext{Plot of eight per-run soak-mean temperatures clustered near 1200 degrees Celsius inside a shaded band marking the mean plus or minus one standard deviation.}
 \end{figure}
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.6\linewidth]{figures/fig_longsoak.png}
+\includegraphics[width=0.6\linewidth]{fig_longsoak.png}
 \caption{Long-duration thermal stability: Ni200 (commercially pure wrought
 nickel, UNS N02200) anneals at 1325\dC{} held for 20\,h and 40\,h.}
 \label{fig:s-longsoak}
-\alttext{Line plot of two anneal temperature traces at 1325 degrees Celsius,
-one held twenty hours and one held forty hours, both essentially flat across
-the soak.}
+% \alttext{Line plot of two anneal temperature traces at 1325 degrees Celsius, one held twenty hours and one held forty hours, both essentially flat across the soak.}
 \end{figure}
 
 \clearpage
@@ -217,7 +193,7 @@ the soak.}
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.8\linewidth]{figures/fig_kikuchi.png}
+\includegraphics[width=0.8\linewidth]{fig_kikuchi.png}
 \caption{Raw (as-collected) EBSD acquisitions from furnace-annealed nickel,
 with no metallographic preparation of any kind (no grinding, polishing, or
 etching): each specimen was pulled directly from the furnace chamber and
@@ -232,9 +208,7 @@ automatically during EBSD mapping of the early-campaign specimens
 Ni\_003b1a and Ni\_003a1b. More than 100{,}000 such patterns are preserved
 with the openly available data.}
 \label{fig:s-kikuchi}
-\alttext{Five grayscale panels: a raw Kikuchi diffraction pattern of
-intersecting bright bands, an electron micrograph with grooved grain
-boundaries and line-scan marks, and three small saved detector patterns.}
+% \alttext{Five grayscale panels: a raw Kikuchi diffraction pattern of intersecting bright bands, an electron micrograph with grooved grain boundaries and line-scan marks, and three small saved detector patterns.}
 \end{figure}
 
 \clearpage
@@ -244,7 +218,7 @@ boundaries and line-scan marks, and three small saved detector patterns.}
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.78\linewidth]{figures/fig_ta_heatcurve.png}
+\includegraphics[width=0.78\linewidth]{fig_ta_heatcurve.png}
 \caption{Measured heat curves of the tantalum-susceptor (ceramic) sample
 assembly.
 (a)~Pyrometer temperature vs.\ generator power command for one and two
@@ -255,20 +229,18 @@ the test. (b)~Timed two-block ramp/soak: a constant 17\,\% command holds
 approximately 2000\dC{} ($2000 \pm 3$\dC{} over the final hour) before a
 stepped ramp-down.}
 \label{fig:s-heatcurve}
-\alttext{Two plots: temperature versus power command curves for one and two
-tantalum blocks reaching 2344 degrees Celsius, and a timed ramp holding a
-steady 2000 degrees Celsius for over an hour.}
+% \alttext{Two plots: temperature versus power command curves for one and two tantalum blocks reaching 2344 degrees Celsius, and a timed ramp holding a steady 2000 degrees Celsius for over an hour.}
 \end{figure}
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.85\linewidth]{figures/fig_ysz.png}
+\includegraphics[width=0.85\linewidth]{fig_ysz.png}
 \caption{YSZ optical micrographs. (a)~YSZ after a 1700\dC{} / 10\,h anneal.
 (b)~An induction-annealed YSZ specimen, showing the equiaxed grain
 structure. The tantalum-susceptor sample assembly used for these anneals is
 drawn in the main text (Fig.~8).}
 \label{fig:s-ysz}
-\alttext{Two optical micrographs of equiaxed YSZ grain structures.}
+% \alttext{Two optical micrographs of equiaxed YSZ grain structures.}
 \end{figure}
 
 \clearpage
@@ -327,9 +299,7 @@ Ni200\_001 & Ni200 & \runlog{IFrun001-020/Ni200_001_IFrun004.lvm}{IFrun004}/\run
 Ni4N5\_001b & Ni (4N5) & IFrun006 (log not in parsed set) & --- & --- & --- & no-flow & 2 opt. & Characterization only \\
 \bottomrule
 \end{tabular}
-\alttext{Table linking each specimen to its furnace run, nominal and logged
-soak temperature, soak time, atmosphere, characterization file counts, and
-its role or figure in the manuscript.}
+% \alttext{Table linking each specimen to its furnace run, nominal and logged soak temperature, soak time, atmosphere, characterization file counts, and its role or figure in the manuscript.}
 \end{table}
 \end{landscape}
 
@@ -408,9 +378,7 @@ CONS-5 & Zirconia crucible stock (760-1, 2204\dC, 10\,lb) & 1 & \$124 & \$124 & 
 CONS-6 & Torr-Seal high-vacuum epoxy / O-rings & 1 set & \$57 & \$57 & Varian / McMaster & epoxy / elastomer \\
 \end{longtable}
 }
-\alttext{Itemized bill of materials with designator, component description,
-quantity, unit and total cost in US dollars, source, and material for each
-generator, retrofit, and consumable part.}
+% \alttext{Itemized bill of materials with designator, component description, quantity, unit and total cost in US dollars, source, and material for each generator, retrofit, and consumable part.}
 
 \clearpage
 
