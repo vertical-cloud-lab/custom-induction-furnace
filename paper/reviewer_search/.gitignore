@@ -1,0 +1,3 @@
+# Regenerable via fetch_rsi_authors_corpus.py + rank_rsi_authors.py; too large for git
+rsi_authors_2015-2026.jsonl
+rsi_authors_titles_only.jsonl
