@@ -67,6 +67,8 @@ pillar is better served by the Edison literature query's field-wide sweep
   scattering, 2017, 10.1063/1.5007089; substitute for #6.
 - **Dante Quirinale** (ORNL) — levitation + high-temperature vacuum
   furnaces (10.1063/1.4939194, 10.1063/5.0299443); early/mid-career.
+  (The "Johnson" on the 2016 ESL paper is from the Ames/WUSTL levitation
+  collaboration — a family-name collision with O. K. Johnson, not a COI.)
 - **Andreas Neuber's group** (Texas Tech; T. M. Watson et al.) — nanosecond
   two-color pyrometry of electron-beam-heated metal, 2025,
   10.1063/5.0215582; pyrometry substitute.
