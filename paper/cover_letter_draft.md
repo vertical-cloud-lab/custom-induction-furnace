@@ -4,30 +4,32 @@ Text only, per S. Baird's request (PR #12, 2026-07-29); the letterhead/template
 will be supplied by the authors later. Bracketed items are placeholders for
 the authors to fill in or confirm.
 
-Revised 2026-07-30 per S. Baird: lead with the two key results, plainer
-language throughout.
+Revised 2026-07-30 per S. Baird: leads with the two key results, plainer
+language throughout; then revised again per Edison Scientific editorial
+feedback (task b69eaa93, report in paper/cover_letter_query/) on flow,
+conciseness, tone, readability, and accuracy against the manuscript.
 
 ---
 
 Dear Editor,
 
-We are pleased to submit our manuscript, "Retrofitting a commercial RF induction generator into a computer-controlled, vacuum and gas integrated annealing system for reactive-metal grain growth," for consideration as a regular contributed article in *Review of Scientific Instruments*.
+We submit our manuscript, "Retrofitting a commercial RF induction generator into a computer-controlled, vacuum and gas integrated annealing system for reactive-metal grain growth," for consideration as a regular contributed article in *Review of Scientific Instruments*.
 
-Two results should be of particular interest to your readers. First, nickel annealed in this furnace produced high-quality electron backscatter diffraction (EBSD) patterns with no specimen preparation at all: samples went straight from the furnace chamber into the electron microscope, with no grinding, polishing, or etching. We attribute this to the purity of the annealing environment. Second, a small change to the sample assembly extends the same furnace to ceramics, which do not couple to the induction field. It coarsened yttria-stabilized zirconia grains in 45 minutes at 2500 °C — a treatment that took 228 hours at 1600 °C in a conventional box furnace.
+The manuscript reports two results that demonstrate the instrument's performance. First, nickel annealed in the furnace yielded high-quality electron backscatter diffraction (EBSD) patterns without grinding, polishing, or etching; the specimens were transferred directly from the furnace to the scanning electron microscope. The manuscript discusses how the near-solidus anneal, low-oxygen environment, and surface diffusion may contribute to this result. Second, changing the materials in the sample assembly extended the furnace to yttria-stabilized zirconia (YSZ), which does not couple directly to the radiofrequency field. The system coarsened YSZ grains from approximately 20 to 90 µm in 45 min at 2500 °C, compared with approximately 10 to 80 µm after 228 h at 1600 °C in a conventional box furnace.
 
-The instrument behind these results is a fully documented, open retrofit. Annealing a metal near its melting point without oxidizing it normally requires an expensive turn-key vacuum induction furnace. Many laboratories own, or can affordably buy, a bare commercial radiofrequency induction generator; what they lack is the computer control, vacuum and gas handling, and optical temperature feedback that turn it into a scientific instrument. Our manuscript supplies that missing layer. Because it needs only the generator's analog power-control input, the retrofit is independent of the generator's make and model; the reference build, on a 6 kW solid-state generator, brings the entire system to about $38k.
+These results were obtained with the open, documented retrofit described in the manuscript. Commercial turn-key vacuum induction furnaces capable of near-melting-point annealing under controlled atmospheres typically cost $50,000–$200,000 or more. Bare commercial radiofrequency induction generators are widely available but lack the computer control, vacuum and gas handling, and optical temperature feedback needed for this application. The retrofit adds these components. Because it requires only a monotonic analog power-control input, it can be transferred between generator makes and models, with recalibration for each configuration. The reference build uses a 6 kW solid-state generator and costs approximately $38,000.
 
-The manuscript validates the instrument quantitatively: a power–temperature calibration linear to R² = 0.991 over 1200–1400 °C, eight independent 12-hour nickel anneals that reproduced their soak temperature to 1201.2 ± 1.3 °C (a variation of 0.11%), and stable closed-loop soaks up to 40 hours.
+The manuscript validates the instrument quantitatively. For a fixed configuration, the power–temperature calibration was approximately linear from 1200 to 1400 °C (R² = 0.991). Across eight separate 12 h nickel anneals, the mean hold temperature was 1201.2 ± 1.3 °C, corresponding to a 0.11% coefficient of variation; feedback-controlled holds remained stable for as long as 40 h.
 
-The work is fully reproducible. Complete design files, an itemized bill of materials, the LabVIEW control software, and all underlying run data are openly available on GitHub (https://github.com/vertical-cloud-lab/custom-induction-furnace), with an archival copy deposited at Zenodo (https://doi.org/10.5281/zenodo.20878017). The supplementary material links the reported specimens to their raw furnace run logs.
+The manuscript provides the files and data needed to reproduce the system and evaluate the reported runs. Design files, an itemized bill of materials, LabVIEW control software, and data supporting the findings are available on GitHub (https://github.com/vertical-cloud-lab/custom-induction-furnace), with an archival copy deposited at Zenodo (https://doi.org/10.5281/zenodo.20878017). The supplementary material links each reported specimen to its raw furnace log.
 
 [Optional, if posted before journal submission: A preprint of this manuscript has been posted to arXiv (arXiv:XXXX.XXXXX), consistent with AIP Publishing's preprint policy.]
 
-[Related work by the authors, per the journal's cover-letter guidance — list any prior publications by the author group on grain growth, grain-boundary characterization, or instrument development, e.g., publications by O. Johnson's group that motivated the furnace.]
+[Optional, only if genuinely helpful for assessing novelty: one or two directly related prior publications by the author group. Edison's convention check found the "list related work" cover-letter guidance applies to Applied Physics Letters, not RSI, so this can simply be cut.]
 
-This manuscript is original, has not been published previously, and is not under consideration elsewhere. All authors have approved the submission and declare no conflicts of interest. This work was supported by the National Science Foundation under Grant No. 1610077.
+This manuscript is original, has not been published previously, and is not under consideration elsewhere. All authors have approved its submission and have no conflicts of interest to disclose.
 
-Thank you for your consideration. We look forward to your response.
+Thank you for considering our manuscript.
 
 Sincerely,
 
