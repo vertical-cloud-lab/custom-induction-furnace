@@ -45,6 +45,13 @@ if S. Baird prefers to be corresponding author. "Ronnie" changed to
 Author Contributions), and in SI.tex; a matching \email{} was added to
 the Ronald Guymon \author block in real_person_paper.tex.
 
+Revised 2026-08-11 per S. Baird ("Change me to corresponding author"):
+corresponding author switched from R. Guymon to Sterling G. Baird, here
+and in real_person_paper.tex (\email moved to the Baird \author block).
+Email sgbaird@byu.edu is the address on record in this repo's Crossref
+scripts — S. Baird to confirm it is the address he wants on the
+submission.
+
 ---
 
 Dear Editor,
@@ -75,8 +82,8 @@ Thank you for considering our manuscript.
 
 Sincerely,
 
-Ronald Guymon
+Sterling G. Baird
 on behalf of the authors: Sterling G. Baird, Ryan Weber, Christopher Nyborg, Ronald Guymon, Gage Erickson, and Oliver Johnson
 Department of Mechanical Engineering, Brigham Young University, Provo, Utah 84602, USA
-rguymon2@byu.edu
+sgbaird@byu.edu
 August 11, 2026
