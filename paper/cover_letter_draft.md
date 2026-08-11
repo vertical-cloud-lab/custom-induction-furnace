@@ -29,6 +29,18 @@ caution re: O. K. Johnson) before submission — S. Baird asked to triage
 this personally. A longer alternates list is in the PR discussion and
 in paper/reviewer_search/.
 
+Revised 2026-08-11 per R. Guymon: swapped H. Wang (ORNL, pyrometry
+specialist) for L. Gallais (whole-annealing-system instrument builder) —
+rationale: nothing novel was done with the pyrometer itself beyond
+integrating it, so a reviewer who evaluates complete annealing systems
+is a better fit than a single-instrument specialist. Also removed the
+two bracketed optional paragraphs (arXiv preprint note; related-work
+list, which was APL guidance, not RSI). Reviewer slate still awaits
+S. Baird's confirmation before submission. Corresponding author: not
+yet decided — a group decision, not automatically the first author;
+whoever is chosen also needs an \email{} added to their \author block
+in real_person_paper.tex.
+
 ---
 
 Dear Editor,
@@ -51,11 +63,7 @@ We respectfully suggest the following potential reviewers, whose published work 
 - Prof. Cheng-Chi Tai, Department of Electrical Engineering, National Cheng Kung University, Tainan, Taiwan (ctai@mail.ncku.edu.tw) — induction-heating systems with feedback temperature control (e.g., DOI 10.1063/5.0066308).
 - Dr. Stefan Zaefferer, Max Planck Institute for Sustainable Materials, Düsseldorf, Germany (s.zaefferer@mpie.de) — EBSD instrumentation and methodology (e.g., DOI 10.1063/5.0087945).
 - Prof. Jian Luo, Aiiso Yufeng Li Family Department of Chemical and Nano Engineering, University of California San Diego, USA (jluo@ucsd.edu) — rapid ultra-high-temperature ceramic processing and grain growth (e.g., DOI 10.1126/sciadv.abn8241).
-- Dr. Hsin Wang, Oak Ridge National Laboratory, USA (wangh2@ornl.gov) — radiation thermometry and two-color pyrometry in high-temperature materials processing (e.g., DOI 10.1080/17686733.2022.2043617).
-
-[Optional, if posted before journal submission: A preprint of this manuscript has been posted to arXiv (arXiv:XXXX.XXXXX), consistent with AIP Publishing's preprint policy.]
-
-[Optional, only if genuinely helpful for assessing novelty: one or two directly related prior publications by the author group. Edison's convention check found the "list related work" cover-letter guidance applies to Applied Physics Letters, not RSI, so this can simply be cut.]
+- Prof. Laurent Gallais, Institut Fresnel, Centrale Méditerranée, Marseille, France (laurent.gallais@fresnel.fr) — has published a series of complete high-temperature annealing instruments with radiometric temperature control in *Review of Scientific Instruments* (e.g., DOI 10.1063/5.0202933).
 
 This manuscript presents original findings that have not been published previously by the authors or others. It has not been copyrighted, submitted, published, or accepted for publication elsewhere. All authors have approved its submission and have no conflicts of interest to disclose.
 
