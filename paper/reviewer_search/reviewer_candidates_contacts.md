@@ -16,7 +16,7 @@ row). "Consensus" = named independently by ≥2 of the three sweeps.
 |---|---|---|---|---|
 | Florian Kargl | RWTH Aachen / DLR Inst. of Materials Physics in Space, Cologne | florian.kargl@dlr.de (DLR staff page) | Furnace/instrument design, vacuum | Own + Edison-analysis (both rank him top) |
 | Cheng-Chi Tai | National Cheng Kung Univ., EE, Taiwan | ctai@mail.ncku.edu.tw (NCKU directory) | Induction heating + feedback control | Own + Edison-analysis |
-| Stefan Zaefferer | MPI for Sustainable Materials (MPIE), Düsseldorf | s.zaefferer@mpie.de (MPIE/guest-faculty pages) | EBSD | Own + Edison-analysis. **CAUTION: authors must confirm no collaboration tie to O. K. Johnson in the EBSD/GB community** |
+| Stefan Zaefferer | MPI for Sustainable Materials (MPIE), Düsseldorf | s.zaefferer@mpie.de (MPIE/guest-faculty pages) | EBSD | Own + Edison-analysis. COI check closed: R. Guymon searched and found no co-authored papers or joint projects with O. K. Johnson (PR #12, 2026-08-11) |
 | Jian Luo | UC San Diego, Chemical and Nano Engineering | jluo@ucsd.edu (published corresponding-author) | Ultra-high-T ceramics / rapid sintering / YSZ pillar | Edison-literature (rank 4) |
 | Hsin Wang | Oak Ridge National Laboratory | wangh2@ornl.gov (ORNL staff profile) | Pyrometry / IR thermometry | Edison-literature (rank 2) |
 

@@ -62,39 +62,37 @@ Provo, Utah 84602, USA}
 
 \date{\today}
 
+% Abstract rewritten 2026-08-11 per R. Guymon (PR #12): CAMRI framework
+% (results first, impact close), under AIP's 250-word cap, plain sentences,
+% SEM/DAQ definitions and the repo URL removed (URL lives in Data
+% Availability). The "soak" and "sample assembly" glosses cut here moved to
+% those terms' first body mentions.
 \begin{abstract}
 High-temperature vacuum annealing near a metal's melting point drives
 controlled grain growth, but it normally requires an expensive turn-key
-vacuum induction furnace. We describe an open retrofit (added
-control, vacuum, and temperature-feedback hardware and
-software) that converts a bare commercial radiofrequency (RF) induction
-% "radio-frequency" -> "radiofrequency" per R. Guymon's edited PDF
-% (PR #12, 2026-07-23/24).
-generator into a computer-controlled,
-vacuum and gas integrated annealing system with pyrometer feedback. The
-retrofit consists of analog power control through LabVIEW and a data-acquisition
-(DAQ) device, dual-wavelength optical
-temperature feedback, a high-vacuum quartz-tube chamber, and an in-house
-machined graphite crucible that serves as a susceptor (an RF-absorbing
-element that heats the charge it encloses) for metal specimens.
-Because its only requirement is a monotonic analog power-control input,
-the retrofit transfers between generators; the reference build
-uses a 6\,kW solid-state generator. The system produced a
-fixed-configuration power--temperature calibration with $R^2 = 0.991$ over
-1200--1400\,\celsius. Eight nickel anneals at 1200\,\celsius{} for 12\,h
-reproduced their soak temperature (the constant-temperature hold) to
-$1201.2 \pm 1.3$\,\celsius, and soaks up to
-40\,h at 1325\,\celsius{} remained stable. In the annealed nickel, optical
-metallography and scanning electron microscopy (SEM) resolve equiaxed
-grains and deep thermal grooves, several spanning the full sheet
-thickness; electron backscatter diffraction (EBSD) maps index hundreds of
-grains, quantifying grain size and texture. Surprisingly, nickel samples processed in this system produced high quality EBSD patterns with zero processing required (direct from furnace to SEM, no polishing, etching, etc.). A modified sample assembly (the specimen, susceptor, and supports
-inside the chamber) extends the furnace to non-coupling
-ceramics, demonstrated by coarsening yttria-stabilized zirconia (YSZ)
-grains in 45\,min at 2500\,\celsius, highly accelerated compared to similar results achieved in 228 hours at 1600\,\celsius in a conventional box furnace.
-Complete design
-files, bill of materials, control software, and data are openly
-available at \url{https://github.com/vertical-cloud-lab/custom-induction-furnace}.
+vacuum induction furnace. We retrofit a bare commercial radiofrequency
+(RF) induction generator with computer power control through LabVIEW,
+dual-wavelength optical temperature feedback, and a high-vacuum
+quartz-tube chamber with inert-gas backfill. A machined graphite crucible
+doubles as a susceptor, an RF-absorbing element that heats the specimen
+it encloses. The only requirement is a monotonic analog power-control
+input, so the retrofit transfers between generators. Our reference build
+uses a 6\,kW solid-state generator. Surprisingly, nickel annealed in this
+system produced high-quality electron backscatter diffraction (EBSD)
+patterns with zero specimen preparation. Samples went directly from the
+furnace to the electron microscope without grinding, polishing, or
+etching. The EBSD maps indexed hundreds of equiaxed grains delineated by
+deep thermal grooves. A modified sample assembly extends the furnace to
+ceramics that do not couple to the RF field. It coarsened
+yttria-stabilized zirconia (YSZ) grains in 45\,min at 2500\,\celsius,
+compared with 228\,h at 1600\,\celsius{} in a conventional box furnace.
+For a fixed configuration, the power--temperature calibration is linear
+($R^2 = 0.991$) from 1200 to 1400\,\celsius. Eight 12\,h nickel anneals
+at 1200\,\celsius{} reproduced their soak temperature to
+$1201.2 \pm 1.3$\,\celsius, and 40\,h soaks at 1325\,\celsius{} remained
+stable. Complete design files, a bill of materials, control software, and
+data are openly available. This gives laboratories an affordable route to
+near-melting-point annealing with direct anneal-to-EBSD characterization.
 \end{abstract}
 
 \keywords{induction furnace; grain growth; vacuum annealing; LabVIEW;
@@ -141,7 +139,8 @@ any nonlinearity in that response. The generator internals are not
 reproduced, so a compatible generator needs to be supplied. A graphite
 crucible couples strongly to the RF field and is used for the metal
 grain-growth anneals. Non-coupling ceramics such as YSZ
-use a modified sample assembly in
+use a modified sample assembly (the specimen, susceptor, and supports
+inside the chamber) in
 which graphite or tantalum serves as the susceptor, chosen for chemical
 compatibility with the specimen (Sec.~\ref{sec:ysz}).
 
@@ -257,7 +256,7 @@ configuration.
 % (traceable to an earlier review comment); this wording keeps the
 % either/or point without it.
 In
-this build, the DAQ device's 0--5\,V analog output
+this build, the data-acquisition (DAQ) device's 0--5\,V analog output
 drives a voltage-to-current loop conditioner, and the conditioner's
 4--20\,mA output drives the generator's power-setpoint input. The
 pyrometer's analog output returns to a DAQ input, which closes the PID loop.
@@ -281,7 +280,7 @@ flange.
 
 Metal charges in the graphite crucible reach the nickel and iron
 grain-growth range of 1400 to 1500\,\celsius, with demonstrated soaks
-from minutes to 40\,h. The modified ceramic sample assembly extends the working
+(constant-temperature holds) from minutes to 40\,h. The modified ceramic sample assembly extends the working
 range to 2500\,\celsius. When the retrofit is moved to a different
 generator, a user would need to re-determine optimal parameters specific to their system; however, the general framework is agnostic to the generator type and brand.
 
@@ -620,7 +619,8 @@ directly reusable at a small fraction of turn-key cost.
 The full system and workflow deliver a high-purity annealing environment.
 The strongest evidence is that, surprisingly, the annealed nickel specimens needed no
 metallographic preparation at all. Specimens were annealed, removed from
-the furnace, and placed directly into the SEM, and they returned
+the furnace, and placed directly into the scanning electron microscope,
+and they returned
 high-quality EBSD patterns and orientation maps with no grinding,
 polishing, or etching.
 
