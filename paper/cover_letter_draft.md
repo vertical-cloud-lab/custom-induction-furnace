@@ -36,10 +36,14 @@ integrating it, so a reviewer who evaluates complete annealing systems
 is a better fit than a single-instrument specialist. Also removed the
 two bracketed optional paragraphs (arXiv preprint note; related-work
 list, which was APL guidance, not RSI). Reviewer slate still awaits
-S. Baird's confirmation before submission. Corresponding author: not
-yet decided — a group decision, not automatically the first author;
-whoever is chosen also needs an \email{} added to their \author block
-in real_person_paper.tex.
+S. Baird's confirmation before submission.
+
+Revised 2026-08-11 per R. Guymon: Ronald Guymon set as corresponding
+author (rguymon2@byu.edu), dated 2026-08-11 — provisional, to be swapped
+if S. Baird prefers to be corresponding author. "Ronnie" changed to
+"Ronald" in the author list here, in real_person_paper.tex (\author and
+Author Contributions), and in SI.tex; a matching \email{} was added to
+the Ronald Guymon \author block in real_person_paper.tex.
 
 ---
 
@@ -71,8 +75,8 @@ Thank you for considering our manuscript.
 
 Sincerely,
 
-[Corresponding author name]
-on behalf of the authors: Sterling G. Baird, Ryan Weber, Christopher Nyborg, Ronnie Guymon, Gage Erickson, and Oliver Johnson
+Ronald Guymon
+on behalf of the authors: Sterling G. Baird, Ryan Weber, Christopher Nyborg, Ronald Guymon, Gage Erickson, and Oliver Johnson
 Department of Mechanical Engineering, Brigham Young University, Provo, Utah 84602, USA
-[Email address]
-[Date]
+rguymon2@byu.edu
+August 11, 2026
