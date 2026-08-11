@@ -18,6 +18,17 @@ page R. Guymon quoted is the AVS/JVST/Biointerphases author page; its
 Peer X-Press portal and AVS Word template do NOT apply to RSI, but its
 publication criteria and abstract guidance are AIP-general.)
 
+Revised 2026-08-11 per S. Baird: added a suggested-reviewers section.
+The five names are the consensus slate from three independent sweeps
+(Edison analysis task 947fc0d9 over all 11,869 RSI articles 2015-2026,
+Edison literature task 6ab94166 field-wide, and the in-repo Crossref
+sweep in paper/reviewer_search/own_sweep_report.md). Emails verified
+against institutional pages 2026-08-11. AUTHORS MUST CONFIRM the slate
+(esp. no informal collaboration ties, and the Zaefferer/EBSD-community
+caution re: O. K. Johnson) before submission — S. Baird asked to triage
+this personally. A longer alternates list is in the PR discussion and
+in paper/reviewer_search/.
+
 ---
 
 Dear Editor,
@@ -33,6 +44,14 @@ The manuscript validates the instrument quantitatively. For a fixed configuratio
 The manuscript provides the files and data needed to reproduce the system and evaluate the reported runs. Design files, an itemized bill of materials, LabVIEW control software, and data supporting the findings are available on GitHub (https://github.com/vertical-cloud-lab/custom-induction-furnace), with an archival copy deposited at Zenodo (https://doi.org/10.5281/zenodo.20878017). The supplementary material links the reported specimens to their raw furnace logs, so the conclusions can be checked against the underlying data.
 
 We believe the work falls squarely within the journal's scope and will be useful to its readership. It gives laboratories a documented, low-cost route to near-melting-point vacuum annealing using widely available induction generators, and the preparation-free EBSD result removes an entire metallographic step between annealing and characterization in grain-growth studies.
+
+We respectfully suggest the following potential reviewers, whose published work spans the manuscript's main elements — furnace and instrument design, induction heating and closed-loop temperature control, optical pyrometry, EBSD, and ultra-high-temperature ceramic processing. None is affiliated with our institution, and to our knowledge none has collaborated with the author group.
+
+- Prof. Dr. Florian Kargl, RWTH Aachen University and DLR Institute of Materials Physics in Space, Cologne, Germany (florian.kargl@dlr.de) — has published a sustained series of custom high-temperature furnace instruments in *Review of Scientific Instruments* (e.g., DOI 10.1063/5.0151523).
+- Prof. Cheng-Chi Tai, Department of Electrical Engineering, National Cheng Kung University, Tainan, Taiwan (ctai@mail.ncku.edu.tw) — induction-heating systems with feedback temperature control (e.g., DOI 10.1063/5.0066308).
+- Dr. Stefan Zaefferer, Max Planck Institute for Sustainable Materials, Düsseldorf, Germany (s.zaefferer@mpie.de) — EBSD instrumentation and methodology (e.g., DOI 10.1063/5.0087945).
+- Prof. Jian Luo, Aiiso Yufeng Li Family Department of Chemical and Nano Engineering, University of California San Diego, USA (jluo@ucsd.edu) — rapid ultra-high-temperature ceramic processing and grain growth (e.g., DOI 10.1126/sciadv.abn8241).
+- Dr. Hsin Wang, Oak Ridge National Laboratory, USA (wangh2@ornl.gov) — radiation thermometry and two-color pyrometry in high-temperature materials processing (e.g., DOI 10.1080/17686733.2022.2043617).
 
 [Optional, if posted before journal submission: A preprint of this manuscript has been posted to arXiv (arXiv:XXXX.XXXXX), consistent with AIP Publishing's preprint policy.]
 
