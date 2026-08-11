@@ -52,6 +52,12 @@ Email sgbaird@byu.edu is the address on record in this repo's Crossref
 scripts — S. Baird to confirm it is the address he wants on the
 submission.
 
+Revised 2026-08-11 per S. Baird ("should be sterling.baird@byu.edu, make
+both Ronnie and myself corresponding authors"): S. Baird's email corrected
+to sterling.baird@byu.edu, and Sterling G. Baird and Ronald Guymon are now
+joint corresponding authors here and in real_person_paper.tex (an \email
+on each of the two \author blocks).
+
 ---
 
 Dear Editor,
@@ -82,8 +88,8 @@ Thank you for considering our manuscript.
 
 Sincerely,
 
-Sterling G. Baird
+Sterling G. Baird and Ronald Guymon (corresponding authors)
 on behalf of the authors: Sterling G. Baird, Ryan Weber, Christopher Nyborg, Ronald Guymon, Gage Erickson, and Oliver Johnson
 Department of Mechanical Engineering, Brigham Young University, Provo, Utah 84602, USA
-sgbaird@byu.edu
+sterling.baird@byu.edu · rguymon2@byu.edu
 August 11, 2026
