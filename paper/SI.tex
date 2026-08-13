@@ -54,6 +54,11 @@
 \newcommand{\dC}{\,$^{\circ}$C}
 \newcommand{\um}{\,\textmu m}
 % Alt text under each caption (AIP accessibility instructions for SI files).
+% The submission system requires alt text below every SI figure/table caption;
+% the 2026-07-29 Overleaf sync had commented these out, and they were restored
+% and rewritten to AIP's alt-text principles (25-50 words, summarize the point,
+% one description per figure, no panel-label lists) on 2026-08-13 per R. Guymon.
+% Do not comment these out again when syncing from Overleaf.
 \newcommand{\alttext}[1]{\par\smallskip{\footnotesize\emph{Alt text:} #1\par}}
 % Hyperlink a run ID to its raw log in the data repository.
 \newcommand{\runlog}[2]{\href{https://github.com/vertical-cloud-lab/custom-induction-furnace/blob/main/docs/data_log/#1}{#2}}
@@ -87,7 +92,8 @@ raw data and design package is openly available at
 an archival snapshot deposited at Zenodo,
 \href{https://doi.org/10.5281/zenodo.20878017}{10.5281/zenodo.20878017}.
 Each run ID in Table~\ref{tab:linkage} links directly to the corresponding
-raw run log. % Alt text accompanies each figure and table caption.
+raw run log. Alt text accompanies each figure and table caption, per the
+AIP Publishing accessibility instructions for supplementary material.
 
 %==============================================================
 \section{Hardware}
@@ -111,7 +117,7 @@ outermost diameter (yellow), 9.75\,mm second step (teal), 5\,mm third step
 (g)~Crucible lid, bottom: 14.55\,mm seating face (green) and the 3.5\,mm
 through-bore (orange). Fully assembled the crucible stands 13\,mm tall.}
 \label{fig:s-crucible-dims}
-% \alttext{Seven labeled photographs of the crucible parts, each overlaid with colored measurement lines and numeric callouts giving the diameters, step heights, and the central pyrometer bore dimensions.}
+\alttext{Photographs of the disassembled crucible parts, including the alumina spacer disc, sapphire window, crucible body, and stepped lid, each overlaid with colored lines marking the measured diameters, step heights, and central sighting bore.}
 \end{figure}
 
 \begin{figure}[htbp]
@@ -121,7 +127,7 @@ through-bore (orange). Fully assembled the crucible stands 13\,mm tall.}
 the coil geometry and dimensional callouts used to form and mount the
 liquid-cooled copper coil around the quartz chamber.}
 \label{fig:s-coil}
-% \alttext{Engineering drawing of the liquid-cooled copper work coil with dimensional callouts for the coil height, inner diameter, number of turns, and lead routing.}
+\alttext{Dimensioned engineering drawing of the helical liquid-cooled copper work coil, specifying its height, inner diameter, number of turns, and lead routing.}
 \end{figure}
 
 \begin{figure}[htbp]
@@ -133,7 +139,7 @@ station only through a flexible hose, so its vibration is not transmitted
 into the chamber. (b)~Overpressure relief valve (0.5\,psi cracking pressure)
 at the bottom of the vacuum column, below the chamber.}
 \label{fig:s-vacuum-details}
-% \alttext{Two labeled photographs: the turbo pumping station with its separately supported roughing pump connected by a flexible hose, and the overpressure relief valve mounted at the bottom of the vacuum column.}
+\alttext{Two photographs of the vacuum hardware. The turbopumping station stands beside its separately supported roughing pump, joined only by a flexible hose, and the overpressure relief valve is mounted at the bottom of the vacuum column.}
 \end{figure}
 
 \clearpage
@@ -151,7 +157,7 @@ percent of full scale). Points are soak-mean values;
 horizontal bars are the in-soak standard deviation of the command. The
 dashed line is the linear operational calibration ($R^2 = 0.991$, $n = 4$).}
 \label{fig:s-calibration}
-% \alttext{Scatter plot of soak-mean temperature against power command in volts on a zero to five volt scale, with four points between 1200 and 1400 degrees Celsius and a dashed straight fit line through them. A secondary top axis gives the equivalent percent of full scale, about nine to fifteen percent.}
+\alttext{Scatter plot of soak-mean temperature against power command, with four points between 1200 and 1400 degrees Celsius lying close to a dashed straight fit line, showing an approximately linear power-temperature relation.}
 \end{figure}
 
 
@@ -164,7 +170,7 @@ power command in volts on the DAQ's 0--5\,V scale (bottom; the soak-mean
 command of 1.6\,V corresponds to approximately 32\,\% of full scale).
 Soak mean $1302.1 \pm 3.0$\dC, drift $-0.02$\dC/h.}
 \label{fig:s-representative}
-% \alttext{Two stacked line plots over twelve hours: the pyrometer temperature rising to and holding near 1300 degrees Celsius on its setpoint, and the power command in volts settling to a steady value near 1.6 volts below.}
+\alttext{Two stacked line plots covering twelve hours. The pyrometer temperature rises to and holds the 1300 degree Celsius setpoint, and the power command settles to a nearly constant value for the remainder of the run.}
 \end{figure}
 
 \begin{figure}[htbp]
@@ -174,7 +180,7 @@ Soak mean $1302.1 \pm 3.0$\dC, drift $-0.02$\dC/h.}
 Points are per-run soak-mean temperatures; the band is
 mean\,$\pm$\,SD ($1201.2 \pm 1.3$\dC).}
 \label{fig:s-repeatability}
-% \alttext{Plot of eight per-run soak-mean temperatures clustered near 1200 degrees Celsius inside a shaded band marking the mean plus or minus one standard deviation.}
+\alttext{Plot of eight per-run soak-mean temperatures, all clustered inside a narrow shaded band around 1200 degrees Celsius, showing run-to-run repeatability within about one degree.}
 \end{figure}
 
 \begin{figure}[htbp]
@@ -183,7 +189,7 @@ mean\,$\pm$\,SD ($1201.2 \pm 1.3$\dC).}
 \caption{Long-duration thermal stability: Ni200 (commercially pure wrought
 nickel, UNS N02200) anneals at 1325\dC{} held for 20\,h and 40\,h.}
 \label{fig:s-longsoak}
-% \alttext{Line plot of two anneal temperature traces at 1325 degrees Celsius, one held twenty hours and one held forty hours, both essentially flat across the soak.}
+\alttext{Line plot of two anneal temperature traces at 1325 degrees Celsius, one held for twenty hours and one for forty hours, both remaining flat for the full soak.}
 \end{figure}
 
 \clearpage
@@ -208,7 +214,7 @@ automatically during EBSD mapping of the early-campaign specimens
 Ni\_003b1a and Ni\_003a1b. More than 100{,}000 such patterns are preserved
 with the openly available data.}
 \label{fig:s-kikuchi}
-% \alttext{Five grayscale panels: a raw Kikuchi diffraction pattern of intersecting bright bands, an electron micrograph with grooved grain boundaries and line-scan marks, and three small saved detector patterns.}
+\alttext{Grayscale electron microscopy images from unprepared annealed nickel. A raw Kikuchi diffraction pattern shows sharp intersecting bands and zone axes, an electron micrograph shows grain boundaries outlined by thermal grooves, and three small saved detector patterns show similarly sharp bands.}
 \end{figure}
 
 \clearpage
@@ -229,7 +235,7 @@ the test. (b)~Timed two-block ramp/soak: a constant 17\,\% command holds
 approximately 2000\dC{} ($2000 \pm 3$\dC{} over the final hour) before a
 stepped ramp-down.}
 \label{fig:s-heatcurve}
-% \alttext{Two plots: temperature versus power command curves for one and two tantalum blocks reaching 2344 degrees Celsius, and a timed ramp holding a steady 2000 degrees Celsius for over an hour.}
+\alttext{Two plots of tantalum-susceptor heating performance. Temperature rises with power command for one and two stacked blocks, reaching 2344 degrees Celsius, and a timed run holds a steady 2000 degrees Celsius for about an hour before ramping down.}
 \end{figure}
 
 \begin{figure}[htbp]
@@ -240,7 +246,7 @@ stepped ramp-down.}
 structure. The tantalum-susceptor sample assembly used for these anneals is
 drawn in the main text (Fig.~8).}
 \label{fig:s-ysz}
-% \alttext{Two optical micrographs of equiaxed YSZ grain structures.}
+\alttext{Two optical micrographs of yttria-stabilized zirconia showing equiaxed grain structures with clearly delineated grain boundaries after high-temperature annealing.}
 \end{figure}
 
 \clearpage
@@ -299,7 +305,7 @@ Ni200\_001 & Ni200 & \runlog{IFrun001-020/Ni200_001_IFrun004.lvm}{IFrun004}/\run
 Ni4N5\_001b & Ni (4N5) & IFrun006 (log not in parsed set) & --- & --- & --- & no-flow & 2 opt. & Characterization only \\
 \bottomrule
 \end{tabular}
-% \alttext{Table linking each specimen to its furnace run, nominal and logged soak temperature, soak time, atmosphere, characterization file counts, and its role or figure in the manuscript.}
+\alttext{Each characterized specimen is matched to its furnace run, and the logged soak temperatures agree with the nominal targets to within a few degrees Celsius across runs from 1200 to 1400 degrees Celsius and soak times from ten minutes to forty hours.}
 \end{table}
 \end{landscape}
 
@@ -378,7 +384,7 @@ CONS-5 & Zirconia crucible stock (760-1, 2204\dC, 10\,lb) & 1 & \$124 & \$124 & 
 CONS-6 & Torr-Seal high-vacuum epoxy / O-rings & 1 set & \$57 & \$57 & Varian / McMaster & epoxy / elastomer \\
 \end{longtable}
 }
-% \alttext{Itemized bill of materials with designator, component description, quantity, unit and total cost in US dollars, source, and material for each generator, retrofit, and consumable part.}
+\alttext{The parts list groups costs into the generator package, the retrofit control and vacuum components, and consumables, with the generator package and the turbopumping station dominating the total system cost of about thirty-eight thousand US dollars.}
 
 \clearpage
 
