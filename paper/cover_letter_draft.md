@@ -58,6 +58,14 @@ to sterling.baird@byu.edu, and Sterling G. Baird and Ronald Guymon are now
 joint corresponding authors here and in real_person_paper.tex (an \email
 on each of the two \author blocks).
 
+Revised 2026-08-13 per R. Guymon (RSI policy: cost cannot be referenced in
+the title, and prices cannot be quoted anywhere in the text; novelty is
+judged solely on technical grounds): removed the "$50,000-$200,000" range
+and the "approximately $38,000" build cost, and dropped "low-cost" from the
+scope paragraph so the letter pitches the work on technical grounds only.
+Matching price removals were made in real_person_paper.tex (Introduction)
+and SI.tex (bill of materials).
+
 ---
 
 Dear Editor,
@@ -66,13 +74,13 @@ We submit our manuscript, "Retrofitting a commercial RF induction generator into
 
 The manuscript reports two results that demonstrate the instrument's performance. First, nickel annealed in the furnace yielded high-quality electron backscatter diffraction (EBSD) patterns without grinding, polishing, or etching; the specimens were transferred directly from the furnace to the scanning electron microscope. The manuscript discusses how the near-solidus anneal, low-oxygen environment, and surface diffusion may contribute to this result. Second, changing the materials in the sample assembly extended the furnace to yttria-stabilized zirconia (YSZ), which does not couple directly to the radiofrequency field. The system coarsened YSZ grains from approximately 20 to 90 µm in 45 min at 2500 °C, compared with approximately 10 to 80 µm after 228 h at 1600 °C in a conventional box furnace.
 
-These results were obtained with the open, documented retrofit described in the manuscript. Commercial turn-key vacuum induction furnaces capable of near-melting-point annealing under controlled atmospheres typically cost $50,000–$200,000 or more. Bare commercial radiofrequency induction generators are widely available but lack the computer control, vacuum and gas handling, and optical temperature feedback needed for this application. The retrofit adds these components. Because it requires only a monotonic analog power-control input, it can be transferred between generator makes and models, with recalibration for each configuration. The reference build uses a 6 kW solid-state generator and costs approximately $38,000.
+These results were obtained with the open, documented retrofit described in the manuscript. Commercial vacuum induction furnaces capable of near-melting-point annealing under controlled atmospheres are closed, turn-key systems that resist modification. Bare commercial radiofrequency induction generators are widely available but lack the computer control, vacuum and gas handling, and optical temperature feedback needed for this application. The retrofit adds these components. Because it requires only a monotonic analog power-control input, it can be transferred between generator makes and models, with recalibration for each configuration. The reference build uses a 6 kW solid-state generator.
 
 The manuscript validates the instrument quantitatively. For a fixed configuration, the power–temperature calibration was approximately linear from 1200 to 1400 °C (R² = 0.991). Across eight separate 12 h nickel anneals, the mean hold temperature was 1201.2 ± 1.3 °C, corresponding to a 0.11% coefficient of variation; feedback-controlled holds remained stable for as long as 40 h.
 
 The manuscript provides the files and data needed to reproduce the system and evaluate the reported runs. Design files, an itemized bill of materials, LabVIEW control software, and data supporting the findings are available on GitHub (https://github.com/vertical-cloud-lab/custom-induction-furnace), with an archival copy deposited at Zenodo (https://doi.org/10.5281/zenodo.20878017). The supplementary material links the reported specimens to their raw furnace logs, so the conclusions can be checked against the underlying data.
 
-We believe the work falls squarely within the journal's scope and will be useful to its readership. It gives laboratories a documented, low-cost route to near-melting-point vacuum annealing using widely available induction generators, and the preparation-free EBSD result removes an entire metallographic step between annealing and characterization in grain-growth studies.
+We believe the work falls squarely within the journal's scope and will be useful to its readership. It gives laboratories a documented route to near-melting-point vacuum annealing using widely available induction generators, and the preparation-free EBSD result removes an entire metallographic step between annealing and characterization in grain-growth studies.
 
 We respectfully suggest the following potential reviewers, whose published work spans the manuscript's main elements — furnace and instrument design, induction heating and closed-loop temperature control, optical pyrometry, EBSD, and ultra-high-temperature ceramic processing. None is affiliated with our institution, and to our knowledge none has collaborated with the author group.
 
