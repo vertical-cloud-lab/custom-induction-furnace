@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 # Build the arXiv submission package for the induction-furnace manuscript.
 #
-# arXiv compiles the LaTeX source itself but does NOT run BibTeX, so the
-# package must carry the pre-built real_person_paper.bbl alongside the .tex.
+# arXiv compiles the LaTeX source itself. When a pre-built .bbl is included,
+# arXiv uses it instead of running a bib compiler (per info.arxiv.org/help/
+# submit_tex.html, which also requires the .bbl name to match the main .tex),
+# so the package carries the pre-built real_person_paper.bbl alongside the .tex.
 # The supplementary material goes in anc/ (arXiv's ancillary-file directory,
 # listed on the abstract page but not compiled).
 #
