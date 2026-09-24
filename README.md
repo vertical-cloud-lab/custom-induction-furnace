@@ -1,12 +1,33 @@
 # custom-induction-furnace
 
-Custom Induction Furnace project — documentation and resources for building and operating an induction furnace. See preprint at https://arxiv.org/abs/2609.22118
+[![arXiv](https://img.shields.io/badge/arXiv-2609.22118-b31b1b.svg)](https://arxiv.org/abs/2609.22118)
 
-![](https://github.com/vertical-cloud-lab/custom-induction-furnace/blob/main/linkedin_preprint_option_4_story%20(2).gif)
+Custom Induction Furnace project — documentation and resources for building and operating an induction furnace. See the preprint at https://arxiv.org/abs/2609.22118 and the [Citation](#citation) section below.
+
+![Animated overview of the custom induction furnace preprint](https://github.com/vertical-cloud-lab/custom-induction-furnace/blob/main/linkedin_preprint_option_4_story%20(2).gif)
 
 (xref: [LinkedIn](https://lnkd.in/p/gpVekxN4))
 
 <!--- source GIF in case I need to make changes: https://chatgpt.com/share/e/6ab596ff-3c4c-83e8-a1e9-2f8f8b9f92bf --->
+
+## Citation
+
+If you use this work, please cite the preprint:
+
+> Baird, S. G., Weber, R., Nyborg, C., Guymon, R., Erickson, G., & Johnson, O. K. (2026). *Retrofitting a commercial RF induction generator into a computer-controlled, vacuum and gas integrated annealing system for reactive-metal grain growth*. arXiv preprint arXiv:2609.22118. https://doi.org/10.48550/arXiv.2609.22118
+
+```bibtex
+@misc{baird2026retrofitting,
+  title         = {Retrofitting a commercial RF induction generator into a computer-controlled, vacuum and gas integrated annealing system for reactive-metal grain growth},
+  author        = {Baird, Sterling G. and Weber, Ryan and Nyborg, Christopher and Guymon, Ronald and Erickson, Gage and Johnson, Oliver K.},
+  year          = {2026},
+  eprint        = {2609.22118},
+  archivePrefix = {arXiv},
+  primaryClass  = {physics.ins-det},
+  doi           = {10.48550/arXiv.2609.22118},
+  url           = {https://arxiv.org/abs/2609.22118}
+}
+```
 
 ## Documentation
 
