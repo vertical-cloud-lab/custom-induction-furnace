@@ -1,6 +1,10 @@
 # custom-induction-furnace
 
-Custom Induction Furnace project — documentation and resources for building and operating an induction furnace.
+Custom Induction Furnace project — documentation and resources for building and operating an induction furnace. See preprint at https://arxiv.org/abs/2609.22118
+
+![](https://github.com/vertical-cloud-lab/custom-induction-furnace/blob/main/linkedin_preprint_option_4_story%20(2).gif)
+
+(xref: [LinkedIn](https://lnkd.in/p/gpVekxN4))
 
 ## Documentation
 
