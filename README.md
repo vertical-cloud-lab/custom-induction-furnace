@@ -6,6 +6,8 @@ Custom Induction Furnace project — documentation and resources for building an
 
 (xref: [LinkedIn](https://lnkd.in/p/gpVekxN4))
 
+<!--- source GIF in case I need to make changes: https://chatgpt.com/share/e/6ab596ff-3c4c-83e8-a1e9-2f8f8b9f92bf --->
+
 ## Documentation
 
 All documentation has been downloaded from the Box shared folder — including
